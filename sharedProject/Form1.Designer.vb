@@ -31,6 +31,8 @@ Partial Class Form1
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.txtConnectionState = New System.Windows.Forms.ToolStripTextBox()
+        Me.txtToken = New System.Windows.Forms.TextBox()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -106,11 +108,29 @@ Partial Class Form1
         Me.txtConnectionState.Name = "txtConnectionState"
         Me.txtConnectionState.Size = New System.Drawing.Size(100, 25)
         '
+        'txtToken
+        '
+        Me.txtToken.Location = New System.Drawing.Point(45, 73)
+        Me.txtToken.Name = "txtToken"
+        Me.txtToken.Size = New System.Drawing.Size(470, 20)
+        Me.txtToken.TabIndex = 8
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(564, 73)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 9
+        Me.Button3.Text = "Go for it!"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(689, 343)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.txtToken)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -145,4 +165,7 @@ Partial Class Form1
         ' Add any initialization after the InitializeComponent() call.
 
     End Sub
+
+    Friend WithEvents txtToken As TextBox
+    Friend WithEvents Button3 As Button
 End Class
