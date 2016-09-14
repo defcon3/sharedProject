@@ -26,6 +26,11 @@ Public Class Form1
         m = req.GetResponse()
     End Sub
 
+    ''' <summary>
+    ''' so funktioniert das hier?!
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim ar As String() = WebBrowser1.Document.Cookie.Split(";")
 
