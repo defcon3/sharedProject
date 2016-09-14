@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="clsAutoBetEngine.vb" />
     <Compile Include="clsAutoBetEngineSession.vb" />
+    <Compile Include="clsVerbindung.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>

@@ -5,7 +5,6 @@ Imports System.Text
 Public Class Form1
 
     Property newClsAutoBetEngineSession As New clsAutoBetEngineSession
-    Public Event t(ByVal tz As String)
     Public WithEvents puplic As frmLogin
 
 
@@ -27,12 +26,6 @@ Public Class Form1
 
         Dim m '
         m = req.GetResponse()
-    End Sub
-
-
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
-        txtConnectionState.Text = "offline"
-
     End Sub
 
 

@@ -4,7 +4,6 @@ Public Class frmLogin
 
     Public Event getCookie(ByVal ssoid As String)
 
-
     Protected Overrides Sub Finalize()
         MyBase.Finalize()
     End Sub
@@ -18,7 +17,7 @@ Public Class frmLogin
             Dim m
             m = ea.ToString.Split("=")(0)
             If Trim(m) = "ssoid" Then
-                RaiseEvent getCookie(ea.ToString.Split("=")(1))
+                RaiseEvent getCookie(ea.ToString.Split("=")(1) & "=")
             End If
         Next
 

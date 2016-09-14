@@ -111,6 +111,7 @@ Partial Class Form1
         Me.txtConnectionState.Enabled = False
         Me.txtConnectionState.Name = "txtConnectionState"
         Me.txtConnectionState.Size = New System.Drawing.Size(100, 25)
+        Me.txtConnectionState.Text = "offline"
         '
         'txtToken
         '
