@@ -16,7 +16,7 @@ Public Class Form1
         With req
             .Method = "GET" '~~> I believe we use Get if we are just retrieving and Post if putting something? both work
             .ContentType = "application/json" '~~> Normals
-            'laber-rababer
+            'laber-rababer3
             '~~> Add Headers <~~'
             .Headers.Add(HttpRequestHeader.AcceptCharset, "ISO-8859-1,utf-8")
             .Headers.Add("X-Authentication", newClsAutoBetEngineSession.token) '~~> Mandatory
