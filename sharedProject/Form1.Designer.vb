@@ -33,8 +33,11 @@ Partial Class Form1
         Me.txtConnectionState = New System.Windows.Forms.ToolStripTextBox()
         Me.txtToken = New System.Windows.Forms.TextBox()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.ToolStripComboBox1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
@@ -48,7 +51,7 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(642, 334)
+        Me.Button2.Location = New System.Drawing.Point(640, 143)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 1
@@ -125,34 +128,48 @@ Partial Class Form1
         Me.Button3.Text = "Go for it!"
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'WebBrowser1
+        'MenuStrip1
         '
-        Me.WebBrowser1.Location = New System.Drawing.Point(12, 102)
-        Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
-        Me.WebBrowser1.Name = "WebBrowser1"
-        Me.WebBrowser1.Size = New System.Drawing.Size(677, 226)
-        Me.WebBrowser1.TabIndex = 10
-        Me.WebBrowser1.Url = New System.Uri("https://identitysso.betfair.com/view/login", System.UriKind.Absolute)
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripComboBox1, Me.LoginToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(763, 24)
+        Me.MenuStrip1.TabIndex = 11
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'ToolStripComboBox1
+        '
+        Me.ToolStripComboBox1.Name = "ToolStripComboBox1"
+        Me.ToolStripComboBox1.Size = New System.Drawing.Size(12, 20)
+        '
+        'LoginToolStripMenuItem
+        '
+        Me.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem"
+        Me.LoginToolStripMenuItem.Size = New System.Drawing.Size(49, 20)
+        Me.LoginToolStripMenuItem.Text = "Login"
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(763, 385)
-        Me.Controls.Add(Me.WebBrowser1)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.txtToken)
         Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form1"
         Me.Text = "AutoBetEngine"
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -179,5 +196,7 @@ Partial Class Form1
 
     Friend WithEvents txtToken As TextBox
     Friend WithEvents Button3 As Button
-    Friend WithEvents WebBrowser1 As WebBrowser
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents ToolStripComboBox1 As ToolStripMenuItem
+    Friend WithEvents LoginToolStripMenuItem As ToolStripMenuItem
 End Class

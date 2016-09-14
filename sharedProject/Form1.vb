@@ -32,17 +32,8 @@ Public Class Form1
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim ar As String() = WebBrowser1.Document.Cookie.Split(";")
 
-        Dim t = WebBrowser1.Document.Cookie.Split(";").ToList
-
-        For Each ea In t
-            Dim m
-            m = ea.ToString.Split("=")(0)
-            If Trim(m) = "ssoid" Then
-                MsgBox(ea.ToString.Split("=")(1))
-            End If
-        Next
+        TextBox2.Text = "oj"
 
 
 
@@ -53,9 +44,55 @@ Public Class Form1
         Me.BackColor = Color.Brown
     End Sub
 
+    Public Event t(ByVal tz As String)
+
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
 
         newClsAutoBetEngineSession.token = txtToken.Text
+
+    End Sub
+
+
+    Private Sub LoginToolStripMenuItem_DoubleClick(sender As Object, e As EventArgs) Handles LoginToolStripMenuItem.DoubleClick
+
+    End Sub
+
+    Public WithEvents puplic As frmLogin
+    Private Sub neu(ByVal nachricht As String) Handles puplic.getCookie
+
+        TextBox2.Text = nachricht
+
+    End Sub
+
+    Private Sub LoginToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoginToolStripMenuItem.Click
+
+        'Dim myNewLoginForm As frmLogin
+
+        puplic = New frmLogin
+
+        puplic.ShowDialog()
+
+        'MsgBox(LoginToolStripMenuItem.Text)
+
+
+
+
+        'Dim ar As String() = WebBrowser1.Document.Cookie.Split(";")
+
+        'Dim t = WebBrowser1.Document.Cookie.Split(";").ToList
+
+        'For Each ea In t
+        '    Dim m
+        '    m = ea.ToString.Split("=")(0)
+        '    If Trim(m) = "ssoid" Then
+        '        MsgBox(ea.ToString.Split("=")(1))
+        '    End If
+        'Next
+
+
+    End Sub
+
+    Private Sub txtToken_TextChanged(sender As Object, e As EventArgs) Handles txtToken.TextChanged
 
     End Sub
 End Class
