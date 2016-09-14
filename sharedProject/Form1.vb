@@ -5,6 +5,9 @@ Imports System.Text
 Public Class Form1
 
     Property newClsAutoBetEngineSession As New clsAutoBetEngineSession
+    Public Event t(ByVal tz As String)
+    Public WithEvents puplic As frmLogin
+
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
@@ -26,25 +29,12 @@ Public Class Form1
         m = req.GetResponse()
     End Sub
 
-    ''' <summary>
-    ''' so funktioniert das hier?!
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-
-        TextBox2.Text = "oj"
-
-
-
-    End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         txtConnectionState.Text = "offline"
-        Me.BackColor = Color.Brown
+
     End Sub
 
-    Public Event t(ByVal tz As String)
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
 
@@ -53,11 +43,6 @@ Public Class Form1
     End Sub
 
 
-    Private Sub LoginToolStripMenuItem_DoubleClick(sender As Object, e As EventArgs) Handles LoginToolStripMenuItem.DoubleClick
-
-    End Sub
-
-    Public WithEvents puplic As frmLogin
     Private Sub neu(ByVal nachricht As String) Handles puplic.getCookie
 
         TextBox2.Text = nachricht
@@ -72,27 +57,7 @@ Public Class Form1
 
         puplic.ShowDialog()
 
-        'MsgBox(LoginToolStripMenuItem.Text)
 
-
-
-
-        'Dim ar As String() = WebBrowser1.Document.Cookie.Split(";")
-
-        'Dim t = WebBrowser1.Document.Cookie.Split(";").ToList
-
-        'For Each ea In t
-        '    Dim m
-        '    m = ea.ToString.Split("=")(0)
-        '    If Trim(m) = "ssoid" Then
-        '        MsgBox(ea.ToString.Split("=")(1))
-        '    End If
-        'Next
-
-
-    End Sub
-
-    Private Sub txtToken_TextChanged(sender As Object, e As EventArgs) Handles txtToken.TextChanged
 
     End Sub
 End Class
