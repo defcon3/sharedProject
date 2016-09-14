@@ -50,6 +50,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         txtConnectionState.Text = "offline"
+        Me.BackColor = Color.Brown
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
