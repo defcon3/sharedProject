@@ -27,7 +27,20 @@ Public Class Form1
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        MessageBox.Show("hier isser")
+        Dim ar As String() = WebBrowser1.Document.Cookie.Split(";")
+
+        Dim t = WebBrowser1.Document.Cookie.Split(";").ToList
+
+        For Each ea In t
+            Dim m
+            m = ea.ToString.Split("=")(0)
+            If Trim(m) = "ssoid" Then
+                MsgBox(ea.ToString.Split("=")(1))
+            End If
+        Next
+
+
+
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load

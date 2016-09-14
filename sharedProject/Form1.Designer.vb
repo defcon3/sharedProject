@@ -33,6 +33,7 @@ Partial Class Form1
         Me.txtConnectionState = New System.Windows.Forms.ToolStripTextBox()
         Me.txtToken = New System.Windows.Forms.TextBox()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -47,7 +48,7 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(592, 269)
+        Me.Button2.Location = New System.Drawing.Point(642, 334)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 1
@@ -90,9 +91,9 @@ Partial Class Form1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.txtConnectionState})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 318)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 360)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(689, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(763, 25)
         Me.ToolStrip1.TabIndex = 7
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -124,11 +125,21 @@ Partial Class Form1
         Me.Button3.Text = "Go for it!"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'WebBrowser1
+        '
+        Me.WebBrowser1.Location = New System.Drawing.Point(12, 102)
+        Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
+        Me.WebBrowser1.Name = "WebBrowser1"
+        Me.WebBrowser1.Size = New System.Drawing.Size(677, 226)
+        Me.WebBrowser1.TabIndex = 10
+        Me.WebBrowser1.Url = New System.Uri("https://identitysso.betfair.com/view/login", System.UriKind.Absolute)
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(689, 343)
+        Me.ClientSize = New System.Drawing.Size(763, 385)
+        Me.Controls.Add(Me.WebBrowser1)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.txtToken)
         Me.Controls.Add(Me.ToolStrip1)
@@ -168,4 +179,5 @@ Partial Class Form1
 
     Friend WithEvents txtToken As TextBox
     Friend WithEvents Button3 As Button
+    Friend WithEvents WebBrowser1 As WebBrowser
 End Class
