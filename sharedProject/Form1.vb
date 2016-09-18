@@ -36,6 +36,11 @@ Public Class Form1
     End Sub
 
 
+    ''' <summary>
+    ''' diese Routine wird durch cas Schlíeßen der Login Form ausgelöst
+    ''' Es muss der cookie ins filesystem geschrieben werden.
+    ''' </summary>
+    ''' <param name="nachricht">der coookie</param>
     Private Sub neu(ByVal nachricht As String) Handles puplic.getCookie
 
         TextBox2.Text = nachricht
