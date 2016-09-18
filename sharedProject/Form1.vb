@@ -4,6 +4,7 @@ Imports System.Text
 
 Public Class Form1
 
+
     Property newClsAutoBetEngineSession As New clsAutoBetEngineSession
     Public WithEvents puplic As frmLogin
 
@@ -41,7 +42,25 @@ Public Class Form1
     ''' Es muss der cookie ins filesystem geschrieben werden.
     ''' </summary>
     ''' <param name="nachricht">der coookie</param>
-    Private Sub neu(ByVal nachricht As String) Handles puplic.getCookie
+    Private Sub write_cookie(ByVal nachricht As String) Handles puplic.getCookie
+
+        Dim sb As New System.Text.StringBuilder
+        sb.Append(nachricht)
+        txtCookie.Text = sb.ToString
+        txtCookie.Width = 200
+        'Dim writer As New System.IO.TextWriter()
+        Dim writeFile As System.IO.TextWriter = New _
+            StreamWriter("c:\temp\cookie_ABE.txt", False, encoding:=Encoding.UTF8)
+        writeFile.WriteLine(sb.ToString)
+        writeFile.Flush()
+        writeFile.Close()
+        writeFile = Nothing
+
+
+
+
+
+
 
         TextBox2.Text = nachricht
 
@@ -58,4 +77,9 @@ Public Class Form1
 
 
     End Sub
+
+    Private Sub ToolStripLabel2_Click(sender As Object, e As EventArgs) Handles ToolStripLabel2.Click
+
+    End Sub
+
 End Class

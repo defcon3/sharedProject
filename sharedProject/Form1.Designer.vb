@@ -36,6 +36,9 @@ Partial Class Form1
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolStripComboBox1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
+        Me.txtCookie = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -93,7 +96,7 @@ Partial Class Form1
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.txtConnectionState})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.txtConnectionState, Me.ToolStripSeparator1, Me.ToolStripLabel2, Me.txtCookie})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 360)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(763, 25)
@@ -149,6 +152,23 @@ Partial Class Form1
         Me.LoginToolStripMenuItem.Size = New System.Drawing.Size(49, 20)
         Me.LoginToolStripMenuItem.Text = "Login"
         '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripLabel2
+        '
+        Me.ToolStripLabel2.Name = "ToolStripLabel2"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(47, 22)
+        Me.ToolStripLabel2.Text = "Cookie:"
+        '
+        'txtCookie
+        '
+        Me.txtCookie.Enabled = False
+        Me.txtCookie.Name = "txtCookie"
+        Me.txtCookie.Size = New System.Drawing.Size(100, 25)
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -200,4 +220,7 @@ Partial Class Form1
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents ToolStripComboBox1 As ToolStripMenuItem
     Friend WithEvents LoginToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ToolStripLabel2 As ToolStripLabel
+    Friend WithEvents txtCookie As ToolStripTextBox
 End Class
