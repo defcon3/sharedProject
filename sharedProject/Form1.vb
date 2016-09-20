@@ -9,28 +9,6 @@ Public Class Form1
     Public WithEvents puplic As frmLogin
 
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-
-
-        Dim v_ABE As New clsAutoBetEngine
-
-        Dim req As WebRequest = WebRequest.Create(v_ABE.bf_json_rpc_address)
-
-        With req
-            .Method = "GET" '~~> I believe we use Get if we are just retrieving and Post if putting something? both work
-            .ContentType = "application/json" '~~> Normals
-            'laber-rababer3
-            '~~> Add Headers <~~'
-            .Headers.Add(HttpRequestHeader.AcceptCharset, "ISO-8859-1,utf-8")
-            .Headers.Add("X-Authentication", newClsAutoBetEngineSession.token) '~~> Mandatory
-        End With
-
-        Dim m '
-        m = req.GetResponse()
-    End Sub
-
-
-
     ''' <summary>
     ''' diese Routine wird durch cas Schlíeßen der Login Form ausgelöst
     ''' Es muss der cookie ins filesystem geschrieben werden.
@@ -76,9 +54,11 @@ Public Class Form1
 
         request.Method = "POST"
         request.ContentType = "application/json"
-        request.ContentLength = byteArray.Length
+
         request.Headers.Add(CStr("X-Application: " & ""))
         request.Headers.Add("X-Authentication: " & My.Settings.me_cookie_ABE)
+        request.ContentLength = byteArray.Length
+
 
         Dim datastream As Stream = request.GetRequestStream()
         datastream.Write(byteArray, 0, byteArray.Length)
@@ -124,7 +104,7 @@ Public Class Form1
     Function seria(ByVal requestList As List(Of mcr)) As String
 
         Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
-        MsgBox(temp)
+        'MsgBox(temp)
         Return temp
 
     End Function
