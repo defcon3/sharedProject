@@ -50,18 +50,19 @@ Public Class Form1
     Private Function SendSportsReq(ByVal jsonString As String)
 
         Dim request As WebRequest = WebRequest.Create("https://api.betfair.com/exchange/betting/json-rpc/v1")
-        Dim byteArray As Byte() = Encoding.UTF8.GetBytes(jsonString)
+        Dim byteArray As Byte() = Encoding.ASCII.GetBytes(jsonString)
 
         request.Method = "POST"
         request.ContentType = "application/json"
-
         request.Headers.Add(CStr("X-Application: " & ""))
         request.Headers.Add("X-Authentication: " & My.Settings.me_cookie_ABE)
-        request.ContentLength = byteArray.Length
+        Dim bl = Encoding.ASCII.GetBytes(jsonString)
+        request.ContentLength = bl.Length
+
 
 
         Dim datastream As Stream = request.GetRequestStream()
-        datastream.Write(byteArray, 0, byteArray.Length)
+        datastream.Write(byteArray, 0, bl.Length)
 
         Dim response As WebResponse = request.GetResponse()
         datastream = response.GetResponseStream()
