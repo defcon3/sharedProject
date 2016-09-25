@@ -22,7 +22,7 @@ Public Class Form1
         txtCookie.Width = 200
         'Dim writer As New System.IO.TextWriter()
         Dim writeFile As System.IO.TextWriter = New _
-            StreamWriter("c:\temp\cookie_ABE.txt", False, encoding:=Encoding.UTF8)
+            StreamWriter("c:\temp\cookie_ABE.txt", False, encoding:=Encoding.ASCII)
         writeFile.WriteLine(sb.ToString)
         My.Settings.me_cookie_ABE = sb.ToString
         writeFile.Flush()
@@ -49,20 +49,31 @@ Public Class Form1
 
     Private Function SendSportsReq(ByVal jsonString As String)
 
-        Dim request As WebRequest = WebRequest.Create("https://api.betfair.com/exchange/betting/json-rpc/v1")
-        Dim byteArray As Byte() = Encoding.ASCII.GetBytes(jsonString)
+        Dim myURI As New Uri("https://api.betfair.com/exchange/betting/json-rpc/v1")
+        Dim mySP As ServicePoint = ServicePointManager.FindServicePoint(myURI)
+        mySP.Expect100Continue = False
+
+
+        Dim request As WebRequest = WebRequest.Create(myURI)
+
+
+
+        Dim byteArray As Byte() = Encoding.Default.GetBytes(jsonString)
 
         request.Method = "POST"
+
         request.ContentType = "application/json"
         request.Headers.Add(CStr("X-Application: " & ""))
         request.Headers.Add("X-Authentication: " & My.Settings.me_cookie_ABE)
-        Dim bl = Encoding.ASCII.GetBytes(jsonString)
+        Dim bl = Encoding.Default.GetBytes(jsonString)
         request.ContentLength = bl.Length
 
 
 
         Dim datastream As Stream = request.GetRequestStream()
         datastream.Write(byteArray, 0, bl.Length)
+
+        datastream.Close()
 
         Dim response As WebResponse = request.GetResponse()
         datastream = response.GetResponseStream()
@@ -71,6 +82,10 @@ Public Class Form1
         Dim responseFromServer As String = reader.ReadToEnd()
 
         MsgBox(responseFromServer.ToString)
+
+        reader.Close()
+        datastream.Close()
+        response.Close()
 
         Return responseFromServer
 
