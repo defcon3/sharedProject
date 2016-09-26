@@ -147,13 +147,7 @@ Public Class Form1
         Dim cls As New clstest
 
 
-        Dim sett As New Newtonsoft.Json.JsonSerializerSettings
-        sett.ObjectCreationHandling = Newtonsoft.Json.ObjectCreationHandling.Replace
-
-
-
-
-        Dim i = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clstest)(g)
+        Dim t2 = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clstest)(g)
 
 
     End Sub
