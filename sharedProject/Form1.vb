@@ -5,7 +5,7 @@ Imports System.Text
 Public Class Form1
 
 
-    Property newClsAutoBetEngineSession As New clsAutoBetEngineSession
+
     Public WithEvents puplic As frmLogin
 
 
@@ -63,7 +63,7 @@ Public Class Form1
         request.Method = "POST"
 
         request.ContentType = "application/json"
-        request.Headers.Add(CStr("X-Application: " & ""))
+        request.Headers.Add(CStr("X-Application: " & My.Settings.me_delayKey))
         request.Headers.Add("X-Authentication: " & My.Settings.me_cookie_ABE)
         Dim bl = Encoding.Default.GetBytes(jsonString)
         request.ContentLength = bl.Length
@@ -81,10 +81,13 @@ Public Class Form1
         Dim reader As New StreamReader(datastream)
         Dim responseFromServer As String = reader.ReadToEnd()
 
-        MsgBox(responseFromServer.ToString)
+
 
         reader.Close()
         datastream.Close()
+
+
+        Debug.Print(responseFromServer.ToString)
         response.Close()
 
         Return responseFromServer
@@ -135,7 +138,28 @@ Public Class Form1
 
         Dim t As String
         t = seria(neueListe)
-        SendSportsReq(t)
+
+        Dim g As String
+        g = SendSportsReq(t)
+
+
+
+        Dim cls As New clstest
+
+
+        Dim sett As New Newtonsoft.Json.JsonSerializerSettings
+        sett.ObjectCreationHandling = Newtonsoft.Json.ObjectCreationHandling.Replace
+
+
+
+
+        Dim i = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clstest)(g)
+
 
     End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
+        getDelayKey()
+    End Sub
+
 End Class

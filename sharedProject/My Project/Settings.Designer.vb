@@ -65,6 +65,18 @@ Namespace My
                 Me("me_cookie_ABE") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property me_delayKey() As String
+            Get
+                Return CType(Me("me_delayKey"),String)
+            End Get
+            Set
+                Me("me_delayKey") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

@@ -76,8 +76,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsAutoBetEngine.vb" />
-    <Compile Include="clsAutoBetEngineSession.vb" />
+    <Compile Include="clsMarketCatalogue.vb" />
+    <Compile Include="clstest.vb" />
     <Compile Include="clsVerbindung.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
@@ -92,6 +92,7 @@
     <Compile Include="frmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="modKonstanten.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
