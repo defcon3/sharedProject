@@ -77,6 +77,30 @@ Namespace My
                 Me("me_delayKey") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://api.betfair.com/exchange/heartbeat/json-rpc/v1")>  _
+        Public Property me_heartbeat_uri() As String
+            Get
+                Return CType(Me("me_heartbeat_uri"),String)
+            End Get
+            Set
+                Me("me_heartbeat_uri") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://api.betfair.com/exchange/betting/json-rpc/v1")>  _
+        Public Property me_betting_uri() As String
+            Get
+                Return CType(Me("me_betting_uri"),String)
+            End Get
+            Set
+                Me("me_betting_uri") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

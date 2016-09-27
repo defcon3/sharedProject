@@ -1,4 +1,6 @@
-﻿Module modKonstanten
+﻿Imports System.Net
+Imports System.IO
+Module modKonstanten
 
 
     Public ReadOnly Property myExchangeAdress = "https://api.betfair.com/exchange/betting/json-rpc/v1"
@@ -25,6 +27,24 @@
 
 
     End Sub
+
+
+    Public Function beat_heart() As String
+
+        Dim myURI As New Uri(My.Settings.me_heartbeat_uri)
+        Dim mySP As ServicePoint = ServicePointManager.FindServicePoint(myURI)
+        mySP.Expect100Continue = False
+
+
+        Dim request As WebRequest = WebRequest.Create(myURI)
+
+
+
+        Return "Ö"
+
+
+    End Function
+
 
 
 End Module

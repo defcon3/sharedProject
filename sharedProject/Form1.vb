@@ -36,11 +36,11 @@ Public Class Form1
 
     Private Sub LoginToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoginToolStripMenuItem.Click
 
-        'Dim myNewLoginForm As frmLogin
+        Dim myNewLoginForm As frmLogin
 
-        puplic = New frmLogin
+        myNewLoginForm = New frmLogin
 
-        puplic.ShowDialog()
+        myNewLoginForm.ShowDialog()
 
 
 
@@ -49,7 +49,7 @@ Public Class Form1
 
     Private Function SendSportsReq(ByVal jsonString As String) As String
 
-        Dim myURI As New Uri("https://api.betfair.com/exchange/betting/json-rpc/v1")
+        Dim myURI As New Uri(My.Settings.me_betting_uri)
         Dim mySP As ServicePoint = ServicePointManager.FindServicePoint(myURI)
         mySP.Expect100Continue = False
 
@@ -76,6 +76,15 @@ Public Class Form1
         datastream.Close()
 
         Dim response As WebResponse = request.GetResponse()
+
+        Dim myHttpWebResponse As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
+        If myHttpWebResponse.StatusCode = HttpStatusCode.OK Then
+            txtConnectionState.Text = "online"
+        Else
+            txtConnectionState.Text = "offline"
+        End If
+
+
         datastream = response.GetResponseStream()
 
         Dim reader As New StreamReader(datastream)
@@ -94,7 +103,7 @@ Public Class Form1
 
     End Function
 
-    Public Class mcr
+    Public Class ListMarketCatalogue
         Public jsonrpc As String = "2.0"
         Public method As String = "SportsAPING/v1.0/listMarketCatalogue"
         Public params As New Params
@@ -104,7 +113,7 @@ Public Class Form1
     Public Class Params
         Public filter As New Filter
         Public sort As String = "FIRST_TO_START"
-        Public maxResults As String = "200"
+        Public maxResults As String = "500"
         Public marketProjection As New List(Of String)
     End Class
 
@@ -120,7 +129,7 @@ Public Class Form1
         Public [to] As String
     End Class
 
-    Function seria(ByVal requestList As List(Of mcr)) As String
+    Function serialisiereRequest(ByVal requestList As List(Of ListMarketCatalogue)) As String
 
         Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
         'MsgBox(temp)
@@ -132,15 +141,15 @@ Public Class Form1
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
-        Dim neueListe As New List(Of mcr)
 
-        neueListe.Add(New mcr)
+        Dim neueListe As New List(Of ListMarketCatalogue)
+        neueListe.Add(New ListMarketCatalogue)
 
-        Dim t As String
-        t = seria(neueListe)
+        Dim serialisierteAnfrage As String
+        serialisierteAnfrage = serialisiereRequest(neueListe)
 
-        Dim g As String
-        g = SendSportsReq(t)
+        Dim serverResponse As String
+        serverResponse = SendSportsReq(serialisierteAnfrage)
 
 
 
@@ -148,13 +157,13 @@ Public Class Form1
 
         Dim g1 As String
 
-        g1 = g.Substring(1, g.Length - 2)
-        g = g1.ToString
+        g1 = serverResponse.Substring(1, serverResponse.Length - 2)
+        serverResponse = g1.ToString
 
-        Debug.Print(g)
+        Debug.Print(serverResponse)
 
 
-        cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clstest)(g)
+        cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clstest)(serverResponse)
 
 
 
@@ -163,6 +172,14 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         getDelayKey()
+        getAbeCookie()
+        txtCookie.Text = My.Settings.me_cookie_ABE
+
+
+
+
+
     End Sub
+
 
 End Class

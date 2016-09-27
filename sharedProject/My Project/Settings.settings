@@ -8,5 +8,11 @@
     <Setting Name="me_delayKey" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="me_heartbeat_uri" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://api.betfair.com/exchange/heartbeat/json-rpc/v1</Value>
+    </Setting>
+    <Setting Name="me_betting_uri" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://api.betfair.com/exchange/betting/json-rpc/v1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
