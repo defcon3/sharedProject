@@ -47,7 +47,7 @@ Public Class Form1
     End Sub
 
 
-    Private Function SendSportsReq(ByVal jsonString As String)
+    Private Function SendSportsReq(ByVal jsonString As String) As String
 
         Dim myURI As New Uri("https://api.betfair.com/exchange/betting/json-rpc/v1")
         Dim mySP As ServicePoint = ServicePointManager.FindServicePoint(myURI)
@@ -146,8 +146,17 @@ Public Class Form1
 
         Dim cls As New clstest
 
+        Dim g1 As String
 
-        Dim t2 = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clstest)(g)
+        g1 = g.Substring(1, g.Length - 2)
+        g = g1.ToString
+
+        Debug.Print(g)
+
+
+        cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clstest)(g)
+
+
 
 
     End Sub
