@@ -6,7 +6,7 @@ Public Class Form1
 
 
 
-    Public WithEvents puplic As frmLogin
+    Public WithEvents myNewLoginForm As frmLogin
 
 
     ''' <summary>
@@ -14,7 +14,7 @@ Public Class Form1
     ''' Es muss der cookie ins filesystem geschrieben werden.
     ''' </summary>
     ''' <param name="nachricht">der coookie</param>
-    Private Sub write_cookie(ByVal nachricht As String) Handles puplic.getCookie
+    Private Sub write_cookie(ByVal nachricht As String) Handles myNewLoginForm.getCookie
 
         Dim sb As New System.Text.StringBuilder
         sb.Append(nachricht)
@@ -29,20 +29,14 @@ Public Class Form1
         writeFile.Close()
         writeFile = Nothing
 
-
-
-
     End Sub
 
     Private Sub LoginToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoginToolStripMenuItem.Click
 
-        Dim myNewLoginForm As frmLogin
-
+        'Dim myNewLoginForm As frmLogin
         myNewLoginForm = New frmLogin
 
         myNewLoginForm.ShowDialog()
-
-
 
     End Sub
 
@@ -61,7 +55,6 @@ Public Class Form1
         Dim byteArray As Byte() = Encoding.Default.GetBytes(jsonString)
 
         request.Method = "POST"
-
         request.ContentType = "application/json"
         request.Headers.Add(CStr("X-Application: " & My.Settings.me_delayKey))
         request.Headers.Add("X-Authentication: " & My.Settings.me_cookie_ABE)
@@ -144,6 +137,7 @@ Public Class Form1
 
         Dim neueListe As New List(Of ListMarketCatalogue)
         neueListe.Add(New ListMarketCatalogue)
+
 
         Dim serialisierteAnfrage As String
         serialisierteAnfrage = serialisiereRequest(neueListe)
