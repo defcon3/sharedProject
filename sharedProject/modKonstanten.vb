@@ -45,6 +45,17 @@ Module modKonstanten
 
     End Function
 
+    ''' <summary>
+    ''' Enumeration des Requestes
+    ''' </summary>
+    Public Enum enumRequest
+
+        keepAlive = 1
+
+
+    End Enum
+
+
 
 
 End Module

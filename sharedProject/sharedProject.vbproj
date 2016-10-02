@@ -76,6 +76,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsConnectionKeepAlive.vb" />
+    <Compile Include="clsConnectionRoot.vb" />
     <Compile Include="clsMarketCatalogue.vb" />
     <Compile Include="clstest.vb" />
     <Compile Include="clsVerbindung.vb" />

@@ -101,6 +101,18 @@ Namespace My
                 Me("me_betting_uri") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://identitysso.befair.com/api/keepAlive")>  _
+        Public Property me_keepAlive_uri() As String
+            Get
+                Return CType(Me("me_keepAlive_uri"),String)
+            End Get
+            Set
+                Me("me_keepAlive_uri") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

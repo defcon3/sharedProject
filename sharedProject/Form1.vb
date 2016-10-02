@@ -43,13 +43,18 @@ Public Class Form1
 
     Private Function SendSportsReq(ByVal jsonString As String) As String
 
+
+
+
         Dim myURI As New Uri(My.Settings.me_betting_uri)
         Dim mySP As ServicePoint = ServicePointManager.FindServicePoint(myURI)
         mySP.Expect100Continue = False
 
 
+
         Dim request As WebRequest = WebRequest.Create(myURI)
 
+        'send_keepAlive()
 
 
         Dim byteArray As Byte() = Encoding.Default.GetBytes(jsonString)
@@ -174,6 +179,18 @@ Public Class Form1
 
 
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim myNewKeepAliveConnection As New clsConnectionKeepAlive
+    End Sub
+
+    Public Function send_keepAlive() As Object
+        Dim myNewKeepAliveConnection As New clsConnectionKeepAlive
+
+
+
+
+    End Function
 
 
 End Class

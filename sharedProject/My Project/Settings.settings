@@ -14,5 +14,8 @@
     <Setting Name="me_betting_uri" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://api.betfair.com/exchange/betting/json-rpc/v1</Value>
     </Setting>
+    <Setting Name="me_keepAlive_uri" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://identitysso.befair.com/api/keepAlive</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
