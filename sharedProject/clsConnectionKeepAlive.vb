@@ -4,14 +4,17 @@ Imports System.Text
 
 Public Class clsConnectionKeepAlive
     Inherits clsConnectionRoot
-    Property properitaeten As String
 
+    'Dim myURI As New Uri(My.Settings.me_keepAlive_uri)
     Dim myURI As New Uri(My.Settings.me_keepAlive_uri)
     Dim mySP As System.Net.ServicePoint = System.Net.ServicePointManager.FindServicePoint(myURI)
     Dim request As System.Net.WebRequest = System.Net.WebRequest.Create(myURI)
 
     Public Sub New()
+
+        ' der ServicPoint hochschrauben, um einen Laufzeitfehler zu vermeiden
         mySP.Expect100Continue = False
+
 
 
         Dim neueListe As New List(Of keepClass)
@@ -33,6 +36,7 @@ Public Class clsConnectionKeepAlive
         request.Headers.Add("X-Authentication: " & My.Settings.me_cookie_ABE)
         Dim bl = Encoding.Default.GetBytes(byteArray.ToString)
         request.ContentLength = bl.Length
+
 
         Dim datastream As Stream = request.GetRequestStream()
         datastream.Write(byteArray, 0, bl.Length)

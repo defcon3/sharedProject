@@ -104,7 +104,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("https://identitysso.befair.com/api/keepAlive")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://identitysso.betfair.com/api/keepAlive")>  _
         Public Property me_keepAlive_uri() As String
             Get
                 Return CType(Me("me_keepAlive_uri"),String)
