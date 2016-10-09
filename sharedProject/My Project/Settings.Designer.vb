@@ -78,39 +78,51 @@ Namespace My
             End Set
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("https://api.betfair.com/exchange/heartbeat/json-rpc/v1")>  _
-        Public Property me_heartbeat_uri() As String
+        Public ReadOnly Property me_heartbeat_uri() As String
             Get
                 Return CType(Me("me_heartbeat_uri"),String)
             End Get
-            Set
-                Me("me_heartbeat_uri") = value
-            End Set
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("https://api.betfair.com/exchange/betting/json-rpc/v1")>  _
-        Public Property me_betting_uri() As String
+        Public ReadOnly Property me_betting_uri() As String
             Get
                 Return CType(Me("me_betting_uri"),String)
             End Get
-            Set
-                Me("me_betting_uri") = value
-            End Set
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://identitysso.betfair.com/api/keepAlive")>  _
+        Public ReadOnly Property me_keepAlive_uri() As String
+            Get
+                Return CType(Me("me_keepAlive_uri"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("10")>  _
+        Public ReadOnly Property me_connection_application_intervall() As String
+            Get
+                Return CType(Me("me_connection_application_intervall"),String)
+            End Get
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("https://identitysso.betfair.com/api/keepAlive")>  _
-        Public Property me_keepAlive_uri() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("10")>  _
+        Public Property me_connection_user_intervall() As String
             Get
-                Return CType(Me("me_keepAlive_uri"),String)
+                Return CType(Me("me_connection_user_intervall"),String)
             End Get
             Set
-                Me("me_keepAlive_uri") = value
+                Me("me_connection_user_intervall") = value
             End Set
         End Property
     End Class

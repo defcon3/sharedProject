@@ -8,14 +8,20 @@
     <Setting Name="me_delayKey" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="me_heartbeat_uri" Type="System.String" Scope="User">
+    <Setting Name="me_heartbeat_uri" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://api.betfair.com/exchange/heartbeat/json-rpc/v1</Value>
     </Setting>
-    <Setting Name="me_betting_uri" Type="System.String" Scope="User">
+    <Setting Name="me_betting_uri" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://api.betfair.com/exchange/betting/json-rpc/v1</Value>
     </Setting>
-    <Setting Name="me_keepAlive_uri" Type="System.String" Scope="User">
+    <Setting Name="me_keepAlive_uri" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://identitysso.betfair.com/api/keepAlive</Value>
+    </Setting>
+    <Setting Name="me_connection_application_intervall" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="me_connection_user_intervall" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10</Value>
     </Setting>
   </Settings>
 </SettingsFile>

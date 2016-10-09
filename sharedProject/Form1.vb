@@ -173,7 +173,7 @@ Public Class Form1
         getDelayKey()
         getAbeCookie()
         txtCookie.Text = My.Settings.me_cookie_ABE
-
+        txtHeartbeatintervall.Text = My.Settings.me_connection_user_intervall
 
 
 
@@ -184,13 +184,27 @@ Public Class Form1
         Dim myNewKeepAliveConnection As New clsConnectionKeepAlive
     End Sub
 
-    Public Function send_keepAlive() As Object
+    Public Function send_keepAlive() As HttpStatusCode
         Dim myNewKeepAliveConnection As New clsConnectionKeepAlive
 
-
-
-
+        Return myNewKeepAliveConnection.status
     End Function
 
+    Dim WithEvents newFormConnection As New frmConnection
+    Private Sub ConnectionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConnectionToolStripMenuItem.Click
+
+        newFormConnection = New frmConnection
+        If sender.text = "Connection" Then
+            newFormConnection.ShowDialog()
+            newFormConnection = Nothing
+        End If
+
+    End Sub
+
+    Private Sub refreshHearbeatintervall(ByVal intervall As Integer) Handles newFormConnection.setIntervall
+
+        Me.txtHeartbeatintervall.Text = intervall
+
+    End Sub
 
 End Class

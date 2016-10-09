@@ -9,6 +9,7 @@ Public Class clsConnectionKeepAlive
     Dim myURI As New Uri(My.Settings.me_keepAlive_uri)
     Dim mySP As System.Net.ServicePoint = System.Net.ServicePointManager.FindServicePoint(myURI)
     Dim request As System.Net.WebRequest = System.Net.WebRequest.Create(myURI)
+    Property status As HttpStatusCode
 
     Public Sub New()
 
@@ -43,7 +44,7 @@ Public Class clsConnectionKeepAlive
 
         datastream.Close()
 
-        Dim response As WebResponse = request.GetResponse()
+        Dim response As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
 
 
         datastream = response.GetResponseStream()
@@ -52,6 +53,12 @@ Public Class clsConnectionKeepAlive
         Dim responseFromServer As String = reader.ReadToEnd()
 
 
+        If Not response.StatusCode = HttpStatusCode.OK Then
+            Exit Sub
+        End If
+
+        status = response.StatusCode
+
 
         reader.Close()
         datastream.Close()
@@ -59,6 +66,7 @@ Public Class clsConnectionKeepAlive
 
         Debug.Print(responseFromServer.ToString)
         response.Close()
+
 
 
 
@@ -85,50 +93,8 @@ Public Class clsConnectionKeepAlive
         'MsgBox(temp)
         Return temp
 
-
     End Function
 
-
-
-    '    request.Method = "POST"
-    '    request.ContentType = "application/json"
-    '    request.Headers.Add(CStr("X-Application: " & My.Settings.me_delayKey))
-    '    request.Headers.Add("X-Authentication: " & My.Settings.me_cookie_ABE)
-    '    Dim bl = Encoding.Default.GetBytes(jsonString)
-    '    request.ContentLength = bl.Length
-
-
-
-    '    Dim datastream As Stream = request.GetRequestStream()
-    '    datastream.Write(byteArray, 0, bl.Length)
-
-    '    datastream.Close()
-
-    '    Dim response As WebResponse = request.GetResponse()
-
-    'Dim myHttpWebResponse As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
-    'If myHttpWebResponse.StatusCode = HttpStatusCode.OK Then
-    '        txtConnectionState.Text = "online"
-    '    Else
-    '        txtConnectionState.Text = "offline"
-    '    End If
-
-
-    '    datastream = response.GetResponseStream()
-
-    '    Dim reader As New StreamReader(datastream)
-    'Dim responseFromServer As String = reader.ReadToEnd()
-
-
-
-    '    reader.Close()
-    '    datastream.Close()
-
-
-    '    Debug.Print(responseFromServer.ToString)
-    '    response.Close()
-
-    '    Return responseFromServer
 
 
 
