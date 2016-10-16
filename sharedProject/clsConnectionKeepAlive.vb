@@ -19,9 +19,6 @@ Public Class clsConnectionKeepAlive
 
 
         Dim neueListe As New List(Of keepClass)
-
-
-
         neueListe.Add(New keepClass)
 
 
