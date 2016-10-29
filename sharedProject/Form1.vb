@@ -160,7 +160,7 @@ Public Class Form1
 
 
 
-        Dim cls As New clstest
+        Dim cls As New clsMarketCatalogueResponse
 
         Dim g1 As String
 
@@ -170,7 +170,7 @@ Public Class Form1
         Debug.Print(serverResponse)
 
 
-        cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clstest)(serverResponse)
+        cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clsMarketCatalogueResponse)(serverResponse)
 
 
 

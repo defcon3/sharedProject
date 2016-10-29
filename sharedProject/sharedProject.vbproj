@@ -48,7 +48,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="bfObjects">
-      <HintPath>..\..\bfObjects\bfObjects\bin\Debug\bfObjects.dll</HintPath>
+      <HintPath>..\..\..\..\Documents\Visual Studio 2015\Projects\bfObjects\bfObjects\bin\Debug\bfObjects.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -81,11 +81,7 @@
   <ItemGroup>
     <Compile Include="clsConnectionKeepAlive.vb" />
     <Compile Include="clsConnectionRoot.vb" />
-    <Compile Include="clstest.vb" />
-    <Compile Include="clsVerbindung.vb" />
-    <Compile Include="Competition.vb" />
-    <Compile Include="Event.vb" />
-    <Compile Include="EventType.vb" />
+    <Compile Include="clsMarketCatalogueResponse.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -105,7 +101,6 @@
     <Compile Include="frmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MarketDescription.vb" />
     <Compile Include="modKonstanten.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -122,7 +117,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RunnerCatalog.vb" />
     <Compile Include="Settings.vb" />
   </ItemGroup>
   <ItemGroup>
