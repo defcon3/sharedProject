@@ -4,6 +4,8 @@ Imports System.Net
 Imports System.IO
 Imports System.Text
 
+
+
 Public Class Form1
 
 
@@ -18,7 +20,7 @@ Public Class Form1
     Private Sub write_cookie(ByVal nachricht As String) Handles myNewLoginForm.getCookie
 
 
-        Dim i As New bfObjects.obereEbene
+
 
 
 
@@ -187,6 +189,10 @@ Public Class Form1
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim t As New bfObjects.ListMarketCatalogueRequest("3.0", "4.0")
+        MsgBox(t._jsonrpc)
+        MsgBox(t._nomore)
+
         Dim myNewKeepAliveConnection As New clsConnectionKeepAlive
     End Sub
 
