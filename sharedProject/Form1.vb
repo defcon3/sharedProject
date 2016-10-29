@@ -7,7 +7,6 @@ Imports System.Text
 Public Class Form1
 
 
-
     Public WithEvents myNewLoginForm As frmLogin
 
 
@@ -17,6 +16,11 @@ Public Class Form1
     ''' </summary>
     ''' <param name="nachricht">der coookie</param>
     Private Sub write_cookie(ByVal nachricht As String) Handles myNewLoginForm.getCookie
+
+
+        Dim i As New bfObjects.obereEbene
+
+
 
         Dim sb As New System.Text.StringBuilder
         sb.Append(nachricht)
