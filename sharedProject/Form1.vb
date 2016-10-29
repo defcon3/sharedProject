@@ -127,7 +127,7 @@ Public Class Form1
         Public eventTypeIds As New List(Of String)
         Public marketCountries As New List(Of String)
         Public marketTypeCodes As New List(Of String)
-        Public marketStartTime As New startTime
+        Public marketStartTime As New StartTime
     End Class
 
     Public Class StartTime
