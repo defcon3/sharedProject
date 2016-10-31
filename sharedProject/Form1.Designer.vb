@@ -29,22 +29,23 @@ Partial Class Form1
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.txtCookie = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripLabel3 = New System.Windows.Forms.ToolStripLabel()
+        Me.txtHeartbeatintervall = New System.Windows.Forms.ToolStripTextBox()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolStripComboBox1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EinstellungenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConnectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripLabel3 = New System.Windows.Forms.ToolStripLabel()
-        Me.txtHeartbeatintervall = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(1153, 27)
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.Location = New System.Drawing.Point(650, 27)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 1
@@ -55,9 +56,9 @@ Partial Class Form1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.txtConnectionState, Me.ToolStripSeparator2, Me.ToolStripLabel2, Me.txtCookie, Me.ToolStripSeparator1, Me.ToolStripLabel3, Me.txtHeartbeatintervall})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 561)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 168)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(1240, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(737, 25)
         Me.ToolStrip1.TabIndex = 7
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -91,12 +92,30 @@ Partial Class Form1
         Me.txtCookie.Name = "txtCookie"
         Me.txtCookie.Size = New System.Drawing.Size(333, 25)
         '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripLabel3
+        '
+        Me.ToolStripLabel3.Name = "ToolStripLabel3"
+        Me.ToolStripLabel3.Size = New System.Drawing.Size(101, 22)
+        Me.ToolStripLabel3.Text = "Heartbeatintervall"
+        '
+        'txtHeartbeatintervall
+        '
+        Me.txtHeartbeatintervall.Enabled = False
+        Me.txtHeartbeatintervall.Name = "txtHeartbeatintervall"
+        Me.txtHeartbeatintervall.Size = New System.Drawing.Size(50, 25)
+        Me.txtHeartbeatintervall.Text = "offline"
+        '
         'MenuStrip1
         '
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripComboBox1, Me.LoginToolStripMenuItem, Me.EinstellungenToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1240, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(737, 24)
         Me.MenuStrip1.TabIndex = 11
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -121,41 +140,23 @@ Partial Class Form1
         'ConnectionToolStripMenuItem
         '
         Me.ConnectionToolStripMenuItem.Name = "ConnectionToolStripMenuItem"
-        Me.ConnectionToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ConnectionToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
         Me.ConnectionToolStripMenuItem.Text = "Connection"
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(409, 36)
+        Me.Button1.Location = New System.Drawing.Point(187, 26)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(365, 24)
         Me.Button1.TabIndex = 12
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripLabel3
-        '
-        Me.ToolStripLabel3.Name = "ToolStripLabel3"
-        Me.ToolStripLabel3.Size = New System.Drawing.Size(101, 22)
-        Me.ToolStripLabel3.Text = "Heartbeatintervall"
-        '
-        'txtHeartbeatintervall
-        '
-        Me.txtHeartbeatintervall.Enabled = False
-        Me.txtHeartbeatintervall.Name = "txtHeartbeatintervall"
-        Me.txtHeartbeatintervall.Size = New System.Drawing.Size(50, 25)
-        Me.txtHeartbeatintervall.Text = "offline"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1240, 586)
+        Me.ClientSize = New System.Drawing.Size(737, 193)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.MenuStrip1)

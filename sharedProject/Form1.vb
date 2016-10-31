@@ -158,7 +158,8 @@ Public Class Form1
 
 
 
-        Dim cls As New clsMarketCatalogueResponse
+        'Dim cls As New clsMarketCatalogueResponse
+        Dim cls As New Object
 
         Dim g1 As String
 
@@ -168,7 +169,7 @@ Public Class Form1
         Debug.Print(serverResponse)
 
 
-        cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clsMarketCatalogueResponse)(serverResponse)
+        cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of Object)(serverResponse)
 
 
 
@@ -187,9 +188,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim t As New bfObjects.ListMarketCatalogueRequest("3.0", "4.0")
-        MsgBox(t._jsonrpc)
-        MsgBox(t._nomore)
+
 
         Dim myNewKeepAliveConnection As New clsConnectionKeepAlive
     End Sub
