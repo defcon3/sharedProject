@@ -1,6 +1,4 @@
-﻿Option Strict On
-Option Explicit On
-Imports System.Net
+﻿Imports System.Net
 Imports System.IO
 Imports System.Text
 
@@ -145,7 +143,7 @@ Public Class Form1
 
 
 
-    Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
 
         Dim neueListe As New List(Of ListMarketCatalogue)
@@ -204,10 +202,9 @@ Public Class Form1
 
     Dim WithEvents newFormConnection As New frmConnection
     Private Sub ConnectionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConnectionToolStripMenuItem.Click
-        Dim m As ToolStripMenuItem = CType(sender, ToolStripMenuItem)
 
         newFormConnection = New frmConnection
-        If m.Text = "Connection" Then
+        If sender.text = "Connection" Then
             newFormConnection.ShowDialog()
             newFormConnection = Nothing
         End If
@@ -216,7 +213,7 @@ Public Class Form1
 
     Private Sub refreshHearbeatintervall(ByVal intervall As Integer) Handles newFormConnection.setIntervall
 
-        Me.txtHeartbeatintervall.Text = CType(intervall, String)
+        Me.txtHeartbeatintervall.Text = intervall
 
     End Sub
 
