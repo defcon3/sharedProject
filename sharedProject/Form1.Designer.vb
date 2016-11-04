@@ -22,7 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnRefresh = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.txtConnectionState = New System.Windows.Forms.ToolStripTextBox()
@@ -42,22 +42,23 @@ Partial Class Form1
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'btnRefresh
+        'Button2
         '
-        Me.btnRefresh.Location = New System.Drawing.Point(1153, 27)
-        Me.btnRefresh.Name = "btnRefresh"
-        Me.btnRefresh.Size = New System.Drawing.Size(75, 23)
-        Me.btnRefresh.TabIndex = 1
-        Me.btnRefresh.Text = "Refresh"
-        Me.btnRefresh.UseVisualStyleBackColor = True
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.Location = New System.Drawing.Point(650, 27)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 1
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.txtConnectionState, Me.ToolStripSeparator2, Me.ToolStripLabel2, Me.txtCookie, Me.ToolStripSeparator1, Me.ToolStripLabel3, Me.txtHeartbeatintervall})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 561)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 168)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(1240, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(737, 25)
         Me.ToolStrip1.TabIndex = 7
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -114,7 +115,7 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripComboBox1, Me.LoginToolStripMenuItem, Me.EinstellungenToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1240, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(737, 24)
         Me.MenuStrip1.TabIndex = 11
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -139,12 +140,12 @@ Partial Class Form1
         'ConnectionToolStripMenuItem
         '
         Me.ConnectionToolStripMenuItem.Name = "ConnectionToolStripMenuItem"
-        Me.ConnectionToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ConnectionToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
         Me.ConnectionToolStripMenuItem.Text = "Connection"
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(409, 36)
+        Me.Button1.Location = New System.Drawing.Point(187, 26)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(365, 24)
         Me.Button1.TabIndex = 12
@@ -155,11 +156,11 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1240, 586)
+        Me.ClientSize = New System.Drawing.Size(737, 193)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.btnRefresh)
+        Me.Controls.Add(Me.Button2)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form1"
         Me.Text = "AutoBetEngine"
@@ -171,7 +172,7 @@ Partial Class Form1
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents btnRefresh As Button
+    Friend WithEvents Button2 As Button
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents ToolStripLabel1 As ToolStripLabel
     Friend WithEvents txtConnectionState As ToolStripTextBox
