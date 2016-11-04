@@ -135,10 +135,18 @@ Public Class Form1
         Public [to] As String
     End Class
 
-    Function serialisiereRequest(ByVal requestList As List(Of ListMarketCatalogue)) As String
+    'Function serialisiereRequest(ByVal requestList As List(Of ListMarketCatalogue)) As String
+
+    '    Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
+    '    'MsgBox(temp)
+    '    Return temp
+
+    'End Function
+
+    Function serialisiereRequest(ByVal requestList As List(Of bfObjects.ListMarketCatalogueRequest)) As String
 
         Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
-        'MsgBox(temp)
+
         Return temp
 
     End Function
@@ -148,12 +156,18 @@ Public Class Form1
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
 
 
-        Dim neueListe As New List(Of ListMarketCatalogue)
-        neueListe.Add(New ListMarketCatalogue)
+        Dim neueListe As New List(Of bfObjects.ListMarketCatalogueRequest)
+        Dim neueListfrage As New bfObjects.ListMarketCatalogueRequest(New bfObjects.ListMarketCatalogueRequestParams(, bfObjects.Enumerations.MarketSort.FIRST_TO_START.ToString,, New bfObjects.ListMarketCatalogueRequestParamsFilter(,,,)))
+
+        neueListe.Add(neueListfrage)
 
 
         Dim serialisierteAnfrage As String
         serialisierteAnfrage = serialisiereRequest(neueListe)
+
+        Dim tta As Object
+        tta = bfObjects.Enumerations.MarketSort.FIRST_TO_START.ToString
+
 
         Dim serverResponse As String
         serverResponse = SendSportsReq(serialisierteAnfrage)
@@ -189,9 +203,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim t As New bfObjects.ListMarketCatalogueRequest("3.0", "4.0")
-        MsgBox(t._jsonrpc)
-        MsgBox(t._nomore)
+
 
         Dim myNewKeepAliveConnection As New clsConnectionKeepAlive
     End Sub
