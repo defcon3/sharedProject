@@ -180,7 +180,13 @@ Public Class Form1
         Debug.Print(serverResponse)
 
 
-        cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of ListMarketCatalogue)(serverResponse)
+        'Dim t1 As New bfObjects.listantwort
+
+
+
+
+
+        cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.structNeu )(serverResponse)
 
 
 
