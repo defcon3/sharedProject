@@ -17,11 +17,6 @@ Public Class Form1
     ''' <param name="nachricht">der coookie</param>
     Private Sub write_cookie(ByVal nachricht As String) Handles myNewLoginForm.getCookie
 
-
-
-
-
-
         Dim sb As New System.Text.StringBuilder
         sb.Append(nachricht)
         txtCookie.Text = sb.ToString
@@ -107,31 +102,31 @@ Public Class Form1
 
     End Function
 
-    Public Class ListMarketCatalogue
-        Public jsonrpc As String = "2.0"
-        Public method As String = "SportsAPING/v1.0/listMarketCatalogue"
-        Public params As New Params
-        Public id As Integer = 1
-    End Class
+    'Public Class ListMarketCatalogue
+    '    Public jsonrpc As String = "2.0"
+    '    Public method As String = "SportsAPING/v1.0/listMarketCatalogue"
+    '    Public params As New Params
+    '    Public id As Integer = 1
+    'End Class
 
-    Public Class Params
-        Public filter As New Filter
-        Public sort As String = "FIRST_TO_START"
-        Public maxResults As String = "500"
-        Public marketProjection As New List(Of String)
-    End Class
+    'Public Class Params
+    '    Public filter As New Filter
+    '    Public sort As String = "FIRST_TO_START"
+    '    Public maxResults As String = "500"
+    '    Public marketProjection As New List(Of String)
+    'End Class
 
-    Public Class Filter
-        Public eventTypeIds As New List(Of String)
-        Public marketCountries As New List(Of String)
-        Public marketTypeCodes As New List(Of String)
-        Public marketStartTime As New StartTime
-    End Class
+    'Public Class Filter
+    '    Public eventTypeIds As New List(Of String)
+    '    Public marketCountries As New List(Of String)
+    '    Public marketTypeCodes As New List(Of String)
+    '    Public marketStartTime As New StartTime
+    'End Class
 
-    Public Class StartTime
-        Public from As String
-        Public [to] As String
-    End Class
+    'Public Class StartTime
+    '    Public from As String
+    '    Public [to] As String
+    'End Class
 
     'Function serialisiereRequest(ByVal requestList As List(Of ListMarketCatalogue)) As String
 
@@ -141,7 +136,7 @@ Public Class Form1
 
     'End Function
 
-    Function serialisiereRequest(ByVal requestList As List(Of ListMarketCatalogue)) As String
+    Function serialisiereRequest(ByVal requestList As List(Of bfObjects.clsListMarketCatalogue)) As String
 
         Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
 
@@ -154,8 +149,8 @@ Public Class Form1
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
 
-        Dim neueListe As New List(Of ListMarketCatalogue)
-        Dim neueListfrage As New ListMarketCatalogue()
+        Dim neueListe As New List(Of bfObjects.clsListMarketCatalogue)
+        Dim neueListfrage As New bfObjects.clsListMarketCatalogue
 
         neueListe.Add(neueListfrage)
 
@@ -170,7 +165,7 @@ Public Class Form1
 
 
         'Dim cls As New clsMarketCatalogueResponse
-        Dim cls As New Object
+        Dim cls As New bfObjects.structMarketCatalogueResponse
 
         Dim g1 As String
 
@@ -180,14 +175,8 @@ Public Class Form1
         Debug.Print(serverResponse)
 
 
-        'Dim t1 As New bfObjects.listantwort
 
-
-
-
-
-        cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.structNeu )(serverResponse)
-
+        cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.structMarketCatalogueResponse)(serverResponse)
 
 
 
@@ -230,6 +219,28 @@ Public Class Form1
     Private Sub refreshHearbeatintervall(ByVal intervall As Integer) Handles newFormConnection.setIntervall
 
         Me.txtHeartbeatintervall.Text = intervall
+
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+
+        Dim chc As New ListView.ColumnHeaderCollection(ListView1)
+
+        chc.Clear()
+        chc.Add("asdf")
+
+        ListView1.HeaderStyle = ColumnHeaderStyle.Clickable
+        ListView1.View = View.Details
+
+
+
+        Dim klo
+
+
+
+        ' klo = getPropertyList(bfObjects.structMarketCatalogueResponse.structMarketCatalogue)
+
+
 
     End Sub
 

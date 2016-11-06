@@ -55,7 +55,10 @@ Module modKonstanten
 
     End Enum
 
-
+    Public Class itemList
+        Property itemname As String
+        Property itemformat As String
+    End Class
 
 
 End Module
