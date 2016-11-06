@@ -141,7 +141,7 @@ Public Class Form1
 
     'End Function
 
-    Function serialisiereRequest(ByVal requestList As List(Of bfObjects.ListMarketCatalogueRequest)) As String
+    Function serialisiereRequest(ByVal requestList As List(Of ListMarketCatalogue)) As String
 
         Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
 
@@ -154,17 +154,14 @@ Public Class Form1
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
 
-        Dim neueListe As New List(Of bfObjects.ListMarketCatalogueRequest)
-        Dim neueListfrage As New bfObjects.ListMarketCatalogueRequest(New bfObjects.ListMarketCatalogueRequestParams(, bfObjects.Enumerations.MarketSort.FIRST_TO_START.ToString,, New bfObjects.ListMarketCatalogueRequestParamsFilter(,,,)))
+        Dim neueListe As New List(Of ListMarketCatalogue)
+        Dim neueListfrage As New ListMarketCatalogue()
 
         neueListe.Add(neueListfrage)
 
 
         Dim serialisierteAnfrage As String
         serialisierteAnfrage = serialisiereRequest(neueListe)
-
-        Dim tta As Object
-        tta = bfObjects.Enumerations.MarketSort.FIRST_TO_START.ToString
 
 
         Dim serverResponse As String
@@ -183,7 +180,7 @@ Public Class Form1
         Debug.Print(serverResponse)
 
 
-        cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of Object)(serverResponse)
+        cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of ListMarketCatalogue)(serverResponse)
 
 
 
