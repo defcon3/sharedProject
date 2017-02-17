@@ -40,6 +40,7 @@ Partial Class Form1
         Me.Button1 = New System.Windows.Forms.Button()
         Me.ListView1 = New System.Windows.Forms.ListView()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -47,7 +48,7 @@ Partial Class Form1
         'Button2
         '
         Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.Location = New System.Drawing.Point(1060, 27)
+        Me.Button2.Location = New System.Drawing.Point(663, 27)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 1
@@ -171,11 +172,21 @@ Partial Class Form1
         Me.Button3.Text = "Button3"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(450, 70)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(127, 23)
+        Me.Button4.TabIndex = 15
+        Me.Button4.Text = "listCompetition"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1147, 560)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.ListView1)
         Me.Controls.Add(Me.Button1)
@@ -220,4 +231,5 @@ Partial Class Form1
     Friend WithEvents txtHeartbeatintervall As ToolStripTextBox
     Friend WithEvents ListView1 As ListView
     Friend WithEvents Button3 As Button
+    Friend WithEvents Button4 As Button
 End Class

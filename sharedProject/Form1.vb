@@ -244,4 +244,25 @@ Public Class Form1
 
     End Sub
 
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+
+
+
+        Dim neueListe As New List(Of bfObjects.clsListMarketCatalogue)
+        Dim neueListfrage As New bfObjects.clsListMarketCatalogue
+
+        neueListe.Add(neueListfrage)
+
+
+        Dim serialisierteAnfrage As String
+        serialisierteAnfrage = serialisiereRequest(neueListe)
+
+
+        Dim serverResponse As String
+        serverResponse = SendSportsReq(serialisierteAnfrage)
+
+
+
+
+    End Sub
 End Class
