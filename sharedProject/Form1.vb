@@ -144,6 +144,14 @@ Public Class Form1
 
     End Function
 
+    Function serialisiereListEventTypes(ByVal requestList As List(Of bfObjects.clsListEventTypes)) As String
+
+        Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
+
+        Return temp
+
+    End Function
+
 
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -248,21 +256,39 @@ Public Class Form1
 
 
 
-        Dim neueListe As New List(Of bfObjects.clsListMarketCatalogue)
-        Dim neueListfrage As New bfObjects.clsListMarketCatalogue
+        Dim neueListe As New List(Of bfObjects.clsListEventTypes)
+        Dim neueListfrage As New bfObjects.clsListEventTypes
 
         neueListe.Add(neueListfrage)
 
 
         Dim serialisierteAnfrage As String
-        serialisierteAnfrage = serialisiereRequest(neueListe)
+        serialisierteAnfrage = serialisiereListEventTypes(neueListe)
 
 
         Dim serverResponse As String
         serverResponse = SendSportsReq(serialisierteAnfrage)
 
 
+        'Dim cls As New clsMarketCatalogueResponse
+        Dim eventTypeResults As New bfObjects.clsEventTypeResultResponse
 
+        Dim response As String
+
+        response = serverResponse.Substring(1, serverResponse.Length - 2)
+        serverResponse = response.ToString
+
+        Debug.Print(serverResponse)
+
+
+
+        eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventTypeResultResponse)(serverResponse)
+
+
+        Dim dt As DataTable
+        dt = getDatatableFromResponse(eventTypeResults)
+
+        DataGridView2.DataSource = dt.Copy
 
     End Sub
 End Class
