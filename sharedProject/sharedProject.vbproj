@@ -81,7 +81,6 @@
   <ItemGroup>
     <Compile Include="clsConnectionKeepAlive.vb" />
     <Compile Include="clsConnectionRoot.vb" />
-    <Compile Include="clsMarketCatalogue.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
