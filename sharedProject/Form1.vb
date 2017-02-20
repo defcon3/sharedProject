@@ -153,6 +153,16 @@ Public Class Form1
     End Function
 
 
+    Function serialisiereListEvents(ByVal requestList As List(Of bfObjects.clsListEvents)) As String
+
+        Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
+
+        Return temp
+
+    End Function
+
+
+
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
@@ -230,28 +240,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-
-        Dim chc As New ListView.ColumnHeaderCollection(ListView1)
-
-        chc.Clear()
-        chc.Add("asdf")
-
-        ListView1.HeaderStyle = ColumnHeaderStyle.Clickable
-        ListView1.View = View.Details
-
-
-
-        Dim klo
-
-
-
-        ' klo = getPropertyList(bfObjects.structMarketCatalogueResponse.structMarketCatalogue)
-
-
-
-    End Sub
-
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
 
 
@@ -289,6 +277,65 @@ Public Class Form1
         dt = getDatatableFromResponse(eventTypeResults)
 
         DataGridView2.DataSource = dt.Copy
+
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+
+        Dim filter As New bfObjects.clsMarketFilter
+        filter.eventTypeIds = TextBox1.Text
+
+
+        Dim neueListe As New List(Of bfObjects.clsListEvents)
+        Dim neueListfrage As New bfObjects.clsListEvents
+        neueListfrage.params.filter.eventTypeIds.Add(TextBox1.Text)
+
+        neueListe.Add(neueListfrage)
+
+
+        Dim serialisierteAnfrage As String
+        serialisierteAnfrage = serialisiereListEvents(neueListe)
+
+
+        Dim serverResponse As String
+        serverResponse = SendSportsReq(serialisierteAnfrage)
+
+
+        'Dim cls As New clsMarketCatalogueResponse
+        Dim eventResults As New bfObjects.clsEventResultResponse
+
+        Dim response As String
+
+        response = serverResponse.Substring(1, serverResponse.Length - 2)
+        serverResponse = response.ToString
+
+        Debug.Print(serverResponse)
+
+
+
+        eventResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventResultResponse)(serverResponse)
+
+
+        Dim dt As DataTable
+        dt = getDatatableFromResponse(eventResults)
+
+        dgv1.DataSource = dt.Copy
+
+
+
+    End Sub
+
+    Private Sub DataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
+
+    End Sub
+
+    Private Sub DataGridView2_DoubleClick(sender As Object, e As EventArgs) Handles DataGridView2.DoubleClick
+        Dim temptable As DataTable
+        temptable = DataGridView2.DataSource.copy
+        TextBox1.Text = temptable.Rows(DataGridView2.CurrentRow.Index).Item(0).ToString
+
+        'MsgBox(temptable.Rows(DataGridView2.CurrentRow.Index).Item(0).ToString)
+
 
     End Sub
 End Class

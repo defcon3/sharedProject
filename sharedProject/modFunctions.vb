@@ -55,6 +55,47 @@
             End If
 
 
+
+        ElseIf TypeOf obj Is bfObjects.clsEventResultResponse Then
+            Dim err As bfObjects.clsEventResultResponse
+            err = TryCast(obj, bfObjects.clsEventResultResponse)
+
+            dt.Columns.Add("ID")
+            dt.Columns.Add("Event-Name")
+            dt.Columns.Add("Country Code")
+            dt.Columns.Add("Timezone")
+            dt.Columns.Add("open Date")
+            dt.Columns.Add("Market Count")
+
+            If err.result.Count > 0 Then
+
+                For Each result As bfObjects.clsEventResult In err.result
+                    Dim dr As DataRow = dt.NewRow
+
+                    dr("ID") = result.event.id.ToString
+                    dr("Event-Name") = result.event.name.ToString
+
+                    If Not IsNothing(result.event.countryCode) Then
+                        dr("Country Code") = result.event.countryCode.ToString
+                    Else
+                        dr("Country Code") = "XX"
+                    End If
+
+                    dr("Timezone") = result.event.timezone.ToString
+                    dr("open Date") = result.event.openDate.ToString
+                    dr("Market Count") = result.marketCount.ToString
+
+                    dt.Rows.Add(dr)
+                Next
+
+            Else
+
+                dt = New DataTable
+
+            End If
+
+
+
         End If
 
 

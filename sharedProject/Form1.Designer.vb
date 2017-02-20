@@ -38,30 +38,32 @@ Partial Class Form1
         Me.EinstellungenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConnectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.ListView1 = New System.Windows.Forms.ListView()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.dgv1 = New System.Windows.Forms.DataGridView()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgv1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button2
         '
         Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.Location = New System.Drawing.Point(663, 27)
+        Me.Button2.Location = New System.Drawing.Point(514, 43)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.Size = New System.Drawing.Size(164, 23)
         Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Button2"
+        Me.Button2.Text = "request Template"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.txtConnectionState, Me.ToolStripSeparator2, Me.ToolStripLabel2, Me.txtCookie, Me.ToolStripSeparator1, Me.ToolStripLabel3, Me.txtHeartbeatintervall})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 535)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 611)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1147, 25)
         Me.ToolStrip1.TabIndex = 7
@@ -150,35 +152,18 @@ Partial Class Form1
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(187, 26)
+        Me.Button1.Location = New System.Drawing.Point(932, 43)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(365, 24)
+        Me.Button1.Size = New System.Drawing.Size(203, 24)
         Me.Button1.TabIndex = 12
-        Me.Button1.Text = "Button1"
+        Me.Button1.Text = "keep Alive"
         Me.Button1.UseVisualStyleBackColor = True
-        '
-        'ListView1
-        '
-        Me.ListView1.Location = New System.Drawing.Point(27, 122)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(577, 254)
-        Me.ListView1.TabIndex = 13
-        Me.ListView1.UseCompatibleStateImageBehavior = False
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(27, 93)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 14
-        Me.Button3.Text = "Button3"
-        Me.Button3.UseVisualStyleBackColor = True
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(450, 70)
+        Me.Button4.Location = New System.Drawing.Point(12, 44)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(127, 23)
+        Me.Button4.Size = New System.Drawing.Size(295, 23)
         Me.Button4.TabIndex = 15
         Me.Button4.Text = "listEventTypes"
         Me.Button4.UseVisualStyleBackColor = True
@@ -186,20 +171,46 @@ Partial Class Form1
         'DataGridView2
         '
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(610, 122)
+        Me.DataGridView2.Location = New System.Drawing.Point(12, 73)
         Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(525, 254)
+        Me.DataGridView2.Size = New System.Drawing.Size(295, 124)
         Me.DataGridView2.TabIndex = 17
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(12, 203)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(80, 20)
+        Me.TextBox1.TabIndex = 18
+        Me.TextBox1.Text = "1"
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(115, 203)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(192, 23)
+        Me.Button3.TabIndex = 19
+        Me.Button3.Text = "Events"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'dgv1
+        '
+        Me.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgv1.Location = New System.Drawing.Point(13, 230)
+        Me.dgv1.Name = "dgv1"
+        Me.dgv1.Size = New System.Drawing.Size(294, 150)
+        Me.dgv1.TabIndex = 20
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1147, 560)
+        Me.ClientSize = New System.Drawing.Size(1147, 636)
+        Me.Controls.Add(Me.dgv1)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.DataGridView2)
         Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.ListView1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.MenuStrip1)
@@ -212,6 +223,7 @@ Partial Class Form1
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgv1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -241,8 +253,9 @@ Partial Class Form1
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripLabel3 As ToolStripLabel
     Friend WithEvents txtHeartbeatintervall As ToolStripTextBox
-    Friend WithEvents ListView1 As ListView
-    Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents DataGridView2 As DataGridView
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Button3 As Button
+    Friend WithEvents dgv1 As DataGridView
 End Class
