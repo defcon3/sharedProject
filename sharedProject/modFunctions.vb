@@ -96,6 +96,31 @@
 
 
 
+        ElseIf TypeOf obj Is bfObjects.structMarketCatalogueResponse Then
+            Dim mcr As bfObjects.structMarketCatalogueResponse
+            'mcr = TryCast(obj, bfObjects.structMarketCatalogueResponse)
+
+            dt.Columns.Add("Market ID")
+            dt.Columns.Add("Market Name")
+
+            If obj.result.Count > 0 Then
+
+                For Each result As bfObjects.structMarketCatalogueResponse.structMarketCatalogue In obj.result
+                    Dim dr As DataRow = dt.NewRow
+
+                    dr("Market ID") = result.marketID
+                    dr("Market Name") = result.marketName
+
+                    dt.Rows.Add(dr)
+                Next
+
+            Else
+
+                dt = New DataTable
+
+            End If
+
+
         End If
 
 

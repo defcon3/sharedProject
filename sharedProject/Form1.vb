@@ -170,6 +170,8 @@ Public Class Form1
         Dim neueListe As New List(Of bfObjects.clsListMarketCatalogue)
         Dim neueListfrage As New bfObjects.clsListMarketCatalogue
 
+        neueListfrage.params.filter.eventIds.Add(txtMarket.Text)
+
         neueListe.Add(neueListfrage)
 
 
@@ -196,6 +198,13 @@ Public Class Form1
 
         cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.structMarketCatalogueResponse)(serverResponse)
 
+
+
+
+        Dim dt As DataTable
+        dt = getDatatableFromResponse(cls)
+
+        DataGridView1.DataSource = dt.Copy
 
 
     End Sub
@@ -337,5 +346,11 @@ Public Class Form1
         'MsgBox(temptable.Rows(DataGridView2.CurrentRow.Index).Item(0).ToString)
 
 
+    End Sub
+
+    Private Sub dgv1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv1.CellContentClick
+        Dim temptable As DataTable
+        temptable = dgv1.DataSource.copy
+        txtMarket.Text = temptable.Rows(dgv1.CurrentRow.Index).Item(0).ToString
     End Sub
 End Class
