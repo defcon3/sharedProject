@@ -206,7 +206,8 @@ Public Class Form1
 
         'DataGridView1.DataSource = dt.Copy
 
-
+        ListView1.Items.Clear()
+        ListView1.Columns.Clear()
 
 
 
