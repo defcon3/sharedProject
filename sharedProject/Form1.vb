@@ -204,7 +204,40 @@ Public Class Form1
         Dim dt As DataTable
         dt = getDatatableFromResponse(cls)
 
-        DataGridView1.DataSource = dt.Copy
+        'DataGridView1.DataSource = dt.Copy
+
+
+
+
+
+        Dim header1, header2 As ColumnHeader
+        header1 = New ColumnHeader
+        header1.TextAlign = HorizontalAlignment.Left
+        header1.Text = "Market ID"
+        header1.Width = ListView1.Width / 2 - 10
+        header2 = New ColumnHeader
+        header2.TextAlign = HorizontalAlignment.Left
+        header2.Text = "Market Name"
+        header2.Width = header1.Width
+        ListView1.Columns.Add(header1)
+        ListView1.Columns.Add(header2)
+        ListView1.CheckBoxes = True
+        ListView1.View = View.Details
+
+
+        Dim ListItem1 As ListViewItem
+
+        ' ListItem1 = ListView1.Items.Add("eins")
+        'ListItem1.SubItems.Add("zwei")
+
+        For Each rw As DataRow In dt.Rows
+            ListItem1 = New ListViewItem
+            ListItem1.Text = rw.Item(0).ToString
+            ListItem1.SubItems.Add(rw.Item(1).ToString)
+            ListView1.Items.Add(ListItem1)
+        Next
+
+
 
 
     End Sub
@@ -331,7 +364,6 @@ Public Class Form1
         dgv1.DataSource = dt.Copy
 
 
-
     End Sub
 
     Private Sub DataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
@@ -352,5 +384,21 @@ Public Class Form1
         Dim temptable As DataTable
         temptable = dgv1.DataSource.copy
         txtMarket.Text = temptable.Rows(dgv1.CurrentRow.Index).Item(0).ToString
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+
+        For Each itm As ListViewItem In ListView1.Items
+            If itm.Checked Then
+                MsgBox(itm.Text)
+            End If
+        Next
+
+
+
+    End Sub
+
+    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
+
     End Sub
 End Class

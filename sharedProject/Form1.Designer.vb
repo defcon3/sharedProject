@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Form1
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
@@ -45,6 +45,8 @@ Partial Class Form1
         Me.dgv1 = New System.Windows.Forms.DataGridView()
         Me.txtMarket = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -54,7 +56,6 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button2.Location = New System.Drawing.Point(143, 384)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(164, 23)
@@ -155,6 +156,7 @@ Partial Class Form1
         '
         'Button1
         '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.Location = New System.Drawing.Point(932, 43)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(203, 24)
@@ -215,16 +217,35 @@ Partial Class Form1
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(13, 413)
+        Me.DataGridView1.Location = New System.Drawing.Point(499, 159)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(294, 150)
         Me.DataGridView1.TabIndex = 23
+        '
+        'ListView1
+        '
+        Me.ListView1.Location = New System.Drawing.Point(13, 413)
+        Me.ListView1.Name = "ListView1"
+        Me.ListView1.Size = New System.Drawing.Size(294, 155)
+        Me.ListView1.TabIndex = 24
+        Me.ListView1.UseCompatibleStateImageBehavior = False
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(12, 574)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(295, 23)
+        Me.Button5.TabIndex = 25
+        Me.Button5.Text = "Märkte übernehmen"
+        Me.Button5.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1147, 636)
+        Me.Controls.Add(Me.Button5)
+        Me.Controls.Add(Me.ListView1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.txtMarket)
         Me.Controls.Add(Me.dgv1)
@@ -282,4 +303,6 @@ Partial Class Form1
     Friend WithEvents dgv1 As DataGridView
     Friend WithEvents txtMarket As TextBox
     Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents ListView1 As ListView
+    Friend WithEvents Button5 As Button
 End Class
