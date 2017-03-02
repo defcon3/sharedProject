@@ -390,12 +390,47 @@ Public Class Form1
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
 
+        Dim foundRow() As DataRow
+        foundRow = DataGridView2.DataSource.copy.select("ID='" & TextBox1.Text & "'")
+
+        eventtype = foundRow(0).ItemArray(1).ToString
+
+
+        'Dim foundRow() As DataRow
+        foundRow = dgv1.DataSource.copy.select("ID='" & txtMarket.Text & "'")
+
+        Dim eventarrayitem As New bfObjects.clsEventResult
+        Dim tempevent As New bfObjects.clsEvent
+        With eventarrayitem
+            tempevent.id = foundRow(0).ItemArray(0).ToString
+            tempevent.name = foundRow(0).ItemArray(1).ToString
+            tempevent.countryCode = foundRow(0).ItemArray(2).ToString
+            tempevent.timezone = foundRow(0).ItemArray(3).ToString
+            tempevent.openDate = foundRow(0).ItemArray(4).ToString
+            .marketCount = foundRow(0).ItemArray(5).ToString
+            .event = tempevent
+        End With
+        eventarray.Add(eventarrayitem)
+
+
+
+        Dim ListItem1 As ListViewItem
+
+        ' ListItem1 = ListView1.Items.Add("eins")
+        'ListItem1.SubItems.Add("zwei")
+
         For Each itm As ListViewItem In ListView1.Items
             If itm.Checked Then
-                MsgBox(itm.Text)
+                ListItem1 = New ListViewItem
+                ListItem1.Text = eventarrayitem.event.id
+                ListItem1.SubItems.Add(itm.Text)
+                ListItem1.SubItems.Add(eventtype)
+                ListItem1.SubItems.Add(eventarrayitem.event.name)
+                ListItem1.SubItems.Add(itm.SubItems(1).Text)
+                ListView2.Items.Add(ListItem1)
             End If
-        Next
 
+        Next
 
 
     End Sub
@@ -422,10 +457,22 @@ Public Class Form1
 
 
     Public eventarray As New List(Of bfObjects.clsEventResult)
+    Public eventtype As String
+
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
 
+
         Dim foundRow() As DataRow
+        foundRow = DataGridView2.DataSource.copy.select("ID='" & TextBox1.Text & "'")
+
+        eventtype = foundRow(0).ItemArray(1).ToString
+
+
+        Exit Sub
+
+
+        'Dim foundRow() As DataRow
         foundRow = dgv1.DataSource.copy.select("ID='" & txtMarket.Text & "'")
 
         Dim eventarrayitem As New bfObjects.clsEventResult
@@ -440,12 +487,6 @@ Public Class Form1
             .event = tempevent
         End With
         eventarray.Add(eventarrayitem)
-
-
-
-
-
-
 
 
 
@@ -465,18 +506,6 @@ Public Class Form1
         Next
 
 
-        'Dim m As ListView.SelectedListViewItemCollection
-        'm = ListView1.SelectedItems
-        'For Each itm As ListViewItem In m
-        '    If itm.Selected Then
-        '        'itm.SubItems.Add(foundRow.(1))
-
-
-
-
-        '    End If
-        'Next
-
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
@@ -484,26 +513,47 @@ Public Class Form1
         ListView2.Items.Clear()
         ListView2.Columns.Clear()
 
-        Dim header1, header2 As ColumnHeader
+        Dim header1, header2, header3, header4, header5 As ColumnHeader
         header1 = New ColumnHeader
         header1.TextAlign = HorizontalAlignment.Left
         header1.Text = "Event-ID"
-        header1.Width = ListView1.Width / 2 - 10
+        header1.Width = ListView2.Width / 5 - 5
         header2 = New ColumnHeader
         header2.TextAlign = HorizontalAlignment.Left
         header2.Text = "Market-ID"
         header2.Width = header1.Width
+
+        header3 = New ColumnHeader
+        header3.TextAlign = HorizontalAlignment.Left
+        header3.Text = "Event-Type"
+        header3.Width = header1.Width
+
+        header4 = New ColumnHeader
+        header4.TextAlign = HorizontalAlignment.Left
+        header4.Text = "Event-Name"
+        header4.Width = header1.Width
+
+        header5 = New ColumnHeader
+        header5.TextAlign = HorizontalAlignment.Left
+        header5.Text = "Market-Name"
+        header5.Width = header1.Width
+
+
         ListView2.Columns.Add(header1)
         ListView2.Columns.Add(header2)
+        ListView2.Columns.Add(header3)
+        ListView2.Columns.Add(header4)
+        ListView2.Columns.Add(header5)
+
+
+
         ListView2.View = View.Details
 
     End Sub
 
     Private Sub btnGO_Click(sender As Object, e As EventArgs) Handles btnGO.Click
+
         ListView2.Enabled = False
-
-
-
 
     End Sub
 End Class

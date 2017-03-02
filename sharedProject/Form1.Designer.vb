@@ -163,7 +163,7 @@ Partial Class Form1
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(932, 43)
+        Me.Button1.Location = New System.Drawing.Point(932, 406)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(203, 24)
         Me.Button1.TabIndex = 12
@@ -240,7 +240,7 @@ Partial Class Form1
         'TrackBar1
         '
         Me.TrackBar1.LargeChange = 20
-        Me.TrackBar1.Location = New System.Drawing.Point(702, 103)
+        Me.TrackBar1.Location = New System.Drawing.Point(346, 424)
         Me.TrackBar1.Maximum = 100
         Me.TrackBar1.Name = "TrackBar1"
         Me.TrackBar1.Size = New System.Drawing.Size(104, 45)
@@ -250,7 +250,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(699, 73)
+        Me.Label1.Location = New System.Drawing.Point(343, 394)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(192, 13)
         Me.Label1.TabIndex = 27
@@ -258,7 +258,7 @@ Partial Class Form1
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(812, 103)
+        Me.TextBox2.Location = New System.Drawing.Point(456, 424)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(69, 20)
         Me.TextBox2.TabIndex = 28
@@ -276,7 +276,7 @@ Partial Class Form1
         '
         Me.ListView2.Location = New System.Drawing.Point(346, 73)
         Me.ListView2.Name = "ListView2"
-        Me.ListView2.Size = New System.Drawing.Size(294, 268)
+        Me.ListView2.Size = New System.Drawing.Size(789, 268)
         Me.ListView2.TabIndex = 30
         Me.ListView2.UseCompatibleStateImageBehavior = False
         '
@@ -284,15 +284,15 @@ Partial Class Form1
         '
         Me.Button7.Location = New System.Drawing.Point(346, 43)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(294, 24)
+        Me.Button7.Size = New System.Drawing.Size(789, 24)
         Me.Button7.TabIndex = 31
-        Me.Button7.Text = "Button7"
+        Me.Button7.Text = "initialisiere oder lösche die Liste"
         Me.Button7.UseVisualStyleBackColor = True
         '
         'btnGO
         '
         Me.btnGO.BackColor = System.Drawing.Color.DarkSeaGreen
-        Me.btnGO.Location = New System.Drawing.Point(754, 154)
+        Me.btnGO.Location = New System.Drawing.Point(705, 398)
         Me.btnGO.Name = "btnGO"
         Me.btnGO.Size = New System.Drawing.Size(75, 32)
         Me.btnGO.TabIndex = 32
