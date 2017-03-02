@@ -44,14 +44,20 @@ Partial Class Form1
         Me.Button3 = New System.Windows.Forms.Button()
         Me.dgv1 = New System.Windows.Forms.DataGridView()
         Me.txtMarket = New System.Windows.Forms.TextBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ListView1 = New System.Windows.Forms.ListView()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.TrackBar1 = New System.Windows.Forms.TrackBar()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.ListView2 = New System.Windows.Forms.ListView()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.btnGO = New System.Windows.Forms.Button()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgv1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button2
@@ -67,7 +73,7 @@ Partial Class Form1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.txtConnectionState, Me.ToolStripSeparator2, Me.ToolStripLabel2, Me.txtCookie, Me.ToolStripSeparator1, Me.ToolStripLabel3, Me.txtHeartbeatintervall})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 611)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 946)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1147, 25)
         Me.ToolStrip1.TabIndex = 7
@@ -214,39 +220,99 @@ Partial Class Form1
         Me.txtMarket.TabIndex = 22
         Me.txtMarket.Text = "1"
         '
-        'DataGridView1
-        '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(499, 159)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(294, 150)
-        Me.DataGridView1.TabIndex = 23
-        '
         'ListView1
         '
         Me.ListView1.Location = New System.Drawing.Point(13, 413)
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(294, 155)
+        Me.ListView1.Size = New System.Drawing.Size(294, 501)
         Me.ListView1.TabIndex = 24
         Me.ListView1.UseCompatibleStateImageBehavior = False
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(12, 574)
+        Me.Button5.Location = New System.Drawing.Point(12, 920)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(295, 23)
         Me.Button5.TabIndex = 25
         Me.Button5.Text = "Märkte übernehmen"
         Me.Button5.UseVisualStyleBackColor = True
         '
+        'TrackBar1
+        '
+        Me.TrackBar1.LargeChange = 20
+        Me.TrackBar1.Location = New System.Drawing.Point(702, 103)
+        Me.TrackBar1.Maximum = 100
+        Me.TrackBar1.Name = "TrackBar1"
+        Me.TrackBar1.Size = New System.Drawing.Size(104, 45)
+        Me.TrackBar1.SmallChange = 5
+        Me.TrackBar1.TabIndex = 26
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(699, 73)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(192, 13)
+        Me.Label1.TabIndex = 27
+        Me.Label1.Text = "Aktualisierungsintervall in Millisekunden"
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(812, 103)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(69, 20)
+        Me.TextBox2.TabIndex = 28
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(346, 351)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(75, 23)
+        Me.Button6.TabIndex = 29
+        Me.Button6.Text = "Button6"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'ListView2
+        '
+        Me.ListView2.Location = New System.Drawing.Point(346, 73)
+        Me.ListView2.Name = "ListView2"
+        Me.ListView2.Size = New System.Drawing.Size(294, 268)
+        Me.ListView2.TabIndex = 30
+        Me.ListView2.UseCompatibleStateImageBehavior = False
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(346, 43)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(294, 24)
+        Me.Button7.TabIndex = 31
+        Me.Button7.Text = "Button7"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'btnGO
+        '
+        Me.btnGO.BackColor = System.Drawing.Color.DarkSeaGreen
+        Me.btnGO.Location = New System.Drawing.Point(754, 154)
+        Me.btnGO.Name = "btnGO"
+        Me.btnGO.Size = New System.Drawing.Size(75, 32)
+        Me.btnGO.TabIndex = 32
+        Me.btnGO.Text = "GO!"
+        Me.btnGO.UseVisualStyleBackColor = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1147, 636)
+        Me.ClientSize = New System.Drawing.Size(1147, 971)
+        Me.Controls.Add(Me.btnGO)
+        Me.Controls.Add(Me.Button7)
+        Me.Controls.Add(Me.ListView2)
+        Me.Controls.Add(Me.Button6)
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.TrackBar1)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.ListView1)
-        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.txtMarket)
         Me.Controls.Add(Me.dgv1)
         Me.Controls.Add(Me.Button3)
@@ -266,7 +332,7 @@ Partial Class Form1
         Me.MenuStrip1.PerformLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgv1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -302,7 +368,13 @@ Partial Class Form1
     Friend WithEvents Button3 As Button
     Friend WithEvents dgv1 As DataGridView
     Friend WithEvents txtMarket As TextBox
-    Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents ListView1 As ListView
     Friend WithEvents Button5 As Button
+    Friend WithEvents TrackBar1 As TrackBar
+    Friend WithEvents Label1 As Label
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Button6 As Button
+    Friend WithEvents ListView2 As ListView
+    Friend WithEvents Button7 As Button
+    Friend WithEvents btnGO As Button
 End Class

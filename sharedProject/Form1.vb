@@ -249,7 +249,8 @@ Public Class Form1
         txtCookie.Text = My.Settings.me_cookie_ABE
         txtHeartbeatintervall.Text = My.Settings.me_connection_user_intervall
 
-
+        TrackBar1.Value = 10
+        TextBox2.Text = 1000
 
 
     End Sub
@@ -400,6 +401,109 @@ Public Class Form1
     End Sub
 
     Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
+    End Sub
+
+    Private Sub TrackBar1_Scroll(sender As Object, e As EventArgs) Handles TrackBar1.Scroll
+        TextBox2.Text = TrackBar1.Value * 100
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
+
+    End Sub
+
+    Private Sub TextBox2_LostFocus(sender As Object, e As EventArgs) Handles TextBox2.LostFocus
+        TrackBar1.Value = TextBox2.Text / 100
+    End Sub
+
+
+    Public eventarray As New List(Of bfObjects.clsEventResult)
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+
+        Dim foundRow() As DataRow
+        foundRow = dgv1.DataSource.copy.select("ID='" & txtMarket.Text & "'")
+
+        Dim eventarrayitem As New bfObjects.clsEventResult
+        Dim tempevent As New bfObjects.clsEvent
+        With eventarrayitem
+            tempevent.id = foundRow(0).ItemArray(0).ToString
+            tempevent.name = foundRow(0).ItemArray(1).ToString
+            tempevent.countryCode = foundRow(0).ItemArray(2).ToString
+            tempevent.timezone = foundRow(0).ItemArray(3).ToString
+            tempevent.openDate = foundRow(0).ItemArray(4).ToString
+            .marketCount = foundRow(0).ItemArray(5).ToString
+            .event = tempevent
+        End With
+        eventarray.Add(eventarrayitem)
+
+
+
+
+
+
+
+
+
+        Dim ListItem1 As ListViewItem
+
+        ' ListItem1 = ListView1.Items.Add("eins")
+        'ListItem1.SubItems.Add("zwei")
+
+        For Each itm As ListViewItem In ListView1.Items
+            If itm.Checked Then
+                ListItem1 = New ListViewItem
+                ListItem1.Text = eventarrayitem.event.id
+                ListItem1.SubItems.Add(itm.Text)
+                ListView2.Items.Add(ListItem1)
+            End If
+
+        Next
+
+
+        'Dim m As ListView.SelectedListViewItemCollection
+        'm = ListView1.SelectedItems
+        'For Each itm As ListViewItem In m
+        '    If itm.Selected Then
+        '        'itm.SubItems.Add(foundRow.(1))
+
+
+
+
+        '    End If
+        'Next
+
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+
+        ListView2.Items.Clear()
+        ListView2.Columns.Clear()
+
+        Dim header1, header2 As ColumnHeader
+        header1 = New ColumnHeader
+        header1.TextAlign = HorizontalAlignment.Left
+        header1.Text = "Event-ID"
+        header1.Width = ListView1.Width / 2 - 10
+        header2 = New ColumnHeader
+        header2.TextAlign = HorizontalAlignment.Left
+        header2.Text = "Market-ID"
+        header2.Width = header1.Width
+        ListView2.Columns.Add(header1)
+        ListView2.Columns.Add(header2)
+        ListView2.View = View.Details
+
+    End Sub
+
+    Private Sub btnGO_Click(sender As Object, e As EventArgs) Handles btnGO.Click
+        ListView2.Enabled = False
+
+
+
 
     End Sub
 End Class
