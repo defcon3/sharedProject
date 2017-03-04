@@ -252,6 +252,12 @@ Public Class Form1
         TrackBar1.Value = 10
         TextBox2.Text = 1000
 
+        Call Button7_Click(Nothing, Nothing)
+
+        Me.WindowState = 2
+
+
+
 
     End Sub
 
@@ -461,6 +467,67 @@ Public Class Form1
 
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+
+        Dim dtPriceData As New DataTable
+        dtPriceData.Columns.Add("ID")
+        dtPriceData.Columns.Add("Option")
+
+
+        Dim items7
+        items7 = System.Enum.GetValues(GetType(bfObjects.enumBetStatus))
+        Dim dorchen As Object
+        dorchen = items7(1)
+
+
+
+        Dim names() As String = [Enum].GetNames(GetType(bfObjects.enumBetStatus))
+        For Each Name1 In names
+            Console.WriteLine("{0,3:D}     0x{0:X}     {1}",
+                           [Enum].Parse(GetType(bfObjects.enumBetStatus), Name1),
+                           Name1)
+        Next
+
+
+
+
+
+
+
+
+        Dim r As System.Enum
+        r = dorchen
+
+
+
+
+
+        Dim z = items7(1)
+
+
+        Dim mm '= TypeOf (dorchen).ToString 
+        mm = dorchen.GetType()
+
+
+
+        'Dim items As Array
+        'items = System.Enum.GetValues(GetType(bfObjects.enumBetStatus))
+        'Dim item As String
+        'For Each item In items
+        '    MsgBox(item)
+        'Next
+
+        Dim items As Array
+        items = System.Enum.GetNames(GetType(bfObjects.enumPriceData))
+        Dim item As String
+        For Each item In items
+            MsgBox(item)
+        Next
+
+
+
+
+
+        Exit Sub
 
 
         Dim foundRow() As DataRow

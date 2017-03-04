@@ -53,6 +53,8 @@ Partial Class Form1
         Me.ListView2 = New System.Windows.Forms.ListView()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.btnGO = New System.Windows.Forms.Button()
+        Me.cboPriceData = New System.Windows.Forms.ComboBox()
+        Me.lblPriceData = New System.Windows.Forms.Label()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -73,7 +75,7 @@ Partial Class Form1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.txtConnectionState, Me.ToolStripSeparator2, Me.ToolStripLabel2, Me.txtCookie, Me.ToolStripSeparator1, Me.ToolStripLabel3, Me.txtHeartbeatintervall})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 946)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 748)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1147, 25)
         Me.ToolStrip1.TabIndex = 7
@@ -224,13 +226,13 @@ Partial Class Form1
         '
         Me.ListView1.Location = New System.Drawing.Point(13, 413)
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(294, 501)
+        Me.ListView1.Size = New System.Drawing.Size(294, 259)
         Me.ListView1.TabIndex = 24
         Me.ListView1.UseCompatibleStateImageBehavior = False
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(12, 920)
+        Me.Button5.Location = New System.Drawing.Point(12, 678)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(295, 23)
         Me.Button5.TabIndex = 25
@@ -240,7 +242,7 @@ Partial Class Form1
         'TrackBar1
         '
         Me.TrackBar1.LargeChange = 20
-        Me.TrackBar1.Location = New System.Drawing.Point(346, 424)
+        Me.TrackBar1.Location = New System.Drawing.Point(346, 527)
         Me.TrackBar1.Maximum = 100
         Me.TrackBar1.Name = "TrackBar1"
         Me.TrackBar1.Size = New System.Drawing.Size(104, 45)
@@ -250,7 +252,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(343, 394)
+        Me.Label1.Location = New System.Drawing.Point(343, 497)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(192, 13)
         Me.Label1.TabIndex = 27
@@ -258,7 +260,7 @@ Partial Class Form1
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(456, 424)
+        Me.TextBox2.Location = New System.Drawing.Point(456, 527)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(69, 20)
         Me.TextBox2.TabIndex = 28
@@ -292,18 +294,37 @@ Partial Class Form1
         'btnGO
         '
         Me.btnGO.BackColor = System.Drawing.Color.DarkSeaGreen
-        Me.btnGO.Location = New System.Drawing.Point(705, 398)
+        Me.btnGO.Location = New System.Drawing.Point(705, 501)
         Me.btnGO.Name = "btnGO"
         Me.btnGO.Size = New System.Drawing.Size(75, 32)
         Me.btnGO.TabIndex = 32
         Me.btnGO.Text = "GO!"
         Me.btnGO.UseVisualStyleBackColor = False
         '
+        'cboPriceData
+        '
+        Me.cboPriceData.FormattingEnabled = True
+        Me.cboPriceData.Location = New System.Drawing.Point(346, 413)
+        Me.cboPriceData.Name = "cboPriceData"
+        Me.cboPriceData.Size = New System.Drawing.Size(121, 21)
+        Me.cboPriceData.TabIndex = 33
+        '
+        'lblPriceData
+        '
+        Me.lblPriceData.AutoSize = True
+        Me.lblPriceData.Location = New System.Drawing.Point(380, 397)
+        Me.lblPriceData.Name = "lblPriceData"
+        Me.lblPriceData.Size = New System.Drawing.Size(57, 13)
+        Me.lblPriceData.TabIndex = 34
+        Me.lblPriceData.Text = "Price Data"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1147, 971)
+        Me.ClientSize = New System.Drawing.Size(1147, 773)
+        Me.Controls.Add(Me.lblPriceData)
+        Me.Controls.Add(Me.cboPriceData)
         Me.Controls.Add(Me.btnGO)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.ListView2)
@@ -377,4 +398,6 @@ Partial Class Form1
     Friend WithEvents ListView2 As ListView
     Friend WithEvents Button7 As Button
     Friend WithEvents btnGO As Button
+    Friend WithEvents cboPriceData As ComboBox
+    Friend WithEvents lblPriceData As Label
 End Class
