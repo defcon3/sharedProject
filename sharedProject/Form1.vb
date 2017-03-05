@@ -480,11 +480,16 @@ Public Class Form1
 
 
 
-        Dim names() As String = [Enum].GetNames(GetType(bfObjects.enumBetStatus))
+        Dim names() As String = [Enum].GetNames(GetType(bfObjects.MarketSort))
         For Each Name1 In names
-            Console.WriteLine("{0,3:D}     0x{0:X}     {1}",
-                           [Enum].Parse(GetType(bfObjects.enumBetStatus), Name1),
-                           Name1)
+            'Console.WriteLine("{0,3:D}     0x{0:X}     {1}",
+            '               [Enum].Parse(GetType(bfObjects.MarketSort), Name1),
+            '               Name1)
+
+            'Console.WriteLine("{0} {1}", System.Enum.GetValues(GetType(bfObjects.enumBetStatus)), System.Enum.GetNames(GetType(bfObjects.enumBetStatus)))
+            'Console.WriteLine("{0} {1}", System.Enum.GetValues(GetType(bfObjects.enumBetStatus)), System.Enum.GetName(GetType(bfObjects.enumBetStatus), Name1))
+
+
         Next
 
 
