@@ -22,6 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
@@ -48,13 +49,22 @@ Partial Class Form1
         Me.Button5 = New System.Windows.Forms.Button()
         Me.TrackBar1 = New System.Windows.Forms.TrackBar()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtRefreshRate = New System.Windows.Forms.TextBox()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.ListView2 = New System.Windows.Forms.ListView()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.btnGO = New System.Windows.Forms.Button()
-        Me.cboPriceData = New System.Windows.Forms.ComboBox()
+        Me.cboPriceData1 = New System.Windows.Forms.ComboBox()
         Me.lblPriceData = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cboPriceData2 = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.cboOrderData = New System.Windows.Forms.ComboBox()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.txtRequest = New System.Windows.Forms.TextBox()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Button9 = New System.Windows.Forms.Button()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -165,7 +175,7 @@ Partial Class Form1
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(932, 406)
+        Me.Button1.Location = New System.Drawing.Point(944, 701)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(203, 24)
         Me.Button1.TabIndex = 12
@@ -258,20 +268,20 @@ Partial Class Form1
         Me.Label1.TabIndex = 27
         Me.Label1.Text = "Aktualisierungsintervall in Millisekunden"
         '
-        'TextBox2
+        'txtRefreshRate
         '
-        Me.TextBox2.Location = New System.Drawing.Point(456, 527)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(69, 20)
-        Me.TextBox2.TabIndex = 28
+        Me.txtRefreshRate.Location = New System.Drawing.Point(456, 527)
+        Me.txtRefreshRate.Name = "txtRefreshRate"
+        Me.txtRefreshRate.Size = New System.Drawing.Size(69, 20)
+        Me.txtRefreshRate.TabIndex = 28
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(346, 351)
+        Me.Button6.Location = New System.Drawing.Point(341, 411)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(75, 23)
+        Me.Button6.Size = New System.Drawing.Size(104, 23)
         Me.Button6.TabIndex = 29
-        Me.Button6.Text = "Button6"
+        Me.Button6.Text = "create Request"
         Me.Button6.UseVisualStyleBackColor = True
         '
         'ListView2
@@ -294,42 +304,118 @@ Partial Class Form1
         'btnGO
         '
         Me.btnGO.BackColor = System.Drawing.Color.DarkSeaGreen
-        Me.btnGO.Location = New System.Drawing.Point(705, 501)
+        Me.btnGO.Location = New System.Drawing.Point(568, 515)
         Me.btnGO.Name = "btnGO"
         Me.btnGO.Size = New System.Drawing.Size(75, 32)
         Me.btnGO.TabIndex = 32
         Me.btnGO.Text = "GO!"
         Me.btnGO.UseVisualStyleBackColor = False
         '
-        'cboPriceData
+        'cboPriceData1
         '
-        Me.cboPriceData.FormattingEnabled = True
-        Me.cboPriceData.Location = New System.Drawing.Point(346, 413)
-        Me.cboPriceData.Name = "cboPriceData"
-        Me.cboPriceData.Size = New System.Drawing.Size(121, 21)
-        Me.cboPriceData.TabIndex = 33
+        Me.cboPriceData1.FormattingEnabled = True
+        Me.cboPriceData1.Location = New System.Drawing.Point(346, 369)
+        Me.cboPriceData1.Name = "cboPriceData1"
+        Me.cboPriceData1.Size = New System.Drawing.Size(121, 21)
+        Me.cboPriceData1.TabIndex = 33
         '
         'lblPriceData
         '
         Me.lblPriceData.AutoSize = True
-        Me.lblPriceData.Location = New System.Drawing.Point(380, 397)
+        Me.lblPriceData.Location = New System.Drawing.Point(380, 353)
         Me.lblPriceData.Name = "lblPriceData"
-        Me.lblPriceData.Size = New System.Drawing.Size(57, 13)
+        Me.lblPriceData.Size = New System.Drawing.Size(63, 13)
         Me.lblPriceData.TabIndex = 34
-        Me.lblPriceData.Text = "Price Data"
+        Me.lblPriceData.Text = "Price Data1"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(712, 355)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(63, 13)
+        Me.Label2.TabIndex = 36
+        Me.Label2.Text = "Price Data2"
+        '
+        'cboPriceData2
+        '
+        Me.cboPriceData2.FormattingEnabled = True
+        Me.cboPriceData2.Location = New System.Drawing.Point(678, 371)
+        Me.cboPriceData2.Name = "cboPriceData2"
+        Me.cboPriceData2.Size = New System.Drawing.Size(121, 21)
+        Me.cboPriceData2.TabIndex = 35
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(1042, 355)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(59, 13)
+        Me.Label3.TabIndex = 37
+        Me.Label3.Text = "Order Data"
+        '
+        'cboOrderData
+        '
+        Me.cboOrderData.FormattingEnabled = True
+        Me.cboOrderData.Location = New System.Drawing.Point(1011, 371)
+        Me.cboOrderData.Name = "cboOrderData"
+        Me.cboOrderData.Size = New System.Drawing.Size(121, 21)
+        Me.cboOrderData.TabIndex = 38
+        '
+        'Button8
+        '
+        Me.Button8.BackColor = System.Drawing.Color.Crimson
+        Me.Button8.Location = New System.Drawing.Point(672, 515)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(75, 32)
+        Me.Button8.TabIndex = 39
+        Me.Button8.Text = "STOPP!"
+        Me.Button8.UseVisualStyleBackColor = False
+        '
+        'txtRequest
+        '
+        Me.txtRequest.Enabled = False
+        Me.txtRequest.Location = New System.Drawing.Point(456, 413)
+        Me.txtRequest.Name = "txtRequest"
+        Me.txtRequest.Size = New System.Drawing.Size(664, 20)
+        Me.txtRequest.TabIndex = 40
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(805, 463)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox2.TabIndex = 41
+        '
+        'Button9
+        '
+        Me.Button9.Location = New System.Drawing.Point(864, 523)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(75, 23)
+        Me.Button9.TabIndex = 42
+        Me.Button9.Text = "Button9"
+        Me.Button9.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1147, 773)
+        Me.Controls.Add(Me.Button9)
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.txtRequest)
+        Me.Controls.Add(Me.Button8)
+        Me.Controls.Add(Me.cboOrderData)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.cboPriceData2)
         Me.Controls.Add(Me.lblPriceData)
-        Me.Controls.Add(Me.cboPriceData)
+        Me.Controls.Add(Me.cboPriceData1)
         Me.Controls.Add(Me.btnGO)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.ListView2)
         Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.txtRefreshRate)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TrackBar1)
         Me.Controls.Add(Me.Button5)
@@ -393,11 +479,20 @@ Partial Class Form1
     Friend WithEvents Button5 As Button
     Friend WithEvents TrackBar1 As TrackBar
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txtRefreshRate As TextBox
     Friend WithEvents Button6 As Button
     Friend WithEvents ListView2 As ListView
     Friend WithEvents Button7 As Button
     Friend WithEvents btnGO As Button
-    Friend WithEvents cboPriceData As ComboBox
+    Friend WithEvents cboPriceData1 As ComboBox
     Friend WithEvents lblPriceData As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents cboPriceData2 As ComboBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents cboOrderData As ComboBox
+    Friend WithEvents Button8 As Button
+    Friend WithEvents txtRequest As TextBox
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Button9 As Button
 End Class

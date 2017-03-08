@@ -162,6 +162,13 @@ Public Class Form1
     End Function
 
 
+    Function serialisiereMarketBooks(ByVal requestList As List(Of bfObjects.clsMarketBookRequest)) As String
+
+        Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
+
+        Return temp
+
+    End Function
 
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -250,7 +257,7 @@ Public Class Form1
         txtHeartbeatintervall.Text = My.Settings.me_connection_user_intervall
 
         TrackBar1.Value = 10
-        TextBox2.Text = 1000
+        txtRefreshRate.Text = 1000
 
         Call Button7_Click(Nothing, Nothing)
 
@@ -428,8 +435,10 @@ Public Class Form1
         For Each itm As ListViewItem In ListView1.Items
             If itm.Checked Then
                 ListItem1 = New ListViewItem
-                ListItem1.Text = eventarrayitem.event.id
-                ListItem1.SubItems.Add(itm.Text)
+                'ListItem1.Text = eventarrayitem.event.id
+                'ListItem1.SubItems.Add(itm.Text)
+                ListItem1.Text = itm.Text
+                ListItem1.SubItems.Add(eventarrayitem.event.id)
                 ListItem1.SubItems.Add(eventtype)
                 ListItem1.SubItems.Add(eventarrayitem.event.name)
                 ListItem1.SubItems.Add(itm.SubItems(1).Text)
@@ -450,15 +459,15 @@ Public Class Form1
     End Sub
 
     Private Sub TrackBar1_Scroll(sender As Object, e As EventArgs) Handles TrackBar1.Scroll
-        TextBox2.Text = TrackBar1.Value * 100
+        txtRefreshRate.Text = TrackBar1.Value * 100
     End Sub
 
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles txtRefreshRate.TextChanged
 
     End Sub
 
-    Private Sub TextBox2_LostFocus(sender As Object, e As EventArgs) Handles TextBox2.LostFocus
-        TrackBar1.Value = TextBox2.Text / 100
+    Private Sub TextBox2_LostFocus(sender As Object, e As EventArgs) Handles txtRefreshRate.LostFocus
+        TrackBar1.Value = txtRefreshRate.Text / 100
     End Sub
 
 
@@ -466,133 +475,69 @@ Public Class Form1
     Public eventtype As String
 
 
+    Public Property Requeststring As String
+
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
 
-        Dim dtPriceData As New DataTable
-        dtPriceData.Columns.Add("ID")
-        dtPriceData.Columns.Add("Option")
 
 
-        Dim items7
-        items7 = System.Enum.GetValues(GetType(bfObjects.enumBetStatus))
-        Dim dorchen As Object
-        dorchen = items7(1)
+        Dim neueListe As New List(Of bfObjects.clsMarketBookRequest)
+        Dim neueListfrage As New bfObjects.clsMarketBookRequest
+        Dim PriceProjection As New bfObjects.clsPriceProjection
+
+        If cboPriceData1.SelectedValue >= 0 Then
+            PriceProjection.priceData.Add(cboPriceData1.Text)
+        End If
+        If cboPriceData2.SelectedValue >= 0 And cboPriceData1.SelectedValue <> cboPriceData2.SelectedValue Then
+            PriceProjection.priceData.Add(cboPriceData2.Text)
+        End If
 
 
+        Dim MarketBookParams As New bfObjects.clsMarketBookParams
+        MarketBookParams.priceProjection = PriceProjection
+        If cboOrderData.SelectedValue >= 0 Then
+            MarketBookParams.orderProjection = cboOrderData.Text
+        End If
 
-        Dim names() As String = [Enum].GetNames(GetType(bfObjects.MarketSort))
-        For Each Name1 In names
-            'Console.WriteLine("{0,3:D}     0x{0:X}     {1}",
-            '               [Enum].Parse(GetType(bfObjects.MarketSort), Name1),
-            '               Name1)
-
-            'Console.WriteLine("{0} {1}", System.Enum.GetValues(GetType(bfObjects.enumBetStatus)), System.Enum.GetNames(GetType(bfObjects.enumBetStatus)))
-            'Console.WriteLine("{0} {1}", System.Enum.GetValues(GetType(bfObjects.enumBetStatus)), System.Enum.GetName(GetType(bfObjects.enumBetStatus), Name1))
-
-
+        For Each i As ListViewItem In ListView2.Items
+            MarketBookParams.marketIds.Add(i.Text.ToString)
         Next
 
+        neueListfrage.params = MarketBookParams
+
+
+        neueListe.Add(neueListfrage)
+
+        Dim serialisierteAnfrage As String
+        serialisierteAnfrage = serialisiereMarketBooks(neueListe)
+
+        Requeststring = serialisierteAnfrage
+
+
+
+        txtRequest.Text = Requeststring
 
 
 
 
-
-
-
-        Dim r As System.Enum
-        r = dorchen
-
-
-
-
-
-        Dim z = items7(1)
-
-
-        Dim mm '= TypeOf (dorchen).ToString 
-        mm = dorchen.GetType()
-
-
-
-        'Dim items As Array
-        'items = System.Enum.GetValues(GetType(bfObjects.enumBetStatus))
-        'Dim item As String
-        'For Each item In items
-        '    MsgBox(item)
-        'Next
-
-        Dim items As Array
-        items = System.Enum.GetNames(GetType(bfObjects.enumPriceData))
-        Dim item As String
-        For Each item In items
-            MsgBox(item)
-        Next
-
-
-
-
-
-        Exit Sub
-
-
-        Dim foundRow() As DataRow
-        foundRow = DataGridView2.DataSource.copy.select("ID='" & TextBox1.Text & "'")
-
-        eventtype = foundRow(0).ItemArray(1).ToString
-
-
-        Exit Sub
-
-
-        'Dim foundRow() As DataRow
-        foundRow = dgv1.DataSource.copy.select("ID='" & txtMarket.Text & "'")
-
-        Dim eventarrayitem As New bfObjects.clsEventResult
-        Dim tempevent As New bfObjects.clsEvent
-        With eventarrayitem
-            tempevent.id = foundRow(0).ItemArray(0).ToString
-            tempevent.name = foundRow(0).ItemArray(1).ToString
-            tempevent.countryCode = foundRow(0).ItemArray(2).ToString
-            tempevent.timezone = foundRow(0).ItemArray(3).ToString
-            tempevent.openDate = foundRow(0).ItemArray(4).ToString
-            .marketCount = foundRow(0).ItemArray(5).ToString
-            .event = tempevent
-        End With
-        eventarray.Add(eventarrayitem)
-
-
-
-        Dim ListItem1 As ListViewItem
-
-        ' ListItem1 = ListView1.Items.Add("eins")
-        'ListItem1.SubItems.Add("zwei")
-
-        For Each itm As ListViewItem In ListView1.Items
-            If itm.Checked Then
-                ListItem1 = New ListViewItem
-                ListItem1.Text = eventarrayitem.event.id
-                ListItem1.SubItems.Add(itm.Text)
-                ListView2.Items.Add(ListItem1)
-            End If
-
-        Next
 
 
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
 
+        ListView2.Enabled = True
         ListView2.Items.Clear()
         ListView2.Columns.Clear()
 
         Dim header1, header2, header3, header4, header5 As ColumnHeader
         header1 = New ColumnHeader
         header1.TextAlign = HorizontalAlignment.Left
-        header1.Text = "Event-ID"
+        header1.Text = "Market-ID"
         header1.Width = ListView2.Width / 5 - 5
         header2 = New ColumnHeader
         header2.TextAlign = HorizontalAlignment.Left
-        header2.Text = "Market-ID"
+        header2.Text = "Event-ID"
         header2.Width = header1.Width
 
         header3 = New ColumnHeader
@@ -621,11 +566,132 @@ Public Class Form1
 
         ListView2.View = View.Details
 
+
+        Dim dtPrice As New DataTable
+        dtPrice = EnumToDataTable(GetType(bfObjects.enumPriceData), "", "")
+
+
+        With cboPriceData1
+            .DataSource = dtPrice.Copy
+            .DisplayMember = "VALUE"
+            .ValueMember = "KEY"
+        End With
+        With cboPriceData2
+            .DataSource = dtPrice.Copy
+            .DisplayMember = "VALUE"
+            .ValueMember = "KEY"
+        End With
+
+
+
+        Dim dtOrder As New DataTable
+        dtOrder = EnumToDataTable(GetType(bfObjects.enumOrderProjection), "", "")
+        With cboOrderData
+            .DataSource = dtOrder.Copy
+            .DisplayMember = "VALUE"
+            .ValueMember = "KEY"
+        End With
+
+
+
+
+
+
     End Sub
+
+
+    Dim läuft As Boolean = False
+    Dim filesExistieren As Boolean = False
 
     Private Sub btnGO_Click(sender As Object, e As EventArgs) Handles btnGO.Click
 
+        Timer1.Interval = txtRefreshRate.Text
+        läuft = True
+
+        For Each i In ListView2.Items
+            MsgBox(i.ToString)
+        Next
+
         ListView2.Enabled = False
+
+
+
+
+        Dim serverResponse As String
+        Dim xmlDoc As Xml.XmlDocument
+        Dim DataSet = New DataSet()
+        Dim xmlReader As Xml.XmlNodeReader
+
+        While läuft = True
+
+            Application.DoEvents()
+            System.Threading.Thread.Sleep(txtRefreshRate.Text)
+
+            serverResponse = SendSportsReq(Requeststring)
+
+            'Dim cls As New clsMarketCatalogueResponse
+            Dim cls As New bfObjects.clsMarketBookResponse
+            Dim g1 As String
+            g1 = serverResponse.Substring(1, serverResponse.Length - 2)
+            serverResponse = g1.ToString
+            '        Debug.Print(serverResponse)
+            cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(serverResponse)
+
+            'TextBox2.Text = serverResponse
+
+            xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
+
+            xmlReader = New Xml.XmlNodeReader(xmlDoc)
+            DataSet = New DataSet()
+            DataSet.ReadXml(xmlReader)
+
+
+            Dim curFile As String = "c:\temp\test.txt"
+            If File.Exists(curFile) Then MsgBox("hurra")
+
+
+        End While
+
+
+
+
+
+
+
+
+
+
+
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        läuft = False
+    End Sub
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        Dim strg As String
+
+        strg = "{""jsonrpc"":""2.0"",""result"":[{""marketId"":""1.130138285"",""isMarketDataDelayed"":true,""status"":""OPEN"",""betDelay"":0,""bspReconciled"":false,""complete"":true,""inplay"":false,""numberOfWinners"":1,""numberOfRunners"":2,""numberOfActiveRunners"":2,""totalMatched"":0.0,""totalAvailable"":54766.82,""crossMatching"":true,""runnersVoidable"":false,""version"":1578390911,""runners"":[{""selectionId"":5851482,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":11.0,""size"":35.01},{""price"":8.2,""size"":17.99},{""price"":8.0,""size"":18.5}],""availableToLay"":[{""price"":12.5,""size"":1744.75},{""price"":13.5,""size"":1600.69},{""price"":15.5,""size"":690.62}],""tradedVolume"":[]}},{""selectionId"":5851483,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":1.09,""size"":20008.67},{""price"":1.08,""size"":20008.67},{""price"":1.07,""size"":10004.33}],""availableToLay"":[{""price"":1.1,""size"":350.15},{""price"":1.14,""size"":129.45},{""price"":1.15,""size"":128.73}],""tradedVolume"":[]}}]}],""id"":1}"
+        'strg = "?xml"":""{""@version"": ""1.0"",""standalone"": ""no""},{""jsonrpc"":""2.0"",""result"":[{""marketId"":""1.130138285"",""isMarketDataDelayed"":true,""status"":""OPEN"",""betDelay"":0,""bspReconciled"":false,""complete"":true,""inplay"":false,""numberOfWinners"":1,""numberOfRunners"":2,""numberOfActiveRunners"":2,""totalMatched"":0.0,""totalAvailable"":54766.82,""crossMatching"":true,""runnersVoidable"":false,""version"":1578390911,""runners"":[{""selectionId"":5851482,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":11.0,""size"":35.01},{""price"":8.2,""size"":17.99},{""price"":8.0,""size"":18.5}],""availableToLay"":[{""price"":12.5,""size"":1744.75},{""price"":13.5,""size"":1600.69},{""price"":15.5,""size"":690.62}],""tradedVolume"":[]}},{""selectionId"":5851483,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":1.09,""size"":20008.67},{""price"":1.08,""size"":20008.67},{""price"":1.07,""size"":10004.33}],""availableToLay"":[{""price"":1.1,""size"":350.15},{""price"":1.14,""size"":129.45},{""price"":1.15,""size"":128.73}],""tradedVolume"":[]}}]}],""id"":1}"
+
+        Dim m As Xml.XmlDocument
+
+        m = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(strg, "wurzel")
+
+
+        Dim xmlReader = New Xml.XmlNodeReader(m)
+        Dim DataSet = New DataSet()
+        DataSet.ReadXml(xmlReader)
+
+
+        DataTable2CSV(DataSet.Tables(1), "C:\Temp\Mäuschen.txt", ";")
+
+
+        'dt.ReadXml(m)
+
+
+        'm.Save("C:\Temp\Maus.xml")
+
 
     End Sub
 End Class
