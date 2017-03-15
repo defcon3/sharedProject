@@ -95,7 +95,7 @@ Public Class Form1
         datastream.Close()
 
 
-        Debug.Print(responseFromServer.ToString)
+        'Debug.Print(responseFromServer.ToString)
         response.Close()
 
         Return responseFromServer
@@ -178,6 +178,9 @@ Public Class Form1
         Dim neueListfrage As New bfObjects.clsListMarketCatalogue
 
         neueListfrage.params.filter.eventIds.Add(txtMarket.Text)
+        neueListfrage.params.marketProjection.Add("RUNNER_METADATA")
+
+
 
         neueListe.Add(neueListfrage)
 
@@ -323,7 +326,7 @@ Public Class Form1
         response = serverResponse.Substring(1, serverResponse.Length - 2)
         serverResponse = response.ToString
 
-        Debug.Print(serverResponse)
+        'Debug.Print(serverResponse)
 
 
 
@@ -366,7 +369,7 @@ Public Class Form1
         response = serverResponse.Substring(1, serverResponse.Length - 2)
         serverResponse = response.ToString
 
-        Debug.Print(serverResponse)
+        'Debug.Print(serverResponse)
 
 
 
@@ -608,19 +611,66 @@ Public Class Form1
         Timer1.Interval = txtRefreshRate.Text
         läuft = True
 
-        For Each i In ListView2.Items
-            MsgBox(i.ToString)
-        Next
-
         ListView2.Enabled = False
-
-
-
 
         Dim serverResponse As String
         Dim xmlDoc As Xml.XmlDocument
         Dim DataSet = New DataSet()
         Dim xmlReader As Xml.XmlNodeReader
+
+
+        Dim t1, t2, t3, t4, t5 As String
+
+
+
+        ' write Metadata
+        Using sw As System.IO.StreamWriter = System.IO.File.AppendText("c:\Temp\export\Metadata.txt")
+
+            Dim sb = New System.Text.StringBuilder
+            sb.Append("Market-ID;Event-ID;Event-Type;Event-Name;Market-Name")
+            sw.WriteLine(sb.ToString)
+
+
+            sb = New System.Text.StringBuilder
+
+            For Each itm As ListViewItem In ListView2.Items
+                sb.Append(itm.Text & ";" & itm.SubItems(1).Text & ";" & itm.SubItems(2).Text & ";" & itm.SubItems(3).Text & ";" & itm.SubItems(4).Text & vbCrLf)
+                sw.WriteLine(sb.ToString)
+
+                t1 = itm.Text
+                t2 = itm.SubItems(1).Text
+                t3 = itm.SubItems(2).Text
+                t4 = itm.SubItems(3).Text
+                t5 = itm.SubItems(4).Text
+            Next
+
+        End Using
+
+        Dim sqlstrg As String = "INSERT INTO tabMetadata ([Market-ID],[Event-ID],[Event-Type],[Event-Name],[Market-Name]) VALUES ( '" & t1 & "', '" & t2 & "', '" & t3 & "', '" & t4 & "', '" & t5 & "')"
+
+
+        Dim con As New OleDb.OleDbConnection
+        con.ConnectionString = My.Settings.DB_EXPORTConnectionString
+        Try
+            con.Open()
+
+            Dim commando As New OleDb.OleDbCommand(sqlstrg, con)
+            commando.ExecuteNonQuery()
+
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            con.Close()
+
+        End Try
+
+
+
+
+
+
 
         While läuft = True
 
@@ -645,18 +695,22 @@ Public Class Form1
             DataSet = New DataSet()
             DataSet.ReadXml(xmlReader)
 
+            Dim strg As String = Date.Now.ToString("MM/dd/yyyy hh:mm:ss.fff tt")
 
-            Dim curFile As String = "c:\temp\test.txt"
-            If File.Exists(curFile) Then MsgBox("hurra")
+            For Each dt As DataTable In DataSet.Tables
+
+                dt.Columns.Add("timestamp")
+                For Each row In dt.Rows
+                    row("timestamp") = strg
+                Next
+
+
+                DataTable2CSV2(dt, "C:\Temp\export\" & dt.TableName & ".txt", ";")
+
+            Next
 
 
         End While
-
-
-
-
-
-
 
 
 
@@ -671,6 +725,33 @@ Public Class Form1
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
         Dim strg As String
 
+        Dim n = System.DateTime.Now.Ticks
+
+        'Dim t As New DB_EXPORTDataSetTableAdapters
+
+        Dim con As New OleDb.OleDbConnection
+        con.ConnectionString = My.Settings.DB_EXPORTConnectionString
+
+        Try
+            con.Open()
+        Catch ex As Exception
+            MsgBox(ex.InnerException.ToString)
+        Finally
+            con.Close()
+
+        End Try
+
+        '@@@ 
+
+
+        'Dim queryString As String = "SELECT CustomerID, CompanyName FROM dbo.Customers"
+        'Dim adapter As System.Data.SqlClient.SqlDataAdapter = New System.Data.SqlClient.SqlDataAdapter(queryString, Connection)
+
+        'Dim customers As DataSet = New DataSet
+        'adapter.Fill(customers, "Customers")
+
+        Exit Sub
+
         strg = "{""jsonrpc"":""2.0"",""result"":[{""marketId"":""1.130138285"",""isMarketDataDelayed"":true,""status"":""OPEN"",""betDelay"":0,""bspReconciled"":false,""complete"":true,""inplay"":false,""numberOfWinners"":1,""numberOfRunners"":2,""numberOfActiveRunners"":2,""totalMatched"":0.0,""totalAvailable"":54766.82,""crossMatching"":true,""runnersVoidable"":false,""version"":1578390911,""runners"":[{""selectionId"":5851482,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":11.0,""size"":35.01},{""price"":8.2,""size"":17.99},{""price"":8.0,""size"":18.5}],""availableToLay"":[{""price"":12.5,""size"":1744.75},{""price"":13.5,""size"":1600.69},{""price"":15.5,""size"":690.62}],""tradedVolume"":[]}},{""selectionId"":5851483,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":1.09,""size"":20008.67},{""price"":1.08,""size"":20008.67},{""price"":1.07,""size"":10004.33}],""availableToLay"":[{""price"":1.1,""size"":350.15},{""price"":1.14,""size"":129.45},{""price"":1.15,""size"":128.73}],""tradedVolume"":[]}}]}],""id"":1}"
         'strg = "?xml"":""{""@version"": ""1.0"",""standalone"": ""no""},{""jsonrpc"":""2.0"",""result"":[{""marketId"":""1.130138285"",""isMarketDataDelayed"":true,""status"":""OPEN"",""betDelay"":0,""bspReconciled"":false,""complete"":true,""inplay"":false,""numberOfWinners"":1,""numberOfRunners"":2,""numberOfActiveRunners"":2,""totalMatched"":0.0,""totalAvailable"":54766.82,""crossMatching"":true,""runnersVoidable"":false,""version"":1578390911,""runners"":[{""selectionId"":5851482,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":11.0,""size"":35.01},{""price"":8.2,""size"":17.99},{""price"":8.0,""size"":18.5}],""availableToLay"":[{""price"":12.5,""size"":1744.75},{""price"":13.5,""size"":1600.69},{""price"":15.5,""size"":690.62}],""tradedVolume"":[]}},{""selectionId"":5851483,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":1.09,""size"":20008.67},{""price"":1.08,""size"":20008.67},{""price"":1.07,""size"":10004.33}],""availableToLay"":[{""price"":1.1,""size"":350.15},{""price"":1.14,""size"":129.45},{""price"":1.15,""size"":128.73}],""tradedVolume"":[]}}]}],""id"":1}"
 
@@ -684,7 +765,7 @@ Public Class Form1
         DataSet.ReadXml(xmlReader)
 
 
-        DataTable2CSV(DataSet.Tables(1), "C:\Temp\Mäuschen.txt", ";")
+        DataTable2CSV2(DataSet.Tables(1), "C:\Temp\Mäuschen.txt", ";")
 
 
         'dt.ReadXml(m)
@@ -692,6 +773,10 @@ Public Class Form1
 
         'm.Save("C:\Temp\Maus.xml")
 
+
+    End Sub
+
+    Private Sub ListView2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView2.SelectedIndexChanged
 
     End Sub
 End Class

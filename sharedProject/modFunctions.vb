@@ -223,6 +223,33 @@
     End Sub
 
 
+    Sub DataTable2CSV2(ByVal table As DataTable, ByVal filename As String, ByVal sepChar As String)
+
+        'Dim writer As System.IO.StreamWriter
+
+        ' writer = New System.IO.StreamWriter(filename)
+
+        Using sw As System.IO.StreamWriter = System.IO.File.AppendText(filename)
+
+            For Each row As DataRow In table.Rows
+                ' sepChar = ""
+                Dim sb = New System.Text.StringBuilder
+
+                For Each col As DataColumn In table.Columns
+                    'sb.Append(sepChar).Append(row(col.ColumnName).ToString.Replace(".", ","))
+                    sb.Append(sepChar).Append(row(col.ColumnName))
+                Next
+                sw.WriteLine(sb.ToString().Substring(1))
+            Next
+
+        End Using
+
+        Debug.Print(table.TableName)
+
+
+
+
+    End Sub
 
 
 End Module

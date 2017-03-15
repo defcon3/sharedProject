@@ -68,7 +68,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("fJWrrsDoo4ays822")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("srdoEmcACPUbIPJ2")>  _
         Public Property me_delayKey() As String
             Get
                 Return CType(Me("me_delayKey"),String)
@@ -124,6 +124,16 @@ Namespace My
             Set
                 Me("me_connection_user_intervall") = value
             End Set
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Temp\DB_EXPORT.mdb")>  _
+        Public ReadOnly Property DB_EXPORTConnectionString() As String
+            Get
+                Return CType(Me("DB_EXPORTConnectionString"),String)
+            End Get
         End Property
     End Class
 End Namespace
