@@ -697,6 +697,8 @@ Public Class Form1
 
             Dim strg As String = Date.Now.ToString("MM/dd/yyyy hh:mm:ss.fff tt")
 
+            Dim obj As New Object
+
             For Each dt As DataTable In DataSet.Tables
 
                 dt.Columns.Add("timestamp")
@@ -704,8 +706,46 @@ Public Class Form1
                     row("timestamp") = strg
                 Next
 
-
+                ' hier müssen alle Tabellen in die Datenbank geschrieben werden
                 DataTable2CSV2(dt, "C:\Temp\export\" & dt.TableName & ".txt", ";")
+
+                Select Case dt.TableName.ToString.ToUpper
+                    Case Is = "WURZEL"
+                        'sqlstrg = "INSERT INTO tabWurzel ([jsonrpc],[wurzel_Id],[id],[timestamp]) VALUES ( '" & dt.Rows(0).Item(0) & "', '" & dt.Rows(0).Item(1) & "', '" & dt.Rows(0).Item(2) & "', '" & dt.Rows(0).Item(3) & "')"
+                    Case Is = "RESULT"
+                        sqlstrg = "INSERT INTO tabResult ([marketId],[isMarketDataDelayed],[status],[betDelay],[bspReconciled],[complete],[inplay],[numberOfWinners],[numberOfRunners],[numberOfActiveRunners],[totalMatched],[totalAvailable],[crossMatching],[runnersVoidable],[version],[result_Id],[wurzel_Id],[timestamp]) VALUES ( '" & dt.Rows(0).Item(0) & "', '" & dt.Rows(0).Item(1) & "', '" & dt.Rows(0).Item(2) & "', '" & dt.Rows(0).Item(3) & "', '" & dt.Rows(0).Item(4) & "', '" & dt.Rows(0).Item(5) & "', '" & dt.Rows(0).Item(6) & "', '" & dt.Rows(0).Item(7) & "', '" & dt.Rows(0).Item(8) & "', '" & dt.Rows(0).Item(9) & "', '" & dt.Rows(0).Item(10) & "', '" & dt.Rows(0).Item(11) & "', '" & dt.Rows(0).Item(12) & "', '" & dt.Rows(0).Item(13) & "', '" & dt.Rows(0).Item(14) & "', '" & dt.Rows(0).Item(15) & "', '" & dt.Rows(0).Item(16) & "', '" & dt.Rows(0).Item(17) & "')"
+                    Case Is = "RUNNERS"
+                        'sqlstrg = "INSERT INTO tabMetadata ([Market-ID],[Event-ID],[Event-Type],[Event-Name],[Market-Name]) VALUES ( '" & t1 & "', '" & t2 & "', '" & t3 & "', '" & t4 & "', '" & t5 & "')"
+                End Select
+
+
+                con.ConnectionString = My.Settings.DB_EXPORTConnectionString
+                Try
+                    con.Open()
+
+                    Dim commando As New OleDb.OleDbCommand(sqlstrg, con)
+                    If sqlstrg <> vbNullString Then
+                        commando.ExecuteNonQuery()
+                    End If
+
+
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                Finally
+
+                    con.Close()
+                    sqlstrg = vbNullString
+                End Try
+
+
+
+
+                obj = DataSet.Tables
+                'Stop
+
+
+
 
             Next
 
