@@ -1,8 +1,12 @@
 ﻿Imports System.Net
 Imports System.IO
 Imports System.Text
-
-
+Imports MongoDB.Driver
+Imports MongoDB.Bson
+Imports MongoDB.Driver.Core
+Imports MongoDB.Bson.Serialization.Attributes
+Imports MongoDB.Bson.Serialization.IdGenerators
+Imports MongoDB.Bson.Serialization
 
 Public Class Form1
 
@@ -717,10 +721,27 @@ Public Class Form1
                         writeToAccess(New OleDb.OleDbConnection, sqlstrg)
                     Case Is = "RUNNERS"
                         For Each rw As DataRow In dt.Rows
-                            sqlstrg = "INSERT INTO tabRunners ([selectionId],[handicap],[status],[totalMatched],[runners_Id],[result_Id],[timestamp]) VALUES ( '" & rw.Item(0) & "', '" & rw.Item(1) & "', '" & rw.Item(2) & "', '" & rw.Item(3) & "',  '" & rw.Item(4) & "',  '" & rw.Item(5) & "', '" & rw.Item(6) & "')"
+                            sqlstrg = "INSERT INTO tabRunners ([selectionId],[handicap],[status],[ex],[result_Id],[timestamp]) VALUES ( '" & rw.Item(0) & "', '" & rw.Item(1) & "', '" & rw.Item(2) & "', '" & rw.Item(3) & "',  '" & rw.Item(4) & "',  '" & rw.Item(5) & "')"
                             writeToAccess(New OleDb.OleDbConnection, sqlstrg)
                         Next
-                        'sqlstrg = "INSERT INTO tabMetadata ([Market-ID],[Event-ID],[Event-Type],[Event-Name],[Market-Name]) VALUES ( '" & t1 & "', '" & t2 & "', '" & t3 & "', '" & t4 & "', '" & t5 & "')"
+                    Case Is = "EX"
+                        For Each rw As DataRow In dt.Rows
+                            sqlstrg = "INSERT INTO tabEX ([ex_ID],[runners_ID],[timestamp]) VALUES ( '" & t1 & "', '" & t2 & "', '" & t3 & "')"
+                            writeToAccess(New OleDb.OleDbConnection, sqlstrg)
+                        Next
+                    Case Is = "AVAILABLETOBACK"
+                        For Each rw As DataRow In dt.Rows
+                            sqlstrg = "INSERT INTO tabAvailableToBack ([price],[size],[ex_Id],[timestamp]) VALUES ( '" & t1 & "', '" & t2 & "', '" & t3 & "', '" & t4 & "')"
+                            writeToAccess(New OleDb.OleDbConnection, sqlstrg)
+                        Next
+                    Case Is = "AVAILABLETOLAY"
+                        For Each rw As DataRow In dt.Rows
+                            sqlstrg = "INSERT INTO tabAvailableToLay ([price],[size],[ex_Id],[timestamp]) VALUES ( '" & t1 & "', '" & t2 & "', '" & t3 & "', '" & t4 & "')"
+                            writeToAccess(New OleDb.OleDbConnection, sqlstrg)
+                        Next
+
+                        '
+
                 End Select
 
 
@@ -822,6 +843,51 @@ Public Class Form1
     End Sub
 
     Private Sub ListView2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView2.SelectedIndexChanged
+
+    End Sub
+
+    Public Class dorit
+        Property kreativ As String
+    End Class
+
+
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+        Dim client As MongoClient
+        client = New MongoClient("mongodb://localhost")
+
+        Dim database = client.GetDatabase("luthi")
+
+
+
+        Dim collection As IMongoCollection(Of BsonDocument) = database.GetCollection(Of BsonDocument)("employees")
+        Dim emp As BsonDocument = New BsonDocument
+        With emp
+            .Add("_id", 25) 'Guid.NewGuid().ToString)
+            .Add("name", "Neumann")
+            .Add("first_name", "Dieter")
+            .Add("job_desc", "Developer")
+            .Add("location", "hks-hq")
+        End With
+        collection.InsertOne(emp)
+
+
+
+        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("name", "Neumann")
+        For Each item As BsonDocument In collection.Find(filter).ToList
+            Dim name As BsonElement = item.GetElement("name")
+            Console.WriteLine("Name: {0}", name.Value)
+        Next
+
+
+
+
+
+
+
+        'MsgBox(client.Settings.Server.Host)
+
+
+
 
     End Sub
 End Class
