@@ -65,6 +65,7 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Button9 = New System.Windows.Forms.Button()
+        Me.Button10 = New System.Windows.Forms.Button()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -396,11 +397,21 @@ Partial Class Form1
         Me.Button9.Text = "Button9"
         Me.Button9.UseVisualStyleBackColor = True
         '
+        'Button10
+        '
+        Me.Button10.Location = New System.Drawing.Point(527, 649)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(272, 23)
+        Me.Button10.TabIndex = 43
+        Me.Button10.Text = "Button10"
+        Me.Button10.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1147, 773)
+        Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.txtRequest)
@@ -495,4 +506,5 @@ Partial Class Form1
     Friend WithEvents Timer1 As Timer
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Button9 As Button
+    Friend WithEvents Button10 As Button
 End Class

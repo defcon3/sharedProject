@@ -106,40 +106,6 @@ Public Class Form1
 
     End Function
 
-    'Public Class ListMarketCatalogue
-    '    Public jsonrpc As String = "2.0"
-    '    Public method As String = "SportsAPING/v1.0/listMarketCatalogue"
-    '    Public params As New Params
-    '    Public id As Integer = 1
-    'End Class
-
-    'Public Class Params
-    '    Public filter As New Filter
-    '    Public sort As String = "FIRST_TO_START"
-    '    Public maxResults As String = "500"
-    '    Public marketProjection As New List(Of String)
-    'End Class
-
-    'Public Class Filter
-    '    Public eventTypeIds As New List(Of String)
-    '    Public marketCountries As New List(Of String)
-    '    Public marketTypeCodes As New List(Of String)
-    '    Public marketStartTime As New StartTime
-    'End Class
-
-    'Public Class StartTime
-    '    Public from As String
-    '    Public [to] As String
-    'End Class
-
-    'Function serialisiereRequest(ByVal requestList As List(Of ListMarketCatalogue)) As String
-
-    '    Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
-    '    'MsgBox(temp)
-    '    Return temp
-
-    'End Function
-
     Function serialisiereRequest(ByVal requestList As List(Of bfObjects.clsListMarketCatalogue)) As String
 
         Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
@@ -231,9 +197,27 @@ Public Class Form1
         DataSet = New DataSet()
         DataSet.ReadXml(xmlReader)
 
+        Dim sqlstrg As String
+        Dim strg As String = Date.Now.ToString("MM/dd/yyyy HH:mm:ss.fff tt")
 
 
+        For Each dta As DataTable In DataSet.Tables
 
+            dta.Columns.Add("timestamp")
+            For Each row In dta.Rows
+                row("timestamp") = strg
+            Next
+
+            For Each rw In dta.Rows
+                sqlstrg = getInsertString(rw, dta.TableName, dta.Columns)
+                If sqlstrg.Length > 1 Then
+
+                    writeToAccess(New OleDb.OleDbConnection, sqlstrg)
+
+                End If
+            Next
+
+        Next
 
 
 
@@ -281,6 +265,7 @@ Public Class Form1
 
     End Sub
 
+    Property antworttabelle As New DataTable
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         getDelayKey()
         getAbeCookie()
@@ -293,6 +278,13 @@ Public Class Form1
         Call Button7_Click(Nothing, Nothing)
 
         Me.WindowState = 2
+
+
+        Dim dc9 As New DataColumn("ServerResponse")
+        Dim dc8 As New DataColumn("Zeit")
+
+        antworttabelle.Columns.Add(dc9)
+        antworttabelle.Columns.Add(dc8)
 
 
 
@@ -696,6 +688,14 @@ Public Class Form1
 
 
 
+        'Dim dt9 As New DataTable
+        'Dim dc9 As DataColumn
+        'dc9.ColumnName = "ServerResponse"
+        ''dc.MaxLength = 10000
+
+
+
+
 
 
 
@@ -713,17 +713,24 @@ Public Class Form1
             g1 = serverResponse.Substring(1, serverResponse.Length - 2)
             serverResponse = g1.ToString
             '        Debug.Print(serverResponse)
-            cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(serverResponse)
 
-            'TextBox2.Text = serverResponse
 
-            xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
+            Call ausgabeZuDatatable(serverResponse)
+        End While
+        Exit Sub
+
+
+        'cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(serverResponse)
+
+        'TextBox2.Text = serverResponse
+
+        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
 
             xmlReader = New Xml.XmlNodeReader(xmlDoc)
             DataSet = New DataSet()
             DataSet.ReadXml(xmlReader)
 
-            Dim strg As String = Date.Now.ToString("MM/dd/yyyy hh:mm:ss.fff tt")
+            Dim strg As String = Date.Now.ToString("MM/dd/yyyy HH:mm:ss.fff tt")
 
             Dim obj As New Object
 
@@ -735,60 +742,16 @@ Public Class Form1
                 Next
 
                 ' hier müssen alle Tabellen in die Datenbank geschrieben werden
-                DataTable2CSV2(dt, "C:\Temp\export\" & dt.TableName & ".txt", ";")
+                'DataTable2CSV2(dt, "C:\Temp\export\" & dt.TableName & ".txt", ";")
 
-                Select Case dt.TableName.ToString.ToUpper
-                    Case Is = "WURZEL"
-                        'sqlstrg = "INSERT INTO tabWurzel ([jsonrpc],[wurzel_Id],[id],[timestamp]) VALUES ( '" & dt.Rows(0).Item(0) & "', '" & dt.Rows(0).Item(1) & "', '" & dt.Rows(0).Item(2) & "', '" & dt.Rows(0).Item(3) & "')"
-                    Case Is = "RESULT"
-                        sqlstrg = "INSERT INTO tabResult ([marketId],[isMarketDataDelayed],[status],[betDelay],[bspReconciled],[complete],[inplay],[numberOfWinners],[numberOfRunners],[numberOfActiveRunners],[totalMatched],[totalAvailable],[crossMatching],[runnersVoidable],[version],[result_Id],[wurzel_Id],[timestamp]) VALUES ( '" & dt.Rows(0).Item(0) & "', '" & dt.Rows(0).Item(1) & "', '" & dt.Rows(0).Item(2) & "', '" & dt.Rows(0).Item(3) & "', '" & dt.Rows(0).Item(4) & "', '" & dt.Rows(0).Item(5) & "', '" & dt.Rows(0).Item(6) & "', '" & dt.Rows(0).Item(7) & "', '" & dt.Rows(0).Item(8) & "', '" & dt.Rows(0).Item(9) & "', '" & dt.Rows(0).Item(10) & "', '" & dt.Rows(0).Item(11) & "', '" & dt.Rows(0).Item(12) & "', '" & dt.Rows(0).Item(13) & "', '" & dt.Rows(0).Item(14) & "', '" & dt.Rows(0).Item(15) & "', '" & dt.Rows(0).Item(16) & "', '" & dt.Rows(0).Item(17) & "')"
-                        writeToAccess(New OleDb.OleDbConnection, sqlstrg)
-                    Case Is = "RUNNERS"
-                        For Each rw As DataRow In dt.Rows
-                            sqlstrg = "INSERT INTO tabRunners ([selectionId],[handicap],[status],[totalMatched],[runners_ID],[result_Id],[timestamp]) VALUES ( '" & rw.Item(0) & "', '" & rw.Item(1) & "', '" & rw.Item(2) & "', '" & rw.Item(3) & "',  '" & rw.Item(4) & "',  '" & rw.Item(5) & "',  '" & rw.Item(6) & "')"
-                            writeToAccess(New OleDb.OleDbConnection, sqlstrg)
-                        Next
-                    Case Is = "EX"
-                        For Each rw As DataRow In dt.Rows
-                            sqlstrg = "INSERT INTO tabEX ([ex_ID],[runners_ID],[timestamp]) VALUES ( '" & rw.Item(0) & "', '" & rw.Item(1) & "', '" & rw.Item(2) & "')"
-                            writeToAccess(New OleDb.OleDbConnection, sqlstrg)
-                        Next
-                    Case Is = "AVAILABLETOBACK"
-                        For Each rw As DataRow In dt.Rows
-                            sqlstrg = "INSERT INTO tabAvailableToBack ([price],[size],[ex_Id],[timestamp]) VALUES ( '" & rw.Item(0) & "', '" & rw.Item(1) & "', '" & rw.Item(2) & "', '" & rw.Item(3) & "')"
-                            writeToAccess(New OleDb.OleDbConnection, sqlstrg)
-                        Next
-                    Case Is = "AVAILABLETOLAY"
-                        For Each rw As DataRow In dt.Rows
-                            sqlstrg = "INSERT INTO tabAvailableToLay ([price],[size],[ex_Id],[timestamp]) VALUES ( '" & rw.Item(0) & "', '" & rw.Item(1) & "', '" & rw.Item(2) & "', '" & rw.Item(3) & "')"
-                            writeToAccess(New OleDb.OleDbConnection, sqlstrg)
-                        Next
+                '' HIER EXPORT
 
-
-
-                End Select
-
-
-                'con.ConnectionString = My.Settings.DB_EXPORTConnectionString
-                'Try
-                '    con.Open()
-
-                '    Dim commando As New OleDb.OleDbCommand(sqlstrg, con)
-                '    If sqlstrg <> vbNullString Then
-                '        commando.ExecuteNonQuery()
+                'For Each rw In dt.Rows
+                '    sqlstrg = getInsertString(rw, dt.TableName, dt.Columns)
+                '    If sqlstrg.Length > 1 Then
+                '        writeToAccess(New OleDb.OleDbConnection, sqlstrg)
                 '    End If
-
-
-
-                'Catch ex As Exception
-                '    MsgBox(ex.Message)
-                'Finally
-
-                '    con.Close()
-                '    sqlstrg = vbNullString
-                'End Try
-
-
+                'Next
 
 
                 obj = DataSet.Tables
@@ -800,7 +763,7 @@ Public Class Form1
             Next
 
 
-        End While
+        'End While
 
 
 
@@ -831,7 +794,7 @@ Public Class Form1
 
         End Try
 
-        '@@@ 
+
 
 
         'Dim queryString As String = "SELECT CustomerID, CompanyName FROM dbo.Customers"
@@ -870,8 +833,29 @@ Public Class Form1
 
     End Sub
 
-    Public Class dorit
-        Property kreativ As String
-    End Class
 
+
+
+    Private Sub ausgabeZuDatatable(ByVal strg As String)
+
+        Dim dr As DataRow
+
+        dr = antworttabelle.NewRow
+        dr("ServerResponse") = strg
+        dr("Zeit") = Date.Now.ToString("MM/dd/yyyy HH:mm:ss.fff tt")
+        antworttabelle.Rows.Add(dr)
+
+        dr = Nothing
+
+    End Sub
+
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+
+        For Each rw As DataRow In antworttabelle.Rows
+            'Debug.Print(rw("ServerResponse").ToString)
+            Debug.Print(rw("Zeit").ToString)
+        Next
+
+
+    End Sub
 End Class
