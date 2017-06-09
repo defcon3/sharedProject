@@ -485,10 +485,6 @@ Public Class Form1
         txtRefreshRate.Text = TrackBar1.Value * 100
     End Sub
 
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles txtRefreshRate.TextChanged
-
-    End Sub
-
     Private Sub TextBox2_LostFocus(sender As Object, e As EventArgs) Handles txtRefreshRate.LostFocus
         TrackBar1.Value = txtRefreshRate.Text / 100
     End Sub
