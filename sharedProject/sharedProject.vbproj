@@ -83,8 +83,9 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="bfObjects">
-      <HintPath>..\..\..\..\Documents\Visual Studio 2015\Projects\bfObjects\bfObjects\bin\Debug\bfObjects.dll</HintPath>
+    <Reference Include="bfObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bfObjects\bfObjects\bin\Debug\bfObjects.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson, Version=2.4.3.23, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MongoDB.Bson.2.4.3\lib\net45\MongoDB.Bson.dll</HintPath>
