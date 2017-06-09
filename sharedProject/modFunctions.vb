@@ -97,8 +97,6 @@
 
 
         ElseIf TypeOf obj Is bfObjects.structMarketCatalogueResponse Then
-            Dim mcr As bfObjects.structMarketCatalogueResponse
-            'mcr = TryCast(obj, bfObjects.structMarketCatalogueResponse)
 
             dt.Columns.Add("Market ID")
             dt.Columns.Add("Market Name")

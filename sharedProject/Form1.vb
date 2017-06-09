@@ -404,10 +404,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub DataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
-
-    End Sub
-
     Private Sub DataGridView2_DoubleClick(sender As Object, e As EventArgs) Handles DataGridView2.DoubleClick
         Dim temptable As DataTable
         temptable = DataGridView2.DataSource.copy
@@ -472,15 +468,6 @@ Public Class Form1
 
 
     End Sub
-
-    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-
-    End Sub
-
     Private Sub TrackBar1_Scroll(sender As Object, e As EventArgs) Handles TrackBar1.Scroll
         txtRefreshRate.Text = TrackBar1.Value * 100
     End Sub
@@ -824,13 +811,6 @@ Public Class Form1
 
 
     End Sub
-
-    Private Sub ListView2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView2.SelectedIndexChanged
-
-    End Sub
-
-
-
 
     Private Sub ausgabeZuDatatable(ByVal strg As String)
 
