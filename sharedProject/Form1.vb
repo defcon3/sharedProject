@@ -157,18 +157,10 @@ Public Class Form1
     End Function
 
 
-    Public Function serializeRequest(ByVal requestList As Object, obj As Object) As String
-
-        Select Case obj.GetType
-            Case Is = GetType(bfObjects.clsListEventTypes)
-                Return "J"
+    Public Function serializeRequest(ByVal requestList As Object) As String
 
 
-
-        End Select
-
-
-        Return "J"
+        Return Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
 
 
 
@@ -356,38 +348,39 @@ Public Class Form1
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
 
 
-
+        ' es wird eine Liste benötigt, so dass die Serialisierung funktioniert
         Dim neueListe As New List(Of bfObjects.clsListEventTypes)
-        Dim neueListfrage As New bfObjects.clsListEventTypes
+        neueListe.Add(New bfObjects.clsListEventTypes)
 
-        neueListe.Add(neueListfrage)
+        ' Request wird durch Newtonsoft serialisiert
+        Dim serializedRequest As String = serializeRequest(neueListe)
+        serializedRequest = serializeRequest(neueListe)
 
-
-        Dim serialisierteAnfrage As String
-        serialisierteAnfrage = serialisiereListEventTypes(neueListe)
-        Dim r
-        r = serializeRequest(neueListe, New bfObjects.clsListEventTypes)
-
+        ' Ausführen des Requests
         Dim serverResponse As String
-        serverResponse = SendSportsReq(serialisierteAnfrage)
+        serverResponse = SendSportsReq(serializedRequest)
 
-
-        'Dim cls As New clsMarketCatalogueResponse
-        Dim eventTypeResults As New bfObjects.clsEventTypeResultResponse
-
-        Dim response As String
-
-        response = serverResponse.Substring(1, serverResponse.Length - 2)
+        ' Aufbereiten des Antwortsstrings
+        Dim response As String = serverResponse.Substring(1, serverResponse.Length - 2)
         serverResponse = response.ToString
 
-        'Debug.Print(serverResponse)
-
-
-
+        ' Deserialisieren des Antwortstrings
+        Dim eventTypeResults As New bfObjects.clsEventTypeResultResponse
         eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventTypeResultResponse)(serverResponse)
 
+        Dim xmlDoc As Xml.XmlDocument
+        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
 
-        Dim dt As DataTable
+        Dim xmlreader, dataset
+        xmlreader = New Xml.XmlNodeReader(xmlDoc)
+        DataSet = New DataSet()
+        DataSet.ReadXml(xmlReader)
+
+
+
+
+
+        Dim dt As New DataTable
         dt = getDatatableFromResponse(eventTypeResults)
 
         DataGridView2.DataSource = dt.Copy
