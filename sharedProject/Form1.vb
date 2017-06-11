@@ -157,6 +157,25 @@ Public Class Form1
     End Function
 
 
+    Public Function serializeRequest(ByVal requestList As Object, obj As Object) As String
+
+        Select Case obj.GetType
+            Case Is = GetType(bfObjects.clsListEventTypes)
+                Return "J"
+
+
+
+        End Select
+
+
+        Return "J"
+
+
+
+    End Function
+
+
+
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
 
@@ -346,7 +365,8 @@ Public Class Form1
 
         Dim serialisierteAnfrage As String
         serialisierteAnfrage = serialisiereListEventTypes(neueListe)
-
+        Dim r
+        r = serializeRequest(neueListe, New bfObjects.clsListEventTypes)
 
         Dim serverResponse As String
         serverResponse = SendSportsReq(serialisierteAnfrage)
