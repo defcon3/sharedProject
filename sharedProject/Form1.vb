@@ -10,9 +10,20 @@ Imports MongoDB.Bson.Serialization
 
 Public Class Form1
 
+    Private Property läuft As Boolean = False
+    Private Property filesExistieren As Boolean = False
+    Property antworttabelle As New DataTable
+
+    Private WithEvents newFormConnection As New frmConnection
+
 
     Public WithEvents myNewLoginForm As frmLogin
 
+    Public Property eventarray As New List(Of bfObjects.clsEventResult)
+    Public Property eventtype As String
+
+
+    Public Property Requeststring As String
 
     ''' <summary>
     ''' diese Routine wird durch cas Schlíeßen der Login Form ausgelöst
@@ -36,6 +47,11 @@ Public Class Form1
 
     End Sub
 
+    ''' <summary>
+    ''' Klickevent zum Öffnen der Login - Form
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub LoginToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoginToolStripMenuItem.Click
 
         'Dim myNewLoginForm As frmLogin
@@ -265,7 +281,6 @@ Public Class Form1
 
     End Sub
 
-    Property antworttabelle As New DataTable
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         getDelayKey()
         getAbeCookie()
@@ -303,7 +318,6 @@ Public Class Form1
         Return myNewKeepAliveConnection.status
     End Function
 
-    Dim WithEvents newFormConnection As New frmConnection
     Private Sub ConnectionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConnectionToolStripMenuItem.Click
 
         newFormConnection = New frmConnection
@@ -477,11 +491,6 @@ Public Class Form1
     End Sub
 
 
-    Public eventarray As New List(Of bfObjects.clsEventResult)
-    Public eventtype As String
-
-
-    Public Property Requeststring As String
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
 
@@ -605,9 +614,6 @@ Public Class Form1
 
     End Sub
 
-
-    Dim läuft As Boolean = False
-    Dim filesExistieren As Boolean = False
 
     Private Sub btnGO_Click(sender As Object, e As EventArgs) Handles btnGO.Click
 
