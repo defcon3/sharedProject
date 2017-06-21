@@ -718,15 +718,15 @@ Public Class Form1
 
 
             Call ausgabeZuDatatable(serverResponse)
-        End While
-        Exit Sub
+            'End While
 
 
-        'cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(serverResponse)
 
-        'TextBox2.Text = serverResponse
+            'cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(serverResponse)
 
-        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
+            'TextBox2.Text = serverResponse
+
+            xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
 
             xmlReader = New Xml.XmlNodeReader(xmlDoc)
             DataSet = New DataSet()
@@ -743,20 +743,20 @@ Public Class Form1
                     row("timestamp") = strg
                 Next
 
-                ' hier müssen alle Tabellen in die Datenbank geschrieben werden
-                'DataTable2CSV2(dt, "C:\Temp\export\" & dt.TableName & ".txt", ";")
+            ' hier müssen alle Tabellen in die Datenbank geschrieben werden
+            DataTable2CSV2(dt, "C:\Temp\export\" & dt.TableName & ".txt", ";")
 
-                '' HIER EXPORT
+            '' HIER EXPORT
 
-                'For Each rw In dt.Rows
-                '    sqlstrg = getInsertString(rw, dt.TableName, dt.Columns)
-                '    If sqlstrg.Length > 1 Then
-                '        writeToAccess(New OleDb.OleDbConnection, sqlstrg)
-                '    End If
-                'Next
+            'For Each rw In dt.Rows
+            '    sqlstrg = getInsertString(rw, dt.TableName, dt.Columns)
+            '    If sqlstrg.Length > 1 Then
+            '        writeToAccess(New OleDb.OleDbConnection, sqlstrg)
+            '    End If
+            'Next
 
 
-                obj = DataSet.Tables
+            obj = DataSet.Tables
                 'Stop
 
 
@@ -765,7 +765,7 @@ Public Class Form1
             Next
 
 
-        'End While
+        End While
 
 
 
