@@ -59,6 +59,13 @@ Module modKonstanten
         Property itemname As String
         Property itemformat As String
     End Class
+    ''' <summary>
+    ''' Enumeration für den normalen Key oder den Delay Key
+    ''' </summary>
+    Public Enum enumKey
+        delay_key = 1
+        normal_key = 2
+    End Enum
 
 
 End Module

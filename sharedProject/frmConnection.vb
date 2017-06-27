@@ -12,7 +12,7 @@ Public Class frmConnection
 
         ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
 
-
+        cboKey.Text = My.Settings.me_selected_key.ToString
 
     End Sub
 
@@ -31,6 +31,18 @@ Public Class frmConnection
         Me.ComboBox1.Text = My.Settings.me_connection_user_intervall
 
 
+        'For Each ae In enumKey.delay_key
+        '    MsgBox ae.ToString 
+        'Next
+
+
+        'Dim values() As Integer = CType([Enum].GetValues(GetType(enumKey)), Integer())
+        For Each s In [Enum].GetNames(GetType(enumKey))
+            cboKey.Items.Add(s)
+        Next
+
+
+
 
 
     End Sub
@@ -39,5 +51,11 @@ Public Class frmConnection
         My.Settings.me_connection_user_intervall = Me.ComboBox1.Text
         RaiseEvent setIntervall(Me.ComboBox1.Text)
         Me.Dispose()
+    End Sub
+
+    Private Sub cboKey_SelectedValueChanged(sender As Object, e As EventArgs) Handles cboKey.SelectedValueChanged
+
+        My.Settings.me_selected_key = cboKey.Text.ToString
+
     End Sub
 End Class

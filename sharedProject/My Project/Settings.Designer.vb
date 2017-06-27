@@ -135,6 +135,30 @@ Namespace My
                 Return CType(Me("DB_EXPORTConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("delay_key")>  _
+        Public Property me_selected_key() As String
+            Get
+                Return CType(Me("me_selected_key"),String)
+            End Get
+            Set
+                Me("me_selected_key") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("vb0GqKJUPozKinAD")>  _
+        Public Property me_normalKey() As String
+            Get
+                Return CType(Me("me_normalKey"),String)
+            End Get
+            Set
+                Me("me_normalKey") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

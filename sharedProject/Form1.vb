@@ -66,7 +66,6 @@ Public Class Form1
 
 
 
-
         Dim myURI As New Uri(My.Settings.me_betting_uri)
         Dim mySP As ServicePoint = ServicePointManager.FindServicePoint(myURI)
         mySP.Expect100Continue = False
@@ -75,14 +74,13 @@ Public Class Form1
 
         Dim request As WebRequest = WebRequest.Create(myURI)
 
-        'send_keepAlive()
 
 
         Dim byteArray As Byte() = Encoding.Default.GetBytes(jsonString)
 
         request.Method = "POST"
         request.ContentType = "application/json"
-        request.Headers.Add(CStr("X-Application: " & My.Settings.me_delayKey))
+        request.Headers.Add(CStr("X-Application: " & getKeyValue()))
         request.Headers.Add("X-Authentication: " & My.Settings.me_cookie_ABE)
         Dim bl = Encoding.Default.GetBytes(jsonString)
         request.ContentLength = bl.Length
@@ -657,7 +655,7 @@ Public Class Form1
 
             For Each itm As ListViewItem In ListView2.Items
                 sb.Append(itm.Text & ";" & itm.SubItems(1).Text & ";" & itm.SubItems(2).Text & ";" & itm.SubItems(3).Text & ";" & itm.SubItems(4).Text & vbCrLf)
-                sw.WriteLine(sb.ToString)
+
 
                 t1 = itm.Text
                 t2 = itm.SubItems(1).Text
@@ -665,6 +663,8 @@ Public Class Form1
                 t4 = itm.SubItems(3).Text
                 t5 = itm.SubItems(4).Text
             Next
+
+            sw.WriteLine(sb.ToString)
 
         End Using
 
