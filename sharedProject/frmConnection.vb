@@ -56,6 +56,8 @@ Public Class frmConnection
     Private Sub cboKey_SelectedValueChanged(sender As Object, e As EventArgs) Handles cboKey.SelectedValueChanged
 
         My.Settings.me_selected_key = cboKey.Text.ToString
+        My.Settings.me_delayKey = "srdoEmcACPUbIPJ2"
+        My.Settings.Save()
 
     End Sub
 End Class

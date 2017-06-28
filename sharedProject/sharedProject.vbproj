@@ -150,6 +150,12 @@
     <Compile Include="frmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmTechform.Designer.vb">
+      <DependentUpon>frmTechform.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTechform.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="modFunctions.vb" />
     <Compile Include="modKonstanten.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTechform.resx">
+      <DependentUpon>frmTechform.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -208,7 +217,9 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="sharedProject_TemporaryKey.pfx" />
   </ItemGroup>

@@ -68,7 +68,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("fJWrrsDoo4ays822")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("srdoEmcACPUbIPJ2")>  _
         Public Property me_delayKey() As String
             Get
                 Return CType(Me("me_delayKey"),String)

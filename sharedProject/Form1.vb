@@ -62,64 +62,6 @@ Public Class Form1
     End Sub
 
 
-    Private Function SendSportsReq(ByVal jsonString As String) As String
-
-
-
-        Dim myURI As New Uri(My.Settings.me_betting_uri)
-        Dim mySP As ServicePoint = ServicePointManager.FindServicePoint(myURI)
-        mySP.Expect100Continue = False
-
-
-
-        Dim request As WebRequest = WebRequest.Create(myURI)
-
-
-
-        Dim byteArray As Byte() = Encoding.Default.GetBytes(jsonString)
-
-        request.Method = "POST"
-        request.ContentType = "application/json"
-        request.Headers.Add(CStr("X-Application: " & getKeyValue()))
-        request.Headers.Add("X-Authentication: " & My.Settings.me_cookie_ABE)
-        Dim bl = Encoding.Default.GetBytes(jsonString)
-        request.ContentLength = bl.Length
-
-
-
-        Dim datastream As Stream = request.GetRequestStream()
-        datastream.Write(byteArray, 0, bl.Length)
-
-        datastream.Close()
-
-        Dim response As WebResponse = request.GetResponse()
-
-        Dim myHttpWebResponse As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
-        If myHttpWebResponse.StatusCode = HttpStatusCode.OK Then
-            txtConnectionState.Text = "online"
-        Else
-            txtConnectionState.Text = "offline"
-        End If
-
-
-        datastream = response.GetResponseStream()
-
-        Dim reader As New StreamReader(datastream)
-        Dim responseFromServer As String = reader.ReadToEnd()
-
-
-
-        reader.Close()
-        datastream.Close()
-
-
-        'Debug.Print(responseFromServer.ToString)
-        response.Close()
-
-        Return responseFromServer
-
-    End Function
-
     Function serialisiereRequest(ByVal requestList As List(Of bfObjects.clsListMarketCatalogue)) As String
 
         Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
@@ -852,5 +794,69 @@ Public Class Form1
         Next
 
 
+    End Sub
+
+
+
+    Private Function SendSportsReq(ByVal jsonString As String) As String
+
+
+
+        Dim myURI As New Uri(My.Settings.me_betting_uri)
+        Dim mySP As ServicePoint = ServicePointManager.FindServicePoint(myURI)
+        mySP.Expect100Continue = False
+
+
+
+        Dim request As WebRequest = WebRequest.Create(myURI)
+
+
+
+        Dim byteArray As Byte() = Encoding.Default.GetBytes(jsonString)
+
+        request.Method = "POST"
+        request.ContentType = "application/json"
+        request.Headers.Add(CStr("X-Application: " & getKeyValue()))
+        request.Headers.Add("X-Authentication: " & My.Settings.me_cookie_ABE)
+        Dim bl = Encoding.Default.GetBytes(jsonString)
+        request.ContentLength = bl.Length
+
+
+
+        Dim datastream As Stream = request.GetRequestStream()
+        datastream.Write(byteArray, 0, bl.Length)
+
+        datastream.Close()
+
+        Dim response As WebResponse = request.GetResponse()
+
+        Dim myHttpWebResponse As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
+        If myHttpWebResponse.StatusCode = HttpStatusCode.OK Then
+            txtConnectionState.Text = "online"
+        Else
+            txtConnectionState.Text = "offline"
+        End If
+
+
+        datastream = response.GetResponseStream()
+
+        Dim reader As New StreamReader(datastream)
+        Dim responseFromServer As String = reader.ReadToEnd()
+
+
+
+        reader.Close()
+        datastream.Close()
+
+
+        'Debug.Print(responseFromServer.ToString)
+        response.Close()
+
+        Return responseFromServer
+
+    End Function
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        MsgBox(ToolStripMenuItem1.Text)
     End Sub
 End Class
