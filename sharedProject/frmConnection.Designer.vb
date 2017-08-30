@@ -26,6 +26,9 @@ Partial Class frmConnection
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cboKey = New System.Windows.Forms.ComboBox()
         Me.lblKey = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ComboBox1
@@ -64,11 +67,39 @@ Partial Class frmConnection
         Me.lblKey.TabIndex = 3
         Me.lblKey.Text = "Auswahl des Keys"
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(362, 50)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(482, 20)
+        Me.TextBox1.TabIndex = 4
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(439, 31)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(52, 13)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "delay key"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(769, 94)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 6
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmConnection
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(886, 261)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.lblKey)
         Me.Controls.Add(Me.cboKey)
         Me.Controls.Add(Me.Label1)
@@ -84,4 +115,7 @@ Partial Class frmConnection
     Friend WithEvents Label1 As Label
     Friend WithEvents cboKey As ComboBox
     Friend WithEvents lblKey As Label
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Button1 As Button
 End Class

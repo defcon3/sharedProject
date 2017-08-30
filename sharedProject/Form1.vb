@@ -285,7 +285,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub btnListEventTypes_Click(sender As Object, e As EventArgs) Handles btnListEventTypes.Click
 
 
         ' es wird eine Liste benötigt, so dass die Serialisierung funktioniert
@@ -313,17 +313,34 @@ Public Class Form1
 
         Dim xmlreader, dataset
         xmlreader = New Xml.XmlNodeReader(xmlDoc)
-        DataSet = New DataSet()
-        DataSet.ReadXml(xmlReader)
-
-
-
-
+        dataset = New DataSet()
+        dataset.ReadXml(xmlreader)
 
         Dim dt As New DataTable
         dt = getDatatableFromResponse(eventTypeResults)
 
-        DataGridView2.DataSource = dt.Copy
+
+        Dim dt1 As New DataTable
+        Dim dc As New DataColumn("col")
+        dt1.Columns.Add(dc)
+        Dim rw As DataRow
+
+        For Each ea As DataRow In dt.Rows
+
+            rw = dt1.NewRow
+
+            rw("col") = ea.Item(0).ToString.PadLeft(10, " ") & " - " & ea.Item(1).ToString.PadRight(25, " ") & " - " & ea.Item(2)
+
+            dt1.Rows.Add(rw)
+
+        Next
+
+        clbListEventTypes.DataSource = dt1
+        clbListEventTypes.DisplayMember = "col"
+
+
+
+
 
     End Sub
 
@@ -685,20 +702,20 @@ Public Class Form1
                     row("timestamp") = strg
                 Next
 
-            ' hier müssen alle Tabellen in die Datenbank geschrieben werden
-            DataTable2CSV2(dt, "C:\Temp\export\" & dt.TableName & ".txt", ";")
+                ' hier müssen alle Tabellen in die Datenbank geschrieben werden
+                DataTable2CSV2(dt, "C:\Temp\export\" & dt.TableName & ".txt", ";")
 
-            '' HIER EXPORT
+                '' HIER EXPORT
 
-            'For Each rw In dt.Rows
-            '    sqlstrg = getInsertString(rw, dt.TableName, dt.Columns)
-            '    If sqlstrg.Length > 1 Then
-            '        writeToAccess(New OleDb.OleDbConnection, sqlstrg)
-            '    End If
-            'Next
+                'For Each rw In dt.Rows
+                '    sqlstrg = getInsertString(rw, dt.TableName, dt.Columns)
+                '    If sqlstrg.Length > 1 Then
+                '        writeToAccess(New OleDb.OleDbConnection, sqlstrg)
+                '    End If
+                'Next
 
 
-            obj = DataSet.Tables
+                obj = DataSet.Tables
                 'Stop
 
 
@@ -858,5 +875,43 @@ Public Class Form1
 
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
         MsgBox(ToolStripMenuItem1.Text)
+    End Sub
+
+    Private Sub DataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
+
+    End Sub
+
+    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
+
+
+
+        'CheckedListBox1.DataSource = DataGridView2.DataSource.copy
+        Dim dt As New DataTable
+        Dim dc As New DataColumn("col")
+        dt.Columns.Add(dc)
+        Dim rw As DataRow
+
+        For Each ea As DataRow In DataGridView2.DataSource.copy.rows
+
+            rw = dt.NewRow
+
+            rw("col") = ea.Item(0).ToString.PadLeft(10, " ") & " - " & ea.Item(1).ToString.PadRight(25, " ") & " - " & ea.Item(2)
+
+            dt.Rows.Add(rw)
+
+        Next
+
+        clbListEventTypes.DataSource = dt
+        clbListEventTypes.DisplayMember = "col"
+
+
+
+
+
+
+    End Sub
+
+    Private Sub Button4_ChangeUICues(sender As Object, e As UICuesEventArgs) Handles btnListEventTypes.ChangeUICues
+
     End Sub
 End Class

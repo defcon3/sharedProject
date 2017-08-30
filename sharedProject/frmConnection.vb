@@ -41,7 +41,7 @@ Public Class frmConnection
             cboKey.Items.Add(s)
         Next
 
-
+        Me.TextBox1.Text = My.Settings.me_delayKey
 
 
 
@@ -56,8 +56,12 @@ Public Class frmConnection
     Private Sub cboKey_SelectedValueChanged(sender As Object, e As EventArgs) Handles cboKey.SelectedValueChanged
 
         My.Settings.me_selected_key = cboKey.Text.ToString
-        My.Settings.me_delayKey = "srdoEmcACPUbIPJ2"
+        My.Settings.me_delayKey = Me.TextBox1.Text
         My.Settings.Save()
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
     End Sub
 End Class
