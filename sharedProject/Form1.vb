@@ -25,6 +25,16 @@ Public Class Form1
 
     Public Property Requeststring As String
 
+    Public Sub New()
+
+        ' Dieser Aufruf ist für den Designer erforderlich.
+        InitializeComponent()
+
+        ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
+
+
+
+    End Sub
     ''' <summary>
     ''' diese Routine wird durch cas Schlíeßen der Login Form ausgelöst
     ''' Es muss der cookie ins filesystem geschrieben werden.
@@ -252,7 +262,11 @@ Public Class Form1
         antworttabelle.Columns.Add(dc9)
         antworttabelle.Columns.Add(dc8)
 
+        Button4.Text = "lkj"
 
+        'Me.UctlListElement1 = New uctlListElement("lasd")
+        'Me.UctlListElement1 = New uctlListElement("1")
+        'Me.UctlListElement1 = New uctlListElement("2")
 
 
     End Sub
@@ -904,14 +918,9 @@ Public Class Form1
         clbListEventTypes.DataSource = dt
         clbListEventTypes.DisplayMember = "col"
 
-
-
-
-
-
     End Sub
 
-    Private Sub Button4_ChangeUICues(sender As Object, e As UICuesEventArgs) Handles btnListEventTypes.ChangeUICues
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
 
     End Sub
 End Class
