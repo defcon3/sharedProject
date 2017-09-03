@@ -69,8 +69,7 @@ Partial Class Form1
         Me.clbListEventTypes = New System.Windows.Forms.CheckedListBox()
         Me.Button11 = New System.Windows.Forms.Button()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.UctlCheckedList1 = New sharedProject.uctlCheckedList()
+        Me.UctlListEventTypes = New sharedProject.uctlCheckedList()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.dgv1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -437,29 +436,25 @@ Partial Class Form1
         Me.DataGridView2.Size = New System.Drawing.Size(556, 124)
         Me.DataGridView2.TabIndex = 17
         '
-        'Button4
+        'UctlListEventTypes
         '
-        Me.Button4.Location = New System.Drawing.Point(1007, 37)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 47
-        Me.Button4.Text = "Button4"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'UctlCheckedList1
-        '
-        Me.UctlCheckedList1.Location = New System.Drawing.Point(255, 37)
-        Me.UctlCheckedList1.Name = "UctlCheckedList1"
-        Me.UctlCheckedList1.Size = New System.Drawing.Size(561, 157)
-        Me.UctlCheckedList1.TabIndex = 48
+        Me.UctlListEventTypes.DataSource = Nothing
+        Me.UctlListEventTypes.Location = New System.Drawing.Point(115, 56)
+        Me.UctlListEventTypes.myType = Nothing
+        Me.UctlListEventTypes.Name = "UctlListEventTypes"
+        Me.UctlListEventTypes.selektierteMenge = Nothing
+        Me.UctlListEventTypes.Size = New System.Drawing.Size(561, 157)
+        Me.UctlListEventTypes.Spalte_1 = Nothing
+        Me.UctlListEventTypes.Spalte_2 = Nothing
+        Me.UctlListEventTypes.Spalte_3 = Nothing
+        Me.UctlListEventTypes.TabIndex = 48
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1415, 837)
-        Me.Controls.Add(Me.UctlCheckedList1)
-        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.UctlListEventTypes)
         Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.clbListEventTypes)
         Me.Controls.Add(Me.Button10)
@@ -552,6 +547,5 @@ Partial Class Form1
     Friend WithEvents clbListEventTypes As CheckedListBox
     Friend WithEvents Button11 As Button
     Friend WithEvents DataGridView2 As DataGridView
-    Friend WithEvents Button4 As Button
-    Friend WithEvents UctlCheckedList1 As uctlCheckedList
+    Friend WithEvents UctlListEventTypes As uctlCheckedList
 End Class

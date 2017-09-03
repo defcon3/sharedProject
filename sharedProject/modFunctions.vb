@@ -341,6 +341,20 @@
     End Function
 
 
+    Public Function serialisiereRequest(ByVal requestList As List(Of bfObjects.clsListMarketCatalogue)) As String
+
+        Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
+
+        Return temp
+
+    End Function
+    Public Function serializeRequest(ByVal requestList As Object) As String
+
+        Return Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
+
+    End Function
+
+
 
 
 End Module

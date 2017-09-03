@@ -10,6 +10,10 @@ Imports MongoDB.Bson.Serialization
 
 Public Class Form1
 
+
+
+
+
     Private Property läuft As Boolean = False
     Private Property filesExistieren As Boolean = False
     Property antworttabelle As New DataTable
@@ -72,13 +76,7 @@ Public Class Form1
     End Sub
 
 
-    Function serialisiereRequest(ByVal requestList As List(Of bfObjects.clsListMarketCatalogue)) As String
 
-        Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
-
-        Return temp
-
-    End Function
 
     Function serialisiereListEventTypes(ByVal requestList As List(Of bfObjects.clsListEventTypes)) As String
 
@@ -107,14 +105,7 @@ Public Class Form1
     End Function
 
 
-    Public Function serializeRequest(ByVal requestList As Object) As String
 
-
-        Return Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
-
-
-
-    End Function
 
 
 
@@ -262,7 +253,10 @@ Public Class Form1
         antworttabelle.Columns.Add(dc9)
         antworttabelle.Columns.Add(dc8)
 
-        Button4.Text = "lkj"
+
+
+
+
 
         'Me.UctlListElement1 = New uctlListElement("lasd")
         'Me.UctlListElement1 = New uctlListElement("1")
@@ -300,6 +294,9 @@ Public Class Form1
     End Sub
 
     Private Sub btnListEventTypes_Click(sender As Object, e As EventArgs) Handles btnListEventTypes.Click
+
+
+        UctlListEventTypes.myType = GetType(bfObjects.clsListEventTypes)
 
 
         ' es wird eine Liste benötigt, so dass die Serialisierung funktioniert
@@ -829,7 +826,43 @@ Public Class Form1
 
 
 
-    Private Function SendSportsReq(ByVal jsonString As String) As String
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        MsgBox(ToolStripMenuItem1.Text)
+    End Sub
+
+    Private Sub DataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
+
+    End Sub
+
+    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
+
+
+
+        'CheckedListBox1.DataSource = DataGridView2.DataSource.copy
+        Dim dt As New DataTable
+        Dim dc As New DataColumn("col")
+        dt.Columns.Add(dc)
+        Dim rw As DataRow
+
+        For Each ea As DataRow In DataGridView2.DataSource.copy.rows
+
+            rw = dt.NewRow
+
+            rw("col") = ea.Item(0).ToString.PadLeft(10, " ") & " - " & ea.Item(1).ToString.PadRight(25, " ") & " - " & ea.Item(2)
+
+            dt.Rows.Add(rw)
+
+        Next
+
+        clbListEventTypes.DataSource = dt
+        clbListEventTypes.DisplayMember = "col"
+
+    End Sub
+
+
+
+    Public Function SendSportsReq(ByVal jsonString As String) As String
 
 
 
@@ -883,44 +916,12 @@ Public Class Form1
         'Debug.Print(responseFromServer.ToString)
         response.Close()
 
+        ergebnis = responseFromServer
         Return responseFromServer
 
     End Function
 
-    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
-        MsgBox(ToolStripMenuItem1.Text)
-    End Sub
-
-    Private Sub DataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
-
-    End Sub
-
-    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
-
-
-
-        'CheckedListBox1.DataSource = DataGridView2.DataSource.copy
-        Dim dt As New DataTable
-        Dim dc As New DataColumn("col")
-        dt.Columns.Add(dc)
-        Dim rw As DataRow
-
-        For Each ea As DataRow In DataGridView2.DataSource.copy.rows
-
-            rw = dt.NewRow
-
-            rw("col") = ea.Item(0).ToString.PadLeft(10, " ") & " - " & ea.Item(1).ToString.PadRight(25, " ") & " - " & ea.Item(2)
-
-            dt.Rows.Add(rw)
-
-        Next
-
-        clbListEventTypes.DataSource = dt
-        clbListEventTypes.DisplayMember = "col"
-
-    End Sub
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub UctlListEventTypes_Load(sender As Object, e As EventArgs) Handles UctlListEventTypes.Load
 
     End Sub
 End Class

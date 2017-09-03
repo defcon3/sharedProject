@@ -2,6 +2,7 @@
 Imports System.IO
 Module modKonstanten
 
+    Public ergebnis As String
 
     Public ReadOnly Property myExchangeAdress = "https://api.betfair.com/exchange/betting/json-rpc/v1"
     Public myExchangeURI As New Uri(myExchangeAdress)
@@ -66,6 +67,7 @@ Module modKonstanten
         delay_key = 1
         normal_key = 2
     End Enum
+
 
 
 End Module
