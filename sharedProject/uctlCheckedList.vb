@@ -3,7 +3,17 @@
 ''' </summary>
 Public Class uctlCheckedList
 
-    Public Event getreq(ByVal getreq As Object)
+    ''' <summary>
+    ''' Übergibt die Abfrage zu serialisieren
+    ''' </summary>
+    ''' <param name="getreq"></param>
+    Public Event getreq(ByRef getreq As Object)
+
+    ''' <summary>
+    ''' Übergibt die Antwort zu serialisieren
+    ''' </summary>
+    ''' <param name="resp"></param>
+    Public Event getresp(ByVal resp As String)
 
     ''' <summary>
     ''' Nimmt den Inhaltstypen des Controls auf
@@ -60,6 +70,10 @@ Public Class uctlCheckedList
         Return Nothing
     End Function
 
+    Public serializedRequestFromForm As String = ""
+    Public serializedResponseFromForm As String = ""
+
+
     Public Sub btnButton_Click(sender As Object, e As EventArgs) Handles btnButton.Click
 
         Dim neueListe As New Object
@@ -69,6 +83,7 @@ Public Class uctlCheckedList
         serializedRequest = serializeRequest(neueListe)
 
         Dim serverResponse As String
+
 
 
         Select Case myType.FullName.ToString
@@ -83,7 +98,8 @@ Public Class uctlCheckedList
         End Select
 
 
-        serverResponse = ergebnis
+        RaiseEvent getresp(serializedRequestFromForm)
+        serverResponse = serializedResponseFromForm
 
 
         ' Aufbereiten des Antwortsstrings
@@ -130,8 +146,6 @@ Public Class uctlCheckedList
 
 
     End Sub
-
-
 
 
 End Class

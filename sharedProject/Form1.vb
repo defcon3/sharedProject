@@ -253,7 +253,7 @@ Public Class Form1
         antworttabelle.Columns.Add(dc9)
         antworttabelle.Columns.Add(dc8)
 
-
+        UctlListEventTypes.myType = GetType(bfObjects.clsListEventTypes)
 
 
 
@@ -296,7 +296,7 @@ Public Class Form1
     Private Sub btnListEventTypes_Click(sender As Object, e As EventArgs) Handles btnListEventTypes.Click
 
 
-        UctlListEventTypes.myType = GetType(bfObjects.clsListEventTypes)
+
 
 
         ' es wird eine Liste benötigt, so dass die Serialisierung funktioniert
@@ -355,7 +355,11 @@ Public Class Form1
 
     End Sub
 
+
+
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+
+
 
         Dim filter As New bfObjects.clsMarketFilter
         filter.eventTypeIds = TextBox1.Text
@@ -921,7 +925,22 @@ Public Class Form1
 
     End Function
 
-    Private Sub UctlListEventTypes_Load(sender As Object, e As EventArgs) Handles UctlListEventTypes.Load
+
+
+
+    Public Sub getreq(ByRef getrequest As Object) Handles UctlListEventTypes.getreq
+
+        serializeRequest(getrequest)
+        UctlListEventTypes.serializedRequestFromForm = getrequest
+
 
     End Sub
+
+    Public Sub getresp(ByVal getresponse As String) Handles UctlListEventTypes.getresp
+
+        UctlListEventTypes.serializedResponseFromForm = SendSportsReq(getresponse)
+
+
+    End Sub
+
 End Class
