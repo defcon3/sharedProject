@@ -439,7 +439,7 @@ Partial Class Form1
         'UctlListEventTypes
         '
         Me.UctlListEventTypes.DataSource = Nothing
-        Me.UctlListEventTypes.Location = New System.Drawing.Point(115, 56)
+        Me.UctlListEventTypes.Location = New System.Drawing.Point(130, 56)
         Me.UctlListEventTypes.myType = Nothing
         Me.UctlListEventTypes.Name = "UctlListEventTypes"
         Me.UctlListEventTypes.selektierteMenge = Nothing

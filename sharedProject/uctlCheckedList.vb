@@ -78,10 +78,6 @@ Public Class uctlCheckedList
 
         Dim neueListe As New Object
 
-        ' Request wird durch Newtonsoft serialisiert
-        Dim serializedRequest As String = serializeRequest(neueListe)
-        serializedRequest = serializeRequest(neueListe)
-
         Dim serverResponse As String
 
 
