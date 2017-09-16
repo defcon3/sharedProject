@@ -930,7 +930,7 @@ Public Class Form1
 
     Public Sub getreq(ByRef getrequest As Object) Handles UctlListEventTypes.getreq
 
-        serializeRequest(getrequest)
+        Call serializeRequest(getrequest)
         UctlListEventTypes.serializedRequestFromForm = getrequest
 
 

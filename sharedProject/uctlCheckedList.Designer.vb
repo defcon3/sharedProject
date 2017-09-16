@@ -22,19 +22,19 @@ Partial Class uctlCheckedList
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.clbListEventTypes = New System.Windows.Forms.CheckedListBox()
+        Me.clbCheckedListBox = New System.Windows.Forms.CheckedListBox()
         Me.btnButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'clbListEventTypes
+        'clbCheckedListBox
         '
-        Me.clbListEventTypes.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.clbListEventTypes.FormattingEnabled = True
-        Me.clbListEventTypes.HorizontalScrollbar = True
-        Me.clbListEventTypes.Location = New System.Drawing.Point(3, 31)
-        Me.clbListEventTypes.Name = "clbListEventTypes"
-        Me.clbListEventTypes.Size = New System.Drawing.Size(555, 124)
-        Me.clbListEventTypes.TabIndex = 46
+        Me.clbCheckedListBox.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.clbCheckedListBox.FormattingEnabled = True
+        Me.clbCheckedListBox.HorizontalScrollbar = True
+        Me.clbCheckedListBox.Location = New System.Drawing.Point(3, 31)
+        Me.clbCheckedListBox.Name = "clbCheckedListBox"
+        Me.clbCheckedListBox.Size = New System.Drawing.Size(555, 124)
+        Me.clbCheckedListBox.TabIndex = 46
         '
         'btnButton
         '
@@ -42,14 +42,14 @@ Partial Class uctlCheckedList
         Me.btnButton.Name = "btnButton"
         Me.btnButton.Size = New System.Drawing.Size(556, 23)
         Me.btnButton.TabIndex = 45
-        Me.btnButton.Text = "listEventTypes"
+        Me.btnButton.Text = "btnPlaceHolder"
         Me.btnButton.UseVisualStyleBackColor = True
         '
         'uctlCheckedList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.clbListEventTypes)
+        Me.Controls.Add(Me.clbCheckedListBox)
         Me.Controls.Add(Me.btnButton)
         Me.Name = "uctlCheckedList"
         Me.Size = New System.Drawing.Size(561, 157)
@@ -57,6 +57,6 @@ Partial Class uctlCheckedList
 
     End Sub
 
-    Friend WithEvents clbListEventTypes As CheckedListBox
+    Friend WithEvents clbCheckedListBox As CheckedListBox
     Friend WithEvents btnButton As Button
 End Class

@@ -16,12 +16,32 @@ Public Class uctlCheckedList
     Public Event getresp(ByVal resp As String)
 
     ''' <summary>
+    ''' interne Typvariable des Controltypes
+    ''' </summary>
+    Private _mytype As Type = Nothing
+
+    ''' <summary>
     ''' Nimmt den Inhaltstypen des Controls auf
     ''' </summary>
     ''' <returns></returns>
-    Public Property myType As Type
+    Public Property myType() As Type
+        ' Abholen des Eigenschaftenwerts 
+        Get
+            Return _myType
+        End Get
+        ' Setzen des Eigenschaftenwerts 
+        Set(ByVal Value As Type)
+            _mytype = Value
+            If Not Value Is Nothing Then
+                Call _subFormatMe(Value)
+            End If
+        End Set
+    End Property
 
 
+    ''' <summary>
+    ''' Konstruktor der Klasse
+    ''' </summary>
     Public Sub New()
 
         ' Dieser Aufruf ist für den Designer erforderlich.
@@ -29,13 +49,14 @@ Public Class uctlCheckedList
 
         ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
 
+
     End Sub
 
     ''' <summary>
     ''' Datenquelle, die der Checked List Box zugrunde liegt
     ''' </summary>
     ''' <returns>Datenqelle als DataTable</returns>
-    Public Property DataSource As DataTable
+    Public Property DataSource As New DataTable
 
     'Public ReadOnly Property _BeschriftungButton As String
     ''' <summary>
@@ -70,23 +91,33 @@ Public Class uctlCheckedList
         Return Nothing
     End Function
 
+
     Public serializedRequestFromForm As String = ""
     Public serializedResponseFromForm As String = ""
 
-
+    ''' <summary>
+    ''' Klickereignis des Buttons
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Public Sub btnButton_Click(sender As Object, e As EventArgs) Handles btnButton.Click
 
         Dim neueListe As New Object
 
-        Dim serverResponse As String
+        Dim serverResponse As String = vbNullString
 
 
-
+        ' Fallunterscheidung welches Object das Klickereignis aufruft. Das bedeutet, welches Objekt hat das "UserControl im Bauch"
+        ' Den Typnamen bekommt das Steuerelement von aussen eingepflanzt
+        ' Es wird das Objekt für die Anfrage aufbereitet
         Select Case myType.FullName.ToString
+            ' wenn es vom Typ clsListEventTypes ist ...
             Case = GetType(bfObjects.clsListEventTypes).ToString
                 neueListe = New List(Of bfObjects.clsListEventTypes)
                 neueListe.Add(New bfObjects.clsListEventTypes)
-                RaiseEvent getreq(serializeRequest(neueListe))
+            Case = GetType(bfObjects.clsListEvents).ToString
+                neueListe = New List(Of bfObjects.clsListEvents)
+                neueListe.Add(New bfObjects.clsListEvents)
 
 
 
@@ -94,6 +125,10 @@ Public Class uctlCheckedList
         End Select
 
 
+
+
+
+        RaiseEvent getreq(serializeRequest(neueListe))
         RaiseEvent getresp(serializedRequestFromForm)
         serverResponse = serializedResponseFromForm
 
@@ -133,8 +168,8 @@ Public Class uctlCheckedList
 
         Next
 
-        clbListEventTypes.DataSource = dt1
-        clbListEventTypes.DisplayMember = "col"
+        clbCheckedListBox.DataSource = dt1
+        clbCheckedListBox.DisplayMember = "col"
 
 
 
@@ -143,5 +178,22 @@ Public Class uctlCheckedList
 
     End Sub
 
+    Private Sub _subFormatMe(ByVal Typ As Type)
+
+
+        Select Case Typ.FullName.ToString
+            ' wenn es vom Typ clsListEventTypes ist ...
+            Case = GetType(bfObjects.clsListEventTypes).ToString
+                Me.btnButton.Text = "ListEventTypes"
+                'neueListe.Add(New bfObjects.clsListEventTypes)
+            Case = GetType(bfObjects.clsListEvents).ToString
+                Me.btnButton.Text = "ListEvents"
+
+
+
+            Case = GetType(bfObjects.clsAvailableToBack).ToString
+        End Select
+
+    End Sub
 
 End Class

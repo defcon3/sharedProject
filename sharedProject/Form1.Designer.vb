@@ -70,6 +70,7 @@ Partial Class Form1
         Me.Button11 = New System.Windows.Forms.Button()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.UctlListEventTypes = New sharedProject.uctlCheckedList()
+        Me.UctlListEvents = New sharedProject.uctlCheckedList()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.dgv1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -439,7 +440,7 @@ Partial Class Form1
         'UctlListEventTypes
         '
         Me.UctlListEventTypes.DataSource = Nothing
-        Me.UctlListEventTypes.Location = New System.Drawing.Point(130, 56)
+        Me.UctlListEventTypes.Location = New System.Drawing.Point(453, 27)
         Me.UctlListEventTypes.myType = Nothing
         Me.UctlListEventTypes.Name = "UctlListEventTypes"
         Me.UctlListEventTypes.selektierteMenge = Nothing
@@ -449,11 +450,25 @@ Partial Class Form1
         Me.UctlListEventTypes.Spalte_3 = Nothing
         Me.UctlListEventTypes.TabIndex = 48
         '
+        'UctlListEvents
+        '
+        Me.UctlListEvents.DataSource = Nothing
+        Me.UctlListEvents.Location = New System.Drawing.Point(387, 146)
+        Me.UctlListEvents.myType = Nothing
+        Me.UctlListEvents.Name = "UctlListEvents"
+        Me.UctlListEvents.selektierteMenge = Nothing
+        Me.UctlListEvents.Size = New System.Drawing.Size(561, 157)
+        Me.UctlListEvents.Spalte_1 = Nothing
+        Me.UctlListEvents.Spalte_2 = Nothing
+        Me.UctlListEvents.Spalte_3 = Nothing
+        Me.UctlListEvents.TabIndex = 49
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1415, 837)
+        Me.Controls.Add(Me.UctlListEvents)
         Me.Controls.Add(Me.UctlListEventTypes)
         Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.clbListEventTypes)
@@ -548,4 +563,5 @@ Partial Class Form1
     Friend WithEvents Button11 As Button
     Friend WithEvents DataGridView2 As DataGridView
     Friend WithEvents UctlListEventTypes As uctlCheckedList
+    Friend WithEvents UctlListEvents As uctlCheckedList
 End Class
