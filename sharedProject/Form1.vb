@@ -255,7 +255,8 @@ Public Class Form1
 
         UctlListEventTypes.myType = GetType(bfObjects.clsListEventTypes)
 
-
+        UctlListEvents.myType = GetType(bfObjects.clsListEvents)
+        UctlListEvents.parentcontrol = UctlListEventTypes
 
 
         'Me.UctlListElement1 = New uctlListElement("lasd")
@@ -926,18 +927,38 @@ Public Class Form1
 
 
 
-    Public Sub getreq(ByRef getrequest As Object) Handles UctlListEventTypes.getreq
+    Public Sub getreq(ByRef getrequest As Object) Handles UctlListEventTypes.getreq, UctlListEvents.getreq
 
         Call serializeRequest(getrequest)
-        UctlListEventTypes.serializedRequestFromForm = getrequest
+
+        For Each ctl In Me.Controls
+            If ctl.name.ToString.Substring(0, 4).ToString.ToUpper = "uctl".ToUpper Then
+
+                ctl.serializedRequestFromForm = getrequest
+
+                'MsgBox("got it")
+            End If
+        Next
+
+
+
+        'UctlListEventTypes.serializedRequestFromForm = getrequest
 
 
     End Sub
 
-    Public Sub getresp(ByVal getresponse As String) Handles UctlListEventTypes.getresp
+    Public Sub getresp(ByVal getresponse As String) Handles UctlListEventTypes.getresp, UctlListEvents.getresp
 
-        UctlListEventTypes.serializedResponseFromForm = SendSportsReq(getresponse)
+        For Each ctl In Me.Controls
+            If ctl.name.ToString.Substring(0, 4).ToString.ToUpper = "uctl".ToUpper Then
 
+                ctl.serializedResponseFromForm = SendSportsReq(getresponse)
+
+                'MsgBox("got it")
+            End If
+        Next
+
+        'UctlListEventTypes.serializedResponseFromForm = SendSportsReq(getresponse)
 
     End Sub
 

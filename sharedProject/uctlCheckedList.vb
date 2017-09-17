@@ -2,7 +2,7 @@
 ''' Klasse des Benutzersteuerelements mit dem CheckedListBox
 ''' </summary>
 Public Class uctlCheckedList
-
+    Inherits UserControl
     ''' <summary>
     ''' Übergibt die Abfrage zu serialisieren
     ''' </summary>
@@ -106,9 +106,9 @@ Public Class uctlCheckedList
     ''' <summary>
     ''' Das Usercontrol von dem die Liste mit markierten Einträgen übernommen wird
     ''' </summary>
-    Public WriteOnly Property parentcontrol As UserControl
+    Public WriteOnly Property parentcontrol As uctlCheckedList
         ' Setzen des Eigenschaftenwerts 
-        Set(ByVal Value As UserControl)
+        Set(ByVal Value As uctlCheckedList)
             _parentcontrol = Value
         End Set
     End Property
@@ -116,7 +116,7 @@ Public Class uctlCheckedList
     ''' Klasseninterne Variable für das Usercontrol von dem die Liste mit den markierten Einträgen übernommen wird.
     ''' </summary>
     ''' <returns></returns>
-    Private Property _parentcontrol As UserControl = Nothing
+    Private Property _parentcontrol As uctlCheckedList = Nothing
 
 
     ''' <summary>
@@ -141,7 +141,10 @@ Public Class uctlCheckedList
                 neueListe.Add(New bfObjects.clsListEventTypes)
             Case = GetType(bfObjects.clsListEvents).ToString
                 neueListe = New List(Of bfObjects.clsListEvents)
-                neueListe.Add(New bfObjects.clsListEvents)
+
+                neueListe.add(New bfObjects.clsListEvents With {.params = New bfObjects.clsParams With {.filter = New bfObjects.clsFilter With {.eventTypeIds = _parentcontrol._markierteIDs}}})
+
+                'neueListe.Add(New bfObjects.clsListEvents)
 
 
 
@@ -220,25 +223,36 @@ Public Class uctlCheckedList
 
     End Sub
 
-
-    Private Sub clbCheckedListBox_ItemCheck(sender As Object, e As ItemCheckEventArgs) Handles clbCheckedListBox.ItemCheck
-
+    Private Property _markierteIDs As List(Of String)
+    Private Sub clbCheckedListBox_MouseUp(sender As Object, e As MouseEventArgs) Handles clbCheckedListBox.MouseUp
         Dim clb_ci As CheckedListBox.CheckedItemCollection
         clb_ci = clbCheckedListBox.CheckedItems
 
-        Dim i As Integer = 0
-        Dim dr As DataRowView
 
+        If clb_ci.Count < 1 Then Exit Sub
 
+        Dim drv As DataRowView
+        Dim dr As DataRow
+        Dim strg As Long = 0
+        Dim listeMitIds As New List(Of String)
 
-        If clb_ci.Count < 0 Then Exit Sub
 
         For i = 1 To clb_ci.Count
-            Debug.Print(clb_ci.Item(i - 1).ToString)
-            dr = clb_ci.Item(i - 1)
+
+            drv = clb_ci.Item(i - 1)
+            dr = drv.Row
+
+            listeMitIds.Add(Split(dr(0).ToString, "-")(0).Trim)
+
+            'Debug.Print(listeMitIds.Count.ToString)
 
         Next
 
+        _markierteIDs = listeMitIds
+
 
     End Sub
+
+
+
 End Class
