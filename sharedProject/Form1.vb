@@ -361,13 +361,11 @@ Public Class Form1
 
 
 
-        Dim filter As New bfObjects.clsMarketFilter
-        filter.eventTypeIds = TextBox1.Text
-
 
         Dim neueListe As New List(Of bfObjects.clsListEvents)
         Dim neueListfrage As New bfObjects.clsListEvents
-        neueListfrage.params.filter.eventTypeIds.Add(TextBox1.Text)
+        neueListfrage.params.filter.eventTypeIds.Add("2")
+        neueListfrage.params.filter.eventTypeIds.Add("1")
 
         neueListe.Add(neueListfrage)
 

@@ -91,9 +91,33 @@ Public Class uctlCheckedList
         Return Nothing
     End Function
 
+    ''' <summary>
+    ''' Anfrage an den Server
+    ''' </summary>
+    ''' <returns>serialisierte Anfrage</returns>
+    Public Property serializedRequestFromForm As String = ""
 
-    Public serializedRequestFromForm As String = ""
-    Public serializedResponseFromForm As String = ""
+    ''' <summary>
+    ''' Antwort des Servers
+    ''' </summary>
+    ''' <returns>Antwortstring des Servers</returns>
+    Public Property serializedResponseFromForm As String = ""
+
+    ''' <summary>
+    ''' Das Usercontrol von dem die Liste mit markierten Einträgen übernommen wird
+    ''' </summary>
+    Public WriteOnly Property parentcontrol As UserControl
+        ' Setzen des Eigenschaftenwerts 
+        Set(ByVal Value As UserControl)
+            _parentcontrol = Value
+        End Set
+    End Property
+    ''' <summary>
+    ''' Klasseninterne Variable für das Usercontrol von dem die Liste mit den markierten Einträgen übernommen wird.
+    ''' </summary>
+    ''' <returns></returns>
+    Private Property _parentcontrol As UserControl = Nothing
+
 
     ''' <summary>
     ''' Klickereignis des Buttons
@@ -196,4 +220,25 @@ Public Class uctlCheckedList
 
     End Sub
 
+
+    Private Sub clbCheckedListBox_ItemCheck(sender As Object, e As ItemCheckEventArgs) Handles clbCheckedListBox.ItemCheck
+
+        Dim clb_ci As CheckedListBox.CheckedItemCollection
+        clb_ci = clbCheckedListBox.CheckedItems
+
+        Dim i As Integer = 0
+        Dim dr As DataRowView
+
+
+
+        If clb_ci.Count < 0 Then Exit Sub
+
+        For i = 1 To clb_ci.Count
+            Debug.Print(clb_ci.Item(i - 1).ToString)
+            dr = clb_ci.Item(i - 1)
+
+        Next
+
+
+    End Sub
 End Class
