@@ -15,16 +15,13 @@ Public Class Form1
 
 
     Private Property läuft As Boolean = False
-    Private Property filesExistieren As Boolean = False
+
     Property antworttabelle As New DataTable
 
     Private WithEvents newFormConnection As New frmConnection
 
 
     Public WithEvents myNewLoginForm As frmLogin
-
-    Public Property eventarray As New List(Of bfObjects.clsEventResult)
-    Public Property eventtype As String
 
 
     Public Property Requeststring As String
@@ -75,163 +72,6 @@ Public Class Form1
 
     End Sub
 
-
-
-
-    Function serialisiereListEventTypes(ByVal requestList As List(Of bfObjects.clsListEventTypes)) As String
-
-        Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
-
-        Return temp
-
-    End Function
-
-
-    Function serialisiereListEvents(ByVal requestList As List(Of bfObjects.clsListEvents)) As String
-
-        Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
-
-        Return temp
-
-    End Function
-
-
-    Function serialisiereMarketBooks(ByVal requestList As List(Of bfObjects.clsMarketBookRequest)) As String
-
-        Dim temp As String = Newtonsoft.Json.JsonConvert.SerializeObject(requestList)
-
-        Return temp
-
-    End Function
-
-
-
-
-
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-
-
-        Dim neueListe As New List(Of bfObjects.clsListMarketCatalogue)
-        Dim neueListfrage As New bfObjects.clsListMarketCatalogue
-
-        neueListfrage.params.filter.eventIds.Add(txtMarket.Text)
-        neueListfrage.params.marketProjection.Add("EVENT")
-        neueListfrage.params.marketProjection.Add("EVENT_TYPE")
-        neueListfrage.params.marketProjection.Add("COMPETITION")
-        neueListfrage.params.marketProjection.Add("MARKET_START_TIME")
-        neueListfrage.params.marketProjection.Add("MARKET_DESCRIPTION")
-        neueListfrage.params.marketProjection.Add("RUNNER_DESCRIPTION")
-        neueListfrage.params.marketProjection.Add("RUNNER_METADATA")
-
-
-
-        neueListe.Add(neueListfrage)
-
-
-        Dim serialisierteAnfrage As String
-        serialisierteAnfrage = serialisiereRequest(neueListe)
-
-
-        Dim serverResponse As String
-        serverResponse = SendSportsReq(serialisierteAnfrage)
-
-
-
-        'Dim cls As New clsMarketCatalogueResponse
-        Dim cls As New bfObjects.structMarketCatalogueResponse
-
-        Dim g1 As String
-
-        g1 = serverResponse.Substring(1, serverResponse.Length - 2)
-        serverResponse = g1.ToString
-
-        Debug.Print(serverResponse)
-
-
-
-        cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.structMarketCatalogueResponse)(serverResponse)
-
-
-        Dim xmlDoc As Xml.XmlDocument
-        Dim DataSet = New DataSet()
-        Dim xmlReader As Xml.XmlNodeReader
-
-        'TextBox2.Text = serverResponse
-
-        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
-
-        xmlReader = New Xml.XmlNodeReader(xmlDoc)
-        DataSet = New DataSet()
-        DataSet.ReadXml(xmlReader)
-
-        Dim sqlstrg As String
-        Dim strg As String = Date.Now.ToString("MM/dd/yyyy HH:mm:ss.fff tt")
-
-
-        For Each dta As DataTable In DataSet.Tables
-
-            dta.Columns.Add("timestamp")
-            For Each row In dta.Rows
-                row("timestamp") = strg
-            Next
-
-            For Each rw In dta.Rows
-                sqlstrg = getInsertString(rw, dta.TableName, dta.Columns)
-                If sqlstrg.Length > 1 Then
-
-                    writeToAccess(New OleDb.OleDbConnection, sqlstrg)
-
-                End If
-            Next
-
-        Next
-
-
-
-
-
-        Dim dt As DataTable
-        dt = getDatatableFromResponse(cls)
-
-        'DataGridView1.DataSource = dt.Copy
-
-        ListView1.Items.Clear()
-        ListView1.Columns.Clear()
-
-
-
-        Dim header1, header2 As ColumnHeader
-        header1 = New ColumnHeader
-        header1.TextAlign = HorizontalAlignment.Left
-        header1.Text = "Market ID"
-        header1.Width = ListView1.Width / 2 - 10
-        header2 = New ColumnHeader
-        header2.TextAlign = HorizontalAlignment.Left
-        header2.Text = "Market Name"
-        header2.Width = header1.Width
-        ListView1.Columns.Add(header1)
-        ListView1.Columns.Add(header2)
-        ListView1.CheckBoxes = True
-        ListView1.View = View.Details
-
-
-        Dim ListItem1 As ListViewItem
-
-        ' ListItem1 = ListView1.Items.Add("eins")
-        'ListItem1.SubItems.Add("zwei")
-
-        For Each rw As DataRow In dt.Rows
-            ListItem1 = New ListViewItem
-            ListItem1.Text = rw.Item(0).ToString
-            ListItem1.SubItems.Add(rw.Item(1).ToString)
-            ListView1.Items.Add(ListItem1)
-        Next
-
-
-
-
-    End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         getDelayKey()
@@ -291,240 +131,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub refreshHearbeatintervall(ByVal intervall As Integer) Handles newFormConnection.setIntervall
-
-        Me.txtHeartbeatintervall.Text = intervall
-
-    End Sub
-
-    Private Sub btnListEventTypes_Click(sender As Object, e As EventArgs) Handles btnListEventTypes.Click
-
-
-
-
-
-        ' es wird eine Liste benötigt, so dass die Serialisierung funktioniert
-        Dim neueListe As New List(Of bfObjects.clsListEventTypes)
-        neueListe.Add(New bfObjects.clsListEventTypes)
-
-        ' Request wird durch Newtonsoft serialisiert
-        Dim serializedRequest As String = serializeRequest(neueListe)
-        serializedRequest = serializeRequest(neueListe)
-
-        ' Ausführen des Requests
-        Dim serverResponse As String
-        serverResponse = SendSportsReq(serializedRequest)
-
-        ' Aufbereiten des Antwortsstrings
-        Dim response As String = serverResponse.Substring(1, serverResponse.Length - 2)
-        serverResponse = response.ToString
-
-        ' Deserialisieren des Antwortstrings
-        Dim eventTypeResults As New bfObjects.clsEventTypeResultResponse
-        eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventTypeResultResponse)(serverResponse)
-
-        Dim xmlDoc As Xml.XmlDocument
-        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
-
-        Dim xmlreader, dataset
-        xmlreader = New Xml.XmlNodeReader(xmlDoc)
-        dataset = New DataSet()
-        dataset.ReadXml(xmlreader)
-
-        Dim dt As New DataTable
-        dt = getDatatableFromResponse(eventTypeResults)
-
-
-        Dim dt1 As New DataTable
-        Dim dc As New DataColumn("col")
-        dt1.Columns.Add(dc)
-        Dim rw As DataRow
-
-        For Each ea As DataRow In dt.Rows
-
-            rw = dt1.NewRow
-
-            rw("col") = ea.Item(0).ToString.PadLeft(10, " ") & " - " & ea.Item(1).ToString.PadRight(25, " ") & " - " & ea.Item(2)
-
-            dt1.Rows.Add(rw)
-
-        Next
-
-        clbListEventTypes.DataSource = dt1
-        clbListEventTypes.DisplayMember = "col"
-
-
-
-
-
-    End Sub
-
-
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-
-
-
-
-        Dim neueListe As New List(Of bfObjects.clsListEvents)
-        Dim neueListfrage As New bfObjects.clsListEvents
-        neueListfrage.params.filter.eventTypeIds.Add("2")
-        neueListfrage.params.filter.eventTypeIds.Add("1")
-
-        neueListe.Add(neueListfrage)
-
-
-        Dim serialisierteAnfrage As String
-        serialisierteAnfrage = serialisiereListEvents(neueListe)
-
-
-        Dim serverResponse As String
-        serverResponse = SendSportsReq(serialisierteAnfrage)
-
-
-        'Dim cls As New clsMarketCatalogueResponse
-        Dim eventResults As New bfObjects.clsEventResultResponse
-
-        Dim response As String
-
-        response = serverResponse.Substring(1, serverResponse.Length - 2)
-        serverResponse = response.ToString
-
-        'Debug.Print(serverResponse)
-
-
-
-        eventResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventResultResponse)(serverResponse)
-
-
-        Dim dt As DataTable
-        dt = getDatatableFromResponse(eventResults)
-
-        dgv1.DataSource = dt.Copy
-
-
-    End Sub
-
-    Private Sub DataGridView2_DoubleClick(sender As Object, e As EventArgs) Handles DataGridView2.DoubleClick
-        Dim temptable As DataTable
-        temptable = DataGridView2.DataSource.copy
-        TextBox1.Text = temptable.Rows(DataGridView2.CurrentRow.Index).Item(0).ToString
-
-        'MsgBox(temptable.Rows(DataGridView2.CurrentRow.Index).Item(0).ToString)
-
-
-    End Sub
-
-    Private Sub dgv1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv1.CellContentClick
-        Dim temptable As DataTable
-        temptable = dgv1.DataSource.copy
-        txtMarket.Text = temptable.Rows(dgv1.CurrentRow.Index).Item(0).ToString
-    End Sub
-
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-
-        Dim foundRow() As DataRow
-        foundRow = DataGridView2.DataSource.copy.select("ID='" & TextBox1.Text & "'")
-
-        eventtype = foundRow(0).ItemArray(1).ToString
-
-
-        'Dim foundRow() As DataRow
-        foundRow = dgv1.DataSource.copy.select("ID='" & txtMarket.Text & "'")
-
-        Dim eventarrayitem As New bfObjects.clsEventResult
-        Dim tempevent As New bfObjects.clsEvent
-        With eventarrayitem
-            tempevent.id = foundRow(0).ItemArray(0).ToString
-            tempevent.name = foundRow(0).ItemArray(1).ToString
-            tempevent.countryCode = foundRow(0).ItemArray(2).ToString
-            tempevent.timezone = foundRow(0).ItemArray(3).ToString
-            tempevent.openDate = foundRow(0).ItemArray(4).ToString
-            .marketCount = foundRow(0).ItemArray(5).ToString
-            .event = tempevent
-        End With
-        eventarray.Add(eventarrayitem)
-
-
-
-        Dim ListItem1 As ListViewItem
-
-        ' ListItem1 = ListView1.Items.Add("eins")
-        'ListItem1.SubItems.Add("zwei")
-
-        For Each itm As ListViewItem In ListView1.Items
-            If itm.Checked Then
-                ListItem1 = New ListViewItem
-                'ListItem1.Text = eventarrayitem.event.id
-                'ListItem1.SubItems.Add(itm.Text)
-                ListItem1.Text = itm.Text
-                ListItem1.SubItems.Add(eventarrayitem.event.id)
-                ListItem1.SubItems.Add(eventtype)
-                ListItem1.SubItems.Add(eventarrayitem.event.name)
-                ListItem1.SubItems.Add(itm.SubItems(1).Text)
-                ListView2.Items.Add(ListItem1)
-            End If
-
-        Next
-
-
-    End Sub
-    Private Sub TrackBar1_Scroll(sender As Object, e As EventArgs) Handles TrackBar1.Scroll
-        txtRefreshRate.Text = TrackBar1.Value * 100
-    End Sub
-
-    Private Sub TextBox2_LostFocus(sender As Object, e As EventArgs) Handles txtRefreshRate.LostFocus
-        TrackBar1.Value = txtRefreshRate.Text / 100
-    End Sub
-
-
-
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-
-
-
-        Dim neueListe As New List(Of bfObjects.clsMarketBookRequest)
-        Dim neueListfrage As New bfObjects.clsMarketBookRequest
-        Dim PriceProjection As New bfObjects.clsPriceProjection
-
-        If cboPriceData1.SelectedValue >= 0 Then
-            PriceProjection.priceData.Add(cboPriceData1.Text)
-        End If
-        If cboPriceData2.SelectedValue >= 0 And cboPriceData1.SelectedValue <> cboPriceData2.SelectedValue Then
-            PriceProjection.priceData.Add(cboPriceData2.Text)
-        End If
-
-
-        Dim MarketBookParams As New bfObjects.clsMarketBookParams
-        MarketBookParams.priceProjection = PriceProjection
-        If cboOrderData.SelectedValue >= 0 Then
-            MarketBookParams.orderProjection = cboOrderData.Text
-        End If
-
-        For Each i As ListViewItem In ListView2.Items
-            MarketBookParams.marketIds.Add(i.Text.ToString)
-        Next
-
-        neueListfrage.params = MarketBookParams
-
-
-        neueListe.Add(neueListfrage)
-
-        Dim serialisierteAnfrage As String
-        serialisierteAnfrage = serialisiereMarketBooks(neueListe)
-
-        Requeststring = serialisierteAnfrage
-
-
-
-        txtRequest.Text = Requeststring
-
-
-
-
-
-
-    End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
 
@@ -749,9 +355,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
-        läuft = False
-    End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
         Dim strg As String
@@ -831,43 +434,6 @@ Public Class Form1
     End Sub
 
 
-
-
-    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
-        MsgBox(ToolStripMenuItem1.Text)
-    End Sub
-
-    Private Sub DataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
-
-    End Sub
-
-    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
-
-
-
-        'CheckedListBox1.DataSource = DataGridView2.DataSource.copy
-        Dim dt As New DataTable
-        Dim dc As New DataColumn("col")
-        dt.Columns.Add(dc)
-        Dim rw As DataRow
-
-        For Each ea As DataRow In DataGridView2.DataSource.copy.rows
-
-            rw = dt.NewRow
-
-            rw("col") = ea.Item(0).ToString.PadLeft(10, " ") & " - " & ea.Item(1).ToString.PadRight(25, " ") & " - " & ea.Item(2)
-
-            dt.Rows.Add(rw)
-
-        Next
-
-        clbListEventTypes.DataSource = dt
-        clbListEventTypes.DisplayMember = "col"
-
-    End Sub
-
-
-
     Public Function SendSportsReq(ByVal jsonString As String) As String
 
 
@@ -944,10 +510,6 @@ Public Class Form1
         Next
 
 
-
-        'UctlListEventTypes.serializedRequestFromForm = getrequest
-
-
     End Sub
 
     Public Sub getresp(ByVal getresponse As String) Handles UctlListEventTypes.getresp, UctlListEvents.getresp, UctlListMarketCatalogue.getresp
@@ -965,7 +527,4 @@ Public Class Form1
 
     End Sub
 
-    Private Sub UctlListEventTypes_Load(sender As Object, e As EventArgs)
-
-    End Sub
 End Class

@@ -24,7 +24,6 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.txtConnectionState = New System.Windows.Forms.ToolStripTextBox()
@@ -41,13 +40,6 @@ Partial Class Form1
         Me.ConnectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.btnListEventTypes = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.dgv1 = New System.Windows.Forms.DataGridView()
-        Me.txtMarket = New System.Windows.Forms.TextBox()
-        Me.ListView1 = New System.Windows.Forms.ListView()
-        Me.Button5 = New System.Windows.Forms.Button()
         Me.TrackBar1 = New System.Windows.Forms.TrackBar()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtRefreshRate = New System.Windows.Forms.TextBox()
@@ -67,7 +59,6 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
-        Me.clbListEventTypes = New System.Windows.Forms.CheckedListBox()
         Me.Button11 = New System.Windows.Forms.Button()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.UctlListEventTypes = New sharedProject.uctlCheckedList()
@@ -75,19 +66,9 @@ Partial Class Form1
         Me.UctlListMarketCatalogue = New sharedProject.uctlCheckedList()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
-        CType(Me.dgv1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(143, 464)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(425, 23)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Market Info"
-        Me.Button2.UseVisualStyleBackColor = True
         '
         'ToolStrip1
         '
@@ -195,65 +176,6 @@ Partial Class Form1
         Me.Button1.TabIndex = 12
         Me.Button1.Text = "keep Alive"
         Me.Button1.UseVisualStyleBackColor = True
-        '
-        'btnListEventTypes
-        '
-        Me.btnListEventTypes.Location = New System.Drawing.Point(12, 124)
-        Me.btnListEventTypes.Name = "btnListEventTypes"
-        Me.btnListEventTypes.Size = New System.Drawing.Size(556, 23)
-        Me.btnListEventTypes.TabIndex = 15
-        Me.btnListEventTypes.Text = "listEventTypes"
-        Me.btnListEventTypes.UseVisualStyleBackColor = True
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(12, 283)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(80, 20)
-        Me.TextBox1.TabIndex = 18
-        Me.TextBox1.Text = "1"
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(115, 283)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(453, 23)
-        Me.Button3.TabIndex = 19
-        Me.Button3.Text = "Events"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'dgv1
-        '
-        Me.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv1.Location = New System.Drawing.Point(13, 310)
-        Me.dgv1.Name = "dgv1"
-        Me.dgv1.Size = New System.Drawing.Size(555, 150)
-        Me.dgv1.TabIndex = 20
-        '
-        'txtMarket
-        '
-        Me.txtMarket.Location = New System.Drawing.Point(13, 464)
-        Me.txtMarket.Name = "txtMarket"
-        Me.txtMarket.Size = New System.Drawing.Size(80, 20)
-        Me.txtMarket.TabIndex = 22
-        Me.txtMarket.Text = "1"
-        '
-        'ListView1
-        '
-        Me.ListView1.Location = New System.Drawing.Point(13, 493)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(555, 259)
-        Me.ListView1.TabIndex = 24
-        Me.ListView1.UseCompatibleStateImageBehavior = False
-        '
-        'Button5
-        '
-        Me.Button5.Location = New System.Drawing.Point(12, 758)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(556, 23)
-        Me.Button5.TabIndex = 25
-        Me.Button5.Text = "Märkte übernehmen"
-        Me.Button5.UseVisualStyleBackColor = True
         '
         'TrackBar1
         '
@@ -411,16 +333,6 @@ Partial Class Form1
         Me.Button10.Text = "Button10"
         Me.Button10.UseVisualStyleBackColor = True
         '
-        'clbListEventTypes
-        '
-        Me.clbListEventTypes.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.clbListEventTypes.FormattingEnabled = True
-        Me.clbListEventTypes.HorizontalScrollbar = True
-        Me.clbListEventTypes.Location = New System.Drawing.Point(13, 153)
-        Me.clbListEventTypes.Name = "clbListEventTypes"
-        Me.clbListEventTypes.Size = New System.Drawing.Size(555, 124)
-        Me.clbListEventTypes.TabIndex = 44
-        '
         'Button11
         '
         Me.Button11.Location = New System.Drawing.Point(595, 748)
@@ -442,7 +354,7 @@ Partial Class Form1
         'UctlListEventTypes
         '
         Me.UctlListEventTypes.DataSource = Nothing
-        Me.UctlListEventTypes.Location = New System.Drawing.Point(453, 27)
+        Me.UctlListEventTypes.Location = New System.Drawing.Point(0, 123)
         Me.UctlListEventTypes.myType = Nothing
         Me.UctlListEventTypes.Name = "UctlListEventTypes"
         Me.UctlListEventTypes.selektierteMenge = Nothing
@@ -457,7 +369,7 @@ Partial Class Form1
         'UctlListEvents
         '
         Me.UctlListEvents.DataSource = Nothing
-        Me.UctlListEvents.Location = New System.Drawing.Point(387, 146)
+        Me.UctlListEvents.Location = New System.Drawing.Point(0, 291)
         Me.UctlListEvents.myType = Nothing
         Me.UctlListEvents.Name = "UctlListEvents"
         Me.UctlListEvents.selektierteMenge = Nothing
@@ -471,7 +383,7 @@ Partial Class Form1
         '
         'UctlListMarketCatalogue
         '
-        Me.UctlListMarketCatalogue.Location = New System.Drawing.Point(539, 330)
+        Me.UctlListMarketCatalogue.Location = New System.Drawing.Point(0, 469)
         Me.UctlListMarketCatalogue.myType = Nothing
         Me.UctlListMarketCatalogue.Name = "UctlListMarketCatalogue"
         Me.UctlListMarketCatalogue.selektierteMenge = Nothing
@@ -493,7 +405,6 @@ Partial Class Form1
         Me.Controls.Add(Me.UctlListEvents)
         Me.Controls.Add(Me.UctlListEventTypes)
         Me.Controls.Add(Me.Button11)
-        Me.Controls.Add(Me.clbListEventTypes)
         Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.TextBox2)
@@ -512,18 +423,10 @@ Partial Class Form1
         Me.Controls.Add(Me.txtRefreshRate)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TrackBar1)
-        Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.ListView1)
-        Me.Controls.Add(Me.txtMarket)
-        Me.Controls.Add(Me.dgv1)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.DataGridView2)
-        Me.Controls.Add(Me.btnListEventTypes)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.Button2)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form1"
         Me.Text = "AutoBetEngine"
@@ -531,14 +434,12 @@ Partial Class Form1
         Me.ToolStrip1.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        CType(Me.dgv1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Button2 As Button
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents ToolStripLabel1 As ToolStripLabel
     Friend WithEvents txtConnectionState As ToolStripTextBox
@@ -554,13 +455,6 @@ Partial Class Form1
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripLabel3 As ToolStripLabel
     Friend WithEvents txtHeartbeatintervall As ToolStripTextBox
-    Friend WithEvents btnListEventTypes As Button
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button3 As Button
-    Friend WithEvents dgv1 As DataGridView
-    Friend WithEvents txtMarket As TextBox
-    Friend WithEvents ListView1 As ListView
-    Friend WithEvents Button5 As Button
     Friend WithEvents TrackBar1 As TrackBar
     Friend WithEvents Label1 As Label
     Friend WithEvents txtRefreshRate As TextBox
@@ -581,7 +475,6 @@ Partial Class Form1
     Friend WithEvents Button9 As Button
     Friend WithEvents Button10 As Button
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents clbListEventTypes As CheckedListBox
     Friend WithEvents Button11 As Button
     Friend WithEvents DataGridView2 As DataGridView
     Friend WithEvents UctlListEventTypes As uctlCheckedList
