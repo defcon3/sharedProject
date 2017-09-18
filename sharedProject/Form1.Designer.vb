@@ -23,6 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.Button2 = New System.Windows.Forms.Button()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
@@ -71,6 +72,7 @@ Partial Class Form1
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.UctlListEventTypes = New sharedProject.uctlCheckedList()
         Me.UctlListEvents = New sharedProject.uctlCheckedList()
+        Me.UctlListMarketCatalogue = New sharedProject.uctlCheckedList()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.dgv1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -444,6 +446,8 @@ Partial Class Form1
         Me.UctlListEventTypes.myType = Nothing
         Me.UctlListEventTypes.Name = "UctlListEventTypes"
         Me.UctlListEventTypes.selektierteMenge = Nothing
+        Me.UctlListEventTypes.serializedRequestFromForm = ""
+        Me.UctlListEventTypes.serializedResponseFromForm = ""
         Me.UctlListEventTypes.Size = New System.Drawing.Size(561, 157)
         Me.UctlListEventTypes.Spalte_1 = Nothing
         Me.UctlListEventTypes.Spalte_2 = Nothing
@@ -457,17 +461,35 @@ Partial Class Form1
         Me.UctlListEvents.myType = Nothing
         Me.UctlListEvents.Name = "UctlListEvents"
         Me.UctlListEvents.selektierteMenge = Nothing
+        Me.UctlListEvents.serializedRequestFromForm = ""
+        Me.UctlListEvents.serializedResponseFromForm = ""
         Me.UctlListEvents.Size = New System.Drawing.Size(561, 157)
         Me.UctlListEvents.Spalte_1 = Nothing
         Me.UctlListEvents.Spalte_2 = Nothing
         Me.UctlListEvents.Spalte_3 = Nothing
         Me.UctlListEvents.TabIndex = 49
         '
+        'UctlListMarketCatalogue
+        '
+        Me.UctlListMarketCatalogue.Location = New System.Drawing.Point(539, 330)
+        Me.UctlListMarketCatalogue.myType = Nothing
+        Me.UctlListMarketCatalogue.Name = "UctlListMarketCatalogue"
+        Me.UctlListMarketCatalogue.selektierteMenge = Nothing
+        Me.UctlListMarketCatalogue.serializedRequestFromForm = ""
+        Me.UctlListMarketCatalogue.serializedResponseFromForm = ""
+        Me.UctlListMarketCatalogue.Size = New System.Drawing.Size(561, 157)
+        Me.UctlListMarketCatalogue.Spalte_1 = Nothing
+        Me.UctlListMarketCatalogue.Spalte_2 = Nothing
+        Me.UctlListMarketCatalogue.Spalte_3 = Nothing
+        Me.UctlListMarketCatalogue.TabIndex = 50
+        Me.UctlListMarketCatalogue.Tag = ""
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1415, 837)
+        Me.Controls.Add(Me.UctlListMarketCatalogue)
         Me.Controls.Add(Me.UctlListEvents)
         Me.Controls.Add(Me.UctlListEventTypes)
         Me.Controls.Add(Me.Button11)
@@ -564,4 +586,5 @@ Partial Class Form1
     Friend WithEvents DataGridView2 As DataGridView
     Friend WithEvents UctlListEventTypes As uctlCheckedList
     Friend WithEvents UctlListEvents As uctlCheckedList
+    Friend WithEvents UctlListMarketCatalogue As uctlCheckedList
 End Class

@@ -259,6 +259,9 @@ Public Class Form1
         UctlListEvents.parentcontrol = UctlListEventTypes
 
 
+        UctlListMarketCatalogue.myType = GetType(bfObjects.clsListMarketCatalogue)
+        UctlListMarketCatalogue.parentcontrol = UctlListEvents
+
         'Me.UctlListElement1 = New uctlListElement("lasd")
         'Me.UctlListElement1 = New uctlListElement("1")
         'Me.UctlListElement1 = New uctlListElement("2")
@@ -927,7 +930,7 @@ Public Class Form1
 
 
 
-    Public Sub getreq(ByRef getrequest As Object) Handles UctlListEventTypes.getreq, UctlListEvents.getreq
+    Public Sub getreq(ByRef getrequest As Object) Handles UctlListEventTypes.getreq, UctlListEvents.getreq, UctlListMarketCatalogue.getreq
 
         Call serializeRequest(getrequest)
 
@@ -947,7 +950,7 @@ Public Class Form1
 
     End Sub
 
-    Public Sub getresp(ByVal getresponse As String) Handles UctlListEventTypes.getresp, UctlListEvents.getresp
+    Public Sub getresp(ByVal getresponse As String) Handles UctlListEventTypes.getresp, UctlListEvents.getresp, UctlListMarketCatalogue.getresp
 
         For Each ctl In Me.Controls
             If ctl.name.ToString.Substring(0, 4).ToString.ToUpper = "uctl".ToUpper Then
@@ -962,7 +965,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub UctlListEventTypes_Load(sender As Object, e As EventArgs) Handles UctlListEventTypes.Load
+    Private Sub UctlListEventTypes_Load(sender As Object, e As EventArgs)
 
     End Sub
 End Class

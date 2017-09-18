@@ -141,14 +141,12 @@ Public Class uctlCheckedList
                 neueListe.Add(New bfObjects.clsListEventTypes)
             Case = GetType(bfObjects.clsListEvents).ToString
                 neueListe = New List(Of bfObjects.clsListEvents)
-
                 neueListe.add(New bfObjects.clsListEvents With {.params = New bfObjects.clsParams With {.filter = New bfObjects.clsFilter With {.eventTypeIds = _parentcontrol._markierteIDs}}})
+            Case = GetType(bfObjects.clsListMarketCatalogue).ToString
+                neueListe = New List(Of bfObjects.clsListMarketCatalogue)
+                'neueListe.Add(New bfObjects.clsListMarketCatalogue)
+                neueListe.Add(New bfObjects.clsListMarketCatalogue With {.params = New bfObjects.clsParams With {.filter = New bfObjects.clsFilter With {.eventIds = _parentcontrol._markierteIDs}, .marketProjection = New List(Of String) From {"EVENT", "EVENT_TYPE", "COMPETITION", "MARKET_START_TIME", "MARKET_DESCRIPTION", "RUNNER_DESCRIPTION", "RUNNER_METADATA"}}})
 
-                'neueListe.Add(New bfObjects.clsListEvents)
-
-
-
-            Case = GetType(bfObjects.clsAvailableToBack).ToString
         End Select
 
 
@@ -164,9 +162,32 @@ Public Class uctlCheckedList
         Dim response As String = serverResponse.Substring(1, serverResponse.Length - 2)
         serverResponse = response.ToString
 
+
+
+
         ' Deserialisieren des Antwortstrings
-        Dim eventTypeResults As New bfObjects.clsEventTypeResultResponse
-        eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventTypeResultResponse)(serverResponse)
+        'Dim eventTypeResults As New bfObjects.clsEventTypeResultResponse
+        ' Instanziieren eine Objektes - leider late binding
+        Dim eventTypeResults As New Object
+
+
+
+
+        Select Case myType.FullName.ToString
+            ' wenn es vom Typ clsListEventTypes ist ...
+            Case = GetType(bfObjects.clsListEventTypes).ToString
+                eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventTypeResultResponse)(serverResponse)
+            Case = GetType(bfObjects.clsListEvents).ToString
+                eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventResultResponse)(serverResponse)
+            Case = GetType(bfObjects.clsListMarketCatalogue).ToString
+                eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.structMarketCatalogueResponse)(serverResponse)
+        End Select
+
+
+
+
+
+        'eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventTypeResultResponse)(serverResponse)
 
         Dim xmlDoc As Xml.XmlDocument
         xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
@@ -189,7 +210,7 @@ Public Class uctlCheckedList
 
             rw = dt1.NewRow
 
-            rw("col") = ea.Item(0).ToString.PadLeft(10, " ") & " - " & ea.Item(1).ToString.PadRight(25, " ") & " - " & ea.Item(2)
+            rw("col") = ea.Item(0).ToString.PadLeft(10, " ") & " - " & ea.Item(1).ToString.PadRight(25, " ") ''& " - " & ea.Item(2)
 
             dt1.Rows.Add(rw)
 
@@ -215,6 +236,8 @@ Public Class uctlCheckedList
                 'neueListe.Add(New bfObjects.clsListEventTypes)
             Case = GetType(bfObjects.clsListEvents).ToString
                 Me.btnButton.Text = "ListEvents"
+            Case = GetType(bfObjects.clsListMarketCatalogue).ToString
+                Me.btnButton.Text = "ListMarketCatalogue"
 
 
 
