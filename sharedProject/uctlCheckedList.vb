@@ -127,7 +127,6 @@ Public Class uctlCheckedList
     Public Sub btnButton_Click(sender As Object, e As EventArgs) Handles btnButton.Click
 
         Dim neueListe As New Object
-
         Dim serverResponse As String = vbNullString
 
 
@@ -146,7 +145,6 @@ Public Class uctlCheckedList
                 neueListe = New List(Of bfObjects.clsListMarketCatalogue)
                 'neueListe.Add(New bfObjects.clsListMarketCatalogue)
                 neueListe.Add(New bfObjects.clsListMarketCatalogue With {.params = New bfObjects.clsParams With {.filter = New bfObjects.clsFilter With {.eventIds = _parentcontrol._markierteIDs}, .marketProjection = New List(Of String) From {"EVENT", "EVENT_TYPE", "COMPETITION", "MARKET_START_TIME", "MARKET_DESCRIPTION", "RUNNER_DESCRIPTION", "RUNNER_METADATA"}}})
-
         End Select
 
 
@@ -246,7 +244,16 @@ Public Class uctlCheckedList
 
     End Sub
 
+    ''' <summary>
+    ''' Klasseninterne Variable für die markierten IDs im Steuerelement
+    ''' </summary>
+    ''' <returns></returns>
     Private Property _markierteIDs As List(Of String)
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub clbCheckedListBox_MouseUp(sender As Object, e As MouseEventArgs) Handles clbCheckedListBox.MouseUp
         Dim clb_ci As CheckedListBox.CheckedItemCollection
         clb_ci = clbCheckedListBox.CheckedItems
