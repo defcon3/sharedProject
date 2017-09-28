@@ -185,6 +185,7 @@ Public Class uctlCheckedList
 
 
 
+
         'eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventTypeResultResponse)(serverResponse)
 
         Dim xmlDoc As Xml.XmlDocument
