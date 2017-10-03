@@ -62,10 +62,12 @@ Partial Class Form1
         Me.Button11 = New System.Windows.Forms.Button()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.UctlListMarketCatalogue = New sharedProject.uctlCheckedList()
         Me.UctlListEvents = New sharedProject.uctlCheckedList()
         Me.UctlListEventTypes = New sharedProject.uctlCheckedList()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.TreeView2 = New System.Windows.Forms.TreeView()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -362,6 +364,24 @@ Partial Class Form1
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(492, 38)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 52
+        Me.Button3.Text = "Button3"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(658, 37)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.TabIndex = 53
+        Me.Button4.Text = "Button4"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'UctlListMarketCatalogue
         '
         Me.UctlListMarketCatalogue.Location = New System.Drawing.Point(0, 469)
@@ -407,20 +427,20 @@ Partial Class Form1
         Me.UctlListEventTypes.Spalte_3 = Nothing
         Me.UctlListEventTypes.TabIndex = 48
         '
-        'Button3
+        'TreeView2
         '
-        Me.Button3.Location = New System.Drawing.Point(492, 38)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 52
-        Me.Button3.Text = "Button3"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.TreeView2.Location = New System.Drawing.Point(794, 37)
+        Me.TreeView2.Name = "TreeView2"
+        Me.TreeView2.Size = New System.Drawing.Size(121, 97)
+        Me.TreeView2.TabIndex = 55
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1415, 837)
+        Me.Controls.Add(Me.TreeView2)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.UctlListMarketCatalogue)
@@ -504,4 +524,6 @@ Partial Class Form1
     Friend WithEvents UctlListMarketCatalogue As uctlCheckedList
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
+    Friend WithEvents Button4 As Button
+    Friend WithEvents TreeView2 As TreeView
 End Class

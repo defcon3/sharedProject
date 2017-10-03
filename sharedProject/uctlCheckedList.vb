@@ -117,7 +117,7 @@ Public Class uctlCheckedList
     ''' </summary>
     ''' <returns></returns>
     Private Property _parentcontrol As uctlCheckedList = Nothing
-
+    Public xmldoc1 As Xml.XmlDocument
 
     ''' <summary>
     ''' Klickereignis des Buttons
@@ -172,6 +172,11 @@ Public Class uctlCheckedList
 
 
 
+
+
+
+
+
         ' Deserialisieren des Antwortstrings
         'Dim eventTypeResults As New bfObjects.clsEventTypeResultResponse
         ' Instanziieren eine Objektes - leider late binding
@@ -193,24 +198,38 @@ Public Class uctlCheckedList
 
 
 
-        Dim ms As New System.IO.MemoryStream
-        Dim ns As New Newtonsoft.Json.JsonSerializer
-
-
         Dim bdoc As New MongoDB.Bson.BsonDocument
         bdoc = MongoDB.Bson.BsonDocument.Parse(serverResponse)
 
 
+
+        'datata = Newtonsoft.Json.JsonConvert.DeserializeObject(Of DataTable)(serverResponse.ToString)
+        'Dim das = Newtonsoft.Json.JsonConvert.DeserializeObject(Of DataSet)(serverResponse.ToString)
+
+
+
+        Dim xmlDoc As Xml.XmlDocument
+        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
+
+        Dim xmlreader, dataset
+        xmlreader = New Xml.XmlNodeReader(xmlDoc)
+        dataset = New DataSet()
+        dataset.ReadXml(xmlreader)
+
+
+        Dim obj As New Newtonsoft.Json.Linq.JObject
+
+        obj = Newtonsoft.Json.JsonConvert.DeserializeObject(serverResponse)
 
 
         collection.InsertOne(bdoc)
 
         'eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventTypeResultResponse)(serverResponse)
 
-        Dim xmlDoc As Xml.XmlDocument
+        ' Dim xmlDoc As Xml.XmlDocument
         xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
-
-        Dim xmlreader, dataset
+        xmldoc1 = xmlDoc
+        '  Dim xmlreader, dataset
         xmlreader = New Xml.XmlNodeReader(xmlDoc)
         dataset = New DataSet()
         dataset.ReadXml(xmlreader)
@@ -303,6 +322,7 @@ Public Class uctlCheckedList
 
     End Sub
 
+    Private Sub uctlCheckedList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
+    End Sub
 End Class

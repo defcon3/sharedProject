@@ -588,4 +588,17 @@ Public Class Form1
         Public DateTime
 
     End Class
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+
+        FillTreeView(TreeView2.Nodes, UctlListEventTypes.xmldoc1.DocumentElement)
+
+    End Sub
+
+    Private Shared Sub FillTreeView(ByVal CurrentNodes As TreeNodeCollection,
+    ByVal xNode As Xml.XmlNode)
+        For Each xChild As Xml.XmlNode In xNode.ChildNodes
+            FillTreeView(CurrentNodes.Add(xChild.Name).Nodes, xChild)
+        Next
+    End Sub
 End Class
