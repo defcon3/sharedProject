@@ -61,9 +61,11 @@ Partial Class Form1
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button11 = New System.Windows.Forms.Button()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.UctlListEventTypes = New sharedProject.uctlCheckedList()
-        Me.UctlListEvents = New sharedProject.uctlCheckedList()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.UctlListMarketCatalogue = New sharedProject.uctlCheckedList()
+        Me.UctlListEvents = New sharedProject.uctlCheckedList()
+        Me.UctlListEventTypes = New sharedProject.uctlCheckedList()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -351,35 +353,14 @@ Partial Class Form1
         Me.DataGridView2.Size = New System.Drawing.Size(556, 124)
         Me.DataGridView2.TabIndex = 17
         '
-        'UctlListEventTypes
+        'Button2
         '
-        Me.UctlListEventTypes.DataSource = Nothing
-        Me.UctlListEventTypes.Location = New System.Drawing.Point(0, 123)
-        Me.UctlListEventTypes.myType = Nothing
-        Me.UctlListEventTypes.Name = "UctlListEventTypes"
-        Me.UctlListEventTypes.selektierteMenge = Nothing
-        Me.UctlListEventTypes.serializedRequestFromForm = ""
-        Me.UctlListEventTypes.serializedResponseFromForm = ""
-        Me.UctlListEventTypes.Size = New System.Drawing.Size(561, 157)
-        Me.UctlListEventTypes.Spalte_1 = Nothing
-        Me.UctlListEventTypes.Spalte_2 = Nothing
-        Me.UctlListEventTypes.Spalte_3 = Nothing
-        Me.UctlListEventTypes.TabIndex = 48
-        '
-        'UctlListEvents
-        '
-        Me.UctlListEvents.DataSource = Nothing
-        Me.UctlListEvents.Location = New System.Drawing.Point(0, 291)
-        Me.UctlListEvents.myType = Nothing
-        Me.UctlListEvents.Name = "UctlListEvents"
-        Me.UctlListEvents.selektierteMenge = Nothing
-        Me.UctlListEvents.serializedRequestFromForm = ""
-        Me.UctlListEvents.serializedResponseFromForm = ""
-        Me.UctlListEvents.Size = New System.Drawing.Size(561, 157)
-        Me.UctlListEvents.Spalte_1 = Nothing
-        Me.UctlListEvents.Spalte_2 = Nothing
-        Me.UctlListEvents.Spalte_3 = Nothing
-        Me.UctlListEvents.TabIndex = 49
+        Me.Button2.Location = New System.Drawing.Point(177, 70)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 51
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'UctlListMarketCatalogue
         '
@@ -396,11 +377,52 @@ Partial Class Form1
         Me.UctlListMarketCatalogue.TabIndex = 50
         Me.UctlListMarketCatalogue.Tag = ""
         '
+        'UctlListEvents
+        '
+        Me.UctlListEvents.DataSource = Nothing
+        Me.UctlListEvents.Location = New System.Drawing.Point(0, 291)
+        Me.UctlListEvents.myType = Nothing
+        Me.UctlListEvents.Name = "UctlListEvents"
+        Me.UctlListEvents.selektierteMenge = Nothing
+        Me.UctlListEvents.serializedRequestFromForm = ""
+        Me.UctlListEvents.serializedResponseFromForm = ""
+        Me.UctlListEvents.Size = New System.Drawing.Size(561, 157)
+        Me.UctlListEvents.Spalte_1 = Nothing
+        Me.UctlListEvents.Spalte_2 = Nothing
+        Me.UctlListEvents.Spalte_3 = Nothing
+        Me.UctlListEvents.TabIndex = 49
+        '
+        'UctlListEventTypes
+        '
+        Me.UctlListEventTypes.DataSource = Nothing
+        Me.UctlListEventTypes.Location = New System.Drawing.Point(0, 123)
+        Me.UctlListEventTypes.myType = Nothing
+        Me.UctlListEventTypes.Name = "UctlListEventTypes"
+        Me.UctlListEventTypes.selektierteMenge = Nothing
+        Me.UctlListEventTypes.serializedRequestFromForm = ""
+        Me.UctlListEventTypes.serializedResponseFromForm = ""
+        Me.UctlListEventTypes.Size = New System.Drawing.Size(561, 157)
+        Me.UctlListEventTypes.Spalte_1 = Nothing
+        Me.UctlListEventTypes.Spalte_2 = Nothing
+        Me.UctlListEventTypes.Spalte_3 = Nothing
+        Me.UctlListEventTypes.TabIndex = 48
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(492, 38)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 52
+        Me.Button3.Text = "Button3"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1415, 837)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.UctlListMarketCatalogue)
         Me.Controls.Add(Me.UctlListEvents)
         Me.Controls.Add(Me.UctlListEventTypes)
@@ -480,4 +502,6 @@ Partial Class Form1
     Friend WithEvents UctlListEventTypes As uctlCheckedList
     Friend WithEvents UctlListEvents As uctlCheckedList
     Friend WithEvents UctlListMarketCatalogue As uctlCheckedList
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
 End Class

@@ -527,4 +527,65 @@ Public Class Form1
 
     End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+        Dim mc As New MongoClient("mongodb://127.0.0.1:27017")
+
+        Dim db = mc.GetDatabase("dbSodexo")
+
+
+        Dim collection As IMongoCollection(Of BsonDocument) = db.GetCollection(Of BsonDocument)("veit")
+
+        Dim books As BsonDocument = New BsonDocument() _
+        .Add("author", "Veit Luther") _
+                                   .Add("title", "Krasser Mongo") _
+                                   .Add("neuer Mongo", "Krasser Mongo")
+
+        ' .Add("_id", BsonValue.Create(BsonType.ObjectId)) _
+
+
+
+        Try
+            collection.InsertOne(books)
+        Catch ex As Exception
+            Stop
+        End Try
+
+
+
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+
+
+        Dim ev As New Event1 With {.DateTime = "kk", .Name = "Veit"}
+
+
+
+        Dim ms As New System.IO.MemoryStream
+
+        'Dim md As New Newtonsoft.Json.Bson.BsonWriter(ms)
+
+        Dim ns As New Newtonsoft.Json.JsonSerializer
+
+        Dim dba As New Newtonsoft.Json.Converters.KeyValuePairConverter
+
+
+
+
+        Using writer As New Newtonsoft.Json.Bson.BsonDataWriter(ms)
+            ns = New Newtonsoft.Json.JsonSerializer
+            ns.Serialize(writer, ev)
+        End Using
+
+        Dim db As BsonDocument
+
+
+    End Sub
+
+    Public Class Event1
+        Public Name
+        Public DateTime
+
+    End Class
 End Class

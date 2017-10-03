@@ -129,6 +129,11 @@ Public Class uctlCheckedList
         Dim neueListe As New Object
         Dim serverResponse As String = vbNullString
 
+        ' MongoConnection
+        Dim mc As New MongoDB.Driver.MongoClient("mongodb://127.0.0.1:27017")
+        Dim db = mc.GetDatabase("dbSodexo")
+
+        Dim collection As MongoDB.Driver.IMongoCollection(Of MongoDB.Bson.BsonDocument) = Nothing
 
         ' Fallunterscheidung welches Object das Klickereignis aufruft. Das bedeutet, welches Objekt hat das "UserControl im Bauch"
         ' Den Typnamen bekommt das Steuerelement von aussen eingepflanzt
@@ -138,13 +143,15 @@ Public Class uctlCheckedList
             Case = GetType(bfObjects.clsListEventTypes).ToString
                 neueListe = New List(Of bfObjects.clsListEventTypes)
                 neueListe.Add(New bfObjects.clsListEventTypes)
+                collection = db.GetCollection(Of MongoDB.Bson.BsonDocument)("clsListEventTypes")
             Case = GetType(bfObjects.clsListEvents).ToString
                 neueListe = New List(Of bfObjects.clsListEvents)
                 neueListe.add(New bfObjects.clsListEvents With {.params = New bfObjects.clsParams With {.filter = New bfObjects.clsFilter With {.eventTypeIds = _parentcontrol._markierteIDs}}})
+                collection = db.GetCollection(Of MongoDB.Bson.BsonDocument)("clsListEvents")
             Case = GetType(bfObjects.clsListMarketCatalogue).ToString
                 neueListe = New List(Of bfObjects.clsListMarketCatalogue)
-                'neueListe.Add(New bfObjects.clsListMarketCatalogue)
                 neueListe.Add(New bfObjects.clsListMarketCatalogue With {.params = New bfObjects.clsParams With {.filter = New bfObjects.clsFilter With {.eventIds = _parentcontrol._markierteIDs}, .marketProjection = New List(Of String) From {"EVENT", "EVENT_TYPE", "COMPETITION", "MARKET_START_TIME", "MARKET_DESCRIPTION", "RUNNER_DESCRIPTION", "RUNNER_METADATA"}}})
+                collection = db.GetCollection(Of MongoDB.Bson.BsonDocument)("clsListMarketCatalogue")
         End Select
 
 
@@ -154,6 +161,8 @@ Public Class uctlCheckedList
         RaiseEvent getreq(serializeRequest(neueListe))
         RaiseEvent getresp(serializedRequestFromForm)
         serverResponse = serializedResponseFromForm
+
+
 
 
         ' Aufbereiten des Antwortsstrings
@@ -184,7 +193,17 @@ Public Class uctlCheckedList
 
 
 
+        Dim ms As New System.IO.MemoryStream
+        Dim ns As New Newtonsoft.Json.JsonSerializer
 
+
+        Dim bdoc As New MongoDB.Bson.BsonDocument
+        bdoc = MongoDB.Bson.BsonDocument.Parse(serverResponse)
+
+
+
+
+        collection.InsertOne(bdoc)
 
         'eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventTypeResultResponse)(serverResponse)
 
@@ -260,7 +279,7 @@ Public Class uctlCheckedList
         clb_ci = clbCheckedListBox.CheckedItems
 
 
-        If clb_ci.Count < 1 Then Exit Sub
+        If clb_ci.Count <1 Then Exit Sub
 
         Dim drv As DataRowView
         Dim dr As DataRow
