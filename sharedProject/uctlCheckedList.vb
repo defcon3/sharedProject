@@ -202,27 +202,147 @@ Public Class uctlCheckedList
         bdoc = MongoDB.Bson.BsonDocument.Parse(serverResponse)
 
 
-
         'datata = Newtonsoft.Json.JsonConvert.DeserializeObject(Of DataTable)(serverResponse.ToString)
         'Dim das = Newtonsoft.Json.JsonConvert.DeserializeObject(Of DataSet)(serverResponse.ToString)
+        Dim xmlDoc As New Xml.XmlDocument
 
 
 
-        Dim xmlDoc As Xml.XmlDocument
         xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
 
-        Dim xmlreader, dataset
+
+        'xmlDoc.ImportNode(kkk, True)
+        'Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
+
+
+
+        Dim xmlreader As Xml.XmlNodeReader
+        Dim dataset As DataSet
         xmlreader = New Xml.XmlNodeReader(xmlDoc)
         dataset = New DataSet()
         dataset.ReadXml(xmlreader)
 
 
-        Dim obj As New Newtonsoft.Json.Linq.JObject
 
+        'Dim newTable As New DataTable
+        'newTable.ReadXml(reader)
+
+
+
+        'dataset.Relations(1).Nested = False
+        'dataset.Relations(0).Nested = False
+
+        Dim oo As DataSet
+        oo = dataset.Copy
+        oo.Relations.Remove(oo.Relations(1))
+        oo.Relations.Remove(oo.Relations(0))
+
+        Dim dt_wurzel As DataTable = dataset.Tables(0)
+        Dim dt_result As DataTable = dataset.Tables(1)
+        Dim dt_eventtype As DataTable = dataset.Tables(2)
+
+
+        Dim dm As New DataViewManager(dataset)
+        Dim dv As DataView = dm.CreateDataView(dataset.Tables(0))
+
+
+        Dim dss As New DataSet
+        'dss.Relations.Add(dataset.Relations.Item(1))
+
+
+
+
+
+
+
+
+        Dim dv1, dv2 As New DataView
+
+
+        dv1 = dataset.Tables("result").AsDataView
+        dv2 = dataset.Tables("wurzel").AsDataView
+
+        Dim wurzelrow, resultrow, eventtyperow As DataRow
+
+        For Each wurzelrow In dataset.Tables("wurzel").Rows
+
+            For Each resultrow In wurzelrow.GetChildRows(dataset.Relations.Item(1))
+
+                For Each eventtyperow In resultrow.GetChildRows(dataset.Relations.Item(0))
+
+                    Console.WriteLine(wurzelrow(0) & " " & resultrow(0) & " " & eventtyperow(0))
+
+                Next
+
+
+            Next
+        Next
+
+
+        Dim pRow, cRow As DataRow
+        For Each pRow In dataset.Tables("wurzel").Rows
+            Console.WriteLine(pRow("wurzel_Id").ToString())
+
+            For Each cRow In pRow.GetChildRows(dataset.Relations.Item(1))
+                Console.WriteLine(vbTab & cRow("wurzel_Id").ToString())
+            Next
+        Next
+
+
+
+        dataset.Relations.Item(0).Nested = False
+        dataset.Relations.Item(1).Nested = False
+
+
+
+        'DataGridView1.DataBindings = dataset
+        Stop
+
+
+
+
+
+
+
+
+
+        Dim obj As New Newtonsoft.Json.Linq.JObject
         obj = Newtonsoft.Json.JsonConvert.DeserializeObject(serverResponse)
+        'obj.CreateReader = JSONREADER
+
+
+
+        Dim dt As New DataTable
+        'dt = _funcDataForControl(_mytype, dataset)
+
+        dt = dataset.Tables("eventType")
+
+        For Each t As DataRow In dt.Rows
+            For i = 1 To t.ItemArray.Length
+                Debug.Print(t(i - 1))
+            Next
+        Next
+
+
+
+
 
 
         collection.InsertOne(bdoc)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         'eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventTypeResultResponse)(serverResponse)
 
@@ -234,7 +354,7 @@ Public Class uctlCheckedList
         dataset = New DataSet()
         dataset.ReadXml(xmlreader)
 
-        Dim dt As New DataTable
+        'Dim dt As New DataTable
         dt = getDatatableFromResponse(eventTypeResults)
 
 
@@ -289,7 +409,7 @@ Public Class uctlCheckedList
     ''' <returns></returns>
     Private Property _markierteIDs As List(Of String)
     ''' <summary>
-    ''' 
+    ''' Event beim MouseUp über der ListBox
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
@@ -322,7 +442,32 @@ Public Class uctlCheckedList
 
     End Sub
 
-    Private Sub uctlCheckedList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Function _funcDataForControl(ByVal Typ As Type, ds As DataSet) As DataTable
+        Dim _dt As New DataTable
 
-    End Sub
+        Select Case Typ.FullName.ToString
+            ' wenn es vom Typ clsListEventTypes ist ...
+            Case = GetType(bfObjects.clsListEventTypes).ToString
+                For Each i As DataTable In ds.Tables
+                    If i.TableName = "result" Then
+                        _dt = i
+                    End If
+                Next
+
+
+
+                'neueListe.Add(New bfObjects.clsListEventTypes)
+            Case = GetType(bfObjects.clsListEvents).ToString
+                Me.btnButton.Text = "ListEvents"
+            Case = GetType(bfObjects.clsListMarketCatalogue).ToString
+                Me.btnButton.Text = "ListMarketCatalogue"
+
+
+
+            Case = GetType(bfObjects.clsAvailableToBack).ToString
+        End Select
+        Return _dt
+    End Function
+
+
 End Class

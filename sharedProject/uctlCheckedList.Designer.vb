@@ -24,6 +24,8 @@ Partial Class uctlCheckedList
     Private Sub InitializeComponent()
         Me.clbCheckedListBox = New System.Windows.Forms.CheckedListBox()
         Me.btnButton = New System.Windows.Forms.Button()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'clbCheckedListBox
@@ -45,18 +47,29 @@ Partial Class uctlCheckedList
         Me.btnButton.Text = "btnPlaceHolder"
         Me.btnButton.UseVisualStyleBackColor = True
         '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(58, 5)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(409, 150)
+        Me.DataGridView1.TabIndex = 47
+        '
         'uctlCheckedList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.clbCheckedListBox)
         Me.Controls.Add(Me.btnButton)
         Me.Name = "uctlCheckedList"
         Me.Size = New System.Drawing.Size(561, 157)
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents clbCheckedListBox As CheckedListBox
     Friend WithEvents btnButton As Button
+    Friend WithEvents DataGridView1 As DataGridView
 End Class
