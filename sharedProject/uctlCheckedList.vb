@@ -1,4 +1,8 @@
-﻿''' <summary>
+﻿Imports Microsoft.Office.Interop.Excel
+Imports System.Linq
+
+
+''' <summary>
 ''' Klasse des Benutzersteuerelements mit dem CheckedListBox
 ''' </summary>
 Public Class uctlCheckedList
@@ -27,7 +31,7 @@ Public Class uctlCheckedList
     Public Property myType() As Type
         ' Abholen des Eigenschaftenwerts 
         Get
-            Return _myType
+            Return _mytype
         End Get
         ' Setzen des Eigenschaftenwerts 
         Set(ByVal Value As Type)
@@ -56,7 +60,7 @@ Public Class uctlCheckedList
     ''' Datenquelle, die der Checked List Box zugrunde liegt
     ''' </summary>
     ''' <returns>Datenqelle als DataTable</returns>
-    Public Property DataSource As New DataTable
+    Public Property DataSource As New System.Data.DataTable
 
     'Public ReadOnly Property _BeschriftungButton As String
     ''' <summary>
@@ -180,22 +184,32 @@ Public Class uctlCheckedList
         ' Deserialisieren des Antwortstrings
         'Dim eventTypeResults As New bfObjects.clsEventTypeResultResponse
         ' Instanziieren eine Objektes - leider late binding
-        Dim eventTypeResults As New Object
+        'Dim eventTypeResults As New Object
 
-
+        Dim eventTypeResults = New List(Of bfObjects.clsEventTypeResultResponse)
 
 
         Select Case myType.FullName.ToString
             ' wenn es vom Typ clsListEventTypes ist ...
             Case = GetType(bfObjects.clsListEventTypes).ToString
-                eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventTypeResultResponse)(serverResponse)
+                eventTypeResults = New List(Of bfObjects.clsEventTypeResultResponse)
+                'eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventTypeResultResponse)(serverResponse)
             Case = GetType(bfObjects.clsListEvents).ToString
-                eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventResultResponse)(serverResponse)
+                'eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventResultResponse)(serverResponse)
             Case = GetType(bfObjects.clsListMarketCatalogue).ToString
-                eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.structMarketCatalogueResponse)(serverResponse)
+                'eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.structMarketCatalogueResponse)(serverResponse)
         End Select
 
 
+
+
+
+        Dim dtvalue As New Object
+        dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(serverResponse)
+
+
+
+        'Microsoft.Office.Interop.Excel.XlXmlLoadOption.xlXmlLoadImportToList
 
 
         Dim bdoc As New MongoDB.Bson.BsonDocument
@@ -210,22 +224,62 @@ Public Class uctlCheckedList
 
         xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
 
+        'Dim eee = eventTypeResults.SelectMany(Of …)()
+
+
+
+
+
 
         'xmlDoc.ImportNode(kkk, True)
         'Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
 
 
 
+
+        'Dim fs As New System.IO.FileStream("c:\Temp\xml.xml", System.IO.FileMode.Open, System.IO.FileAccess.Read)
+        ' xmlDoc.Load(fs)
+
+        Dim asdf As New DataSet
+        asdf.ReadXml("c:\Temp\xml.xml", XmlReadMode.Auto)
+
+
+
+        Dim xmlfile As XDocument = XDocument.Load("c:\Temp\xml.xml")
+
+        Dim readr As Xml.XmlReader = xmlfile.CreateReader
+        Dim ds3 As New DataSet
+        ds3.ReadXml(readr)
+
+        Dim xdd As New Xml.XmlDataDocument
+        xdd.Load("c:\Temp\xml.xml")
+
+
+
+
         Dim xmlreader As Xml.XmlNodeReader
+
         Dim dataset As DataSet
         xmlreader = New Xml.XmlNodeReader(xmlDoc)
+
+        Dim m As New XDocument
+
+
+
+
+        Dim xr As Xml.XmlReader
+        m.CreateReader()
+
+
         dataset = New DataSet()
         dataset.ReadXml(xmlreader)
 
 
 
-        'Dim newTable As New DataTable
-        'newTable.ReadXml(reader)
+
+        Dim dta As New System.Data.DataTable
+
+        dta.ReadXml(xmlreader)
 
 
 
@@ -312,7 +366,7 @@ Public Class uctlCheckedList
 
 
 
-        Dim dt As New DataTable
+        Dim dt As New System.Data.DataTable
         'dt = _funcDataForControl(_mytype, dataset)
 
         dt = dataset.Tables("eventType")
@@ -358,7 +412,7 @@ Public Class uctlCheckedList
         dt = getDatatableFromResponse(eventTypeResults)
 
 
-        Dim dt1 As New DataTable
+        Dim dt1 As New System.Data.DataTable
         Dim dc As New DataColumn("col")
         dt1.Columns.Add(dc)
         Dim rw As DataRow
@@ -418,7 +472,7 @@ Public Class uctlCheckedList
         clb_ci = clbCheckedListBox.CheckedItems
 
 
-        If clb_ci.Count <1 Then Exit Sub
+        If clb_ci.Count < 1 Then Exit Sub
 
         Dim drv As DataRowView
         Dim dr As DataRow
@@ -442,8 +496,8 @@ Public Class uctlCheckedList
 
     End Sub
 
-    Private Function _funcDataForControl(ByVal Typ As Type, ds As DataSet) As DataTable
-        Dim _dt As New DataTable
+    Private Function _funcDataForControl(ByVal Typ As Type, ds As DataSet) As System.Data.DataTable
+        Dim _dt As New System.Data.DataTable
 
         Select Case Typ.FullName.ToString
             ' wenn es vom Typ clsListEventTypes ist ...

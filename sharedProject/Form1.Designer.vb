@@ -68,6 +68,7 @@ Partial Class Form1
         Me.UctlListEvents = New sharedProject.uctlCheckedList()
         Me.UctlListEventTypes = New sharedProject.uctlCheckedList()
         Me.TreeView2 = New System.Windows.Forms.TreeView()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -434,11 +435,21 @@ Partial Class Form1
         Me.TreeView2.Size = New System.Drawing.Size(121, 97)
         Me.TreeView2.TabIndex = 55
         '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(1038, 55)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(75, 23)
+        Me.Button5.TabIndex = 56
+        Me.Button5.Text = "Button5"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1415, 837)
+        Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.TreeView2)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
@@ -526,4 +537,5 @@ Partial Class Form1
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents TreeView2 As TreeView
+    Friend WithEvents Button5 As Button
 End Class

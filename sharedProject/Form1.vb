@@ -589,9 +589,53 @@ Public Class Form1
 
     End Class
 
+    Structure PetOwner
+        Public Name As String
+        Public Pets() As String
+
+    End Structure
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
 
-        FillTreeView(TreeView2.Nodes, UctlListEventTypes.xmldoc1.DocumentElement)
+        ' Create an array of PetOwner objects.
+        Dim petOwners() As PetOwner =
+    {New PetOwner With
+     {.Name = "Higa, Sidney", .Pets = New String() {"Scruffy", "Sam"}},
+     New PetOwner With
+     {.Name = "Ashkenazi, Ronen", .Pets = New String() {"Walker", "Sugar"}},
+     New PetOwner With
+     {.Name = "Price, Vernette", .Pets = New String() {"Scratches", "Diesel"}}}
+
+        ' Call SelectMany() to gather all pets into a "flat" sequence.
+        Dim query1 As IEnumerable(Of String) =
+    petOwners.SelectMany(Function(petOwner) petOwner.Pets)
+
+        Dim output As New System.Text.StringBuilder("Using SelectMany():" & vbCrLf)
+        ' Only one foreach loop is required to iterate through 
+        ' the results because it is a one-dimensional collection.
+        For Each pet As String In query1
+            output.AppendLine(pet)
+        Next
+
+        ' This code demonstrates how to use Select() instead 
+        ' of SelectMany() to get the same result.
+        Dim query2 As IEnumerable(Of String()) =
+    petOwners.Select(Function(petOwner) petOwner.Pets)
+        output.AppendLine(vbCrLf & "Using Select():")
+        ' Notice that two foreach loops are required to iterate through 
+        ' the results because the query returns a collection of arrays.
+        For Each petArray() As String In query2
+            For Each pet As String In petArray
+                output.AppendLine(pet)
+            Next
+        Next
+
+        ' Display the output.
+        MsgBox(output.ToString())
+
+
+
+
+
 
     End Sub
 
@@ -602,5 +646,21 @@ Public Class Form1
         Next
     End Sub
 
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim increment1 = Function(ByRef x) x + 1
 
+        For i = 1 To 7
+
+            Console.WriteLine((Function(increment As Integer) increment + 1)(5))
+
+        Next
+
+
+        Dim neu = {CDate("10.02.2011"), CDate("11.02.3214")}
+
+        For Each t In neu
+            MsgBox(t.ToString)
+        Next
+
+    End Sub
 End Class
