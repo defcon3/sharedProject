@@ -214,6 +214,7 @@ Public Class uctlCheckedList
 
         Dim bdoc As New MongoDB.Bson.BsonDocument
         bdoc = MongoDB.Bson.BsonDocument.Parse(serverResponse)
+        collection.InsertOne(bdoc)
 
 
         'datata = Newtonsoft.Json.JsonConvert.DeserializeObject(Of DataTable)(serverResponse.ToString)
@@ -226,34 +227,12 @@ Public Class uctlCheckedList
 
         'Dim eee = eventTypeResults.SelectMany(Of …)()
 
-
-
-
-
-
         'xmlDoc.ImportNode(kkk, True)
         'Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
 
 
-
-
         'Dim fs As New System.IO.FileStream("c:\Temp\xml.xml", System.IO.FileMode.Open, System.IO.FileAccess.Read)
         ' xmlDoc.Load(fs)
-
-        Dim asdf As New DataSet
-        asdf.ReadXml("c:\Temp\xml.xml", XmlReadMode.Auto)
-
-
-
-        Dim xmlfile As XDocument = XDocument.Load("c:\Temp\xml.xml")
-
-        Dim readr As Xml.XmlReader = xmlfile.CreateReader
-        Dim ds3 As New DataSet
-        ds3.ReadXml(readr)
-
-        Dim xdd As New Xml.XmlDataDocument
-        xdd.Load("c:\Temp\xml.xml")
-
 
 
 
@@ -262,176 +241,24 @@ Public Class uctlCheckedList
         Dim dataset As DataSet
         xmlreader = New Xml.XmlNodeReader(xmlDoc)
 
-        Dim m As New XDocument
-
-
-
-
-        Dim xr As Xml.XmlReader
-        m.CreateReader()
-
 
         dataset = New DataSet()
         dataset.ReadXml(xmlreader)
 
+        Me.clbCheckedListBox.DataSource = dataset.Tables("result")
 
+        For Each ea As DataRow In dataset.Tables("result").Rows
 
-
-        Dim dta As New System.Data.DataTable
-
-        dta.ReadXml(xmlreader)
-
-
-
-        'dataset.Relations(1).Nested = False
-        'dataset.Relations(0).Nested = False
-
-        Dim oo As DataSet
-        oo = dataset.Copy
-        oo.Relations.Remove(oo.Relations(1))
-        oo.Relations.Remove(oo.Relations(0))
-
-        Dim dt_wurzel As DataTable = dataset.Tables(0)
-        Dim dt_result As DataTable = dataset.Tables(1)
-        Dim dt_eventtype As DataTable = dataset.Tables(2)
-
-
-        Dim dm As New DataViewManager(dataset)
-        Dim dv As DataView = dm.CreateDataView(dataset.Tables(0))
-
-
-        Dim dss As New DataSet
-        'dss.Relations.Add(dataset.Relations.Item(1))
-
-
-
-
-
-
-
-
-        Dim dv1, dv2 As New DataView
-
-
-        dv1 = dataset.Tables("result").AsDataView
-        dv2 = dataset.Tables("wurzel").AsDataView
-
-        Dim wurzelrow, resultrow, eventtyperow As DataRow
-
-        For Each wurzelrow In dataset.Tables("wurzel").Rows
-
-            For Each resultrow In wurzelrow.GetChildRows(dataset.Relations.Item(1))
-
-                For Each eventtyperow In resultrow.GetChildRows(dataset.Relations.Item(0))
-
-                    Console.WriteLine(wurzelrow(0) & " " & resultrow(0) & " " & eventtyperow(0))
-
-                Next
-
-
+            For Each itm As String In ea.ItemArray
+                Debug.Print(itm.ToString())
             Next
-        Next
-
-
-        Dim pRow, cRow As DataRow
-        For Each pRow In dataset.Tables("wurzel").Rows
-            Console.WriteLine(pRow("wurzel_Id").ToString())
-
-            For Each cRow In pRow.GetChildRows(dataset.Relations.Item(1))
-                Console.WriteLine(vbTab & cRow("wurzel_Id").ToString())
-            Next
-        Next
-
-
-
-        dataset.Relations.Item(0).Nested = False
-        dataset.Relations.Item(1).Nested = False
-
-
-
-        'DataGridView1.DataBindings = dataset
-        Stop
-
-
-
-
-
-
-
-
-
-        Dim obj As New Newtonsoft.Json.Linq.JObject
-        obj = Newtonsoft.Json.JsonConvert.DeserializeObject(serverResponse)
-        'obj.CreateReader = JSONREADER
-
-
-
-        Dim dt As New System.Data.DataTable
-        'dt = _funcDataForControl(_mytype, dataset)
-
-        dt = dataset.Tables("eventType")
-
-        For Each t As DataRow In dt.Rows
-            For i = 1 To t.ItemArray.Length
-                Debug.Print(t(i - 1))
-            Next
-        Next
-
-
-
-
-
-
-        collection.InsertOne(bdoc)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        'eventTypeResults = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsEventTypeResultResponse)(serverResponse)
-
-        ' Dim xmlDoc As Xml.XmlDocument
-        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
-        xmldoc1 = xmlDoc
-        '  Dim xmlreader, dataset
-        xmlreader = New Xml.XmlNodeReader(xmlDoc)
-        dataset = New DataSet()
-        dataset.ReadXml(xmlreader)
-
-        'Dim dt As New DataTable
-        dt = getDatatableFromResponse(eventTypeResults)
-
-
-        Dim dt1 As New System.Data.DataTable
-        Dim dc As New DataColumn("col")
-        dt1.Columns.Add(dc)
-        Dim rw As DataRow
-
-        For Each ea As DataRow In dt.Rows
-
-            rw = dt1.NewRow
-
-            rw("col") = ea.Item(0).ToString.PadLeft(10, " ") & " - " & ea.Item(1).ToString.PadRight(25, " ") ''& " - " & ea.Item(2)
-
-            dt1.Rows.Add(rw)
 
         Next
 
-        clbCheckedListBox.DataSource = dt1
-        clbCheckedListBox.DisplayMember = "col"
 
 
 
+        'Debug.Print(dataset.Tables("result").Rows(1).ItemArray.ToArray.ToString)
 
 
 
