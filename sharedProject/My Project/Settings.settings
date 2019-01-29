@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="" GeneratedClassName="Settings" UseMySettingsClassName="true">
   <Profiles />
   <Settings>
     <Setting Name="me_cookie_ABE" Type="System.String" Scope="User">
@@ -36,6 +36,9 @@
     </Setting>
     <Setting Name="me_normalKey" Type="System.String" Scope="User">
       <Value Profile="(Default)">vb0GqKJUPozKinAD</Value>
+    </Setting>
+    <Setting Name="me_temppath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Temp</Value>
     </Setting>
   </Settings>
 </SettingsFile>
