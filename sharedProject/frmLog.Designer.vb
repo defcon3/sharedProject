@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmTechform
+Partial Class frmLog
     Inherits System.Windows.Forms.Form
 
     'Das Formular überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
@@ -24,13 +24,13 @@ Partial Class frmTechform
     Private Sub InitializeComponent()
         Me.SuspendLayout()
         '
-        'frmTechform
+        'frmLog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1252, 542)
-        Me.Name = "frmTechform"
-        Me.Text = "frmTechform"
+        Me.ClientSize = New System.Drawing.Size(884, 175)
+        Me.Name = "frmLog"
+        Me.Text = "frmLog"
         Me.ResumeLayout(False)
 
     End Sub

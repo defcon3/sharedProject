@@ -70,6 +70,9 @@
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="bfObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -149,22 +152,28 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAutoBetEngine.Designer.vb">
+      <DependentUpon>frmAutoBetEngine.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAutoBetEngine.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmConnection.Designer.vb">
       <DependentUpon>frmConnection.vb</DependentUpon>
     </Compile>
     <Compile Include="frmConnection.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmLog.Designer.vb">
+      <DependentUpon>frmLog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTechform.Designer.vb">
-      <DependentUpon>frmTechform.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmTechform.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modFunctions.vb" />
@@ -196,14 +205,17 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAutoBetEngine.resx">
+      <DependentUpon>frmAutoBetEngine.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConnection.resx">
       <DependentUpon>frmConnection.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLog.resx">
+      <DependentUpon>frmLog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTechform.resx">
-      <DependentUpon>frmTechform.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
