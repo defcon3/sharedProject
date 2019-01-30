@@ -4,6 +4,8 @@
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
 
         Dim m As New frmLog
+        'AddHandler m.writeToLog("lksjd"), AddressOf m.writeToLog()
+
 
         m.ShowDialog()
 

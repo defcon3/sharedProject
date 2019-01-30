@@ -2,6 +2,8 @@
 
     Property neu = 9
 
+    Public Event writeToLog(ByVal logtext As System.String)
+
 
     Private Sub frmLog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.txtPath.Text = My.Settings.me_logpath
@@ -13,10 +15,19 @@
         My.Settings.Save()
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnClose.Click
+    ''' <summary>
+    ''' Schliessenknopf
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
 
-        neu = 8
+        Try
+            Me.Close()
+            RaiseEvent writeToLog("Nachricht")
+        Catch ex As Exception
 
-        Me.Close()
+        End Try
+
     End Sub
 End Class
