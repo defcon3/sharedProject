@@ -529,9 +529,9 @@ Public Class Form1
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
-        Dim mc As New MongoClient("mongodb://127.0.0.1:27017")
+        Dim mc As New MongoClient("mongodb://192.168.178.44:27017")
 
-        Dim db = mc.GetDatabase("dbSodexo")
+        Dim db = mc.GetDatabase("neuedb")
 
 
         Dim collection As IMongoCollection(Of BsonDocument) = db.GetCollection(Of BsonDocument)("veit")
