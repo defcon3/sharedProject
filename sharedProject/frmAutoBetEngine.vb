@@ -1,5 +1,7 @@
 ﻿Public Class frmAutoBetEngine
 
+    Public Delegate Sub SetTextCallback(ByVal Text As String)
+
 
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
 
