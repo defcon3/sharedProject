@@ -10,7 +10,7 @@ Imports MongoDB.Bson.Serialization
 
 Public Class Form1
 
-
+    Public Event to_log(ByVal text As String)
 
 
 
@@ -33,7 +33,7 @@ Public Class Form1
 
         ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
 
-
+        'RaiseEvent to_log("alskfdj")
 
     End Sub
     ''' <summary>
@@ -663,4 +663,5 @@ Public Class Form1
         Next
 
     End Sub
+
 End Class
