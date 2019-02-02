@@ -10,6 +10,9 @@ Imports MongoDB.Bson.Serialization
 
 Public Class Form1
 
+    Private Property myNewLogWriter As clsLogWriter
+
+
     Public Event to_log(ByVal text As String)
 
 
@@ -35,6 +38,10 @@ Public Class Form1
 
         'RaiseEvent to_log("alskfdj")
 
+        myNewLogWriter = New clsLogWriter
+
+        'AddHandler myNewLogWriter, frmLog.writeToLog
+
     End Sub
     ''' <summary>
     ''' diese Routine wird durch cas Schlíeßen der Login Form ausgelöst
@@ -57,6 +64,10 @@ Public Class Form1
         writeFile = Nothing
 
     End Sub
+
+
+
+
 
     ''' <summary>
     ''' Klickevent zum Öffnen der Login - Form
@@ -664,4 +675,7 @@ Public Class Form1
 
     End Sub
 
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+
+    End Sub
 End Class

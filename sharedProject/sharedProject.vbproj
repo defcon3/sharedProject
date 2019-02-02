@@ -137,6 +137,7 @@
     <Compile Include="Class1.vb" />
     <Compile Include="clsConnectionKeepAlive.vb" />
     <Compile Include="clsConnectionRoot.vb" />
+    <Compile Include="clsLogWriter.vb" />
     <Compile Include="DB_EXPORTDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
