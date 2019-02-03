@@ -61,7 +61,7 @@ Partial Class frmAutoBetEngine
         'ConnectionToolStripMenuItem
         '
         Me.ConnectionToolStripMenuItem.Name = "ConnectionToolStripMenuItem"
-        Me.ConnectionToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ConnectionToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
         Me.ConnectionToolStripMenuItem.Text = "Connection"
         '
         'ToolStripMenuItem1
@@ -74,10 +74,10 @@ Partial Class frmAutoBetEngine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1526, 466)
+        Me.ClientSize = New System.Drawing.Size(1526, 742)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Name = "frmAutoBetEngine"
-        Me.Text = "frmAutoBetEngine"
+        Me.Text = "s"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)

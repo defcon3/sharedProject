@@ -332,11 +332,11 @@
     ''' <returns>Gibt den gewählten Wert aus den Settings zurück</returns>
     Public Function getKeyValue() As String
 
-        If My.Settings.me_selected_key = "delay_key" Then
-            Return My.Settings.me_delayKey.ToString
-        Else
-            Return My.Settings.me_normalKey
-        End If
+        'If My.Settings.me_selected_key = "delay_key" Then
+        '    Return My.Settings.me_delayKey.ToString
+        'Else
+        '    Return My.Settings.me_normalKey
+        'End If
 
     End Function
 

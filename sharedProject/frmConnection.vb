@@ -12,7 +12,7 @@ Public Class frmConnection
 
         ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
 
-        cboKey.Text = My.Settings.me_selected_key.ToString
+        'cboKey.Text = My.Settings.me_selected_key.ToString
 
     End Sub
 
@@ -31,17 +31,13 @@ Public Class frmConnection
         Me.ComboBox1.Text = My.Settings.me_connection_user_intervall
 
 
-        'For Each ae In enumKey.delay_key
-        '    MsgBox ae.ToString 
-        'Next
-
 
         'Dim values() As Integer = CType([Enum].GetValues(GetType(enumKey)), Integer())
         For Each s In [Enum].GetNames(GetType(enumKey))
             cboKey.Items.Add(s)
         Next
 
-        Me.TextBox1.Text = My.Settings.me_delayKey
+        'Me.TextBox1.Text = My.Settings.me_delayKey
 
 
 
@@ -55,17 +51,24 @@ Public Class frmConnection
 
     Private Sub cboKey_SelectedValueChanged(sender As Object, e As EventArgs) Handles cboKey.SelectedValueChanged
 
-        My.Settings.me_selected_key = cboKey.Text.ToString
-        My.Settings.me_delayKey = Me.TextBox1.Text
-        My.Settings.Save()
+        ' My.Settings.me_selected_key = cboKey.Text.ToString
+        ' My.Settings.me_delayKey = Me.TextBox1.Text
+        ' My.Settings.Save()
+
+    End Sub
+
+    Private Sub cboKey_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboKey.SelectedIndexChanged
+        Dim t = cboKey.Text.Substring(0, 5)
+        If cboKey.Text.Substring(0, 5) = "delay" Then
+            Me.TextBox1.Text = My.Settings.me_delayKey
+        Else
+            Me.TextBox1.Text = My.Settings.me_normalKey
+        End If
 
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-
-    End Sub
-
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
-
+        MsgBox("delay: " & My.Settings.me_delayKey)
+        MsgBox("normal: " & My.Settings.me_normalKey)
     End Sub
 End Class

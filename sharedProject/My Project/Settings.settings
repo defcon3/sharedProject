@@ -43,5 +43,8 @@
     <Setting Name="me_logpath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Temp\AutoBetEngine\Log</Value>
     </Setting>
+    <Setting Name="me_delayKey_backup" Type="System.String" Scope="User">
+      <Value Profile="(Default)">fJWrrsDoo4ays822</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

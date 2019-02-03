@@ -40,6 +40,11 @@ Public Class Form1
 
         myNewLogWriter = New clsLogWriter
 
+        MsgBox("delay: " & My.Settings.me_delayKey)
+        MsgBox("normal: " & My.Settings.me_normalKey)
+        MsgBox("normal: " & My.Settings.me_delayKey_backup)
+
+
         'AddHandler myNewLogWriter, frmLog.writeToLog
 
     End Sub
@@ -598,6 +603,9 @@ Public Class Form1
         Public Name
         Public DateTime
 
+        Public Sub New()
+
+        End Sub
     End Class
 
     Structure PetOwner
