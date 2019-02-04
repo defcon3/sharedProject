@@ -28,7 +28,8 @@ Partial Class frmConnection
         Me.lblKey = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnClose = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ComboBox1
@@ -53,6 +54,7 @@ Partial Class frmConnection
         '
         Me.cboKey.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboKey.FormattingEnabled = True
+        Me.cboKey.Items.AddRange(New Object() {"me_delayKey", "me_normalKey"})
         Me.cboKey.Location = New System.Drawing.Point(66, 110)
         Me.cboKey.Name = "cboKey"
         Me.cboKey.Size = New System.Drawing.Size(203, 32)
@@ -83,21 +85,31 @@ Partial Class frmConnection
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "delay key"
         '
-        'Button1
+        'btnClose
         '
-        Me.Button1.Location = New System.Drawing.Point(769, 94)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 6
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnClose.Location = New System.Drawing.Point(582, 119)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(262, 23)
+        Me.btnClose.TabIndex = 6
+        Me.btnClose.Text = "speichern und schliessen"
+        Me.btnClose.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(362, 116)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 7
+        Me.Button2.Text = "speichern"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'frmConnection
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(886, 261)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.lblKey)
@@ -117,5 +129,6 @@ Partial Class frmConnection
     Friend WithEvents lblKey As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnClose As Button
+    Friend WithEvents Button2 As Button
 End Class

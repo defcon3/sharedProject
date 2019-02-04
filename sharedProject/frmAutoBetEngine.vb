@@ -11,9 +11,6 @@ Imports MongoDB.Bson.Serialization
 
 Public Class frmAutoBetEngine
 
-    Public WithEvents myNewLogForm As frmLog = Nothing
-    Public WithEvents myNewLoginForm As frmLogin = Nothing
-
 
     ''' <summary>
     ''' Log-Form
@@ -55,6 +52,26 @@ Public Class frmAutoBetEngine
 
         End Select
     End Sub
+
+
+    ''' <summary>
+    ''' Connection-Form
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub ConnectionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConnectionToolStripMenuItem.Click
+        Dim myNewConnectionForm As New frmConnection
+        Dim myNewlogWriter As New clsLogWriter
+
+        Select Case sender.ToString
+            Case = "Connection"
+                AddHandler myNewConnectionForm.writeToLog, AddressOf myNewlogWriter.write_log
+                myNewConnectionForm.ShowDialog()
+                RemoveHandler myNewConnectionForm.writeToLog, AddressOf myNewlogWriter.write_log
+
+        End Select
+    End Sub
+
 
 
 End Class

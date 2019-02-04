@@ -40,9 +40,9 @@ Public Class Form1
 
         myNewLogWriter = New clsLogWriter
 
-        MsgBox("delay: " & My.Settings.me_delayKey)
-        MsgBox("normal: " & My.Settings.me_normalKey)
-        MsgBox("normal: " & My.Settings.me_delayKey_backup)
+        'MsgBox("delay: " & My.Settings.me_delayKey)
+        'MsgBox("normal: " & My.Settings.me_normalKey)
+        'MsgBox("normal: " & My.Settings.me_delayKey_backup)
 
 
         'AddHandler myNewLogWriter, frmLog.writeToLog

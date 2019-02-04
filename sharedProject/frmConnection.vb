@@ -3,6 +3,8 @@
 Public Class frmConnection
 
     Public Event setIntervall(ByVal intervall As Integer)
+    Public Event writeToLog(ByVal logtext As System.String)
+
 
     Public Sub New()
 
@@ -32,13 +34,11 @@ Public Class frmConnection
 
 
 
-        'Dim values() As Integer = CType([Enum].GetValues(GetType(enumKey)), Integer())
-        For Each s In [Enum].GetNames(GetType(enumKey))
-            cboKey.Items.Add(s)
-        Next
 
-        'Me.TextBox1.Text = My.Settings.me_delayKey
+        'Me.TextBox1.Text = My.Settings.me_selected_key.ToString
+        Me.cboKey.Text = My.Settings.me_selected_key.ToString
 
+        RaiseEvent writeToLog("tech-> " & Me.Name & " geöffnet.")
 
 
     End Sub
@@ -49,26 +49,42 @@ Public Class frmConnection
         Me.Dispose()
     End Sub
 
-    Private Sub cboKey_SelectedValueChanged(sender As Object, e As EventArgs) Handles cboKey.SelectedValueChanged
-
-        ' My.Settings.me_selected_key = cboKey.Text.ToString
-        ' My.Settings.me_delayKey = Me.TextBox1.Text
-        ' My.Settings.Save()
-
-    End Sub
-
     Private Sub cboKey_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboKey.SelectedIndexChanged
         Dim t = cboKey.Text.Substring(0, 5)
-        If cboKey.Text.Substring(0, 5) = "delay" Then
+
+        If cboKey.Text.Substring(0, 5) = "me_de" Then
             Me.TextBox1.Text = My.Settings.me_delayKey
+            My.Settings.me_keyValue = TextBox1.Text
+            My.Settings.Save()
+            RaiseEvent writeToLog("Systemwert me_keyValue (delay-Key) mit  """ & CStr(TextBox1.Text) & """ gespeichert.")
         Else
             Me.TextBox1.Text = My.Settings.me_normalKey
+            My.Settings.me_keyValue = TextBox1.Text
+            My.Settings.Save()
+            RaiseEvent writeToLog("Systemwert me_keyValue (normal-Key) mit  """ & CStr(TextBox1.Text) & """ gespeichert.")
         End If
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        MsgBox("delay: " & My.Settings.me_delayKey)
-        MsgBox("normal: " & My.Settings.me_normalKey)
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+
+        Try
+            Me.Close()
+
+        Catch ex As Exception
+
+        Finally
+            RaiseEvent writeToLog("tech-> " & Me.Name & " geschlossen.")
+        End Try
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Try
+            MsgBox(My.Settings.me_keyValue)
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 End Class

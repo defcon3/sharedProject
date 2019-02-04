@@ -32,7 +32,7 @@
       <Value Profile="(Default)">Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Temp\DB_EXPORT.mdb</Value>
     </Setting>
     <Setting Name="me_selected_key" Type="System.String" Scope="User">
-      <Value Profile="(Default)">delay_key</Value>
+      <Value Profile="(Default)">me_delay_key</Value>
     </Setting>
     <Setting Name="me_normalKey" Type="System.String" Scope="User">
       <Value Profile="(Default)">vb0GqKJUPozKinAD</Value>
@@ -44,6 +44,9 @@
       <Value Profile="(Default)">C:\Temp\AutoBetEngine\Log</Value>
     </Setting>
     <Setting Name="me_delayKey_backup" Type="System.String" Scope="User">
+      <Value Profile="(Default)">fJWrrsDoo4ays822</Value>
+    </Setting>
+    <Setting Name="me_keyValue" Type="System.String" Scope="User">
       <Value Profile="(Default)">fJWrrsDoo4ays822</Value>
     </Setting>
   </Settings>
