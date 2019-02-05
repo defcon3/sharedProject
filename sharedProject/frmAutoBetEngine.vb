@@ -72,6 +72,72 @@ Public Class frmAutoBetEngine
         End Select
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim m As New bfObjects.clsListMarketCatalogue
+        Dim asdf As String = Newtonsoft.Json.JsonConvert.SerializeObject(m)
+        Dim antwort As String = SendSportsReq(asdf)
+        Stop
+    End Sub
 
 
+    Public Function SendSportsReq(ByVal jsonString As String) As String
+
+
+
+        Dim myURI As New Uri(My.Settings.me_betting_uri)
+        Dim mySP As ServicePoint = ServicePointManager.FindServicePoint(myURI)
+        mySP.Expect100Continue = False
+
+
+
+        Dim request As WebRequest = WebRequest.Create(myURI)
+
+
+
+        Dim byteArray As Byte() = Encoding.Default.GetBytes(jsonString)
+
+        request.Method = "POST"
+        request.ContentType = "application/json"
+        request.Headers.Add(CStr("X-Application: " & getKeyValue()))
+        request.Headers.Add("X-Authentication: " & My.Settings.me_cookie_ABE)
+        Dim bl = Encoding.Default.GetBytes(jsonString)
+        request.ContentLength = bl.Length
+
+
+
+        Dim datastream As Stream = request.GetRequestStream()
+        datastream.Write(byteArray, 0, bl.Length)
+
+        datastream.Close()
+
+        Dim txtConnectionState
+
+        Dim response As WebResponse = request.GetResponse()
+
+        Dim myHttpWebResponse As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
+        If myHttpWebResponse.StatusCode = HttpStatusCode.OK Then
+            ' txtConnectionState.Text = "online"
+        Else
+            ' txtConnectionState.Text = "offline"
+        End If
+
+
+        datastream = response.GetResponseStream()
+
+        Dim reader As New StreamReader(datastream)
+        Dim responseFromServer As String = reader.ReadToEnd()
+
+
+
+        reader.Close()
+        datastream.Close()
+
+
+        'Debug.Print(responseFromServer.ToString)
+        response.Close()
+
+        ergebnis = responseFromServer
+        Return responseFromServer
+
+    End Function
 End Class

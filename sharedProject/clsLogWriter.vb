@@ -12,7 +12,7 @@ Public Class clsLogWriter
         Dim writeFile As System.IO.TextWriter = New _
             StreamWriter("c:\temp\" & CStr(DateTime.Now.ToString("yyyy-MM-dd")) & "_Log_ABE.txt", True, encoding:=Encoding.UTF8)
         writeFile.WriteLine(sb.ToString)
-        My.Settings.me_cookie_ABE = sb.ToString
+        'My.Settings.me_cookie_ABE = sb.ToString
         writeFile.Flush()
         writeFile.Close()
         writeFile = Nothing

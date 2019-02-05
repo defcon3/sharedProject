@@ -63,7 +63,7 @@ Public Class Form1
         Dim writeFile As System.IO.TextWriter = New _
             StreamWriter("c:\temp\cookie_ABE.txt", False, encoding:=Encoding.ASCII)
         writeFile.WriteLine(sb.ToString)
-        My.Settings.me_cookie_ABE = sb.ToString
+        'My.Settings.me_cookie_ABE = sb.ToString
         writeFile.Flush()
         writeFile.Close()
         writeFile = Nothing
