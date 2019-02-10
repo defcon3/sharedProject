@@ -28,7 +28,7 @@ Partial Class frmAutoBetEngine
         Me.EinstellungenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConnectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnListMarketCatalogue = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -71,21 +71,21 @@ Partial Class frmAutoBetEngine
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(63, 20)
         Me.ToolStripMenuItem1.Text = "Logging"
         '
-        'Button1
+        'btnListMarketCatalogue
         '
-        Me.Button1.Location = New System.Drawing.Point(94, 103)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 13
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnListMarketCatalogue.Location = New System.Drawing.Point(22, 44)
+        Me.btnListMarketCatalogue.Name = "btnListMarketCatalogue"
+        Me.btnListMarketCatalogue.Size = New System.Drawing.Size(184, 23)
+        Me.btnListMarketCatalogue.TabIndex = 14
+        Me.btnListMarketCatalogue.Text = "ListMarketCatalogue"
+        Me.btnListMarketCatalogue.UseVisualStyleBackColor = True
         '
         'frmAutoBetEngine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1526, 742)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnListMarketCatalogue)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Name = "frmAutoBetEngine"
         Me.Text = "s"
@@ -102,5 +102,5 @@ Partial Class frmAutoBetEngine
     Friend WithEvents EinstellungenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ConnectionToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnListMarketCatalogue As Button
 End Class

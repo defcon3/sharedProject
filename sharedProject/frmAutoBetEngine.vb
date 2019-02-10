@@ -72,12 +72,6 @@ Public Class frmAutoBetEngine
         End Select
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim m As New bfObjects.clsListMarketCatalogue
-        Dim asdf As String = Newtonsoft.Json.JsonConvert.SerializeObject(m)
-        Dim antwort As String = SendSportsReq(asdf)
-        Stop
-    End Sub
 
 
     Public Function SendSportsReq(ByVal jsonString As String) As String
@@ -140,4 +134,46 @@ Public Class frmAutoBetEngine
         Return responseFromServer
 
     End Function
+
+    Private Sub btnListMarketCatalogue_Click(sender As Object, e As EventArgs) Handles btnListMarketCatalogue.Click
+
+
+        Dim myNewListMarketCatalogue As New frmListMarketCatalogue
+        myNewListMarketCatalogue.ShowDialog()
+
+        Dim strg As System.String = ""
+        strg = serializeRequest(myNewListMarketCatalogue.myNewListMarketCatalogue)
+
+
+        Dim answer As String
+        answer = SendSportsReq(strg)
+
+
+        Dim mc As New MongoClient("mongodb://192.168.178.44:27017")
+
+        Dim db = mc.GetDatabase("ListMarketCatalogue_" & CStr(Date.Now.Year) & "_" & CStr(Date.Now.Month) & "_" & CStr(Date.Now.Day))
+
+
+        'answer in bson document umwandeln
+
+
+        Dim t As BsonDocument = MongoDB.Bson.BsonDocument.Parse(answer)
+
+        Dim collection = db.GetCollection(Of BsonDocument)("ListMarketCatalogue")
+
+
+        'Dim collection As IMongoCollection(Of BsonDocument) = db.GetCollection()
+
+
+
+
+        Try
+            collection.InsertOne(t)
+        Catch ex As Exception
+            Stop
+        End Try
+
+
+
+    End Sub
 End Class

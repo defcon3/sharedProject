@@ -350,5 +350,7 @@ Public Class uctlCheckedList
         Return _dt
     End Function
 
+    Private Sub clbCheckedListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles clbCheckedListBox.SelectedIndexChanged
 
+    End Sub
 End Class

@@ -165,6 +165,12 @@
     <Compile Include="frmConnection.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmListMarketCatalogue.Designer.vb">
+      <DependentUpon>frmListMarketCatalogue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmListMarketCatalogue.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmLog.Designer.vb">
       <DependentUpon>frmLog.vb</DependentUpon>
     </Compile>
@@ -211,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmConnection.resx">
       <DependentUpon>frmConnection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListMarketCatalogue.resx">
+      <DependentUpon>frmListMarketCatalogue.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLog.resx">
       <DependentUpon>frmLog.vb</DependentUpon>
