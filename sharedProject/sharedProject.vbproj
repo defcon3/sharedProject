@@ -74,6 +74,9 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ABEresponses">
+      <HintPath>..\..\ABEresponses\ABEresponses\bin\Release\netstandard1.4\ABEresponses.dll</HintPath>
+    </Reference>
     <Reference Include="bfObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bfObjects\bfObjects\bin\Debug\bfObjects.dll</HintPath>

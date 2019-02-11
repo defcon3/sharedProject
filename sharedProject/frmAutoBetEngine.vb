@@ -174,6 +174,11 @@ Public Class frmAutoBetEngine
         End Try
 
 
+        Dim eventTypeResults = New List(Of ABEresponses.clsMarketCatalogue)
+
+        eventTypeResults.Add(Newtonsoft.Json.JsonConvert.DeserializeObject(Of ABEresponses.clsMarketCatalogue)(answer))
+
+
 
     End Sub
 End Class
