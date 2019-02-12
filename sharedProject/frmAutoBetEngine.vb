@@ -141,13 +141,14 @@ Public Class frmAutoBetEngine
         Dim myNewListMarketCatalogue As New frmListMarketCatalogue
         myNewListMarketCatalogue.ShowDialog()
 
+
+
         Dim strg As System.String = ""
         strg = serializeRequest(myNewListMarketCatalogue.myNewListMarketCatalogue)
 
 
         Dim answer As String
         answer = SendSportsReq(strg)
-
 
         Dim mc As New MongoClient("mongodb://192.168.178.44:27017")
 
@@ -164,6 +165,8 @@ Public Class frmAutoBetEngine
 
         'Dim collection As IMongoCollection(Of BsonDocument) = db.GetCollection()
 
+        Exit Sub
+        Stop
 
 
 
@@ -177,7 +180,6 @@ Public Class frmAutoBetEngine
         Dim eventTypeResults = New List(Of ABEresponses.clsMarketCatalogue)
 
         eventTypeResults.Add(Newtonsoft.Json.JsonConvert.DeserializeObject(Of ABEresponses.clsMarketCatalogue)(answer))
-
 
 
     End Sub

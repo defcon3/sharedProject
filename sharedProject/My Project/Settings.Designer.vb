@@ -128,8 +128,11 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Temp\DB_EXPORT.mdb")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("<?xml version=""1.0"" encoding=""utf-16""?>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<SerializableConnectionString xmlns:xsi="& _ 
+            """http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XM"& _ 
+            "LSchema"">"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <ConnectionString>Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\T"& _ 
+            "emp\DB_EXPORT.mdb</ConnectionString>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <ProviderName>System.Data.OleDb</Provide"& _ 
+            "rName>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</SerializableConnectionString>")>  _
         Public ReadOnly Property DB_EXPORTConnectionString() As String
             Get
                 Return CType(Me("DB_EXPORTConnectionString"),String)

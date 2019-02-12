@@ -282,49 +282,6 @@
 
     End Function
 
-    Public Function getInsertString(dr As DataRow, tabellenname As String, cols As DataColumnCollection) As String
-
-        'sqlstrg = "INSERT INTO tabResult ([marketId],[isMarketDataDelayed],[status],[betDelay],[bspReconciled],[complete],[inplay],[numberOfWinners],[numberOfRunners],[numberOfActiveRunners],[totalMatched],[totalAvailable],[crossMatching],[runnersVoidable],[version],[result_Id],[wurzel_Id],[timestamp]) VALUES ( '" & dt.Rows(0).Item(0) & "', '" & dt.Rows(0).Item(1) & "', '" & dt.Rows(0).Item(2) & "', '" & dt.Rows(0).Item(3) & "', '" & dt.Rows(0).Item(4) & "', '" & dt.Rows(0).Item(5) & "', '" & dt.Rows(0).Item(6) & "', '" & dt.Rows(0).Item(7) & "', '" & dt.Rows(0).Item(8) & "', '" & dt.Rows(0).Item(9) & "', '" & dt.Rows(0).Item(10) & "', '" & dt.Rows(0).Item(11) & "', '" & dt.Rows(0).Item(12) & "', '" & dt.Rows(0).Item(13) & "', '" & dt.Rows(0).Item(14) & "', '" & dt.Rows(0).Item(15) & "', '" & dt.Rows(0).Item(16) & "', '" & dt.Rows(0).Item(17) & "')"
-        Dim str_01 As String = ("insert into tab" & tabellenname & " ([").ToUpper
-        Dim str_02 As String = "]) VALUES ( '"
-        Dim str_03 As String = "')"
-        Dim str_04 As String = "', '"
-        Dim str_05 As String = "],["
-        Dim str As String = vbNullString
-        Dim i As Integer
-
-        If cols.Count > 0 Then
-
-            For i = 0 To cols.Count - 1 Step 1
-                'If cols(i).Caption.ToUpper = "RULES" Then dr.Item(i) = ""
-
-                str_01 = str_01 & cols(i).Caption & str_05
-
-                Try
-                    str_02 = str_02 & dr.Item(i).ToString.Replace("""", "'").ToString.Replace("'", "") & str_04
-                Catch ex As Exception
-                    Stop
-                End Try
-
-
-            Next
-            str = str_01.Remove(str_01.Length - 3, 3).ToString & str_02.Remove(str_02.Length - 4, 4).ToString & str_03
-
-        Else
-
-            str = Nothing
-
-        End If
-
-
-
-
-
-
-        Return str
-
-
-    End Function
 
     ''' <summary>
     ''' Die Funktion gibt den Key der gewählten Einstellung zurück
