@@ -226,144 +226,144 @@ Public Class Form1
 
     Private Sub btnGO_Click(sender As Object, e As EventArgs) Handles btnGO.Click
 
-        Timer1.Interval = txtRefreshRate.Text
-        läuft = True
+        'Timer1.Interval = txtRefreshRate.Text
+        'läuft = True
 
-        ListView2.Enabled = False
+        'ListView2.Enabled = False
 
-        Dim serverResponse As String
-        Dim xmlDoc As Xml.XmlDocument
-        Dim DataSet = New DataSet()
-        Dim xmlReader As Xml.XmlNodeReader
-
-
-        Dim t1, t2, t3, t4, t5 As String
+        'Dim serverResponse As String
+        'Dim xmlDoc As Xml.XmlDocument
+        'Dim DataSet = New DataSet()
+        'Dim xmlReader As Xml.XmlNodeReader
 
 
-
-        ' write Metadata
-        Using sw As System.IO.StreamWriter = System.IO.File.AppendText("c:\Temp\export\Metadata.txt")
-
-            Dim sb = New System.Text.StringBuilder
-            sb.Append("Market-ID;Event-ID;Event-Type;Event-Name;Market-Name")
-            sw.WriteLine(sb.ToString)
-
-
-            sb = New System.Text.StringBuilder
-
-            For Each itm As ListViewItem In ListView2.Items
-                sb.Append(itm.Text & ";" & itm.SubItems(1).Text & ";" & itm.SubItems(2).Text & ";" & itm.SubItems(3).Text & ";" & itm.SubItems(4).Text & vbCrLf)
-
-
-                t1 = itm.Text
-                t2 = itm.SubItems(1).Text
-                t3 = itm.SubItems(2).Text
-                t4 = itm.SubItems(3).Text
-                t5 = itm.SubItems(4).Text
-            Next
-
-            sw.WriteLine(sb.ToString)
-
-        End Using
-
-        Dim sqlstrg As String = "INSERT INTO tabMetadata ([Market-ID],[Event-ID],[Event-Type],[Event-Name],[Market-Name]) VALUES ( '" & t1 & "', '" & t2 & "', '" & t3 & "', '" & t4 & "', '" & t5 & "')"
-
-
-        Dim con As New OleDb.OleDbConnection
-        con.ConnectionString = My.Settings.DB_EXPORTConnectionString
-        Try
-            con.Open()
-
-            Dim commando As New OleDb.OleDbCommand(sqlstrg, con)
-            commando.ExecuteNonQuery()
+        'Dim t1, t2, t3, t4, t5 As String
 
 
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        Finally
-            con.Close()
+        '' write Metadata
+        'Using sw As System.IO.StreamWriter = System.IO.File.AppendText("c:\Temp\export\Metadata.txt")
 
-        End Try
-
-
-
-        'Dim dt9 As New DataTable
-        'Dim dc9 As DataColumn
-        'dc9.ColumnName = "ServerResponse"
-        ''dc.MaxLength = 10000
+        '    Dim sb = New System.Text.StringBuilder
+        '    sb.Append("Market-ID;Event-ID;Event-Type;Event-Name;Market-Name")
+        '    sw.WriteLine(sb.ToString)
 
 
+        '    sb = New System.Text.StringBuilder
+
+        '    For Each itm As ListViewItem In ListView2.Items
+        '        sb.Append(itm.Text & ";" & itm.SubItems(1).Text & ";" & itm.SubItems(2).Text & ";" & itm.SubItems(3).Text & ";" & itm.SubItems(4).Text & vbCrLf)
+
+
+        '        t1 = itm.Text
+        '        t2 = itm.SubItems(1).Text
+        '        t3 = itm.SubItems(2).Text
+        '        t4 = itm.SubItems(3).Text
+        '        t5 = itm.SubItems(4).Text
+        '    Next
+
+        '    sw.WriteLine(sb.ToString)
+
+        'End Using
+
+        'Dim sqlstrg As String = "INSERT INTO tabMetadata ([Market-ID],[Event-ID],[Event-Type],[Event-Name],[Market-Name]) VALUES ( '" & t1 & "', '" & t2 & "', '" & t3 & "', '" & t4 & "', '" & t5 & "')"
+
+
+        'Dim con As New OleDb.OleDbConnection
+        'con.ConnectionString = My.Settings.DB_EXPORTConnectionString
+        'Try
+        '    con.Open()
+
+        '    Dim commando As New OleDb.OleDbCommand(sqlstrg, con)
+        '    commando.ExecuteNonQuery()
+
+
+
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'Finally
+        '    con.Close()
+
+        'End Try
+
+
+
+        ''Dim dt9 As New DataTable
+        ''Dim dc9 As DataColumn
+        ''dc9.ColumnName = "ServerResponse"
+        '''dc.MaxLength = 10000
 
 
 
 
 
 
-        While läuft = True
-
-            Application.DoEvents()
-            System.Threading.Thread.Sleep(txtRefreshRate.Text)
-
-            serverResponse = SendSportsReq(Requeststring)
-
-            'Dim cls As New clsMarketCatalogueResponse
-            Dim cls As New bfObjects.clsMarketBookResponse
-            Dim g1 As String
-            g1 = serverResponse.Substring(1, serverResponse.Length - 2)
-            serverResponse = g1.ToString
-            '        Debug.Print(serverResponse)
 
 
-            Call ausgabeZuDatatable(serverResponse)
-            'End While
+        'While läuft = True
+
+        '    Application.DoEvents()
+        '    System.Threading.Thread.Sleep(txtRefreshRate.Text)
+
+        '    serverResponse = SendSportsReq(Requeststring)
+
+        '    'Dim cls As New clsMarketCatalogueResponse
+        '    Dim cls As New bfObjects.clsMarketBookResponse
+        '    Dim g1 As String
+        '    g1 = serverResponse.Substring(1, serverResponse.Length - 2)
+        '    serverResponse = g1.ToString
+        '    '        Debug.Print(serverResponse)
 
 
-
-            'cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(serverResponse)
-
-            'TextBox2.Text = serverResponse
-
-            xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
-
-            xmlReader = New Xml.XmlNodeReader(xmlDoc)
-            DataSet = New DataSet()
-            DataSet.ReadXml(xmlReader)
-
-            Dim strg As String = Date.Now.ToString("MM/dd/yyyy HH:mm:ss.fff tt")
-
-            Dim obj As New Object
-
-            For Each dt As DataTable In DataSet.Tables
-
-                dt.Columns.Add("timestamp")
-                For Each row In dt.Rows
-                    row("timestamp") = strg
-                Next
-
-                ' hier müssen alle Tabellen in die Datenbank geschrieben werden
-                DataTable2CSV2(dt, "C:\Temp\export\" & dt.TableName & ".txt", ";")
-
-                '' HIER EXPORT
-
-                'For Each rw In dt.Rows
-                '    sqlstrg = getInsertString(rw, dt.TableName, dt.Columns)
-                '    If sqlstrg.Length > 1 Then
-                '        writeToAccess(New OleDb.OleDbConnection, sqlstrg)
-                '    End If
-                'Next
-
-
-                obj = DataSet.Tables
-                'Stop
+        '    Call ausgabeZuDatatable(serverResponse)
+        '    'End While
 
 
 
+        '    'cls = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(serverResponse)
 
-            Next
+        '    'TextBox2.Text = serverResponse
+
+        '    xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(serverResponse, "wurzel")
+
+        '    xmlReader = New Xml.XmlNodeReader(xmlDoc)
+        '    DataSet = New DataSet()
+        '    DataSet.ReadXml(xmlReader)
+
+        '    Dim strg As String = Date.Now.ToString("MM/dd/yyyy HH:mm:ss.fff tt")
+
+        '    Dim obj As New Object
+
+        '    For Each dt As DataTable In DataSet.Tables
+
+        '        dt.Columns.Add("timestamp")
+        '        For Each row In dt.Rows
+        '            row("timestamp") = strg
+        '        Next
+
+        '        ' hier müssen alle Tabellen in die Datenbank geschrieben werden
+        '        DataTable2CSV2(dt, "C:\Temp\export\" & dt.TableName & ".txt", ";")
+
+        '        '' HIER EXPORT
+
+        '        'For Each rw In dt.Rows
+        '        '    sqlstrg = getInsertString(rw, dt.TableName, dt.Columns)
+        '        '    If sqlstrg.Length > 1 Then
+        '        '        writeToAccess(New OleDb.OleDbConnection, sqlstrg)
+        '        '    End If
+        '        'Next
 
 
-        End While
+        '        obj = DataSet.Tables
+        '        'Stop
+
+
+
+
+        '    Next
+
+
+        'End While
 
 
 
@@ -373,49 +373,49 @@ Public Class Form1
 
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
-        Dim strg As String
+        'Dim strg As String
 
-        Dim n = System.DateTime.Now.Ticks
+        'Dim n = System.DateTime.Now.Ticks
 
-        'Dim t As New DB_EXPORTDataSetTableAdapters
+        ''Dim t As New DB_EXPORTDataSetTableAdapters
 
-        Dim con As New OleDb.OleDbConnection
-        con.ConnectionString = My.Settings.DB_EXPORTConnectionString
+        'Dim con As New OleDb.OleDbConnection
+        'con.ConnectionString = My.Settings.DB_EXPORTConnectionString
 
-        Try
-            con.Open()
-        Catch ex As Exception
-            MsgBox(ex.InnerException.ToString)
-        Finally
-            con.Close()
+        'Try
+        '    con.Open()
+        'Catch ex As Exception
+        '    MsgBox(ex.InnerException.ToString)
+        'Finally
+        '    con.Close()
 
-        End Try
-
-
+        'End Try
 
 
-        'Dim queryString As String = "SELECT CustomerID, CompanyName FROM dbo.Customers"
-        'Dim adapter As System.Data.SqlClient.SqlDataAdapter = New System.Data.SqlClient.SqlDataAdapter(queryString, Connection)
-
-        'Dim customers As DataSet = New DataSet
-        'adapter.Fill(customers, "Customers")
-
-        Exit Sub
-
-        strg = "{""jsonrpc"":""2.0"",""result"":[{""marketId"":""1.130138285"",""isMarketDataDelayed"":true,""status"":""OPEN"",""betDelay"":0,""bspReconciled"":false,""complete"":true,""inplay"":false,""numberOfWinners"":1,""numberOfRunners"":2,""numberOfActiveRunners"":2,""totalMatched"":0.0,""totalAvailable"":54766.82,""crossMatching"":true,""runnersVoidable"":false,""version"":1578390911,""runners"":[{""selectionId"":5851482,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":11.0,""size"":35.01},{""price"":8.2,""size"":17.99},{""price"":8.0,""size"":18.5}],""availableToLay"":[{""price"":12.5,""size"":1744.75},{""price"":13.5,""size"":1600.69},{""price"":15.5,""size"":690.62}],""tradedVolume"":[]}},{""selectionId"":5851483,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":1.09,""size"":20008.67},{""price"":1.08,""size"":20008.67},{""price"":1.07,""size"":10004.33}],""availableToLay"":[{""price"":1.1,""size"":350.15},{""price"":1.14,""size"":129.45},{""price"":1.15,""size"":128.73}],""tradedVolume"":[]}}]}],""id"":1}"
-        'strg = "?xml"":""{""@version"": ""1.0"",""standalone"": ""no""},{""jsonrpc"":""2.0"",""result"":[{""marketId"":""1.130138285"",""isMarketDataDelayed"":true,""status"":""OPEN"",""betDelay"":0,""bspReconciled"":false,""complete"":true,""inplay"":false,""numberOfWinners"":1,""numberOfRunners"":2,""numberOfActiveRunners"":2,""totalMatched"":0.0,""totalAvailable"":54766.82,""crossMatching"":true,""runnersVoidable"":false,""version"":1578390911,""runners"":[{""selectionId"":5851482,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":11.0,""size"":35.01},{""price"":8.2,""size"":17.99},{""price"":8.0,""size"":18.5}],""availableToLay"":[{""price"":12.5,""size"":1744.75},{""price"":13.5,""size"":1600.69},{""price"":15.5,""size"":690.62}],""tradedVolume"":[]}},{""selectionId"":5851483,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":1.09,""size"":20008.67},{""price"":1.08,""size"":20008.67},{""price"":1.07,""size"":10004.33}],""availableToLay"":[{""price"":1.1,""size"":350.15},{""price"":1.14,""size"":129.45},{""price"":1.15,""size"":128.73}],""tradedVolume"":[]}}]}],""id"":1}"
-
-        Dim m As Xml.XmlDocument
-
-        m = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(strg, "wurzel")
 
 
-        Dim xmlReader = New Xml.XmlNodeReader(m)
-        Dim DataSet = New DataSet()
-        DataSet.ReadXml(xmlReader)
+        ''Dim queryString As String = "SELECT CustomerID, CompanyName FROM dbo.Customers"
+        ''Dim adapter As System.Data.SqlClient.SqlDataAdapter = New System.Data.SqlClient.SqlDataAdapter(queryString, Connection)
+
+        ''Dim customers As DataSet = New DataSet
+        ''adapter.Fill(customers, "Customers")
+
+        'Exit Sub
+
+        'strg = "{""jsonrpc"":""2.0"",""result"":[{""marketId"":""1.130138285"",""isMarketDataDelayed"":true,""status"":""OPEN"",""betDelay"":0,""bspReconciled"":false,""complete"":true,""inplay"":false,""numberOfWinners"":1,""numberOfRunners"":2,""numberOfActiveRunners"":2,""totalMatched"":0.0,""totalAvailable"":54766.82,""crossMatching"":true,""runnersVoidable"":false,""version"":1578390911,""runners"":[{""selectionId"":5851482,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":11.0,""size"":35.01},{""price"":8.2,""size"":17.99},{""price"":8.0,""size"":18.5}],""availableToLay"":[{""price"":12.5,""size"":1744.75},{""price"":13.5,""size"":1600.69},{""price"":15.5,""size"":690.62}],""tradedVolume"":[]}},{""selectionId"":5851483,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":1.09,""size"":20008.67},{""price"":1.08,""size"":20008.67},{""price"":1.07,""size"":10004.33}],""availableToLay"":[{""price"":1.1,""size"":350.15},{""price"":1.14,""size"":129.45},{""price"":1.15,""size"":128.73}],""tradedVolume"":[]}}]}],""id"":1}"
+        ''strg = "?xml"":""{""@version"": ""1.0"",""standalone"": ""no""},{""jsonrpc"":""2.0"",""result"":[{""marketId"":""1.130138285"",""isMarketDataDelayed"":true,""status"":""OPEN"",""betDelay"":0,""bspReconciled"":false,""complete"":true,""inplay"":false,""numberOfWinners"":1,""numberOfRunners"":2,""numberOfActiveRunners"":2,""totalMatched"":0.0,""totalAvailable"":54766.82,""crossMatching"":true,""runnersVoidable"":false,""version"":1578390911,""runners"":[{""selectionId"":5851482,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":11.0,""size"":35.01},{""price"":8.2,""size"":17.99},{""price"":8.0,""size"":18.5}],""availableToLay"":[{""price"":12.5,""size"":1744.75},{""price"":13.5,""size"":1600.69},{""price"":15.5,""size"":690.62}],""tradedVolume"":[]}},{""selectionId"":5851483,""handicap"":0.0,""status"":""ACTIVE"",""totalMatched"":0.0,""ex"":{""availableToBack"":[{""price"":1.09,""size"":20008.67},{""price"":1.08,""size"":20008.67},{""price"":1.07,""size"":10004.33}],""availableToLay"":[{""price"":1.1,""size"":350.15},{""price"":1.14,""size"":129.45},{""price"":1.15,""size"":128.73}],""tradedVolume"":[]}}]}],""id"":1}"
+
+        'Dim m As Xml.XmlDocument
+
+        'm = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(strg, "wurzel")
 
 
-        DataTable2CSV2(DataSet.Tables(1), "C:\Temp\Mäuschen.txt", ";")
+        'Dim xmlReader = New Xml.XmlNodeReader(m)
+        'Dim DataSet = New DataSet()
+        'DataSet.ReadXml(xmlReader)
+
+
+        'DataTable2CSV2(DataSet.Tables(1), "C:\Temp\Mäuschen.txt", ";")
 
 
         'dt.ReadXml(m)

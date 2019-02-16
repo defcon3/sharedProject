@@ -165,8 +165,9 @@ Public Class frmAutoBetEngine
 
         'Dim collection As IMongoCollection(Of BsonDocument) = db.GetCollection()
 
-        Exit Sub
-        Stop
+
+        Dim mm As New ABEresponses.clsMarketCatalogue
+
 
 
 

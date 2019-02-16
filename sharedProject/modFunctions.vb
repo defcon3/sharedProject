@@ -258,24 +258,24 @@
 
     Public Function writeToAccess(con As Object, sqlstrg As String)
 
-        con.ConnectionString = My.Settings.DB_EXPORTConnectionString
-        Try
-            con.Open()
+        'con.ConnectionString = My.Settings.DB_EXPORTConnectionString
+        'Try
+        '    con.Open()
 
-            Dim commando As New OleDb.OleDbCommand(sqlstrg, con)
-            If sqlstrg <> vbNullString Then
-                commando.ExecuteNonQuery()
-            End If
+        '    Dim commando As New OleDb.OleDbCommand(sqlstrg, con)
+        '    If sqlstrg <> vbNullString Then
+        '        commando.ExecuteNonQuery()
+        '    End If
 
 
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        Finally
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'Finally
 
-            con.Close()
-            sqlstrg = vbNullString
-        End Try
+        '    con.Close()
+        '    sqlstrg = vbNullString
+        'End Try
 
 
         Return Nothing
