@@ -77,7 +77,7 @@
   <ItemGroup>
     <Reference Include="ABEresponses, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ABEresponses\ABEresponses\bin\Release\netstandard1.4\ABEresponses.dll</HintPath>
+      <HintPath>..\..\ABEresponses\ABEresponses\bin\Debug\ABEresponses.dll</HintPath>
     </Reference>
     <Reference Include="bfObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -280,12 +280,12 @@
   <ItemGroup>
     <PublishFile Include="Newtonsoft.Json.xml">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>

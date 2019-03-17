@@ -135,6 +135,12 @@ Public Class frmAutoBetEngine
 
     End Function
 
+
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnListMarketCatalogue_Click(sender As Object, e As EventArgs) Handles btnListMarketCatalogue.Click
 
 
@@ -166,7 +172,8 @@ Public Class frmAutoBetEngine
         'Dim collection As IMongoCollection(Of BsonDocument) = db.GetCollection()
 
 
-        Dim mm As New ABEresponses.clsMarketCatalogue
+        Dim mm As New ABEresponses.Class1
+
 
 
 
@@ -177,10 +184,16 @@ Public Class frmAutoBetEngine
             Stop
         End Try
 
+        Dim dorit As New ABEresponses.clsMarketCatalogue
+        dorit.marketId = "9"
 
-        Dim eventTypeResults = New List(Of ABEresponses.clsMarketCatalogue)
+        Dim veit As New bfObjects.clsAvailableToBack
+        veit.price = 6
 
-        eventTypeResults.Add(Newtonsoft.Json.JsonConvert.DeserializeObject(Of ABEresponses.clsMarketCatalogue)(answer))
+        'Dim eventTypeResults = New List(Of ABEresponses.clsMarketCatalogue)
+
+
+        ' eventTypeResults.Add(Newtonsoft.Json.JsonConvert.DeserializeObject(Of ABEresponses.clsMarketCatalogue)(answer))
 
 
     End Sub
