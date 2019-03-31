@@ -172,7 +172,6 @@ Public Class frmAutoBetEngine
         'Dim collection As IMongoCollection(Of BsonDocument) = db.GetCollection()
 
 
-        Dim mm As New ABEresponses.Class1
 
 
 
@@ -184,8 +183,6 @@ Public Class frmAutoBetEngine
             Stop
         End Try
 
-        Dim dorit As New ABEresponses.clsMarketCatalogue
-        dorit.marketId = "9"
 
         Dim veit As New bfObjects.clsAvailableToBack
         veit.price = 6
