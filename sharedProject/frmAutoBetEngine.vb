@@ -168,10 +168,17 @@ Public Class frmAutoBetEngine
 
         Dim collection = db.GetCollection(Of BsonDocument)("ListMarketCatalogue")
 
+        'Dim dtvalue As New Object
+        'dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(answer)
+
+
 
         'Dim collection As IMongoCollection(Of BsonDocument) = db.GetCollection()
 
+        Dim eventTypeResults = New List(Of bfObjects.clsListMarketCatalogue)
 
+
+        eventTypeResults.Add(Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsListMarketCatalogue)(answer))
 
 
 

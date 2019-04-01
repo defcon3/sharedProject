@@ -88,7 +88,7 @@ Partial Class frmAutoBetEngine
         Me.Controls.Add(Me.btnListMarketCatalogue)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Name = "frmAutoBetEngine"
-        Me.Text = "s"
+        Me.Text = "AutoBetEngine"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
