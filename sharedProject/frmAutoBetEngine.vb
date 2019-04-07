@@ -158,34 +158,26 @@ Public Class frmAutoBetEngine
 
         Dim mc As New MongoClient("mongodb://192.168.178.44:27017")
 
-        Dim db = mc.GetDatabase("ListMarketCatalogue_" & CStr(Date.Now.Year) & "_" & CStr(Date.Now.Month) & "_" & CStr(Date.Now.Day))
+        'Dim db = mc.GetDatabase("ListMarketCatalogue_" & CStr(Date.Now.Year) & "_" & CStr(Date.Now.Month) & "_" & CStr(Date.Now.Day))
 
 
         'answer in bson document umwandeln
 
-
         Dim t As BsonDocument = MongoDB.Bson.BsonDocument.Parse(answer)
 
-        Dim collection = db.GetCollection(Of BsonDocument)("ListMarketCatalogue")
-
-        'Dim dtvalue As New Object
-        'dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(answer)
+        'Dim collection = db.GetCollection(Of BsonDocument)("ListMarketCatalogue")
 
 
 
-        'Dim collection As IMongoCollection(Of BsonDocument) = db.GetCollection()
-
-        Dim eventTypeResults = New List(Of bfObjects.clsListMarketCatalogue)
-
-
-        eventTypeResults.Add(Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsListMarketCatalogue)(answer))
+        Dim dtvalue As New clsMarketCatalogue
+        dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clsMarketCatalogue)(answer)
 
 
 
 
 
         Try
-            collection.InsertOne(t)
+            'collection.InsertOne(t)
         Catch ex As Exception
             Stop
         End Try
@@ -201,4 +193,12 @@ Public Class frmAutoBetEngine
 
 
     End Sub
+
+    Public Class clsMarketCatalogue
+        Public Property jsonrpc As String
+        Public result As List(Of ABEresponses.MarketCatalogue)
+        Public id As Integer
+
+    End Class
+
 End Class
