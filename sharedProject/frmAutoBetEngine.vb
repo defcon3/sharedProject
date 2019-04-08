@@ -193,7 +193,9 @@ Public Class frmAutoBetEngine
 
 
     End Sub
-
+    ''' <summary>
+    ''' Public Class clsMarketCatalogue
+    ''' </summary>
     Public Class clsMarketCatalogue
         Public Property jsonrpc As String
         Public result As List(Of ABEresponses.MarketCatalogue)
