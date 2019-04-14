@@ -7,7 +7,10 @@ Imports MongoDB.Driver.Core
 Imports MongoDB.Bson.Serialization.Attributes
 Imports MongoDB.Bson.Serialization.IdGenerators
 Imports MongoDB.Bson.Serialization
-
+Imports System
+Imports System.Reflection
+Imports System.Collections.Generic
+Imports System.Collections
 
 Public Class frmAutoBetEngine
 
@@ -173,6 +176,12 @@ Public Class frmAutoBetEngine
         dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clsMarketCatalogue)(answer)
 
 
+        'Dim str = "{""result"":[{""marketId"":""1.108980248"",""marketName"":""**DO NOT DELETE**"",""totalMatched"":0.0,""eventType"":{""id"":""1"",""name"":""Soccer""},""competition"":{""id"":""4212370"",""name"":""South African Cup""},""event"":{""id"":""26976774"",""name"":""South African Cup"",""countryCode"":""ZA"",""timezone"":""Europe/London"",""openDate"":""2013-03-15T15:34:21.000Z""}}]}"
+
+        'Dim dataset1 As New DataSet
+        'dataset1 = Newtonsoft.Json.JsonConvert.DeserializeObject(answer, GetType(bfObjects.clsMarketBookResponse))
+
+        Dim www As bfObjects.clsMarketBookResponse = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(answer)
 
 
 
@@ -203,4 +212,44 @@ Public Class frmAutoBetEngine
 
     End Class
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        'Dim CurCols() As PropertyInfo = GetType(ABEresponses.MarketCatalogue).GetGenericArguments()(0).GetProperties
+
+        'Dim CurCols() As PropertyInfo = GetType(ABEresponses.MarketCatalogue).GetGenericArguments()(0).GetProperties
+        'Dim anzahla = GetType(ABEresponses.MarketCatalogue).GetGenericArguments.Count
+        ' .GetProperties()
+
+
+        Dim CurCols As Reflection.PropertyInfo() = GetType(ABEresponses.MarketCatalogue).GetProperties
+
+
+
+
+        For Each icols In CurCols
+            Dim coltpye As Type = icols.PropertyType
+            If coltpye.IsGenericType AndAlso coltpye.GetGenericTypeDefinition = GetType(List(Of)) Then
+                Debug.Print(icols.Name.ToString & " is a generic list")
+            End If
+        Next
+
+        '.GetType.GetGenericArguments()(0).GetProperties
+
+        'Dim type() As System.Reflection.PropertyInfo = ABEresponses.MarketCatalogue.GetType.GetGenericArguments()(0).GetProperties
+
+
+
+
+
+        'Dim t1 As New ABEresponses.MarketCatalogue
+        'Dim pi As Reflection.PropertyInfo() = t1.GetType.GetProperties()
+        'For Each a1 In pi
+
+        '    Debug.Print(a1.Name)
+
+        'Next
+
+
+
+
+    End Sub
 End Class

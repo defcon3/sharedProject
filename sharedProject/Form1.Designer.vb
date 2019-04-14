@@ -64,11 +64,11 @@ Partial Class Form1
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.TreeView2 = New System.Windows.Forms.TreeView()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.UctlListMarketCatalogue = New sharedProject.uctlCheckedList()
         Me.UctlListEvents = New sharedProject.uctlCheckedList()
         Me.UctlListEventTypes = New sharedProject.uctlCheckedList()
-        Me.TreeView2 = New System.Windows.Forms.TreeView()
-        Me.Button5 = New System.Windows.Forms.Button()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -383,6 +383,22 @@ Partial Class Form1
         Me.Button4.Text = "Button4"
         Me.Button4.UseVisualStyleBackColor = True
         '
+        'TreeView2
+        '
+        Me.TreeView2.Location = New System.Drawing.Point(794, 37)
+        Me.TreeView2.Name = "TreeView2"
+        Me.TreeView2.Size = New System.Drawing.Size(121, 97)
+        Me.TreeView2.TabIndex = 55
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(1038, 55)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(75, 23)
+        Me.Button5.TabIndex = 56
+        Me.Button5.Text = "Button5"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
         'UctlListMarketCatalogue
         '
         Me.UctlListMarketCatalogue.Location = New System.Drawing.Point(0, 469)
@@ -427,22 +443,6 @@ Partial Class Form1
         Me.UctlListEventTypes.Spalte_2 = Nothing
         Me.UctlListEventTypes.Spalte_3 = Nothing
         Me.UctlListEventTypes.TabIndex = 48
-        '
-        'TreeView2
-        '
-        Me.TreeView2.Location = New System.Drawing.Point(794, 37)
-        Me.TreeView2.Name = "TreeView2"
-        Me.TreeView2.Size = New System.Drawing.Size(121, 97)
-        Me.TreeView2.TabIndex = 55
-        '
-        'Button5
-        '
-        Me.Button5.Location = New System.Drawing.Point(1038, 55)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 23)
-        Me.Button5.TabIndex = 56
-        Me.Button5.Text = "Button5"
-        Me.Button5.UseVisualStyleBackColor = True
         '
         'Form1
         '

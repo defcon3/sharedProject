@@ -686,4 +686,8 @@ Public Class Form1
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
 
     End Sub
+
+    Private Sub UctlListEventTypes_Load(sender As Object, e As EventArgs) Handles UctlListEventTypes.Load
+
+    End Sub
 End Class

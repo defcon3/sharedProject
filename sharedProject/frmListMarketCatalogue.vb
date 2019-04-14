@@ -19,4 +19,7 @@
 
     End Sub
 
+    Private Sub ClbMarketProjection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles clbMarketProjection.SelectedIndexChanged
+
+    End Sub
 End Class
