@@ -219,8 +219,13 @@ Public Class frmAutoBetEngine
         'Dim anzahla = GetType(ABEresponses.MarketCatalogue).GetGenericArguments.Count
         ' .GetProperties()
 
+        Dim t As New ABEresponses.Runner
+        Dim tt
+        tt = modfunc.rekursiv(t)
 
-        Dim CurCols As Reflection.PropertyInfo() = GetType(ABEresponses.MarketCatalogue).GetProperties
+
+        'Dim CurCols As Reflection.PropertyInfo() = GetType(ABEresponses.MarketCatalogue).GetProperties
+        Dim CurCols As Reflection.PropertyInfo() = GetType(ABEresponses.Runner).GetProperties
 
 
 
