@@ -175,10 +175,73 @@ Public Class frmAutoBetEngine
         Dim dtvalue As New clsMarketCatalogue
         dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clsMarketCatalogue)(answer)
 
+        'answer = "{""result"":[{""marketId"":""1.108980248"",""marketName"":""**DO NOT DELETE**"",""totalMatched"":0.0,""eventType"":{""id"":""1"",""name"":""Soccer""},""competition"":{""id"":""4212370"",""name"":""South African Cup""},""event"":{""id"":""26976774"",""name"":""South African Cup"",""countryCode"":""ZA"",""timezone"":""Europe/London"",""openDate"":""2013-03-15T15:34:21.000Z""}}]}"
+
+        Dim uu = dtvalue.result.ToArray()
+
+
+
+
+
+
+        Dim node As System.Xml.XmlNode
+
+        node = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(answer, "result")
+
+        Dim veit1 = "KASFJ2"
+
+        Dim r() As Byte = Encoding.ASCII.GetBytes(answer)
+
+        Dim dorit As Stream
+
+        dorit = New MemoryStream(r)
+
+
+
+        Dim ty As Type
+        ty = GetType(clsMarketCatalogue)
+
+
+        Dim zz As New System.Runtime.Serialization.Json.DataContractJsonSerializer(ty)
+
+
+
+
+
+
+        Dim settings As Xml.XmlWriterSettings = New Xml.XmlWriterSettings()
+        settings.Indent = True
+        'settings.ConformanceLevel = Xml.ConformanceLevel.Fragment
+
+        Using writer As Xml.XmlWriter = Xml.XmlWriter.Create("C:\temp\employees.xml", settings)
+
+
+            writer.WriteStartDocument()
+            writer.WriteStartElement("result") ' Root.
+
+
+            zz.WriteObject(dorit, ty)
+
+            writer.WriteEndElement()
+            writer.WriteEndDocument()
+
+
+
+        End Using
+
+
+
+
+
+
+
+
+
+
 
         'Dim str = "{""result"":[{""marketId"":""1.108980248"",""marketName"":""**DO NOT DELETE**"",""totalMatched"":0.0,""eventType"":{""id"":""1"",""name"":""Soccer""},""competition"":{""id"":""4212370"",""name"":""South African Cup""},""event"":{""id"":""26976774"",""name"":""South African Cup"",""countryCode"":""ZA"",""timezone"":""Europe/London"",""openDate"":""2013-03-15T15:34:21.000Z""}}]}"
 
-        'Dim dataset1 As New DataSet
+        Dim dataset1 As New DataSet
         'dataset1 = Newtonsoft.Json.JsonConvert.DeserializeObject(answer, GetType(bfObjects.clsMarketBookResponse))
 
         Dim www As bfObjects.clsMarketBookResponse = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(answer)
@@ -222,6 +285,7 @@ Public Class frmAutoBetEngine
         Dim t As New ABEresponses.Runner
         Dim tt
         tt = modfunc.rekursiv(t)
+
 
 
         'Dim CurCols As Reflection.PropertyInfo() = GetType(ABEresponses.MarketCatalogue).GetProperties
