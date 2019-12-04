@@ -1,7 +1,9 @@
 ﻿Imports System.IO
 Imports System.Net
 Imports System.Text
-
+''' <summary>
+''' Klasse clsConnectionKeepAlive
+''' </summary>
 Public Class clsConnectionKeepAlive
     Inherits clsConnectionRoot
 

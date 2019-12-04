@@ -140,7 +140,7 @@ Public Class frmAutoBetEngine
 
 
     ''' <summary>
-    ''' 
+    ''' Button ListMarketCatalogue
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
@@ -320,5 +320,31 @@ Public Class frmAutoBetEngine
 
 
 
+    End Sub
+
+    Private Sub StatusStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles StatusStrip1.ItemClicked
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Me.StatusStrip1.BringToFront()
+        Me.StatusStrip1.BackColor = Color.Blue
+
+
+        'Dim t As New ToolStripItemCollection
+        Dim z As New ToolStripButton
+
+        z.Text = "Veitele"
+        Me.StatusStrip1.Items.Add(z)
+        Dim z2 As New ToolStripButton
+
+        z2.Text = "Veitele2"
+        Me.StatusStrip1.Items.Add(z2)
+
+
+    End Sub
+
+    Private Sub frmAutoBetEngine_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Me.WindowState = FormWindowState.Maximized
     End Sub
 End Class

@@ -41,5 +41,8 @@
     <Setting Name="me_keyValue" Type="System.String" Scope="User">
       <Value Profile="(Default)">fJWrrsDoo4ays822</Value>
     </Setting>
+    <Setting Name="me_logpaht" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Temp</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

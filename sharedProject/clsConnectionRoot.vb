@@ -1,11 +1,18 @@
 ﻿Imports System.Net
-
+''' <summary>
+''' Abstrakte Klasse clsConnetionRoot, die nicht einzeln instanziierbar ist.
+''' </summary>
 Public MustInherit Class clsConnectionRoot
-
+    ''' <summary>
+    ''' WebHeaderCollection - Objekt
+    ''' </summary>
+    ''' <returns></returns>
     Property webHeaderColl As New System.Net.WebHeaderCollection
     Property webReq As System.Net.WebRequest
 
-
+    ''' <summary>
+    ''' Konstruktor der Klasse clsConnectionRooth
+    ''' </summary>
     Sub New()
 
         webHeaderColl = New WebHeaderCollection
