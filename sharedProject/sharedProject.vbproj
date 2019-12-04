@@ -276,7 +276,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="sharedProject_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="Newtonsoft.Json.xml">

@@ -76,7 +76,11 @@ Public Class frmAutoBetEngine
     End Sub
 
 
-
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="jsonString"></param>
+    ''' <returns></returns>
     Public Function SendSportsReq(ByVal jsonString As String) As String
 
 
