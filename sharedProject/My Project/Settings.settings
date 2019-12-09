@@ -44,5 +44,8 @@
     <Setting Name="me_logpaht" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Temp</Value>
     </Setting>
+    <Setting Name="me_login_uri" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://identitysso.betfair.com/api/login</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
