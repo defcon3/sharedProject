@@ -22,4 +22,8 @@
     Private Sub ClbMarketProjection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles clbMarketProjection.SelectedIndexChanged
 
     End Sub
+
+    Private Sub frmListMarketCatalogue_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

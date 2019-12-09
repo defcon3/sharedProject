@@ -1,5 +1,7 @@
 ﻿Imports System.ComponentModel
-
+''' <summary>
+''' Die Form, in der der Login gemacht wird.
+''' </summary>
 Public Class frmLogin
 
     Public Event getCookie(ByVal ssoid As String)
