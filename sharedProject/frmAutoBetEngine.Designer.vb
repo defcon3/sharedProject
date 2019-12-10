@@ -76,7 +76,7 @@ Partial Class frmAutoBetEngine
         '
         'btnListMarketCatalogue
         '
-        Me.btnListMarketCatalogue.Location = New System.Drawing.Point(22, 44)
+        Me.btnListMarketCatalogue.Location = New System.Drawing.Point(12, 44)
         Me.btnListMarketCatalogue.Name = "btnListMarketCatalogue"
         Me.btnListMarketCatalogue.Size = New System.Drawing.Size(184, 23)
         Me.btnListMarketCatalogue.TabIndex = 14

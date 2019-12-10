@@ -94,6 +94,7 @@ Partial Class Form1
         'txtConnectionState
         '
         Me.txtConnectionState.Enabled = False
+        Me.txtConnectionState.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.txtConnectionState.Name = "txtConnectionState"
         Me.txtConnectionState.Size = New System.Drawing.Size(50, 25)
         Me.txtConnectionState.Text = "offline"
@@ -112,6 +113,7 @@ Partial Class Form1
         'txtCookie
         '
         Me.txtCookie.Enabled = False
+        Me.txtCookie.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.txtCookie.Name = "txtCookie"
         Me.txtCookie.Size = New System.Drawing.Size(333, 25)
         '
@@ -129,6 +131,7 @@ Partial Class Form1
         'txtHeartbeatintervall
         '
         Me.txtHeartbeatintervall.Enabled = False
+        Me.txtHeartbeatintervall.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.txtHeartbeatintervall.Name = "txtHeartbeatintervall"
         Me.txtHeartbeatintervall.Size = New System.Drawing.Size(50, 25)
         Me.txtHeartbeatintervall.Text = "offline"
@@ -169,7 +172,7 @@ Partial Class Form1
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(70, 20)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(69, 20)
         Me.ToolStripMenuItem1.Text = "Techform"
         '
         'Button1
@@ -219,6 +222,7 @@ Partial Class Form1
         '
         'ListView2
         '
+        Me.ListView2.HideSelection = False
         Me.ListView2.Location = New System.Drawing.Point(613, 153)
         Me.ListView2.Name = "ListView2"
         Me.ListView2.Size = New System.Drawing.Size(789, 268)

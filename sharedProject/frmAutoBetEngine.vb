@@ -14,6 +14,7 @@ Imports System.Collections
 
 Public Class frmAutoBetEngine
 
+    Public Event writeToLog(ByVal logtext As System.String)
 
     ''' <summary>
     ''' Log-Form
@@ -152,8 +153,9 @@ Public Class frmAutoBetEngine
 
 
         Dim myNewListMarketCatalogue As New frmListMarketCatalogue
+        RaiseEvent writeToLog("tech-> " & myNewListMarketCatalogue.Name & " geöffnet.")
         myNewListMarketCatalogue.ShowDialog()
-
+        RaiseEvent writeToLog("tech-> " & myNewListMarketCatalogue.Name & " geschlosssen")
 
 
         Dim strg As System.String = ""
