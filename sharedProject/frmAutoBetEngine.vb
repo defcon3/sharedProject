@@ -153,9 +153,26 @@ Public Class frmAutoBetEngine
 
 
         Dim myNewListMarketCatalogue As New frmListMarketCatalogue
-        RaiseEvent writeToLog("tech-> " & myNewListMarketCatalogue.Name & " geöffnet.")
+        Dim myNewlogWriter As New clsLogWriter
+        AddHandler myNewListMarketCatalogue.writeToLog, AddressOf myNewlogWriter.write_log
+
         myNewListMarketCatalogue.ShowDialog()
-        RaiseEvent writeToLog("tech-> " & myNewListMarketCatalogue.Name & " geschlosssen")
+
+
+
+        Dim myNewConnectionForm As New frmConnection
+
+
+        Select Case sender.ToString
+            Case = "Connection"
+                AddHandler myNewConnectionForm.writeToLog, AddressOf myNewlogWriter.write_log
+                myNewConnectionForm.ShowDialog()
+                RemoveHandler myNewConnectionForm.writeToLog, AddressOf myNewlogWriter.write_log
+
+        End Select
+
+
+
 
 
         Dim strg As System.String = ""
@@ -165,90 +182,24 @@ Public Class frmAutoBetEngine
         Dim answer As String
         answer = SendSportsReq(strg)
 
-        Dim mc As New MongoClient("mongodb://192.168.178.44:27017")
+        'Dim mc As New MongoClient("mongodb://192.168.178.44:27017")  - das ist der derzeit nicht laufende server
+        Dim mc As New MongoClient("mongodb://127.0.0.1:27017")
 
-        'Dim db = mc.GetDatabase("ListMarketCatalogue_" & CStr(Date.Now.Year) & "_" & CStr(Date.Now.Month) & "_" & CStr(Date.Now.Day))
 
 
-        'answer in bson document umwandeln
 
         Dim t As BsonDocument = MongoDB.Bson.BsonDocument.Parse(answer)
 
-        'Dim collection = db.GetCollection(Of BsonDocument)("ListMarketCatalogue")
 
 
 
         Dim dtvalue As New clsMarketCatalogue
         dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clsMarketCatalogue)(answer)
 
-        'answer = "{""result"":[{""marketId"":""1.108980248"",""marketName"":""**DO NOT DELETE**"",""totalMatched"":0.0,""eventType"":{""id"":""1"",""name"":""Soccer""},""competition"":{""id"":""4212370"",""name"":""South African Cup""},""event"":{""id"":""26976774"",""name"":""South African Cup"",""countryCode"":""ZA"",""timezone"":""Europe/London"",""openDate"":""2013-03-15T15:34:21.000Z""}}]}"
-
         Dim uu = dtvalue.result.ToArray()
 
 
-
-
-
-
-        Dim node As System.Xml.XmlNode
-
-        node = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(answer, "result")
-
-        Dim veit1 = "KASFJ2"
-
-        Dim r() As Byte = Encoding.ASCII.GetBytes(answer)
-
-        Dim dorit As Stream
-
-        dorit = New MemoryStream(r)
-
-
-
-        Dim ty As Type
-        ty = GetType(clsMarketCatalogue)
-
-
-        Dim zz As New System.Runtime.Serialization.Json.DataContractJsonSerializer(ty)
-
-
-
-
-
-
-        Dim settings As Xml.XmlWriterSettings = New Xml.XmlWriterSettings()
-        settings.Indent = True
-        'settings.ConformanceLevel = Xml.ConformanceLevel.Fragment
-
-        Using writer As Xml.XmlWriter = Xml.XmlWriter.Create("C:\temp\employees.xml", settings)
-
-
-            writer.WriteStartDocument()
-            writer.WriteStartElement("result") ' Root.
-
-
-            zz.WriteObject(dorit, ty)
-
-            writer.WriteEndElement()
-            writer.WriteEndDocument()
-
-
-
-        End Using
-
-
-
-
-
-
-
-
-
-
-
-        'Dim str = "{""result"":[{""marketId"":""1.108980248"",""marketName"":""**DO NOT DELETE**"",""totalMatched"":0.0,""eventType"":{""id"":""1"",""name"":""Soccer""},""competition"":{""id"":""4212370"",""name"":""South African Cup""},""event"":{""id"":""26976774"",""name"":""South African Cup"",""countryCode"":""ZA"",""timezone"":""Europe/London"",""openDate"":""2013-03-15T15:34:21.000Z""}}]}"
-
         Dim dataset1 As New DataSet
-        'dataset1 = Newtonsoft.Json.JsonConvert.DeserializeObject(answer, GetType(bfObjects.clsMarketBookResponse))
 
         Dim www As bfObjects.clsMarketBookResponse = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(answer)
 
@@ -260,14 +211,6 @@ Public Class frmAutoBetEngine
             Stop
         End Try
 
-
-        Dim veit As New bfObjects.clsAvailableToBack
-        veit.price = 6
-
-        'Dim eventTypeResults = New List(Of ABEresponses.clsMarketCatalogue)
-
-
-        ' eventTypeResults.Add(Newtonsoft.Json.JsonConvert.DeserializeObject(Of ABEresponses.clsMarketCatalogue)(answer))
 
 
     End Sub
@@ -352,5 +295,9 @@ Public Class frmAutoBetEngine
 
     Private Sub frmAutoBetEngine_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.WindowState = FormWindowState.Maximized
+    End Sub
+
+    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
+
     End Sub
 End Class

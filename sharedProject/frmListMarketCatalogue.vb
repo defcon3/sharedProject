@@ -2,6 +2,7 @@
     Property wert As Integer
 
     Public Property myNewListMarketCatalogue As New bfObjects.clsListMarketCatalogue
+    Public Event writeToLog(ByVal logtext As System.String)
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         myNewListMarketCatalogue.params.sort = cboSort.Text
@@ -24,6 +25,14 @@
     End Sub
 
     Private Sub frmListMarketCatalogue_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        RaiseEvent writeToLog("tech-> " & Me.Name & " geöffnet.")
+
+    End Sub
+
+    Private Sub frmListMarketCatalogue_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+
+        RaiseEvent writeToLog("tech-> " & Me.Name & " geschlosssen")
 
     End Sub
 End Class
