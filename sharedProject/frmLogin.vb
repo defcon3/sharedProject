@@ -50,12 +50,17 @@ Public Class frmLogin
     Dim jsonstring As String = "https://identitysso.betfair.com/api/login"
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        Dim jsstr As String = jsonstring & "&username=powmia&password=wass3rsti77"
+        Dim jsstr As String = jsonstring
         Dim bl = Encoding.Default.GetBytes(jsstr)
 
         Dim data = Encoding.UTF8.GetBytes(jsstr)
         Dim myURI As New Uri(My.Settings.me_login_uri)
         Dim result_post = SendRequest(myURI, data, "application/json", "POST")
+
+
+        'request.Method = "POST"
+        'request.ContentType = "application/json"
+        'request.Headers.Add(CStr("X-Application: " & getKeyValue()))
 
 
 
@@ -130,6 +135,9 @@ Public Class frmLogin
         Dim request As WebRequest
 
         request = WebRequest.Create(uri)
+        ' request.Credentials = New NetworkCredential("powmia", "wass3rsti77")
+
+
         request.ContentLength = jsonDataBytes.Length
         request.ContentType = contentType
         request.Method = method
