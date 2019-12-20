@@ -191,6 +191,8 @@ Public Class frmAutoBetEngine
         Dim mc As New MongoClient("mongodb://127.0.0.1:27017")
 
 
+        Dim md As IMongoDatabase = mc.GetDatabase("neue")
+
 
 
         Dim t As BsonDocument = MongoDB.Bson.BsonDocument.Parse(answer)
@@ -210,8 +212,17 @@ Public Class frmAutoBetEngine
 
 
 
+
+        Dim zzz As IMongoCollection(Of clsMarketCatalogue)
+
+        Dim userCollection As IMongoCollection(Of BsonDocument) = md.GetCollection(Of BsonDocument)("ljkl")
+
+
+
+
+
         Try
-            'collection.InsertOne(t)
+            userCollection.InsertOne(t)
         Catch ex As Exception
             Stop
         End Try
