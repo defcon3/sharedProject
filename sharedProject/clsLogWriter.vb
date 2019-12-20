@@ -17,11 +17,18 @@ Public Class clsLogWriter
         'Dim writer As New System.IO.TextWriter()
         Dim writeFile As System.IO.TextWriter = New _
             StreamWriter(My.Settings.me_logpath & "\" & CStr(DateTime.Now.ToString("yyyy-MM-dd")) & "_Log_ABE.txt", True, encoding:=Encoding.UTF8)
-        writeFile.WriteLine(sb.ToString)
-        'My.Settings.me_cookie_ABE = sb.ToString
-        writeFile.Flush()
-        writeFile.Close()
-        writeFile = Nothing
+        Try
+            writeFile.WriteLine(sb.ToString)
+        Catch ex As Exception
+            writeFile.WriteLine(ex.Message.ToString)
+        Finally
+            writeFile.Flush()
+            writeFile.Close()
+            writeFile = Nothing
+
+        End Try
+
+
 
 
     End Sub

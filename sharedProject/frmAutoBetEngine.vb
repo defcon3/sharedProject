@@ -12,9 +12,18 @@ Imports System.Reflection
 Imports System.Collections.Generic
 Imports System.Collections
 
-Public Class frmAutoBetEngine
 
-    Public Event writeToLog(ByVal logtext As System.String)
+Public Class frmAutoBetEngine
+    Implements ILogWriter
+
+    ''' <summary>
+    ''' Öffentliches Event zum Schreiben ins Log
+    ''' </summary>
+    ''' <param name="logtext"></param>
+    'Public Event writeToLog(ByVal logtext As System.String)
+    Public Event ILogWriter_writeToLog(logtext As String) Implements ILogWriter.writeToLog
+
+
 
     ''' <summary>
     ''' Log-Form
