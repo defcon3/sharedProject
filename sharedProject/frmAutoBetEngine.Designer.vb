@@ -32,7 +32,10 @@ Partial Class frmAutoBetEngine
         Me.Button1 = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.MenuStrip1.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -94,6 +97,7 @@ Partial Class frmAutoBetEngine
         '
         'StatusStrip1
         '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 720)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(1526, 22)
@@ -109,11 +113,26 @@ Partial Class frmAutoBetEngine
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(119, 17)
+        Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(54, 98)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(332, 499)
+        Me.TextBox1.TabIndex = 18
+        '
         'frmAutoBetEngine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1526, 742)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.Button1)
@@ -123,6 +142,8 @@ Partial Class frmAutoBetEngine
         Me.Text = "AutoBetEngine"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -138,4 +159,6 @@ Partial Class frmAutoBetEngine
     Friend WithEvents Button1 As Button
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents Button2 As Button
+    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents TextBox1 As TextBox
 End Class

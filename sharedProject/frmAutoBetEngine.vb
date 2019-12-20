@@ -181,6 +181,11 @@ Public Class frmAutoBetEngine
 
         Dim answer As String
         answer = SendSportsReq(strg)
+        Me.TextBox1.Text = answer
+
+
+
+
 
         'Dim mc As New MongoClient("mongodb://192.168.178.44:27017")  - das ist der derzeit nicht laufende server
         Dim mc As New MongoClient("mongodb://127.0.0.1:27017")
@@ -298,6 +303,10 @@ Public Class frmAutoBetEngine
     End Sub
 
     Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
+
+    End Sub
+
+    Private Sub ToolStripStatusLabel1_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel1.Click
 
     End Sub
 End Class
