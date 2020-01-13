@@ -196,6 +196,7 @@ Public Class frmAutoBetEngine
         Me.TextBox1.Text = answer
 
 
+        Dim uu As bfObjects.structMarketCatalogueResponse
 
 
 
