@@ -161,24 +161,27 @@ Public Class frmAutoBetEngine
     Private Sub btnListMarketCatalogue_Click(sender As Object, e As EventArgs) Handles btnListMarketCatalogue.Click
 
 
+        ''' neues Auswahlfenster für ListMarketCatalogue öffnen
         Dim myNewListMarketCatalogue As New frmListMarketCatalogue
         Dim myNewlogWriter As New clsLogWriter
         AddHandler myNewListMarketCatalogue.writeToLog, AddressOf myNewlogWriter.write_log
 
         myNewListMarketCatalogue.ShowDialog()
+        ''' das Auswahlfenster wieder schließen
 
 
 
-        Dim myNewConnectionForm As New frmConnection
+
+        'Dim myNewConnectionForm As New frmConnection
 
 
-        Select Case sender.ToString
-            Case = "Connection"
-                AddHandler myNewConnectionForm.writeToLog, AddressOf myNewlogWriter.write_log
-                myNewConnectionForm.ShowDialog()
-                RemoveHandler myNewConnectionForm.writeToLog, AddressOf myNewlogWriter.write_log
+        'Select Case sender.ToString
+        '    Case = "Connection"
+        '        AddHandler myNewConnectionForm.writeToLog, AddressOf myNewlogWriter.write_log
+        '        myNewConnectionForm.ShowDialog()
+        '        RemoveHandler myNewConnectionForm.writeToLog, AddressOf myNewlogWriter.write_log
 
-        End Select
+        'End Select
 
 
 
@@ -209,8 +212,10 @@ Public Class frmAutoBetEngine
 
 
 
-        Dim dtvalue As New clsMarketCatalogue
-        dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clsMarketCatalogue)(answer)
+        'Dim dtvalue As New clsMarketCatalogue
+        Dim dtvalue As New bfObjects.clsMarketBookResponse
+        'dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clsMarketCatalogue)(answer)
+        dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(answer)
 
         Dim uu = dtvalue.result.ToArray()
 
