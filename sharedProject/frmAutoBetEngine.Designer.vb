@@ -31,9 +31,10 @@ Partial Class frmAutoBetEngine
         Me.btnListMarketCatalogue = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -104,6 +105,12 @@ Partial Class frmAutoBetEngine
         Me.StatusStrip1.TabIndex = 16
         Me.StatusStrip1.Text = "StatusStrip1"
         '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(119, 17)
+        Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
+        '
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(330, 44)
@@ -113,12 +120,6 @@ Partial Class frmAutoBetEngine
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'ToolStripStatusLabel1
-        '
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(119, 17)
-        Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
-        '
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(54, 98)
@@ -127,11 +128,21 @@ Partial Class frmAutoBetEngine
         Me.TextBox1.Size = New System.Drawing.Size(332, 499)
         Me.TextBox1.TabIndex = 18
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(712, 136)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(269, 167)
+        Me.Button3.TabIndex = 19
+        Me.Button3.Text = "Button3"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'frmAutoBetEngine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1526, 742)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.StatusStrip1)
@@ -161,4 +172,5 @@ Partial Class frmAutoBetEngine
     Friend WithEvents Button2 As Button
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Button3 As Button
 End Class

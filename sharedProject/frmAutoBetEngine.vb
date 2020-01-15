@@ -314,11 +314,31 @@ Public Class frmAutoBetEngine
         Me.WindowState = FormWindowState.Maximized
     End Sub
 
-    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
 
-    End Sub
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim fileReader As String
+        fileReader = My.Computer.FileSystem.ReadAllText("C:\Temp\Text1.txt",
+          System.Text.Encoding.UTF8)
 
-    Private Sub ToolStripStatusLabel1_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel1.Click
+        Dim ds As New DataSet
+
+        Dim dt As DataTable
+
+        ds = Newtonsoft.Json.JsonConvert.DeserializeObject(fileReader, GetType(DataSet))
+
+
+
+        '        DataSet DataSet = JsonConvert.DeserializeObject < DataSet > (json);
+
+        'DataTable DataTable = DataSet.Tables["Table1"];
+
+        'Console.WriteLine(DataTable.Rows.Count);
+        '// 2
+
+        'foreach(DataRow row In dataTable.Rows)
+        '{
+        '    Console.WriteLine(row["id"] + " - " + row["item"]);
+
 
     End Sub
 End Class
