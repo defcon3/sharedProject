@@ -210,31 +210,7 @@ Public Class frmAutoBetEngine
 
         Dim t As BsonDocument = MongoDB.Bson.BsonDocument.Parse(answer)
 
-
-
-
-        'Dim dtvalue As New clsMarketCatalogue
-        Dim dtvalue As New bfObjects.clsMarketBookResponse
-        'dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clsMarketCatalogue)(answer)
-        dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(answer)
-
-        Dim uu = dtvalue.result.ToArray()
-
-
-        Dim dataset1 As New DataSet
-
-        Dim www As bfObjects.clsMarketBookResponse = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(answer)
-
-
-
-
-        Dim zzz As IMongoCollection(Of clsMarketCatalogue)
-
         Dim userCollection As IMongoCollection(Of BsonDocument) = md.GetCollection(Of BsonDocument)("ljkl")
-
-
-
-
 
         Try
             userCollection.InsertOne(t)
@@ -243,17 +219,27 @@ Public Class frmAutoBetEngine
         End Try
 
 
+        'Dim dtvalue As New clsMarketCatalogue
+        Dim dtvalue As New bfObjects.clsMarketBookResponse
+        'dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clsMarketCatalogue)(answer)
+        dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(answer)
+
+        Dim uue = dtvalue.result.ToArray()
+
+
+
+        Dim www As bfObjects.clsMarketBookResponse = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(answer)
+
+        Dim asdf = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.structMarketCatalogueResponse)(answer)
+
+
+        Dim dorit As bfObjects.structMarketCatalogueResponse.structMarketCatalogue.structCompetition
+        dorit.id = 9
+
+
+
 
     End Sub
-    ''' <summary>
-    ''' Public Class clsMarketCatalogue
-    ''' </summary>
-    Public Class clsMarketCatalogue
-        Public Property jsonrpc As String
-        Public result As List(Of ABEresponses.MarketCatalogue)
-        Public id As Integer
-
-    End Class
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         'Dim CurCols() As PropertyInfo = GetType(ABEresponses.MarketCatalogue).GetGenericArguments()(0).GetProperties
