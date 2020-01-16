@@ -329,8 +329,26 @@ Public Class frmAutoBetEngine
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim fileReader As String
-        fileReader = My.Computer.FileSystem.ReadAllText("C:\Temp\beispiel.txt",
+        fileReader = My.Computer.FileSystem.ReadAllText("C:\Temp\Text1.txt",
           System.Text.Encoding.UTF8)
+
+
+
+        Dim xmlDoc As New Xml.XmlDocument
+        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(fileReader, "wurzel")
+
+
+        Dim xmlreader As Xml.XmlNodeReader
+        xmlreader = New Xml.XmlNodeReader(xmlDoc)
+        Dim dataset As DataSet
+        dataset = New DataSet()
+        DataSet.ReadXml(xmlReader)
+
+
+
+
+
+
 
 
 
