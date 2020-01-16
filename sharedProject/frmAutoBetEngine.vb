@@ -314,13 +314,29 @@ Public Class frmAutoBetEngine
         Me.WindowState = FormWindowState.Maximized
     End Sub
 
+    Public Class testklasse
+
+        Property marketId
+        Property marketName
+        Property totalMatched
+        Property eventType
+
+
+
+    End Class
+
+
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim fileReader As String
-        fileReader = My.Computer.FileSystem.ReadAllText("C:\Temp\Text1.txt",
+        fileReader = My.Computer.FileSystem.ReadAllText("C:\Temp\beispiel.txt",
           System.Text.Encoding.UTF8)
 
+
+
+
         Dim ds As New DataSet
+
 
         Dim dt As DataTable
 
