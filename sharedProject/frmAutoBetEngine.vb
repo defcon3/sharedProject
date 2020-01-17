@@ -329,7 +329,7 @@ Public Class frmAutoBetEngine
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim fileReader As String
-        fileReader = My.Computer.FileSystem.ReadAllText("C:\Temp\Text1.txt",
+        fileReader = My.Computer.FileSystem.ReadAllText("C:\Temp\Text1.json",
           System.Text.Encoding.UTF8)
 
 
@@ -339,15 +339,17 @@ Public Class frmAutoBetEngine
 
 
         Dim xmlreader As Xml.XmlNodeReader
+
         xmlreader = New Xml.XmlNodeReader(xmlDoc)
         Dim dataset As DataSet
         dataset = New DataSet()
         DataSet.ReadXml(xmlReader)
 
 
-
-
-
+        DataGridView1.DataSource = dataset.Tables(0)
+        DataGridView2.DataSource = dataset.Tables(1)
+        DataGridView3.DataSource = dataset.Tables(2)
+        DataGridView4.DataSource = dataset.Tables(3)
 
 
 
@@ -359,7 +361,7 @@ Public Class frmAutoBetEngine
 
         Dim dt As DataTable
 
-        ds = Newtonsoft.Json.JsonConvert.DeserializeObject(fileReader, GetType(DataSet))
+        ' ds = Newtonsoft.Json.JsonConvert.DeserializeObject(fileReader, GetType(DataSet))
 
 
 
