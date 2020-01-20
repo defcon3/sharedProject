@@ -351,7 +351,7 @@ Public Class frmAutoBetEngine
         DataGridView3.DataSource = dataset.Tables(2)
         DataGridView4.DataSource = dataset.Tables(3)
 
-
+        DataGrid1.DataSource = dataset
 
 
 
@@ -375,6 +375,14 @@ Public Class frmAutoBetEngine
         'foreach(DataRow row In dataTable.Rows)
         '{
         '    Console.WriteLine(row["id"] + " - " + row["item"]);
+
+
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Dim g As New Windows.Forms.DataGrid
+
+        g.Show()
 
 
     End Sub

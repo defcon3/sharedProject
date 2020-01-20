@@ -39,12 +39,15 @@ Partial Class frmAutoBetEngine
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.DataGridView3 = New System.Windows.Forms.DataGridView()
         Me.DataGridView4 = New System.Windows.Forms.DataGridView()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.DataGrid1 = New System.Windows.Forms.DataGrid()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -177,11 +180,31 @@ Partial Class frmAutoBetEngine
         Me.DataGridView4.Size = New System.Drawing.Size(451, 169)
         Me.DataGridView4.TabIndex = 23
         '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(456, 336)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.TabIndex = 24
+        Me.Button4.Text = "Button4"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'DataGrid1
+        '
+        Me.DataGrid1.DataMember = ""
+        Me.DataGrid1.HeaderForeColor = System.Drawing.SystemColors.ControlText
+        Me.DataGrid1.Location = New System.Drawing.Point(1045, 166)
+        Me.DataGrid1.Name = "DataGrid1"
+        Me.DataGrid1.Size = New System.Drawing.Size(469, 308)
+        Me.DataGrid1.TabIndex = 25
+        '
         'frmAutoBetEngine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1526, 742)
+        Me.Controls.Add(Me.DataGrid1)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.DataGridView4)
         Me.Controls.Add(Me.DataGridView3)
         Me.Controls.Add(Me.DataGridView2)
@@ -203,6 +226,7 @@ Partial Class frmAutoBetEngine
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -225,4 +249,6 @@ Partial Class frmAutoBetEngine
     Friend WithEvents DataGridView2 As DataGridView
     Friend WithEvents DataGridView3 As DataGridView
     Friend WithEvents DataGridView4 As DataGridView
+    Friend WithEvents Button4 As Button
+    Friend WithEvents DataGrid1 As DataGrid
 End Class
