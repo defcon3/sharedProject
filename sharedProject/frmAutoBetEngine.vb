@@ -353,7 +353,7 @@ Public Class frmAutoBetEngine
 
         DataGrid1.DataSource = dataset
 
-
+        Dim t As New DataViewManager(dataset)
 
 
         Dim ds As New DataSet
@@ -380,10 +380,12 @@ Public Class frmAutoBetEngine
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Dim g As New Windows.Forms.DataGrid
 
-        g.Show()
 
+
+    End Sub
+
+    Private Sub DataGrid1_Click(sender As Object, e As EventArgs) Handles DataGrid1.Click
 
     End Sub
 End Class
