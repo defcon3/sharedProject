@@ -380,7 +380,7 @@ Public Class frmAutoBetEngine
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-
+        Dim t As System.Text.Json.JsonDocument
 
 
     End Sub
