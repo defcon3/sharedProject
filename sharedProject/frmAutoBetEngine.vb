@@ -343,7 +343,23 @@ Public Class frmAutoBetEngine
         xmlreader = New Xml.XmlNodeReader(xmlDoc)
         Dim dataset As DataSet
         dataset = New DataSet()
-        DataSet.ReadXml(xmlReader)
+        dataset.ReadXml(xmlreader)
+
+        dataset.Relations.Clear()
+
+        Dim rr As New System.Xml.XmlDataDocument(dataset)
+
+
+
+        Dim xmlDoc As XmlDataDocument = New XmlDataDocument(dataset)
+        xmlDoc.Load("XMLDocument.xml")
+
+
+
+
+        Dim dss As New DataSet
+        dss.GetXml()
+
 
 
         DataGridView1.DataSource = dataset.Tables(0)
