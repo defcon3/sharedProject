@@ -334,8 +334,59 @@ Public Class frmAutoBetEngine
 
 
 
+
+
+
         Dim xmlDoc As New Xml.XmlDocument
         xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(fileReader, "wurzel")
+
+        xmlDoc.Save("c:\temp\aaa.xml")
+
+
+
+
+        Dim bytes() As Byte
+
+
+
+
+        Dim ms As New System.IO.MemoryStream
+        Dim vvv As New DataTable("wurzel")
+
+        xmlDoc.Save(ms)
+
+        ms.Position = 0
+
+        Dim t6 As New DataTable
+        '   t6.ReadXml(ms)
+
+
+        bytes = ms.ToArray
+
+        Dim gg = bytes.ToList
+
+
+
+
+        Dim jsadf = ms.ToArray
+
+        vvv.WriteXml(ms)
+
+        ms.Position = 0
+
+
+
+
+        'Using (memStream = New MemoryStream(Convert.FromBase64String(extractedBaseString)))
+        '    xmlDoc.Load(memStream)
+
+        'End Using
+
+
+
+
+
+
 
 
         Dim xmlreader As Xml.XmlNodeReader
@@ -345,14 +396,18 @@ Public Class frmAutoBetEngine
         dataset = New DataSet()
         dataset.ReadXml(xmlreader)
 
+        Dim dta As New DataTable
+        dta.ReadXml(xmlreader)
+
+
         dataset.Relations.Clear()
 
         Dim rr As New System.Xml.XmlDataDocument(dataset)
 
 
 
-        Dim xmlDoc As XmlDataDocument = New XmlDataDocument(dataset)
-        xmlDoc.Load("XMLDocument.xml")
+        'Dim xmlDoc As XmlDataDocument = New XmlDataDocument(dataset)
+        'xmlDoc.Load("XMLDocument.xml")
 
 
 
@@ -369,7 +424,17 @@ Public Class frmAutoBetEngine
 
         DataGrid1.DataSource = dataset
 
+        'dataset.WriteXmlSchema("C:\temp\schema.xml")
+
+
+        Dim dt2 = New DataTable("wurzel")
+        dt2.ReadXmlSchema("C:\temp\schema.xml")
+        dt2.ReadXml("c:\temp\aaa.xml")
+
+
         Dim t As New DataViewManager(dataset)
+
+        'DataGridView3.DataSource = dt2
 
 
         Dim ds As New DataSet
@@ -396,7 +461,36 @@ Public Class frmAutoBetEngine
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Dim t As System.Text.Json.JsonDocument
+
+        Dim dt As New DataTable("neu")
+        dt.Columns.Add("jsonrpc")
+        dt.Columns.Add("result")
+        dt.Columns.Add("marketId")
+        dt.Columns.Add("marketName")
+        dt.Columns.Add("totalMatched")
+        dt.Columns.Add("selectionId")
+        dt.Columns.Add("runnerName")
+        dt.Columns.Add("runners")
+        dt.Columns.Add("eventType")
+        dt.Columns.Add("id")
+        dt.Columns.Add("name")
+        dt.Columns.Add("wurzel")
+
+
+        dt.WriteXmlSchema("C:\temp\schema.xml")
+
+
+        Dim ds As DataSet
+
+
+        dt.ReadXml("C:\temp\datatable_test.xml")
+
+        For Each rw In dt.Rows
+            For Each col In dt.Columns
+                Print(rw(1).ToString)
+            Next
+        Next
+
 
     End Sub
 
