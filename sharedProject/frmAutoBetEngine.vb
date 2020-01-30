@@ -334,14 +334,11 @@ Public Class frmAutoBetEngine
 
 
 
-
-
-
         Dim xmlDoc As New Xml.XmlDocument
         xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(fileReader, "wurzel")
 
         xmlDoc.Save("c:\temp\aaa.xml")
-
+        MsgBox(xmlDoc.Schemas.Schemas.ToString())
 
 
 
@@ -475,22 +472,57 @@ Public Class frmAutoBetEngine
         dt.Columns.Add("id")
         dt.Columns.Add("name")
         dt.Columns.Add("wurzel")
+        dt.Columns("jsonrpc").DataType = GetType(Object)
+
+        dt.Rows.Add("sdf")
+
+
+
 
 
         dt.WriteXmlSchema("C:\temp\schema.xml")
+        dt.WriteXml("C:\temp\schemadatem.xml")
 
 
-        Dim ds As DataSet
+
+        Dim ds As New DataSet("wurzel")
 
 
-        dt.ReadXml("C:\temp\datatable_test.xml")
+        'dt.ReadXml("C:\temp\datatable_test.xml")
 
-        For Each rw In dt.Rows
-            For Each col In dt.Columns
-                Print(rw(1).ToString)
+        Dim dtneu As New DataTable("wurzel")
+        dtneu.ReadXmlSchema("C:\temp\komplex.xsd")
+        'ds.ReadXmlSchema("C:\temp\komplex.xsd")
+        ds.ReadXml("C:\temp\schemadatem2.xml", mode:=XmlReadMode.Auto)
+        dtneu.WriteXmlSchema("c:\temp\dsschema1.xsd", True)
+
+        Dim dtt As New DataTable
+        dtt.ReadXmlSchema("c:\temp\dsschema1.xsd")
+        dtt.ReadXml("C:\temp\schemadatem2.xml")
+
+
+        dtneu = New DataTable
+        dtneu = ds.Tables("runners")
+
+        For Each tb As DataTable In ds.Tables
+
+
+            For Each col As DataColumn In tb.Columns
+                col.ColumnMapping = MappingType.Element
             Next
+
+
         Next
 
+        dtneu.ReadXml("c:\temp\aaa.xml")
+
+        DataGridView1.DataSource = dtneu.Copy
+
+
+        DataGridView1.DataSource = ds.Tables(0)
+        DataGridView2.DataSource = ds.Tables(1)
+        DataGridView3.DataSource = ds.Tables(2)
+        DataGridView4.DataSource = ds.Tables(3)
 
     End Sub
 
