@@ -342,6 +342,8 @@ Public Class frmAutoBetEngine
 
 
 
+
+
         Dim bytes() As Byte
 
 
@@ -493,36 +495,30 @@ Public Class frmAutoBetEngine
         Dim dtneu As New DataTable("wurzel")
         dtneu.ReadXmlSchema("C:\temp\komplex.xsd")
         'ds.ReadXmlSchema("C:\temp\komplex.xsd")
-        ds.ReadXml("C:\temp\schemadatem2.xml", mode:=XmlReadMode.Auto)
-        dtneu.WriteXmlSchema("c:\temp\dsschema1.xsd", True)
-
-        Dim dtt As New DataTable
-        dtt.ReadXmlSchema("c:\temp\dsschema1.xsd")
-        dtt.ReadXml("C:\temp\schemadatem2.xml")
-
-
-        dtneu = New DataTable
-        dtneu = ds.Tables("runners")
-
-        For Each tb As DataTable In ds.Tables
-
-
-            For Each col As DataColumn In tb.Columns
-                col.ColumnMapping = MappingType.Element
-            Next
-
-
-        Next
-
-        dtneu.ReadXml("c:\temp\aaa.xml")
-
-        DataGridView1.DataSource = dtneu.Copy
+        ds.ReadXml("C:\temp\neu\datatable_test.xml", mode:=XmlReadMode.Auto)
 
 
         DataGridView1.DataSource = ds.Tables(0)
         DataGridView2.DataSource = ds.Tables(1)
         DataGridView3.DataSource = ds.Tables(2)
         DataGridView4.DataSource = ds.Tables(3)
+
+        DataGrid1.DataSource = ds
+        DataGrid1.DataMember = "wurzel"
+
+        Dim ds1 As New DataSet
+
+        Dim xmlfile As XDocument = XDocument.Load("C:\temp\aaa.xml")
+
+        Dim reader As Xml.XmlReader = xmlfile.CreateReader
+
+        ds1.ReadXml(reader)
+
+        Dim xslt As New Xml.Xsl.XslCompiledTransform()
+        xslt.Load("C:\Temp\neu\datatable_test.xsl")
+        xslt.Transform("C:\Temp\neu\datatable_test.xml", "C:\Temp\neu\xslt_transform_result.xml")
+        'System.Diagnostics.Process.Start("")
+
 
     End Sub
 
