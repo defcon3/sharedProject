@@ -516,8 +516,11 @@ Public Class frmAutoBetEngine
 
         Dim xslt As New Xml.Xsl.XslCompiledTransform()
         xslt.Load("C:\Temp\neu\datatable_test2.xsl")
-        xslt.Transform("C:\Temp\neu\datatable_test.xml", "C:\Temp\neu\xslt_transform_result.xml")
+        xslt.Transform("C:\Temp\neu\datatable_test2.xml", "C:\Temp\neu\xslt_transform_result.xml")
         'System.Diagnostics.Process.Start("")
+
+        Dim tttt As New DataTable
+        tttt.ReadXml("C:\Temp\neu\xslt_transform_result.xml")
 
 
     End Sub
