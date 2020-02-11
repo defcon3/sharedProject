@@ -520,7 +520,7 @@ Public Class frmAutoBetEngine
         'System.Diagnostics.Process.Start("")
 
         Dim tttt As New DataTable
-        tttt.ReadXml("C:\Temp\neu\xslt_transform_result.xml")
+        'tttt.ReadXml("C:\Temp\neu\xslt_transform_result.xml")
 
 
     End Sub
