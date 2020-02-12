@@ -519,13 +519,75 @@ Public Class frmAutoBetEngine
         xslt.Transform("C:\Temp\neu\datatable_test2.xml", "C:\Temp\neu\xslt_transform_result.xml")
         'System.Diagnostics.Process.Start("")
 
-        Dim tttt As New DataTable
-        'tttt.ReadXml("C:\Temp\neu\xslt_transform_result.xml")
+        Dim tsttt As New DataSet
+
+        tsttt.ReadXml("C:\Temp\neu\xslt.xml")
+
+
+
+
+
+
+
+        Dim t2 As Xml.XmlReader
+
+
+        Dim tttt As New DataTable("runners")
+        tttt.Columns.Add(getcol("dorit"))
+        tttt.Columns.Add(getcol("veit"))
+        tttt.Columns.Add("tyler")
+
+
+        tttt.ReadXml("C:\Temp\neu\xslt.xml")
+
+        DataGrid1.DataSource = tttt
+
+        'Dim dr As DataRow
+
+        'dr = tttt.Rows(0)
+        'Debug.Print(dr(0))
+
+        'dr = tttt.Rows(0)
+        'Debug.Print(dr(1))
+
+
+
+
+
+
+        'marketId
+        'marketName
+        'totalMatched
+        'id
+        'Name
+        'selectionId
+        'runnerName
+        'handicap
+        'sortPriority
 
 
     End Sub
 
-    Private Sub DataGrid1_Click(sender As Object, e As EventArgs) Handles DataGrid1.Click
 
-    End Sub
+    Public Function getcol(ByVal name As String) As DataColumn
+
+        Dim col As New DataColumn
+
+        Select Case name.ToUpper
+            Case = "veit".ToUpper
+                With col
+                    .ColumnName = "veit"
+                    .DataType = GetType(System.Decimal)
+                End With
+            Case = "dorit".ToUpper
+                With col
+                    .ColumnName = "dorit"
+                    .DataType = GetType(System.Decimal)
+                End With
+        End Select
+
+        Return col
+
+    End Function
+
 End Class
