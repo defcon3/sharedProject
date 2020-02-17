@@ -461,50 +461,17 @@ Public Class frmAutoBetEngine
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
 
-        Dim dt As New DataTable("neu")
-        dt.Columns.Add("jsonrpc")
-        dt.Columns.Add("result")
-        dt.Columns.Add("marketId")
-        dt.Columns.Add("marketName")
-        dt.Columns.Add("totalMatched")
-        dt.Columns.Add("selectionId")
-        dt.Columns.Add("runnerName")
-        dt.Columns.Add("runners")
-        dt.Columns.Add("eventType")
-        dt.Columns.Add("id")
-        dt.Columns.Add("name")
-        dt.Columns.Add("wurzel")
-        dt.Columns("jsonrpc").DataType = GetType(Object)
+        ' das xml welches gelesen werden soll
 
-        dt.Rows.Add("sdf")
+        ' das schema welches die struktur der zieltabelle erstellt
+
+        ' die transformation welches das ausgangs-xml in die struktur der zieltabelle ueberfuehrt
+
+        ' anpimmeln des xml's in die tabelle mittles readxml
 
 
 
 
-
-        dt.WriteXmlSchema("C:\temp\schema.xml")
-        dt.WriteXml("C:\temp\schemadatem.xml")
-
-
-
-        Dim ds As New DataSet("wurzel")
-
-
-        'dt.ReadXml("C:\temp\datatable_test.xml")
-
-        Dim dtneu As New DataTable("wurzel")
-        dtneu.ReadXmlSchema("C:\temp\komplex.xsd")
-        'ds.ReadXmlSchema("C:\temp\komplex.xsd")
-        ds.ReadXml("C:\temp\neu\datatable_test.xml", mode:=XmlReadMode.Auto)
-
-
-        DataGridView1.DataSource = ds.Tables(0)
-        DataGridView2.DataSource = ds.Tables(1)
-        DataGridView3.DataSource = ds.Tables(2)
-        DataGridView4.DataSource = ds.Tables(3)
-
-        DataGrid1.DataSource = ds
-        DataGrid1.DataMember = "wurzel"
 
         Dim ds1 As New DataSet
 
@@ -533,24 +500,16 @@ Public Class frmAutoBetEngine
 
 
         Dim tttt As New DataTable("runners")
-        tttt.Columns.Add(getcol("dorit"))
-        tttt.Columns.Add(getcol("veit"))
-        tttt.Columns.Add("tyler")
+        'tttt.Columns.Add(getcol("dorit"))
+        'tttt.Columns.Add(getcol("veit"))
+        'tttt.Columns.Add("tyler")
 
+
+        tttt.ReadXmlSchema("C:\Temp\neu\xslt_schema.xml")
 
         tttt.ReadXml("C:\Temp\neu\xslt.xml")
 
-        DataGrid1.DataSource = tttt
-
-        'Dim dr As DataRow
-
-        'dr = tttt.Rows(0)
-        'Debug.Print(dr(0))
-
-        'dr = tttt.Rows(0)
-        'Debug.Print(dr(1))
-
-
+        'tttt.WriteXmlSchema("C:\Temp\neu\xslt_schema.xml")
 
 
 
