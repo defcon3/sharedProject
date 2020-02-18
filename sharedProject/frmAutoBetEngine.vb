@@ -172,27 +172,20 @@ Public Class frmAutoBetEngine
 
 
 
-        'Dim myNewConnectionForm As New frmConnection
-
-
-        'Select Case sender.ToString
-        '    Case = "Connection"
-        '        AddHandler myNewConnectionForm.writeToLog, AddressOf myNewlogWriter.write_log
-        '        myNewConnectionForm.ShowDialog()
-        '        RemoveHandler myNewConnectionForm.writeToLog, AddressOf myNewlogWriter.write_log
-
-        'End Select
-
-
-
-
-
         Dim strg As System.String = ""
         strg = serializeRequest(myNewListMarketCatalogue.myNewListMarketCatalogue)
 
 
         Dim answer As String
         answer = SendSportsReq(strg)
+
+        Dim xmlDoc As New Xml.XmlDocument
+        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(answer, "wurzel")
+
+        xmlDoc.Save("C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & DateTime.Now.ToLongDateString & ".xml")
+
+
+
         Me.TextBox1.Text = answer
 
 
@@ -472,6 +465,39 @@ Public Class frmAutoBetEngine
 
 
 
+        Dim rr As New DataTable
+        rr.ReadXmlSchema("C:\Temp\AutoBetEngine\Schemas\auto_generated_market_catalogue.xsd")
+
+
+
+        Dim zu As New DataTable
+
+        With zu
+
+            .Columns.Add("jsonrpc", GetType(System.String))
+            .Columns.Add("marketId", GetType(System.String))
+            .Columns.Add("marketName", GetType(System.String))
+            .Columns.Add("totalMatched", GetType(System.Decimal))
+            .Columns.Add("selectionId", GetType(System.Int64))
+            .Columns.Add("runnerName", GetType(System.String))
+            .Columns.Add("handicap", GetType(System.Decimal))
+            .Columns.Add("sortPriority", GetType(System.Int64))
+            .Columns.Add("id", GetType(System.Int64))
+            .Columns.Add("Name", GetType(System.String))
+            .TableName = "MarketCatalogue"
+        End With
+
+
+        zu.WriteXmlSchema("C:\Temp\AutoBetEngine\Schemas\auto_generated_market_catalogue.xsd")
+
+
+        zu.ReadXmlSchema("C:\Temp\neu\xslt_schema.xml")
+
+        zu.ReadXmlSchema("C:\Temp\AutoBetEngine\Schemas\MarketCatalogue.xsd")
+
+        Stop
+
+
 
         Dim ds1 As New DataSet
 
@@ -547,6 +573,14 @@ Public Class frmAutoBetEngine
 
         Return col
 
+
+
+
+
+
     End Function
+
+
+
 
 End Class
