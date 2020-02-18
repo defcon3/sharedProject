@@ -42,8 +42,9 @@ Partial Class frmAutoBetEngine
         Me.Button4 = New System.Windows.Forms.Button()
         Me.DataGrid1 = New System.Windows.Forms.DataGrid()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.pageMarketCatalogue = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -104,7 +105,7 @@ Partial Class frmAutoBetEngine
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(456, 166)
+        Me.Button1.Location = New System.Drawing.Point(1248, 73)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 15
@@ -128,7 +129,7 @@ Partial Class frmAutoBetEngine
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(330, 44)
+        Me.Button2.Location = New System.Drawing.Point(1248, 44)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 17
@@ -137,15 +138,15 @@ Partial Class frmAutoBetEngine
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(54, 98)
+        Me.TextBox1.Location = New System.Drawing.Point(1127, 301)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(310, 120)
+        Me.TextBox1.Size = New System.Drawing.Size(117, 120)
         Me.TextBox1.TabIndex = 18
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(392, 219)
+        Me.Button3.Location = New System.Drawing.Point(1197, 102)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(192, 97)
         Me.Button3.TabIndex = 19
@@ -155,38 +156,38 @@ Partial Class frmAutoBetEngine
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(588, 12)
+        Me.DataGridView1.Location = New System.Drawing.Point(1404, 27)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(451, 141)
+        Me.DataGridView1.Size = New System.Drawing.Size(51, 55)
         Me.DataGridView1.TabIndex = 20
         '
         'DataGridView2
         '
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(588, 166)
+        Me.DataGridView2.Location = New System.Drawing.Point(1411, 88)
         Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(451, 150)
+        Me.DataGridView2.Size = New System.Drawing.Size(44, 150)
         Me.DataGridView2.TabIndex = 21
         '
         'DataGridView3
         '
         Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView3.Location = New System.Drawing.Point(588, 323)
+        Me.DataGridView3.Location = New System.Drawing.Point(1411, 244)
         Me.DataGridView3.Name = "DataGridView3"
-        Me.DataGridView3.Size = New System.Drawing.Size(451, 151)
+        Me.DataGridView3.Size = New System.Drawing.Size(47, 151)
         Me.DataGridView3.TabIndex = 22
         '
         'DataGridView4
         '
         Me.DataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView4.Location = New System.Drawing.Point(588, 481)
+        Me.DataGridView4.Location = New System.Drawing.Point(1411, 401)
         Me.DataGridView4.Name = "DataGridView4"
-        Me.DataGridView4.Size = New System.Drawing.Size(451, 169)
+        Me.DataGridView4.Size = New System.Drawing.Size(44, 169)
         Me.DataGridView4.TabIndex = 23
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(456, 336)
+        Me.Button4.Location = New System.Drawing.Point(1248, 205)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(75, 23)
         Me.Button4.TabIndex = 24
@@ -197,40 +198,51 @@ Partial Class frmAutoBetEngine
         '
         Me.DataGrid1.DataMember = ""
         Me.DataGrid1.HeaderForeColor = System.Drawing.SystemColors.ControlText
-        Me.DataGrid1.Location = New System.Drawing.Point(1045, 166)
+        Me.DataGrid1.Location = New System.Drawing.Point(1471, 166)
         Me.DataGrid1.Name = "DataGrid1"
-        Me.DataGrid1.Size = New System.Drawing.Size(469, 308)
+        Me.DataGrid1.Size = New System.Drawing.Size(43, 308)
         Me.DataGrid1.TabIndex = 25
         '
         'TabControl1
         '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Controls.Add(Me.pageMarketCatalogue)
         Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Location = New System.Drawing.Point(71, 259)
+        Me.TabControl1.Controls.Add(Me.TabPage3)
+        Me.TabControl1.Location = New System.Drawing.Point(12, 88)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(268, 150)
+        Me.TabControl1.Size = New System.Drawing.Size(1084, 629)
         Me.TabControl1.TabIndex = 26
         '
-        'TabPage1
+        'pageMarketCatalogue
         '
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(260, 124)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "TabPage1"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.pageMarketCatalogue.Location = New System.Drawing.Point(4, 22)
+        Me.pageMarketCatalogue.Name = "pageMarketCatalogue"
+        Me.pageMarketCatalogue.Padding = New System.Windows.Forms.Padding(3)
+        Me.pageMarketCatalogue.Size = New System.Drawing.Size(1076, 603)
+        Me.pageMarketCatalogue.TabIndex = 0
+        Me.pageMarketCatalogue.Text = "MarketCatalogue"
+        Me.pageMarketCatalogue.UseVisualStyleBackColor = True
         '
         'TabPage2
         '
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(260, 124)
+        Me.TabPage2.Size = New System.Drawing.Size(1076, 504)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'TabPage3
+        '
+        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage3.Size = New System.Drawing.Size(1076, 504)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "TabPage3"
+        Me.TabPage3.UseVisualStyleBackColor = True
         '
         'frmAutoBetEngine
         '
@@ -288,6 +300,7 @@ Partial Class frmAutoBetEngine
     Friend WithEvents Button4 As Button
     Friend WithEvents DataGrid1 As DataGrid
     Friend WithEvents TabControl1 As TabControl
-    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents pageMarketCatalogue As TabPage
     Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents TabPage3 As TabPage
 End Class
