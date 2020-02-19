@@ -29,7 +29,6 @@ Partial Class frmAutoBetEngine
         Me.ConnectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnListMarketCatalogue = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -43,8 +42,7 @@ Partial Class frmAutoBetEngine
         Me.DataGrid1 = New System.Windows.Forms.DataGrid()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.pageMarketCatalogue = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.clbSort = New System.Windows.Forms.CheckedListBox()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
@@ -63,7 +61,8 @@ Partial Class frmAutoBetEngine
         Me.clbMarketProjection = New System.Windows.Forms.CheckedListBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cboSort = New System.Windows.Forms.ComboBox()
-        Me.clbSort = New System.Windows.Forms.CheckedListBox()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -122,15 +121,6 @@ Partial Class frmAutoBetEngine
         Me.btnListMarketCatalogue.TabIndex = 14
         Me.btnListMarketCatalogue.Text = "ListMarketCatalogue"
         Me.btnListMarketCatalogue.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(1248, 73)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 15
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'StatusStrip1
         '
@@ -263,25 +253,14 @@ Partial Class frmAutoBetEngine
         Me.pageMarketCatalogue.Text = "MarketCatalogue"
         Me.pageMarketCatalogue.UseVisualStyleBackColor = True
         '
-        'TabPage2
+        'clbSort
         '
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1076, 603)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "TabPage2"
-        Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'TabPage3
-        '
-        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(1076, 603)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "TabPage3"
-        Me.TabPage3.UseVisualStyleBackColor = True
+        Me.clbSort.FormattingEnabled = True
+        Me.clbSort.Items.AddRange(New Object() {"MINIMUM_TRADED", "MAXIMUM_TRADED", "MINIMUM_AVAILABLE", "MAXIMUM_AVAILABLE", "FIRST_TO_START", "LAST_TO_START"})
+        Me.clbSort.Location = New System.Drawing.Point(37, 95)
+        Me.clbSort.Name = "clbSort"
+        Me.clbSort.Size = New System.Drawing.Size(206, 109)
+        Me.clbSort.TabIndex = 37
         '
         'btnClose
         '
@@ -454,14 +433,25 @@ Partial Class frmAutoBetEngine
         Me.cboSort.TabIndex = 19
         Me.cboSort.Text = "FIRST_TO_START"
         '
-        'clbSort
+        'TabPage2
         '
-        Me.clbSort.FormattingEnabled = True
-        Me.clbSort.Items.AddRange(New Object() {"MINIMUM_TRADED", "MAXIMUM_TRADED", "MINIMUM_AVAILABLE", "MAXIMUM_AVAILABLE", "FIRST_TO_START", "LAST_TO_START"})
-        Me.clbSort.Location = New System.Drawing.Point(37, 95)
-        Me.clbSort.Name = "clbSort"
-        Me.clbSort.Size = New System.Drawing.Size(206, 109)
-        Me.clbSort.TabIndex = 37
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(1076, 603)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "TabPage2"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'TabPage3
+        '
+        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage3.Size = New System.Drawing.Size(1076, 603)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "TabPage3"
+        Me.TabPage3.UseVisualStyleBackColor = True
         '
         'frmAutoBetEngine
         '
@@ -479,7 +469,6 @@ Partial Class frmAutoBetEngine
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.StatusStrip1)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnListMarketCatalogue)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Name = "frmAutoBetEngine"
@@ -508,7 +497,6 @@ Partial Class frmAutoBetEngine
     Friend WithEvents ConnectionToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents btnListMarketCatalogue As Button
-    Friend WithEvents Button1 As Button
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents Button2 As Button
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel

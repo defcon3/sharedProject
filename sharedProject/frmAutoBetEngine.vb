@@ -234,57 +234,6 @@ Public Class frmAutoBetEngine
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        'Dim CurCols() As PropertyInfo = GetType(ABEresponses.MarketCatalogue).GetGenericArguments()(0).GetProperties
-
-        'Dim CurCols() As PropertyInfo = GetType(ABEresponses.MarketCatalogue).GetGenericArguments()(0).GetProperties
-        'Dim anzahla = GetType(ABEresponses.MarketCatalogue).GetGenericArguments.Count
-        ' .GetProperties()
-
-        Dim t As New ABEresponses.Runner
-        Dim tt
-        tt = modfunc.rekursiv(t)
-
-
-
-        'Dim CurCols As Reflection.PropertyInfo() = GetType(ABEresponses.MarketCatalogue).GetProperties
-        Dim CurCols As Reflection.PropertyInfo() = GetType(ABEresponses.Runner).GetProperties
-
-
-
-
-        For Each icols In CurCols
-            Dim coltpye As Type = icols.PropertyType
-            If coltpye.IsGenericType AndAlso coltpye.GetGenericTypeDefinition = GetType(List(Of)) Then
-                Debug.Print(icols.Name.ToString & " is a generic list")
-            End If
-        Next
-
-        '.GetType.GetGenericArguments()(0).GetProperties
-
-        'Dim type() As System.Reflection.PropertyInfo = ABEresponses.MarketCatalogue.GetType.GetGenericArguments()(0).GetProperties
-
-
-
-
-
-        'Dim t1 As New ABEresponses.MarketCatalogue
-        'Dim pi As Reflection.PropertyInfo() = t1.GetType.GetProperties()
-        'For Each a1 In pi
-
-        '    Debug.Print(a1.Name)
-
-        'Next
-
-
-
-
-    End Sub
-
-    Private Sub StatusStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles StatusStrip1.ItemClicked
-
-    End Sub
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.StatusStrip1.BringToFront()
         Me.StatusStrip1.BackColor = Color.Blue
@@ -580,7 +529,4 @@ Public Class frmAutoBetEngine
 
     End Function
 
-    Private Sub clbMarketProjection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles clbMarketProjection.SelectedIndexChanged
-
-    End Sub
 End Class
