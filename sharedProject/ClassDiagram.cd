@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="sharedProject.My.MyApplication" Collapsed="true">
-    <Position X="3" Y="2.5" Width="1.5" />
+    <Position X="4.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ApplicationEvents.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="sharedProject.My.MySettings" Collapsed="true">
-    <Position X="4.75" Y="2.5" Width="1.5" />
+    <Position X="6.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAgAACIAQAQBEAgEgABAAlBICAAAACAAAACAA=</HashCode>
       <FileName>Settings.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="sharedProject.clsConnectionKeepAlive" Collapsed="true">
-    <Position X="0.5" Y="1.75" Width="1.5" />
+    <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAEAAAAAAAAAAAAAAACAABAAAAAAAEAAAAgAAAA=</HashCode>
       <FileName>clsConnectionKeepAlive.vb</FileName>
@@ -29,104 +29,99 @@
     </TypeIdentifier>
   </Class>
   <Class Name="sharedProject.clsLogWriter" Collapsed="true">
-    <Position X="3" Y="0.5" Width="1.5" />
+    <Position X="4.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>clsLogWriter.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="sharedProject.DB_EXPORTDataSet" Collapsed="true">
-    <Position X="4.75" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAwAAAAJABAAAQAAAAAgCQBgAAAAAAAEABBA=</HashCode>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="sharedProject.Form1" Collapsed="true">
-    <Position X="6.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AQBgAggyEOGAAQAAEBCAzLsGCKBEdA1WgsRCCSOkAiI=</HashCode>
-      <FileName>Form1.vb</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="sharedProject.frmAutoBetEngine">
-    <Position X="10" Y="0.5" Width="1.5" />
+  <Class Name="sharedProject.frmAutoBetEngine" Collapsed="true">
+    <Position X="11.5" Y="0.75" Width="1.5" />
     <NestedTypes>
-      <Class Name="sharedProject.frmAutoBetEngine.clsMarketCatalogue" Collapsed="true">
+      <Class Name="sharedProject.frmAutoBetEngine.testklasse" Collapsed="true">
         <TypeIdentifier>
           <NewMemberFileName>frmAutoBetEngine.vb</NewMemberFileName>
         </TypeIdentifier>
       </Class>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AgAAAQACBGCIAAAAACCAABhCACAUZAhCAAAAAQGABAA=</HashCode>
+      <HashCode>AgAAAQgCFGCAAEAAAKGAQjBCFCAUfAh6AJAAgQFCBIA=</HashCode>
       <FileName>frmAutoBetEngine.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="sharedProject.frmConnection" Collapsed="true">
-    <Position X="3" Y="1.5" Width="1.5" />
+    <Position X="4.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIARECAAAIAAAACAEBACAAAQYAAACIAgEAAAAAA=</HashCode>
       <FileName>frmConnection.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="sharedProject.frmListMarketCatalogue" Collapsed="true">
-    <Position X="4.75" Y="1.5" Width="1.5" />
+    <Position X="6.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgAECAgAEAAIIGAAgACAAAAQAAAAIAA1AACAIA=</HashCode>
       <FileName>frmListMarketCatalogue.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="sharedProject.frmLog" Collapsed="true">
-    <Position X="6.5" Y="1.5" Width="1.5" />
+    <Position X="8" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAACAAAAACAAAACAAACQBAAAIAAEAIAAAA=</HashCode>
       <FileName>frmLog.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="sharedProject.frmLogin" Collapsed="true">
-    <Position X="8.25" Y="1.5" Width="1.5" />
+    <Position X="9.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACEAAAAAIACAAAACIAAAAAEAAAAAEACAAAA=</HashCode>
       <FileName>frmLogin.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="sharedProject.uctlCheckedList" Collapsed="true">
-    <Position X="6.5" Y="2.5" Width="1.5" />
+    <Position X="8" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAJAgABEDQFAgCAAICAAQAKJQAAAAAAAAAABgQICAA=</HashCode>
       <FileName>uctlCheckedList.vb</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="sharedProject.clsListMarketCatalogue">
+    <Position X="4.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>clsListMarketCatalogue.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="sharedProject.clsBetConnection">
+    <Position X="2.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>clsBetConnection.vb</FileName>
+    </TypeIdentifier>
+  </Class>
   <Module Name="sharedProject.My.MySettingsProperty" Collapsed="true">
-    <Position X="8.25" Y="3.75" Width="1.5" />
+    <Position X="9.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Module>
-  <Module Name="sharedProject.modfunc" Collapsed="true">
-    <Position X="3" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>modfunc.vb</FileName>
-    </TypeIdentifier>
-  </Module>
   <Module Name="sharedProject.modFunctions" Collapsed="true">
-    <Position X="4.75" Y="3.75" Width="1.5" />
+    <Position X="6.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAEAAAAAAAAAABAAgACAAAOAACAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAEAAAAAAAAAABAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>modFunctions.vb</FileName>
     </TypeIdentifier>
   </Module>
   <Module Name="sharedProject.modKonstanten" Collapsed="true">
-    <Position X="6.5" Y="3.75" Width="1.5" />
+    <Position X="8" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAgACAAAAAAAAEAAAAAABAAAEAAAAAAAA=</HashCode>
       <FileName>modKonstanten.vb</FileName>
     </TypeIdentifier>
   </Module>
   <Module Name="sharedProject.My.Resources.Resources" Collapsed="true">
-    <Position X="3" Y="4.75" Width="1.5" />
+    <Position X="4.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
     </TypeIdentifier>

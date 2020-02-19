@@ -10,6 +10,8 @@ Public MustInherit Class clsConnectionRoot
     Property webHeaderColl As New System.Net.WebHeaderCollection
     Property webReq As System.Net.WebRequest
 
+
+
     ''' <summary>
     ''' Konstruktor der Klasse clsConnectionRooth
     ''' </summary>
@@ -25,5 +27,16 @@ Public MustInherit Class clsConnectionRoot
         webReq.ContentType = "application/json"
 
     End Sub
+
+    ''' <summary>
+    ''' Enumeration des Requestes
+    ''' </summary>
+    Public Enum enumRequest
+
+        betting = CStr(My.Settings.me_delayKey)
+        'me_betting_uri
+
+    End Enum
+
 
 End Class

@@ -99,29 +99,27 @@ Public Class frmAutoBetEngine
         Dim mySP As ServicePoint = ServicePointManager.FindServicePoint(myURI)
         mySP.Expect100Continue = False
 
-
-
         Dim request As WebRequest = WebRequest.Create(myURI)
-
-
 
         Dim byteArray As Byte() = Encoding.Default.GetBytes(jsonString)
 
         request.Method = "POST"
         request.ContentType = "application/json"
-        request.Headers.Add(CStr("X-Application: " & getKeyValue()))
+        request.Headers.Add(CStr("X-Application: " & My.Settings.me_delayKey_backup))
         request.Headers.Add("X-Authentication: " & My.Settings.me_cookie_ABE)
-        Dim bl = Encoding.Default.GetBytes(jsonString)
-        request.ContentLength = bl.Length
+        request.ContentLength = byteArray.Length
 
 
 
         Dim datastream As Stream = request.GetRequestStream()
-        datastream.Write(byteArray, 0, bl.Length)
+        datastream.Write(byteArray, 0, byteArray.Length)
 
         datastream.Close()
 
-        Dim txtConnectionState
+
+        Dim mmm As New clsBetConnection(jsonString)
+
+
 
         Dim response As WebResponse = request.GetResponse()
 
@@ -172,9 +170,15 @@ Public Class frmAutoBetEngine
 
 
 
+
+
+
+
+
         Dim strg As System.String = ""
         strg = serializeRequest(myNewListMarketCatalogue.myNewListMarketCatalogue)
 
+        Console.WriteLine(strg)
 
         Dim answer As String
         answer = SendSportsReq(strg)
@@ -182,7 +186,7 @@ Public Class frmAutoBetEngine
         Dim xmlDoc As New Xml.XmlDocument
         xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(answer, "wurzel")
 
-        xmlDoc.Save("C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & DateTime.Now.Ticks & ".xml")
+        'xmlDoc.Save("C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & DateTime.Now.Ticks & ".xml")
 
 
 
@@ -529,4 +533,35 @@ Public Class frmAutoBetEngine
 
     End Function
 
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+
+        ' erstelle eine Connection zum Ziel
+
+        ' erstelle eine Abfrage als String
+
+        ' sende die Abfrage zum Ziel
+
+        ' nimm die Antwort
+        ' wandle das json in ein xml um
+        ' mache aus dem xml ein dataset
+        ' füge den Zeitstempel in jeder tabelle hinzu
+        ' wandele es wieder in ein json zurück , hihi - mit zeitstempel
+        ' speichere das json im mongo
+        ' füge den zeitstempel 
+        ' erstelle eine tabelle flat and wide
+
+
+        ' deserialisiere die Antwort
+        ' die Klasse muss das xsd und das xsl kennen
+        ' wandle gib dann eine tabelle zurück
+
+        ' setze die Antwort an ein steuerelement, welches noch gecustomiezed wird 
+
+
+
+
+
+
+
+    End Sub
 End Class
