@@ -182,7 +182,7 @@ Public Class frmAutoBetEngine
         Dim xmlDoc As New Xml.XmlDocument
         xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(answer, "wurzel")
 
-        xmlDoc.Save("C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & DateTime.Now.ToLongDateString & ".xml")
+        xmlDoc.Save("C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & DateTime.Now.Ticks & ".xml")
 
 
 
@@ -580,7 +580,7 @@ Public Class frmAutoBetEngine
 
     End Function
 
+    Private Sub clbMarketProjection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles clbMarketProjection.SelectedIndexChanged
 
-
-
+    End Sub
 End Class
