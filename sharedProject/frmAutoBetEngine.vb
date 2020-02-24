@@ -117,7 +117,7 @@ Public Class frmAutoBetEngine
         datastream.Close()
 
 
-        Dim mmm As New clsBetConnection(jsonString)
+        ' Dim mmm As New clsBetConnection(jsonString)
 
 
 
@@ -168,9 +168,14 @@ Public Class frmAutoBetEngine
         ''' das Auswahlfenster wieder schließen
 
 
+        Dim f3j As String = "{@method@:@SportsAPING/v1.0/listMarketCatalogue@,@params@:{@filter@:{@eventTypeIds@:[],@marketCountries@:[],@marketTypeCodes@:[],@marketStartTime@:{@from@:null,@to@:null},@eventIds@:[]},@sort@:@FIRST_TO_START@,@maxResults@:@20@,@marketProjection@:[]},@jsonrpc@:@2.0@,@id@:1}".Replace("@", Chr(34))
 
 
 
+
+
+        Dim fj As New clsBetConnection(f3j)
+        Stop
 
 
 
@@ -534,6 +539,9 @@ Public Class frmAutoBetEngine
     End Function
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+
+
+
 
         ' erstelle eine Connection zum Ziel
 

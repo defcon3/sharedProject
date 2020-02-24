@@ -33,6 +33,7 @@ Public MustInherit Class clsConnectionRoot
 
         webHeaderColl = New WebHeaderCollection
 
+
         webReq = System.Net.WebRequest.Create(get_request_type(enu))
 
         webHeaderColl.Add("X-Application", CStr(My.Settings.me_delayKey))
