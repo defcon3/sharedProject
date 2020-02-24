@@ -95,6 +95,7 @@ Public Class frmAutoBetEngine
 
 
 
+
         Dim myURI As New Uri(My.Settings.me_betting_uri)
         Dim mySP As ServicePoint = ServicePointManager.FindServicePoint(myURI)
         mySP.Expect100Continue = False

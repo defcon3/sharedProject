@@ -5,13 +5,32 @@ Imports System.Text
 ''' Klasse clsConnectionKeepAlive
 ''' </summary>
 Public Class clsConnectionKeepAlive
+
     Inherits clsConnectionRoot
 
     'Dim myURI As New Uri(My.Settings.me_keepAlive_uri)
-    Dim myURI As New Uri(My.Settings.me_keepAlive_uri)
-    Dim mySP As System.Net.ServicePoint = System.Net.ServicePointManager.FindServicePoint(myURI)
-    Dim request As System.Net.WebRequest = System.Net.WebRequest.Create(myURI)
+    Dim myURIt As New Uri(My.Settings.me_keepAlive_uri)
+    Dim mySP As System.Net.ServicePoint = System.Net.ServicePointManager.FindServicePoint(myURIt)
+    Dim request As System.Net.WebRequest = System.Net.WebRequest.Create(myURIt)
     Property status As HttpStatusCode
+
+    Public Overrides Property myUri As Uri
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As Uri)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Overrides Property webReq As WebRequest
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As WebRequest)
+            Throw New NotImplementedException()
+        End Set
+    End Property
 
     Public Sub New()
 
