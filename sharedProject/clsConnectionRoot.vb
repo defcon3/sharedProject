@@ -4,19 +4,24 @@
 ''' </summary>
 Public MustInherit Class clsConnectionRoot
 
+
     Property webHeaderColl As New System.Net.WebHeaderCollection
 
-    Public MustOverride Property myUri As System.Uri
+    Public MustOverride ReadOnly Property myUri As System.Uri
 
     Public MustOverride Property webReq As System.Net.WebRequest
 
-    Public mySP As ServicePoint
+    Public Property mySP As ServicePoint
+
+
 
     Sub New()
 
     End Sub
 
     Public Sub New(enu As enumRequest)
+
+
 
         webHeaderColl = New WebHeaderCollection
         webHeaderColl.Add("X-Application", CStr(My.Settings.me_delayKey))

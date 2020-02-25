@@ -3,12 +3,16 @@
 Public Class clsBetConnection
 
 
+
     Inherits clsConnectionRoot
 
+
     Public Sub New(jsonstring As String)
+        'myUri = New Uri("lkj ")
+
 
         'webReq = WebRequest.Create(MyBase.enumRequest.betting)
-        myUri = New Uri(MyBase.get_request_type(MyBase.enumRequest.betting))
+        ' myUri = New Uri(MyBase.get_request_type(MyBase.enumRequest.betting))
 
         webReq = WebRequest.Create(myUri)
 
@@ -56,12 +60,9 @@ Public Class clsBetConnection
         End Set
     End Property
 
-    Public Overrides Property myUri As Uri
+    Public Overrides ReadOnly Property myUri As Uri
         Get
-            Throw New NotImplementedException()
+            ' myUri = My.Settings.me_betting_uri
         End Get
-        Set(value As Uri)
-            Throw New NotImplementedException()
-        End Set
     End Property
 End Class

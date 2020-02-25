@@ -175,7 +175,7 @@ Public Class frmAutoBetEngine
 
 
 
-        Dim fj As New clsBetConnection(f3j)
+        ' Dim fj As New clsBetConnection(f3j)
         Stop
 
 
