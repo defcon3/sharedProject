@@ -3,11 +3,21 @@
 Public Class clsBetConnection
 
 
-
     Inherits clsConnectionRoot
 
 
+    Sub New()
+        ' myUri = New Uri("asdf")
+
+        'webReq = WebRequest.Create(myUri)
+
+
+    End Sub
+
+
     Public Sub New(jsonstring As String)
+
+
         'myUri = New Uri("lkj ")
 
 
@@ -15,6 +25,10 @@ Public Class clsBetConnection
         ' myUri = New Uri(MyBase.get_request_type(MyBase.enumRequest.betting))
 
         webReq = WebRequest.Create(myUri)
+
+        Dim mySP As ServicePoint = ServicePointManager.FindServicePoint(myUri)
+        mySP.Expect100Continue = False
+
 
         'MyBase.New(0)
 
@@ -53,16 +67,19 @@ Public Class clsBetConnection
 
     Public Overrides Property webReq As WebRequest
         Get
-            Throw New NotImplementedException()
+            webReq = WebRequest.Create(myUri)
         End Get
         Set(value As WebRequest)
-            Throw New NotImplementedException()
+            'MyBase.webReq = WebRequest.Create(get_request_type(MyBase.enumRequest.betting))
+
+            'Throw New NotImplementedException()
         End Set
     End Property
 
+
     Public Overrides ReadOnly Property myUri As Uri
         Get
-            ' myUri = My.Settings.me_betting_uri
+            myUri = New Uri(My.Settings.me_betting_uri)
         End Get
     End Property
 End Class

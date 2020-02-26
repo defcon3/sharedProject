@@ -245,19 +245,12 @@ Public Class frmAutoBetEngine
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Me.StatusStrip1.BringToFront()
-        Me.StatusStrip1.BackColor = Color.Blue
 
 
-        'Dim t As New ToolStripItemCollection
-        Dim z As New ToolStripButton
+        Dim r As New clsBetConnection
 
-        z.Text = "Veitele"
-        Me.StatusStrip1.Items.Add(z)
-        Dim z2 As New ToolStripButton
+        Dim m As New clsBetConnection
 
-        z2.Text = "Veitele2"
-        Me.StatusStrip1.Items.Add(z2)
 
 
     End Sub

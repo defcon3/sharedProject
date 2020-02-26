@@ -8,6 +8,7 @@ Public MustInherit Class clsConnectionRoot
     Property webHeaderColl As New System.Net.WebHeaderCollection
 
     Public MustOverride ReadOnly Property myUri As System.Uri
+    Public MustOverride ReadOnly Property mySP As ServicePoint
 
     Public MustOverride Property webReq As System.Net.WebRequest
 
@@ -16,16 +17,18 @@ Public MustInherit Class clsConnectionRoot
 
 
     Sub New()
-
+        webHeaderColl.Add("X-Application", CStr(My.Settings.me_delayKey))
+        webHeaderColl.Add("X-Authentication", CStr(My.Settings.me_cookie_ABE))
+        webReq.Method = "POST"
+        webReq.ContentType = "application/json"
     End Sub
 
     Public Sub New(enu As enumRequest)
 
 
 
-        webHeaderColl = New WebHeaderCollection
-        webHeaderColl.Add("X-Application", CStr(My.Settings.me_delayKey))
-        webHeaderColl.Add("X-Authentication", CStr(My.Settings.me_cookie_ABE))
+        'webHeaderColl = New WebHeaderCollection
+
 
         webReq = System.Net.WebRequest.Create(get_request_type(enu))
         webReq.Method = "POST"
