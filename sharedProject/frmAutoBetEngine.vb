@@ -249,7 +249,6 @@ Public Class frmAutoBetEngine
 
         Dim r As New clsBetConnection
 
-        Dim m As New clsBetConnection
 
 
 

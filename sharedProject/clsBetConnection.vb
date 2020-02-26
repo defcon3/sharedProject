@@ -9,6 +9,7 @@ Public Class clsBetConnection
 
         webReq = WebRequest.Create(myUri)
 
+
         mySP.Expect100Continue = False
 
         Dim f3j As String = "{@method@:@SportsAPING/v1.0/listMarketCatalogue@,@params@:{@filter@:{@eventTypeIds@:[],@marketCountries@:[],@marketTypeCodes@:[],@marketStartTime@:{@from@:null,@to@:null},@eventIds@:[]},@sort@:@FIRST_TO_START@,@maxResults@:@20@,@marketProjection@:[]},@jsonrpc@:@2.0@,@id@:1}".Replace("@", Chr(34))
@@ -23,6 +24,29 @@ Public Class clsBetConnection
         datastream.Write(byteArray, 0, byteArray.Length)
 
         datastream.Close()
+
+
+        Dim response As WebResponse = webReq.GetResponse()
+
+        Dim myHttpWebResponse As HttpWebResponse = CType(webReq.GetResponse(), HttpWebResponse)
+        If myHttpWebResponse.StatusCode = HttpStatusCode.OK Then
+            ' txtConnectionState.Text = "online"
+        Else
+            ' txtConnectionState.Text = "offline"
+        End If
+
+
+        datastream = response.GetResponseStream()
+
+        Dim reader As New System.IO.StreamReader(datastream)
+        Dim responseFromServer As String = reader.ReadToEnd()
+
+
+
+        reader.Close()
+        datastream.Close()
+
+
 
 
     End Sub
@@ -80,6 +104,8 @@ Public Class clsBetConnection
     Public Overrides Property webReq As WebRequest
         Get
             webReq = WebRequest.Create(myUri)
+            webReq.Method = MyBase.webReq.Method
+            webReq.Headers = MyBase.webHeaderColl
         End Get
         Set(value As WebRequest)
             'MyBase.webReq = WebRequest.Create(get_request_type(MyBase.enumRequest.betting))
