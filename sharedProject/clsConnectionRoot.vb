@@ -12,8 +12,6 @@ Public MustInherit Class clsConnectionRoot
 
     Public MustOverride Property webReq As System.Net.WebRequest
 
-    Public Property mySP As ServicePoint
-
 
 
     Sub New()
@@ -22,20 +20,6 @@ Public MustInherit Class clsConnectionRoot
         webReq.Method = "POST"
         webReq.ContentType = "application/json"
     End Sub
-
-    Public Sub New(enu As enumRequest)
-
-
-
-        'webHeaderColl = New WebHeaderCollection
-
-
-        webReq = System.Net.WebRequest.Create(get_request_type(enu))
-        webReq.Method = "POST"
-        webReq.ContentType = "application/json"
-
-    End Sub
-
 
 
 

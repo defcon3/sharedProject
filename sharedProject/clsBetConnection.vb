@@ -5,11 +5,24 @@ Public Class clsBetConnection
 
     Inherits clsConnectionRoot
 
-
     Sub New()
-        ' myUri = New Uri("asdf")
 
-        'webReq = WebRequest.Create(myUri)
+        webReq = WebRequest.Create(myUri)
+
+        mySP.Expect100Continue = False
+
+        Dim f3j As String = "{@method@:@SportsAPING/v1.0/listMarketCatalogue@,@params@:{@filter@:{@eventTypeIds@:[],@marketCountries@:[],@marketTypeCodes@:[],@marketStartTime@:{@from@:null,@to@:null},@eventIds@:[]},@sort@:@FIRST_TO_START@,@maxResults@:@20@,@marketProjection@:[]},@jsonrpc@:@2.0@,@id@:1}".Replace("@", Chr(34))
+
+
+        Dim byteArray As Byte() = System.Text.Encoding.Default.GetBytes(f3j)
+
+        webReq.ContentLength = byteArray.Length
+
+
+        Dim datastream As System.IO.Stream = webReq.GetRequestStream()
+        datastream.Write(byteArray, 0, byteArray.Length)
+
+        datastream.Close()
 
 
     End Sub
@@ -26,7 +39,6 @@ Public Class clsBetConnection
 
         webReq = WebRequest.Create(myUri)
 
-        Dim mySP As ServicePoint = ServicePointManager.FindServicePoint(myUri)
         mySP.Expect100Continue = False
 
 
@@ -80,6 +92,12 @@ Public Class clsBetConnection
     Public Overrides ReadOnly Property myUri As Uri
         Get
             myUri = New Uri(My.Settings.me_betting_uri)
+        End Get
+    End Property
+
+    Public Overrides ReadOnly Property mySP As ServicePoint
+        Get
+            mySP = ServicePointManager.FindServicePoint(myUri)
         End Get
     End Property
 End Class
