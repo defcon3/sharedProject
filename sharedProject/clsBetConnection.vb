@@ -7,7 +7,7 @@ Public Class clsBetConnection
 
     Sub New()
 
-        webReq = WebRequest.Create(myUri)
+
 
 
         mySP.Expect100Continue = False
@@ -63,6 +63,8 @@ Public Class clsBetConnection
 
         webReq = WebRequest.Create(myUri)
 
+        'vvwebReq.ContentLength = byteArray.Length
+
         mySP.Expect100Continue = False
 
 
@@ -104,13 +106,12 @@ Public Class clsBetConnection
     Public Overrides Property webReq As WebRequest
         Get
             webReq = WebRequest.Create(myUri)
-            webReq.Method = MyBase.webReq.Method
             webReq.Headers = MyBase.webHeaderColl
+            webReq.Method = "POST"
+            webReq.ContentType = "application/json"
         End Get
         Set(value As WebRequest)
-            'MyBase.webReq = WebRequest.Create(get_request_type(MyBase.enumRequest.betting))
-
-            'Throw New NotImplementedException()
+            MyClass.webReq = value
         End Set
     End Property
 
@@ -123,7 +124,7 @@ Public Class clsBetConnection
 
     Public Overrides ReadOnly Property mySP As ServicePoint
         Get
-            mySP = ServicePointManager.FindServicePoint(myUri)
+            mySP = ServicePointManager.FindServicePoint(MyClass.myUri)
         End Get
     End Property
 End Class
