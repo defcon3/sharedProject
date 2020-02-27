@@ -10,23 +10,26 @@ Public Class clsBetConnection
 
 
 
-        mySP.Expect100Continue = False
-
         Dim f3j As String = "{@method@:@SportsAPING/v1.0/listMarketCatalogue@,@params@:{@filter@:{@eventTypeIds@:[],@marketCountries@:[],@marketTypeCodes@:[],@marketStartTime@:{@from@:null,@to@:null},@eventIds@:[]},@sort@:@FIRST_TO_START@,@maxResults@:@20@,@marketProjection@:[]},@jsonrpc@:@2.0@,@id@:1}".Replace("@", Chr(34))
 
 
         Dim byteArray As Byte() = System.Text.Encoding.Default.GetBytes(f3j)
 
-        webReq.ContentLength = byteArray.Length
+        Dim rer = MyClass.webReq
+        rer.ContentLength = byteArray.Length
 
 
-        Dim datastream As System.IO.Stream = webReq.GetRequestStream()
+
+        MyClass.webReq.ContentLength = byteArray.Length
+
+
+        Dim datastream As System.IO.Stream = rer.GetRequestStream()
         datastream.Write(byteArray, 0, byteArray.Length)
 
         datastream.Close()
 
 
-        Dim response As WebResponse = webReq.GetResponse()
+        Dim response As WebResponse = rer.GetResponse()
 
         Dim myHttpWebResponse As HttpWebResponse = CType(webReq.GetResponse(), HttpWebResponse)
         If myHttpWebResponse.StatusCode = HttpStatusCode.OK Then
@@ -52,57 +55,6 @@ Public Class clsBetConnection
     End Sub
 
 
-    Public Sub New(jsonstring As String)
-
-
-        'myUri = New Uri("lkj ")
-
-
-        'webReq = WebRequest.Create(MyBase.enumRequest.betting)
-        ' myUri = New Uri(MyBase.get_request_type(MyBase.enumRequest.betting))
-
-        webReq = WebRequest.Create(myUri)
-
-        'vvwebReq.ContentLength = byteArray.Length
-
-        mySP.Expect100Continue = False
-
-
-        'MyBase.New(0)
-
-        'Dim myURI As New Uri(My.Settings.me_betting_uri)
-        'Dim mySP As System.Net.ServicePoint = System.Net.ServicePointManager.FindServicePoint(myURI)
-        'mySP.Expect100Continue = False
-        'webReq = System.Net.WebRequest.Create(myURI)
-        'webReq.Method = "POST"
-
-
-        Dim byteArray As Byte() = System.Text.Encoding.Default.GetBytes(jsonstring)
-
-        'MyBase.webReq.ContentLength = byteArray.Length
-        'webReq.ContentLength = byteArray.Length
-
-
-
-        Dim datastream As System.IO.Stream = webReq.GetRequestStream()
-        datastream.Write(byteArray, 0, byteArray.Length)
-
-        datastream.Close()
-
-
-        Dim response As System.Net.WebResponse = webReq.GetResponse()
-
-
-
-        '{"method":"SportsAPING/v1.0/listMarketCatalogue","params":{"filter":{"eventTypeIds":[],"marketCountries":[],"marketTypeCodes":[],"marketStartTime":{"from":null,"to":null},"eventIds":[]},"sort":"FIRST_TO_START","maxResults":"20","marketProjection":[]},"jsonrpc":"2.0","id":1}
-
-        ''{@method@:@SportsAPING/v1.0/listMarketCatalogue@,@params@:{@filter@:{@eventTypeIds@:[],@marketCountries@:[],@marketTypeCodes@:[],@marketStartTime@:{@from@:null,@to@:null},@eventIds@:[]},@sort@:@FIRST_TO_START@,@maxResults@:@20@,@marketProjection@:[]},@jsonrpc@:@2.0@,@id@:1}
-
-
-
-
-    End Sub
-
     Public Overrides Property webReq As WebRequest
         Get
             webReq = WebRequest.Create(myUri)
@@ -125,6 +77,7 @@ Public Class clsBetConnection
     Public Overrides ReadOnly Property mySP As ServicePoint
         Get
             mySP = ServicePointManager.FindServicePoint(MyClass.myUri)
+            mySP.Expect100Continue = False
         End Get
     End Property
 End Class

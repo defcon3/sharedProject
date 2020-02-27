@@ -17,8 +17,7 @@ Public MustInherit Class clsConnectionRoot
     Sub New()
         webHeaderColl.Add("X-Application", CStr(My.Settings.me_delayKey))
         webHeaderColl.Add("X-Authentication", CStr(My.Settings.me_cookie_ABE))
-        webReq.ContentType = "application/json"
-        webReq.Method = "POST"
+
     End Sub
 
 
