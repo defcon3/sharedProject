@@ -1,4 +1,5 @@
 ﻿Imports System.Net
+Imports System.Text
 
 Public Class clsBetConnection
 
@@ -26,12 +27,12 @@ Public Class clsBetConnection
         Dim datastream As System.IO.Stream = rer.GetRequestStream()
         datastream.Write(byteArray, 0, byteArray.Length)
 
-        hdatastream.Close()
+        datastream.Close()
 
 
         Dim response As WebResponse = rer.GetResponse()
 
-        Dim myHttpWebResponse As HttpWebResponse = CType(webReq.GetResponse(), HttpWebResponse)
+        Dim myHttpWebResponse As HttpWebResponse = CType(rer.GetResponse(), HttpWebResponse)
         If myHttpWebResponse.StatusCode = HttpStatusCode.OK Then
             ' txtConnectionState.Text = "online"
         Else
@@ -58,8 +59,9 @@ Public Class clsBetConnection
     Public Overrides Property webReq As WebRequest
         Get
             webReq = WebRequest.Create(myUri)
-            webReq.ContentType = "application/json"
+
             webReq.Headers = MyBase.webHeaderColl
+            webReq.ContentType = "application/json"
             webReq.Method = "POST"
 
         End Get
