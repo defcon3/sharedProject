@@ -26,7 +26,7 @@ Public Class clsBetConnection
         Dim datastream As System.IO.Stream = rer.GetRequestStream()
         datastream.Write(byteArray, 0, byteArray.Length)
 
-        datastream.Close()
+        hdatastream.Close()
 
 
         Dim response As WebResponse = rer.GetResponse()
@@ -58,9 +58,10 @@ Public Class clsBetConnection
     Public Overrides Property webReq As WebRequest
         Get
             webReq = WebRequest.Create(myUri)
+            webReq.ContentType = "application/json"
             webReq.Headers = MyBase.webHeaderColl
             webReq.Method = "POST"
-            webReq.ContentType = "application/json"
+
         End Get
         Set(value As WebRequest)
             MyClass.webReq = value
