@@ -17,7 +17,7 @@
   <Class Name="sharedProject.clsConnectionKeepAlive" Collapsed="true">
     <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAEAAAAAAAAiAAAAAACAABAAAAAAAEAAAAgAAAA=</HashCode>
+      <HashCode>AAQAAAEAAAAAAAAAAAAAAACAABAAAAAAAEAAAAgAAAA=</HashCode>
       <FileName>clsConnectionKeepAlive.vb</FileName>
     </TypeIdentifier>
   </Class>
@@ -31,9 +31,10 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAAAAAAAiAAAAAAAAABAAAAAAAAAAAAEAAAA=</HashCode>
+      <HashCode>AAAAEAAAAAAAAAAiAAAAAAAAABAAAAAAAAAAEAEAAAA=</HashCode>
       <FileName>clsConnectionRoot.vb</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="sharedProject.clsLogWriter" Collapsed="true">
     <Position X="4.5" Y="0.75" Width="1.5" />
@@ -96,7 +97,7 @@
   <Class Name="sharedProject.clsBetConnection">
     <Position X="2.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAiAAAAQAAAABACAIIAAAAAAAAAAAA=</HashCode>
       <FileName>clsBetConnection.vb</FileName>
     </TypeIdentifier>
   </Class>

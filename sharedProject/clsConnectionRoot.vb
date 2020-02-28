@@ -1,9 +1,10 @@
 ﻿Imports System.Net
+Imports sharedProject
 ''' <summary>
 ''' Abstrakte Klasse clsConnetionRoot, die nicht einzeln instanziierbar ist.
 ''' </summary>
 Public MustInherit Class clsConnectionRoot
-
+    Implements ILogWriter
 
     Property webHeaderColl As New System.Net.WebHeaderCollection
 
@@ -32,6 +33,8 @@ Public MustInherit Class clsConnectionRoot
         keepalive = 2
 
     End Enum
+
+    Public Event writeToLog(logtext As String) Implements ILogWriter.writeToLog
 
     Public Function get_request_type(enu As enumRequest) As String
 

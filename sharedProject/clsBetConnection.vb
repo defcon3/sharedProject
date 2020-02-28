@@ -6,10 +6,13 @@ Public Class clsBetConnection
 
     Inherits clsConnectionRoot
 
+    ''' <summary>
+    ''' interne Klassenvariable zum Uebergeben der Webrequest innerhalb der Klasse
+    ''' </summary>
+    ''' <returns></returns>
+    Private Property _webrequest As WebRequest
+
     Sub New()
-
-
-
 
         Dim f3j As String = "{@method@:@SportsAPING/v1.0/listMarketCatalogue@,@params@:{@filter@:{@eventTypeIds@:[],@marketCountries@:[],@marketTypeCodes@:[],@marketStartTime@:{@from@:null,@to@:null},@eventIds@:[]},@sort@:@FIRST_TO_START@,@maxResults@:@20@,@marketProjection@:[]},@jsonrpc@:@2.0@,@id@:1}".Replace("@", Chr(34))
 
@@ -19,6 +22,7 @@ Public Class clsBetConnection
         Dim rer = MyClass.webReq
         rer.ContentLength = byteArray.Length
 
+        _webrequest = webReq
 
 
         MyClass.webReq.ContentLength = byteArray.Length
@@ -55,6 +59,10 @@ Public Class clsBetConnection
 
     End Sub
 
+    ''' <param name="Anfrage">Der Konstruktor nimmt gleichzeitig den Anfragestring mit auf</param>
+    Sub New(Anfrage As String)
+
+    End Sub
 
     Public Overrides Property webReq As WebRequest
         Get
@@ -83,4 +91,36 @@ Public Class clsBetConnection
             mySP.Expect100Continue = False
         End Get
     End Property
+
+    ''' <summary>
+    ''' Anfragestring als JSON
+    ''' </summary>
+    ''' <remarks>Eigenschaft um den Anfragestring aufzunehmen</remarks>
+    ''' <value>""</value>
+    Public Property Requeststring As String
+        Get
+            Return Nothing
+        End Get
+        Set(value As String)
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' Antwortstring als JSON
+    ''' </summary>
+    ''' <remarks>Eigenschaft um den Antwortstring aufzunehmen</remarks>
+    ''' <value>""</value>
+    Public Property Responsestring As String
+        Get
+            Return Nothing
+        End Get
+        Set(value As String)
+        End Set
+    End Property
+
+    Public Function sendeAnfrage(ByVal sendRequest As String) As String
+
+        Return ""
+
+    End Function
 End Class
