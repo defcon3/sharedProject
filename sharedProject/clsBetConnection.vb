@@ -11,6 +11,7 @@ Public Class clsBetConnection
     ''' </summary>
     ''' <returns></returns>
     Private Property _webrequest As WebRequest
+    Private Property _requeststream As System.IO.Stream
 
     Sub New()
 
@@ -27,11 +28,17 @@ Public Class clsBetConnection
 
         MyClass.webReq.ContentLength = byteArray.Length
 
+        _webrequest.ContentLength = byteArray.Length
 
-        Dim datastream As System.IO.Stream = rer.GetRequestStream()
+
+        Dim datastream As System.IO.Stream = _webrequest.GetRequestStream()
         datastream.Write(byteArray, 0, byteArray.Length)
 
         datastream.Close()
+
+
+
+
 
 
         Dim response As WebResponse = rer.GetResponse()
@@ -62,13 +69,28 @@ Public Class clsBetConnection
     ''' <param name="Anfrage">Der Konstruktor nimmt gleichzeitig den Anfragestring mit auf</param>
     Sub New(Anfrage As String)
 
-       Requeststring=Anfrage
+        Requeststring = Anfrage
 
-    Dim myNewLogWriter As New clsLogWriter
+        Dim myNewLogWriter As New clsLogWriter
         myNewLogWriter.write_log(Requeststring)
 
 
-        
+        Dim byteArray As Byte() = System.Text.Encoding.Default.GetBytes(Requeststring)
+
+
+        _webrequest = webReq
+        _webrequest.ContentLength = byteArray.Length
+
+
+        'Dim datastream As System.IO.Stream = _webrequest.GetRequestStream()
+        'datastream.Write(byteArray, 0, byteArray.Length)
+
+        'datastream.Close()
+
+        _requeststream = _webrequest.GetRequestStream
+        _requeststream.Write(byteArray, 0, byteArray.Length)
+        _requeststream.Close()
+
 
 
 
@@ -115,11 +137,53 @@ Public Class clsBetConnection
         End Set
     End Property
 
-   
+
 
     Public Function sendeAnfrage(ByVal sendRequest As String) As String
 
 
+
+
+
+        Dim response As WebResponse = _webrequest.GetResponse()
+
+        'Dim myHttpWebResponse As HttpWebResponse = CType(_webrequest.GetResponse(), HttpWebResponse)
+        'If myHttpWebResponse.StatusCode = HttpStatusCode.OK Then
+        '    ' txtConnectionState.Text = "online"
+        'Else
+        '    ' txtConnectionState.Text = "offline"
+        'End If
+
+
+        datastream = response.GetResponseStream()
+
+        Dim reader As New StreamReader(datastream)
+        Dim responseFromServer As String = reader.ReadToEnd()
+
+
+
+        reader.Close()
+        datastream.Close()
+
+
+        'Debug.Print(responseFromServer.ToString)
+        response.Close()
+
+
+
+
+
+
+
+        datastream = response.GetResponseStream()
+
+        Dim reader As New System.IO.StreamReader(datastream)
+        Dim responseFromServer As String = reader.ReadToEnd()
+
+
+
+        reader.Close()
+        datastream.Close()
 
 
         Return ""

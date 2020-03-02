@@ -31,7 +31,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAAAAAAAiAAAAAAAAABAAAAAAAAAAEAEAAAA=</HashCode>
+      <HashCode>AAAAEAAAAAAAAAAiAAAAQAAAABAAAAAAAAAAEAEAAAA=</HashCode>
       <FileName>clsConnectionRoot.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -97,7 +97,7 @@
   <Class Name="sharedProject.clsBetConnection">
     <Position X="2.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAiAAAAQAAAABACAIIAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAiAAAAQAAAABACAAIAAAAAAAAAAAQ=</HashCode>
       <FileName>clsBetConnection.vb</FileName>
     </TypeIdentifier>
   </Class>
