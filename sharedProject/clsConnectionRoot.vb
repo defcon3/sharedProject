@@ -12,6 +12,7 @@ Public MustInherit Class clsConnectionRoot
     Public MustOverride ReadOnly Property mySP As ServicePoint
 
     Public MustOverride Property webReq As System.Net.WebRequest
+    Public Property Requeststring As system.string
 
 
 
@@ -20,6 +21,9 @@ Public MustInherit Class clsConnectionRoot
         webHeaderColl.Add("X-Authentication", CStr(My.Settings.me_cookie_ABE))
         mySP.Expect100Continue = False
     End Sub
+
+
+
 
 
 

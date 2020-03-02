@@ -62,6 +62,16 @@ Public Class clsBetConnection
     ''' <param name="Anfrage">Der Konstruktor nimmt gleichzeitig den Anfragestring mit auf</param>
     Sub New(Anfrage As String)
 
+       Requeststring=Anfrage
+
+    Dim myNewLogWriter As New clsLogWriter
+        myNewLogWriter.write_log(Requeststring)
+
+
+        
+
+
+
     End Sub
 
     Public Overrides Property webReq As WebRequest
@@ -105,20 +115,12 @@ Public Class clsBetConnection
         End Set
     End Property
 
-    ''' <summary>
-    ''' Antwortstring als JSON
-    ''' </summary>
-    ''' <remarks>Eigenschaft um den Antwortstring aufzunehmen</remarks>
-    ''' <value>""</value>
-    Public Property Responsestring As String
-        Get
-            Return Nothing
-        End Get
-        Set(value As String)
-        End Set
-    End Property
+   
 
     Public Function sendeAnfrage(ByVal sendRequest As String) As String
+
+
+
 
         Return ""
 
