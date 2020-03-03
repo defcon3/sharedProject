@@ -13,6 +13,7 @@ Public Class clsBetConnection
     Private Property _webrequest As WebRequest
     Private Property _requeststream As System.IO.Stream
     Private Property _serveranswer As System.String
+    Private Property _requeststring As System.String
 
     Sub New()
 
@@ -128,41 +129,25 @@ Public Class clsBetConnection
     Public Overrides ReadOnly Property mySP As ServicePoint
         Get
             mySP = ServicePointManager.FindServicePoint(MyClass.myUri)
-            mySP.Expect100Continue = False
         End Get
     End Property
 
-    ''' <summary>
-    ''' Anfragestring als JSON
-    ''' </summary>
-    ''' <remarks>Eigenschaft um den Anfragestring aufzunehmen</remarks>
-    ''' <value>""</value>
-    Public Property Requeststring As String
-        Get
-            Return Requeststring
-        End Get
-        Set(value As String)
-            Requeststring = value
-        End Set
-    End Property
 
 
 
     Public Sub sendeAnfrage()
 
+        Dim myNewLogWriter As New clsLogWriter
+
+        Dim myHttpWebResponse As HttpWebResponse = CType(_webrequest.GetResponse(), HttpWebResponse)
+        If myHttpWebResponse.StatusCode = HttpStatusCode.OK Then
+            myNewLogWriter.write_log("Serverantwort OK")
+        Else
+            myNewLogWriter.write_log("Serverantwort NICHT OK")
+        End If
 
 
-        Dim response As WebResponse = _webrequest.GetResponse()
-
-        'Dim myHttpWebResponse As HttpWebResponse = CType(_webrequest.GetResponse(), HttpWebResponse)
-        'If myHttpWebResponse.StatusCode = HttpStatusCode.OK Then
-        '    ' txtConnectionState.Text = "online"
-        'Else
-        '    ' txtConnectionState.Text = "offline"
-        'End If
-
-
-        _requeststream = response.GetResponseStream()
+        _requeststream = myHttpWebResponse.GetResponseStream()
 
         Dim reader As New System.IO.StreamReader(_requeststream)
         Dim responseFromServer As String = reader.ReadToEnd()
@@ -174,12 +159,13 @@ Public Class clsBetConnection
 
 
         'Debug.Print(responseFromServer.ToString)
-        response.Close()
+        myHttpWebResponse.Close()
 
         _serveranswer = responseFromServer
 
+        Answerstring = _serveranswer
 
-        Dim myNewLogWriter As New clsLogWriter
+
         myNewLogWriter.write_log(_serveranswer)
 
 

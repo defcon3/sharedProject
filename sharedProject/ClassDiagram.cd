@@ -15,13 +15,13 @@
     </TypeIdentifier>
   </Class>
   <Class Name="sharedProject.clsConnectionKeepAlive" Collapsed="true">
-    <Position X="0.5" Y="2.5" Width="1.5" />
+    <Position X="7.75" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAQAAAEAAAAAAAAAAAAAAACAABAAAAAAAEAAAAgAAAA=</HashCode>
       <FileName>clsConnectionKeepAlive.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="sharedProject.clsConnectionRoot">
+  <Class Name="sharedProject.clsConnectionRoot" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <NestedTypes>
       <Enum Name="sharedProject.clsConnectionRoot.enumRequest" Collapsed="true">
@@ -31,7 +31,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAAAAAAAiAAAAQAAAABAAAAAAAAAAEAEAAAA=</HashCode>
+      <HashCode>AAAAEAAAAAAAAAAiAAAAQAAAABAAAAAAAAAAEAEACAA=</HashCode>
       <FileName>clsConnectionRoot.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -94,11 +94,18 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="sharedProject.clsBetConnection">
-    <Position X="2.5" Y="2.5" Width="1.5" />
+  <Class Name="sharedProject.clsBetConnection" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAiAAAAQAAAABACAAIAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAAAAAgAAAAAAiAAAAAAAAAhACAAIAAAAAAAAAAAQ=</HashCode>
       <FileName>clsBetConnection.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sharedProject.Class1">
+    <Position X="0.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>clsJsonToDatatable.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Module Name="sharedProject.My.MySettingsProperty" Collapsed="true">

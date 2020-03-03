@@ -249,6 +249,8 @@ Public Class frmAutoBetEngine
 
         Dim r As New clsBetConnection("afd")
 
+        r.sendeAnfrage()
+
 
 
 

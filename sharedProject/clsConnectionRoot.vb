@@ -14,7 +14,7 @@ Public MustInherit Class clsConnectionRoot
     Public MustOverride Property webReq As System.Net.WebRequest
     Public Property Requeststring As System.String = vbNullString
 
-
+    Public Property Answerstring As System.String = vbNullString
 
 
     Sub New()
