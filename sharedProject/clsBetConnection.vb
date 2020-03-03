@@ -12,11 +12,13 @@ Public Class clsBetConnection
     ''' <returns></returns>
     Private Property _webrequest As WebRequest
     Private Property _requeststream As System.IO.Stream
+    Private Property _serveranswer As System.String
 
     Sub New()
 
         Dim f3j As String = "{@method@:@SportsAPING/v1.0/listMarketCatalogue@,@params@:{@filter@:{@eventTypeIds@:[],@marketCountries@:[],@marketTypeCodes@:[],@marketStartTime@:{@from@:null,@to@:null},@eventIds@:[]},@sort@:@FIRST_TO_START@,@maxResults@:@20@,@marketProjection@:[]},@jsonrpc@:@2.0@,@id@:1}".Replace("@", Chr(34))
 
+        Me.Requeststring = f3j
 
         Dim byteArray As Byte() = System.Text.Encoding.Default.GetBytes(f3j)
 
@@ -69,7 +71,13 @@ Public Class clsBetConnection
     ''' <param name="Anfrage">Der Konstruktor nimmt gleichzeitig den Anfragestring mit auf</param>
     Sub New(Anfrage As String)
 
-        Requeststring = Anfrage
+        Dim f3j As String = "{@method@:@SportsAPING/v1.0/listMarketCatalogue@,@params@:{@filter@:{@eventTypeIds@:[],@marketCountries@:[],@marketTypeCodes@:[],@marketStartTime@:{@from@:null,@to@:null},@eventIds@:[]},@sort@:@FIRST_TO_START@,@maxResults@:@20@,@marketProjection@:[]},@jsonrpc@:@2.0@,@id@:1}".Replace("@", Chr(34))
+
+        'Me.Requeststring = f3j
+
+
+
+        Requeststring = f3j
 
         Dim myNewLogWriter As New clsLogWriter
         myNewLogWriter.write_log(Requeststring)
@@ -131,17 +139,16 @@ Public Class clsBetConnection
     ''' <value>""</value>
     Public Property Requeststring As String
         Get
-            Return Nothing
+            Return Requeststring
         End Get
         Set(value As String)
+            Requeststring = value
         End Set
     End Property
 
 
 
-    Public Function sendeAnfrage(ByVal sendRequest As String) As String
-
-
+    Public Sub sendeAnfrage()
 
 
 
@@ -155,38 +162,27 @@ Public Class clsBetConnection
         'End If
 
 
-        datastream = response.GetResponseStream()
+        _requeststream = response.GetResponseStream()
 
-        Dim reader As New StreamReader(datastream)
+        Dim reader As New System.IO.StreamReader(_requeststream)
         Dim responseFromServer As String = reader.ReadToEnd()
 
 
 
         reader.Close()
-        datastream.Close()
+        _requeststream.Close()
 
 
         'Debug.Print(responseFromServer.ToString)
         response.Close()
 
+        _serveranswer = responseFromServer
+
+
+        Dim myNewLogWriter As New clsLogWriter
+        myNewLogWriter.write_log(_serveranswer)
 
 
 
-
-
-
-        datastream = response.GetResponseStream()
-
-        Dim reader As New System.IO.StreamReader(datastream)
-        Dim responseFromServer As String = reader.ReadToEnd()
-
-
-
-        reader.Close()
-        datastream.Close()
-
-
-        Return ""
-
-    End Function
+    End Sub
 End Class
