@@ -215,6 +215,8 @@
     <Compile Include="clsJsonToDatatable.vb" />
     <Compile Include="clsListMarketCatalogue.vb" />
     <Compile Include="clsLogWriter.vb" />
+    <Compile Include="Delegate1.vb" />
+    <Compile Include="enumRequest.vb" />
     <Compile Include="frmAutoBetEngine.Designer.vb">
       <DependentUpon>frmAutoBetEngine.vb</DependentUpon>
     </Compile>

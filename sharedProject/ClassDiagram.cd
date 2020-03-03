@@ -23,13 +23,6 @@
   </Class>
   <Class Name="sharedProject.clsConnectionRoot" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
-    <NestedTypes>
-      <Enum Name="sharedProject.clsConnectionRoot.enumRequest" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>clsConnectionRoot.vb</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAEAAAAAAAAAAiAAAAQAAAABAAAAAAAAAAEAEACAA=</HashCode>
       <FileName>clsConnectionRoot.vb</FileName>
@@ -101,13 +94,20 @@
       <FileName>clsBetConnection.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="sharedProject.Class1">
-    <Position X="0.75" Y="1.5" Width="1.5" />
+  <Class Name="sharedProject.clsJsonToDatatable">
+    <Position X="0.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>clsJsonToDatatable.vb</FileName>
     </TypeIdentifier>
   </Class>
+  <Enum Name="sharedProject.enumRequest">
+    <Position X="0.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>enumRequest.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Module Name="sharedProject.My.MySettingsProperty" Collapsed="true">
     <Position X="9.75" Y="4" Width="1.5" />
     <TypeIdentifier>
