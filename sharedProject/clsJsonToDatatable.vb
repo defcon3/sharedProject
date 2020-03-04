@@ -18,8 +18,30 @@
             xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(answer, "listMarketCatalogue")
         End If
 
+        xmlDoc.Save("c:\temp\tempdoc.xml")
+
+        Dim xmlreader As Xml.XmlNodeReader
+
+        xmlreader = New Xml.XmlNodeReader(xmlDoc)
+        Dim dataset As DataSet
+        dataset = New DataSet()
+        dataset.ReadXml(xmlreader)
 
 
+        Dim ds As New DataSet
+        'ds.ReadXml(xmlDoc)
+
+
+
+        ds.ReadXml(xmlDoc)
+
+        Dim stream = New System.IO.MemoryStream
+
+
+
+        Dim xw = New Xml.XmlTextWriter(stream, System.Text.Encoding.Default)
+        xmlDoc.WriteContentTo(xw)
+        ds.ReadXml(stream)
 
 
         '''json to xml convetieren
