@@ -176,7 +176,7 @@ Public Class frmAutoBetEngine
 
 
         ' Dim fj As New clsBetConnection(f3j)
-        Stop
+        'Stop
 
 
 
@@ -251,6 +251,12 @@ Public Class frmAutoBetEngine
 
         r.sendeAnfrage()
 
+
+        Dim m As New clsJsonToDatatable
+        m.zuParsenderString = r.Answerstring
+
+
+        m.funcParseString(r.Requeststring, r.Answerstring)
 
 
 
