@@ -18,21 +18,26 @@
 
         'Fallunterscheidung, was ist fuer eine Antwort
         If request.Contains("SportsAPING/v1.0/listMarketCatalogue") Or 1 = 1 Then
-            ' xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(answer, "listMarketCatalogue")
+            ' xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(answer, "MarketCatalogue")
 
 
             Dim xmlNodeRdr As New Xml.XmlNodeReader(xmlDoc) 'xmlDoc is your XmlDocument
             Dim ds1 As New DataSet()
             ds1.ReadXml(xmlNodeRdr)
 
-            ds1.Tables(0).Columns.Add("Zeitstempel")
+            Dim dc As New DataColumn
+            With dc
+                .AllowDBNull = False
+                .ColumnName = "Zeitstempel"
+                .DataType = GetType(System.UInt64)
+                .DefaultValue = System.DateTime.UtcNow.Ticks
+            End With
 
 
 
-            For Each tab As DataTable In ds1.Tables
-
-                tab.Columns.Add(New DataColumn(ds1.name.tostring))
-            Next
+            Dim xslt As New Xml.Xsl.XslCompiledTransform()
+            xslt.Load("C:\Temp\AutoBetEngine\Transformations\MarketCatalogue.xsl")
+            xslt.Transform("C:\Temp\tempdoc.xml", "C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & System.DateTime.UtcNow.Ticks & ".xml")
 
 
         End If
