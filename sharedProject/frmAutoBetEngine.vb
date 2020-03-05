@@ -413,6 +413,10 @@ Public Class frmAutoBetEngine
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
 
+
+        Dim b As New clsJsonToDatatable
+        b.funcParseString("", "")
+
         ' das xml welches gelesen werden soll
 
         ' das schema welches die struktur der zieltabelle erstellt

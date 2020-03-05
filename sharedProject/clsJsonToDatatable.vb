@@ -12,36 +12,30 @@
         End If
 
 
+
         Dim xmlDoc As New Xml.XmlDocument
+        xmlDoc.Load("C:\Temp\tempdoc.xml")
+
         'Fallunterscheidung, was ist fuer eine Antwort
-        If request.Contains("SportsAPING/v1.0/listMarketCatalogue") Then
-            xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(answer, "listMarketCatalogue")
+        If request.Contains("SportsAPING/v1.0/listMarketCatalogue") Or 1 = 1 Then
+            ' xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(answer, "listMarketCatalogue")
+
+
+            Dim xmlNodeRdr As New Xml.XmlNodeReader(xmlDoc) 'xmlDoc is your XmlDocument
+            Dim ds1 As New DataSet()
+            ds1.ReadXml(xmlNodeRdr)
+
+            ds1.Tables(0).Columns.Add("Zeitstempel")
+
+
+
+            For Each tab As DataTable In ds1.Tables
+
+                tab.Columns.Add(New DataColumn(ds1.name.tostring))
+            Next
+
+
         End If
-
-        xmlDoc.Save("c:\temp\tempdoc.xml")
-
-        Dim xmlreader As Xml.XmlNodeReader
-
-        xmlreader = New Xml.XmlNodeReader(xmlDoc)
-        Dim dataset As DataSet
-        dataset = New DataSet()
-        dataset.ReadXml(xmlreader)
-
-
-        Dim ds As New DataSet
-        'ds.ReadXml(xmlDoc)
-
-
-
-        ds.ReadXml(xmlDoc)
-
-        Dim stream = New System.IO.MemoryStream
-
-
-
-        Dim xw = New Xml.XmlTextWriter(stream, System.Text.Encoding.Default)
-        xmlDoc.WriteContentTo(xw)
-        ds.ReadXml(stream)
 
 
         '''json to xml convetieren
