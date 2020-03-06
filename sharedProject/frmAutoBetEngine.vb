@@ -415,7 +415,7 @@ Public Class frmAutoBetEngine
 
 
         Dim b As New clsJsonToDatatable
-        b.funcParseString("", "")
+        DataGridView4.DataSource = b.funcParseString("", "")
 
         ' das xml welches gelesen werden soll
 
@@ -426,7 +426,7 @@ Public Class frmAutoBetEngine
         ' anpimmeln des xml's in die tabelle mittles readxml
 
 
-
+        Exit Sub
 
         Dim rr As New DataTable
         rr.ReadXmlSchema("C:\Temp\AutoBetEngine\Schemas\auto_generated_market_catalogue.xsd")

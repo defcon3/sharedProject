@@ -148,7 +148,7 @@ Partial Class frmAutoBetEngine
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(1127, 301)
+        Me.TextBox1.Location = New System.Drawing.Point(1125, 258)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(117, 120)
@@ -190,9 +190,9 @@ Partial Class frmAutoBetEngine
         'DataGridView4
         '
         Me.DataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView4.Location = New System.Drawing.Point(1411, 401)
+        Me.DataGridView4.Location = New System.Drawing.Point(1102, 401)
         Me.DataGridView4.Name = "DataGridView4"
-        Me.DataGridView4.Size = New System.Drawing.Size(44, 169)
+        Me.DataGridView4.Size = New System.Drawing.Size(353, 169)
         Me.DataGridView4.TabIndex = 23
         '
         'Button4
