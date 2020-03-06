@@ -38,14 +38,17 @@
 
             Dim ofa As New Object
 
-            Dim xslt As New Xml.Xsl.XslCompiledTransform()
-            xslt.Load(GetType(MarketCatalogue))
+            'Dim xslt As New Xml.Xsl.XslCompiledTransform() -- wenn die Transformationsdatei zu 100% funzt, wird das xslt file kompiliert
+            Dim xslt As New Xml.Xsl.XslTransform
+            xslt.Load("C:\Temp\AutoBetEngine\Transformations\MarketCatalogue.xslt")
             'xslt.Transform("C:\Temp\tempdoc.xml", "C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & System.DateTime.UtcNow.Ticks & ".xml")
-            xslt.Transform(xm, "C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & System.DateTime.UtcNow.Ticks & ".xml")
+            'xslt.Transform(xm, "C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & System.DateTime.UtcNow.Ticks & ".xml")
+            Dim arglist As New Xml.Xsl.XsltArgumentList
+            Dim t As New System.IO.MemoryStream
+            xslt.Transform(xm, arglist, t)
             xslt.Transform(xmlNodeRdr, ofa)
 
-            Dim s As New System.Xml.Xsl.XslCompiledTransform
-            ' s.Load()
+
 
 
         End If
