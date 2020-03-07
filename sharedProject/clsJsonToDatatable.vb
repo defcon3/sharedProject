@@ -15,25 +15,27 @@
         ''' development
         Dim xmlDoc As New Xml.XmlDocument
         xmlDoc.Load("C:\Temp\tempdoc.xml")
-        '''
+
+
 
         Dim tt As New DataTable
 
-        Dim xm As Xml.XmlReader = New Xml.XmlNodeReader(xmlDoc)
+        'Dim xm As Xml.XmlReader = New Xml.XmlNodeReader(xmlDoc)
 
         'Fallunterscheidung, was ist fuer eine Antwort
         If request.Contains("SportsAPING/v1.0/listMarketCatalogue") Or 1 = 1 Then
             ' xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(answer, "MarketCatalogue")
 
-
+            ''' Einlesen des XML-Dokumentes um es in ein Dataset zu ueberfuehren.
             Dim xmlNodeRdr As New Xml.XmlNodeReader(xmlDoc) 'xmlDoc is your XmlDocument
             Dim ds1 As New DataSet()
             ds1.ReadXml(xmlNodeRdr)
 
+            ''' Tick-Zeit manifestieren
             Dim ticks As ULong = 0
             ticks = System.DateTime.UtcNow.Ticks
 
-
+            ''' Anfügen der Zeitspalte an die erste Tabelle im Dataset
             Dim dc As New DataColumn
             With dc
                 .AllowDBNull = False
@@ -41,36 +43,41 @@
                 .DataType = GetType(System.UInt64)
                 .DefaultValue = ticks
             End With
-
             ds1.Tables(0).Columns.Add(dc)
 
 
-
-            'wegschreiben des XML ins Log
+            ''' Rueckumwandeln des Dataset in eine XML Datei und Schreiben dieser in Verzeichnis
             ds1.WriteXml("C:\Temp\AutoBetEngine\Responses\MarketCatalogue_" & ticks & ".xml")
+            myNewLogWriter.write_log("File: C:\Temp\AutoBetEngine\Responses\MarketCatalogue_" & ticks & ".xml - geschrieben")
 
 
-            Dim gg As New Xml.XmlDocument
-            gg.Load("C:\Temp\AutoBetEngine\Responses\MarketCatalogue_" & ticks & ".xml")
-            Dim js = Newtonsoft.Json.JsonConvert.SerializeXmlNode(gg)
 
+            'Dim gg As New Xml.XmlDocument
+            'gg.Load("C:\Temp\AutoBetEngine\Responses\MarketCatalogue_" & ticks & ".xml")
+            'Dim js = Newtonsoft.Json.JsonConvert.SerializeXmlNode(gg)
+            'Dim ofa As New Object
 
-            '  Newtonsoft.Json.JsonConverter()
-
-
-            Dim ofa As New Object
 
             'Dim xslt As New Xml.Xsl.XslCompiledTransform() -- wenn die Transformationsdatei zu 100% funzt, wird das xslt file kompiliert
             Dim xslt As New Xml.Xsl.XslTransform
             xslt.Load("C:\Temp\AutoBetEngine\Transformations\MarketCatalogue.xslt")
-            xslt.Transform("C:\Temp\MarketCatalogue.xml", "C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & ticks & ".xml")
+            xslt.Transform("C:\Temp\AutoBetEngine\Responses\MarketCatalogue_" & ticks & ".xml", "C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & ticks & ".xml")
             'xslt.Transform("C:\Temp\testshot.xml", "C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & System.DateTime.UtcNow.Ticks & ".xml")
             'xslt.Transform(xm, "C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & System.DateTime.UtcNow.Ticks & ".xml")
 
-            gg.Load("C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & ticks & ".xml")
 
-            Dim arglist As New Xml.Xsl.XsltArgumentList
-            Dim t As New System.IO.MemoryStream
+            ''' Einlesen des transformierten XML in eine Tabelle zur Anzeige
+            tt.ReadXmlSchema("C:\Temp\AutoBetEngine\Schemas\MarketCatalogue2.xsd")
+            tt.ReadXml("C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & ticks & ".xml")
+
+
+
+
+
+            'gg.Load("C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & ticks & ".xml")
+
+            'Dim arglist As New Xml.Xsl.XsltArgumentList
+            'Dim t As New System.IO.MemoryStream
             ' xslt.Transform(gg, arglist, t)
 
             'Dim rr As New DataTable
@@ -96,31 +103,9 @@
 
 
 
-            tt.ReadXmlSchema("C:\Temp\AutoBetEngine\Schemas\MarketCatalogue2.xsd")
-            tt.ReadXml("C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & ticks & ".xml")
 
 
         End If
-
-        '''json to xml convetieren
-        '''Zeitstempel anfügen
-
-
-        ''' was ist es für ein string?
-        ''' Fallunterscheidung für die Strings
-
-
-
-        '''Schemadatei erstellen
-        '''xslt erstellen
-
-
-        ''' datei abspeichern
-        ''' in tabelle umstellen
-
-
-        ''' tabelle an steuerelement anbinden
-
 
 
         Return tt

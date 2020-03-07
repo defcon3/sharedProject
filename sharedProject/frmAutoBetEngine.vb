@@ -577,4 +577,8 @@ Public Class frmAutoBetEngine
 
 
     End Sub
+
+    Private Sub pageMarketCatalogue_Click(sender As Object, e As EventArgs) Handles pageMarketCatalogue.Click
+
+    End Sub
 End Class
