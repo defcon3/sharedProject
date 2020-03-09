@@ -28,17 +28,6 @@ Partial Class frmListMarketCatalogue
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cboMaxResults = New System.Windows.Forms.ComboBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.clbEventTypeIds = New System.Windows.Forms.CheckedListBox()
-        Me.clbMarketCountries = New System.Windows.Forms.CheckedListBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.clbMarketTypeCodes = New System.Windows.Forms.CheckedListBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.clbEventIds = New System.Windows.Forms.CheckedListBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
@@ -101,109 +90,6 @@ Partial Class frmListMarketCatalogue
         Me.cboMaxResults.TabIndex = 5
         Me.cboMaxResults.Text = "20"
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(486, 9)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(51, 24)
-        Me.Label4.TabIndex = 7
-        Me.Label4.Text = "Filter"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(455, 45)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(123, 24)
-        Me.Label5.TabIndex = 8
-        Me.Label5.Text = "eventTypeIds"
-        '
-        'clbEventTypeIds
-        '
-        Me.clbEventTypeIds.FormattingEnabled = True
-        Me.clbEventTypeIds.Items.AddRange(New Object() {"COMPETITION", "EVENT", "EVENT_TYPE", "MARKET_START_TIME", "MARKET_DESCRIPTION", "RUNNER_DESCRIPTION", "RUNNER_METADATA"})
-        Me.clbEventTypeIds.Location = New System.Drawing.Point(413, 72)
-        Me.clbEventTypeIds.Name = "clbEventTypeIds"
-        Me.clbEventTypeIds.Size = New System.Drawing.Size(206, 49)
-        Me.clbEventTypeIds.TabIndex = 9
-        '
-        'clbMarketCountries
-        '
-        Me.clbMarketCountries.FormattingEnabled = True
-        Me.clbMarketCountries.Items.AddRange(New Object() {"COMPETITION", "EVENT", "EVENT_TYPE", "MARKET_START_TIME", "MARKET_DESCRIPTION", "RUNNER_DESCRIPTION", "RUNNER_METADATA"})
-        Me.clbMarketCountries.Location = New System.Drawing.Point(413, 160)
-        Me.clbMarketCountries.Name = "clbMarketCountries"
-        Me.clbMarketCountries.Size = New System.Drawing.Size(206, 49)
-        Me.clbMarketCountries.TabIndex = 11
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(455, 133)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(146, 24)
-        Me.Label6.TabIndex = 10
-        Me.Label6.Text = "marketCountries"
-        '
-        'clbMarketTypeCodes
-        '
-        Me.clbMarketTypeCodes.FormattingEnabled = True
-        Me.clbMarketTypeCodes.Items.AddRange(New Object() {"COMPETITION", "EVENT", "EVENT_TYPE", "MARKET_START_TIME", "MARKET_DESCRIPTION", "RUNNER_DESCRIPTION", "RUNNER_METADATA"})
-        Me.clbMarketTypeCodes.Location = New System.Drawing.Point(413, 251)
-        Me.clbMarketTypeCodes.Name = "clbMarketTypeCodes"
-        Me.clbMarketTypeCodes.Size = New System.Drawing.Size(206, 49)
-        Me.clbMarketTypeCodes.TabIndex = 13
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(455, 224)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(164, 24)
-        Me.Label7.TabIndex = 12
-        Me.Label7.Text = "marketTypeCodes"
-        '
-        'clbEventIds
-        '
-        Me.clbEventIds.FormattingEnabled = True
-        Me.clbEventIds.Items.AddRange(New Object() {"COMPETITION", "EVENT", "EVENT_TYPE", "MARKET_START_TIME", "MARKET_DESCRIPTION", "RUNNER_DESCRIPTION", "RUNNER_METADATA"})
-        Me.clbEventIds.Location = New System.Drawing.Point(413, 408)
-        Me.clbEventIds.Name = "clbEventIds"
-        Me.clbEventIds.Size = New System.Drawing.Size(206, 49)
-        Me.clbEventIds.TabIndex = 15
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(455, 313)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(145, 24)
-        Me.Label8.TabIndex = 14
-        Me.Label8.Text = "marketStartTime"
-        '
-        'DateTimePicker1
-        '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(413, 340)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(206, 20)
-        Me.DateTimePicker1.TabIndex = 16
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(455, 381)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(80, 24)
-        Me.Label9.TabIndex = 17
-        Me.Label9.Text = "eventIds"
-        '
         'btnClose
         '
         Me.btnClose.Location = New System.Drawing.Point(47, 372)
@@ -219,17 +105,6 @@ Partial Class frmListMarketCatalogue
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(670, 513)
         Me.Controls.Add(Me.btnClose)
-        Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.DateTimePicker1)
-        Me.Controls.Add(Me.clbEventIds)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.clbMarketTypeCodes)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.clbMarketCountries)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.clbEventTypeIds)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.cboMaxResults)
         Me.Controls.Add(Me.Label2)
@@ -249,16 +124,5 @@ Partial Class frmListMarketCatalogue
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents cboMaxResults As ComboBox
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents clbEventTypeIds As CheckedListBox
-    Friend WithEvents clbMarketCountries As CheckedListBox
-    Friend WithEvents Label6 As Label
-    Friend WithEvents clbMarketTypeCodes As CheckedListBox
-    Friend WithEvents Label7 As Label
-    Friend WithEvents clbEventIds As CheckedListBox
-    Friend WithEvents Label8 As Label
-    Friend WithEvents DateTimePicker1 As DateTimePicker
-    Friend WithEvents Label9 As Label
     Friend WithEvents btnClose As Button
 End Class

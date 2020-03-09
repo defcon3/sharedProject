@@ -545,6 +545,22 @@ Public Class frmAutoBetEngine
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
 
+        Dim myNewListMarketCatalogue As New bfObjects.clsListMarketCatalogue
+
+        myNewListMarketCatalogue.params.sort = cboSort.Text
+        myNewListMarketCatalogue.params.maxResults = cboMaxResults.Text
+
+        Dim myNewListOfString As New List(Of System.String)
+
+        For Each ea In clbMarketProjection.CheckedItems
+            myNewListOfString.Add(ea.ToString)
+        Next
+
+        myNewListMarketCatalogue.params.marketProjection = myNewListOfString
+
+
+
+        CheckedListBoxMarketCatalogueRequests.Items.Add("d")
 
 
 
