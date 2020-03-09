@@ -266,17 +266,6 @@ Public Class frmAutoBetEngine
         Me.WindowState = FormWindowState.Maximized
     End Sub
 
-    Public Class testklasse
-
-        Property marketId
-        Property marketName
-        Property totalMatched
-        Property eventType
-
-
-
-    End Class
-
 
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -558,9 +547,17 @@ Public Class frmAutoBetEngine
 
         myNewListMarketCatalogue.params.marketProjection = myNewListOfString
 
+        Dim requeststring As String = ""
+
+        requeststring = Newtonsoft.Json.JsonConvert.SerializeObject(myNewListMarketCatalogue)
+
+        Dim myNewLogWriter As New clsLogWriter
+        myNewLogWriter.write_log("requeststring geschrieben")
 
 
-        CheckedListBoxMarketCatalogueRequests.Items.Add("d")
+
+
+        CheckedListBoxMarketCatalogueRequests.Items.Add(requeststring)
 
 
 
@@ -595,6 +592,12 @@ Public Class frmAutoBetEngine
     End Sub
 
     Private Sub pageMarketCatalogue_Click(sender As Object, e As EventArgs) Handles pageMarketCatalogue.Click
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+        CheckedListBoxMarketCatalogueRequests.Items.Clear()
 
     End Sub
 End Class

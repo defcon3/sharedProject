@@ -42,7 +42,7 @@ Partial Class frmAutoBetEngine
         Me.DataGrid1 = New System.Windows.Forms.DataGrid()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.pageMarketCatalogue = New System.Windows.Forms.TabPage()
-        Me.clbSort = New System.Windows.Forms.CheckedListBox()
+        Me.CheckedListBoxMarketCatalogueRequests = New System.Windows.Forms.CheckedListBox()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cboMaxResults = New System.Windows.Forms.ComboBox()
@@ -52,7 +52,7 @@ Partial Class frmAutoBetEngine
         Me.cboSort = New System.Windows.Forms.ComboBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.CheckedListBoxMarketCatalogueRequests = New System.Windows.Forms.CheckedListBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -217,7 +217,6 @@ Partial Class frmAutoBetEngine
         'pageMarketCatalogue
         '
         Me.pageMarketCatalogue.Controls.Add(Me.CheckedListBoxMarketCatalogueRequests)
-        Me.pageMarketCatalogue.Controls.Add(Me.clbSort)
         Me.pageMarketCatalogue.Controls.Add(Me.btnClose)
         Me.pageMarketCatalogue.Controls.Add(Me.Label3)
         Me.pageMarketCatalogue.Controls.Add(Me.cboMaxResults)
@@ -233,14 +232,14 @@ Partial Class frmAutoBetEngine
         Me.pageMarketCatalogue.Text = "MarketCatalogue"
         Me.pageMarketCatalogue.UseVisualStyleBackColor = True
         '
-        'clbSort
+        'CheckedListBoxMarketCatalogueRequests
         '
-        Me.clbSort.FormattingEnabled = True
-        Me.clbSort.Items.AddRange(New Object() {"MINIMUM_TRADED", "MAXIMUM_TRADED", "MINIMUM_AVAILABLE", "MAXIMUM_AVAILABLE", "FIRST_TO_START", "LAST_TO_START"})
-        Me.clbSort.Location = New System.Drawing.Point(37, 95)
-        Me.clbSort.Name = "clbSort"
-        Me.clbSort.Size = New System.Drawing.Size(206, 109)
-        Me.clbSort.TabIndex = 37
+        Me.CheckedListBoxMarketCatalogueRequests.FormattingEnabled = True
+        Me.CheckedListBoxMarketCatalogueRequests.HorizontalScrollbar = True
+        Me.CheckedListBoxMarketCatalogueRequests.Location = New System.Drawing.Point(327, 31)
+        Me.CheckedListBoxMarketCatalogueRequests.Name = "CheckedListBoxMarketCatalogueRequests"
+        Me.CheckedListBoxMarketCatalogueRequests.Size = New System.Drawing.Size(704, 109)
+        Me.CheckedListBoxMarketCatalogueRequests.TabIndex = 38
         '
         'btnClose
         '
@@ -295,7 +294,7 @@ Partial Class frmAutoBetEngine
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(83, 65)
+        Me.Label1.Location = New System.Drawing.Point(83, 31)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(97, 24)
         Me.Label1.TabIndex = 20
@@ -305,7 +304,7 @@ Partial Class frmAutoBetEngine
         '
         Me.cboSort.FormattingEnabled = True
         Me.cboSort.Items.AddRange(New Object() {"MINIMUM_TRADED", "MAXIMUM_TRADED", "MINIMUM_AVAILABLE", "MAXIMUM_AVAILABLE", "FIRST_TO_START", "LAST_TO_START"})
-        Me.cboSort.Location = New System.Drawing.Point(37, 31)
+        Me.cboSort.Location = New System.Drawing.Point(34, 58)
         Me.cboSort.Name = "cboSort"
         Me.cboSort.Size = New System.Drawing.Size(206, 21)
         Me.cboSort.TabIndex = 19
@@ -331,19 +330,22 @@ Partial Class frmAutoBetEngine
         Me.TabPage3.Text = "TabPage3"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
-        'CheckedListBoxMarketCatalogueRequests
+        'Button1
         '
-        Me.CheckedListBoxMarketCatalogueRequests.FormattingEnabled = True
-        Me.CheckedListBoxMarketCatalogueRequests.Location = New System.Drawing.Point(327, 31)
-        Me.CheckedListBoxMarketCatalogueRequests.Name = "CheckedListBoxMarketCatalogueRequests"
-        Me.CheckedListBoxMarketCatalogueRequests.Size = New System.Drawing.Size(728, 94)
-        Me.CheckedListBoxMarketCatalogueRequests.TabIndex = 38
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(1056, 141)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(30, 109)
+        Me.Button1.TabIndex = 39
+        Me.Button1.Text = "X"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'frmAutoBetEngine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1526, 742)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.DataGrid1)
         Me.Controls.Add(Me.Button4)
@@ -405,6 +407,6 @@ Partial Class frmAutoBetEngine
     Friend WithEvents clbMarketProjection As CheckedListBox
     Friend WithEvents Label1 As Label
     Friend WithEvents cboSort As ComboBox
-    Friend WithEvents clbSort As CheckedListBox
     Friend WithEvents CheckedListBoxMarketCatalogueRequests As CheckedListBox
+    Friend WithEvents Button1 As Button
 End Class
