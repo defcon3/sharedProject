@@ -42,7 +42,9 @@ Partial Class frmAutoBetEngine
         Me.DataGrid1 = New System.Windows.Forms.DataGrid()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.pageMarketCatalogue = New System.Windows.Forms.TabPage()
-        Me.CheckedListBoxMarketCatalogueRequests = New System.Windows.Forms.CheckedListBox()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cboMaxResults = New System.Windows.Forms.ComboBox()
@@ -52,9 +54,7 @@ Partial Class frmAutoBetEngine
         Me.cboSort = New System.Windows.Forms.ComboBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Button5 = New System.Windows.Forms.Button()
+        Me.ListView1 = New System.Windows.Forms.ListView()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -218,10 +218,10 @@ Partial Class frmAutoBetEngine
         '
         'pageMarketCatalogue
         '
+        Me.pageMarketCatalogue.Controls.Add(Me.ListView1)
         Me.pageMarketCatalogue.Controls.Add(Me.Button5)
         Me.pageMarketCatalogue.Controls.Add(Me.TextBox2)
         Me.pageMarketCatalogue.Controls.Add(Me.Button1)
-        Me.pageMarketCatalogue.Controls.Add(Me.CheckedListBoxMarketCatalogueRequests)
         Me.pageMarketCatalogue.Controls.Add(Me.btnClose)
         Me.pageMarketCatalogue.Controls.Add(Me.Label3)
         Me.pageMarketCatalogue.Controls.Add(Me.cboMaxResults)
@@ -237,14 +237,34 @@ Partial Class frmAutoBetEngine
         Me.pageMarketCatalogue.Text = "MarketCatalogue"
         Me.pageMarketCatalogue.UseVisualStyleBackColor = True
         '
-        'CheckedListBoxMarketCatalogueRequests
+        'Button5
         '
-        Me.CheckedListBoxMarketCatalogueRequests.FormattingEnabled = True
-        Me.CheckedListBoxMarketCatalogueRequests.HorizontalScrollbar = True
-        Me.CheckedListBoxMarketCatalogueRequests.Location = New System.Drawing.Point(332, 148)
-        Me.CheckedListBoxMarketCatalogueRequests.Name = "CheckedListBoxMarketCatalogueRequests"
-        Me.CheckedListBoxMarketCatalogueRequests.Size = New System.Drawing.Size(704, 109)
-        Me.CheckedListBoxMarketCatalogueRequests.TabIndex = 38
+        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button5.Location = New System.Drawing.Point(1042, 31)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(30, 109)
+        Me.Button5.TabIndex = 41
+        Me.Button5.Text = "V"
+        Me.Button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(332, 31)
+        Me.TextBox2.Multiline = True
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(704, 109)
+        Me.TextBox2.TabIndex = 40
+        '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(1042, 148)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(30, 43)
+        Me.Button1.TabIndex = 39
+        Me.Button1.Text = "X"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'btnClose
         '
@@ -335,34 +355,16 @@ Partial Class frmAutoBetEngine
         Me.TabPage3.Text = "TabPage3"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
-        'Button1
+        'ListView1
         '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(1042, 148)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(30, 43)
-        Me.Button1.TabIndex = 39
-        Me.Button1.Text = "X"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(332, 31)
-        Me.TextBox2.Multiline = True
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(704, 109)
-        Me.TextBox2.TabIndex = 40
-        '
-        'Button5
-        '
-        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.Location = New System.Drawing.Point(1042, 31)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(30, 109)
-        Me.Button5.TabIndex = 41
-        Me.Button5.Text = "V"
-        Me.Button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.ListView1.FullRowSelect = True
+        Me.ListView1.HideSelection = False
+        Me.ListView1.Location = New System.Drawing.Point(332, 147)
+        Me.ListView1.Name = "ListView1"
+        Me.ListView1.Size = New System.Drawing.Size(704, 112)
+        Me.ListView1.TabIndex = 42
+        Me.ListView1.UseCompatibleStateImageBehavior = False
+        Me.ListView1.View = System.Windows.Forms.View.Details
         '
         'frmAutoBetEngine
         '
@@ -430,8 +432,8 @@ Partial Class frmAutoBetEngine
     Friend WithEvents clbMarketProjection As CheckedListBox
     Friend WithEvents Label1 As Label
     Friend WithEvents cboSort As ComboBox
-    Friend WithEvents CheckedListBoxMarketCatalogueRequests As CheckedListBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents ListView1 As ListView
 End Class

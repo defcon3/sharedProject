@@ -599,25 +599,25 @@ Public Class frmAutoBetEngine
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        If CheckedListBoxMarketCatalogueRequests.Items.Count > 0 Then
-
-            For Each itm In CheckedListBoxMarketCatalogueRequests.Items
-                CheckedListBoxMarketCatalogueRequests.Items.RemoveAt(itm.index)
-            Next
-
-
-
-        Else
-
-            CheckedListBoxMarketCatalogueRequests.Items.Clear()
-
-        End If
-
-
 
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        CheckedListBoxMarketCatalogueRequests.Items.Add(TextBox2.Text)
+
+
+        ListView1.View = View.Details
+        ListView1.Scrollable = True
+        ListView1.FullRowSelect = True
+        ListView1.Columns.Add("ColName")
+        ListView1.Columns(0).Width = ListView1.ClientSize.Width
+        ListView1.HeaderStyle = ColumnHeaderStyle.None
+
+
+        If TextBox2.Text.Length > 50 Then
+            ListView1.Items.Add(TextBox2.Text)
+        End If
+
+
+
     End Sub
 End Class
