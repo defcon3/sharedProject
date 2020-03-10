@@ -604,19 +604,35 @@ Public Class frmAutoBetEngine
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
 
+        Dim m As New ColumnHeader
+        m.Text = "jsfjsdf"
+        m.Width = ColumnHeaderAutoResizeStyle.ColumnContent
 
-        ListView1.View = View.Details
+
+        Dim mf As New ListView.ColumnHeaderCollection(ListView1)
+
+
+        ListView1.View = View.List
         ListView1.Scrollable = True
         ListView1.FullRowSelect = True
-        ListView1.Columns.Add("ColName")
-        ListView1.Columns(0).Width = ListView1.ClientSize.Width
-        ListView1.HeaderStyle = ColumnHeaderStyle.None
+        ListView1.Columns.Add(m)
+        ' ListView1.Columns.Add(m)
+        'ListView1.Columns("jsfjsdf").AutoResize(New a As ColumnHeaderAutoResizeStyle.ColumnContent)
+        'ListView1.Columns(0).Width = ListView1.ClientSize.Width * 3
+
+
+        ListView1.HeaderStyle = ColumnHeaderStyle.Clickable
+        '        Dim t As ListView.ColumnHeaderCollection = ListView1.colu
 
 
         If TextBox2.Text.Length > 50 Then
             ListView1.Items.Add(TextBox2.Text)
         End If
 
+
+        For Each itm As ColumnHeader In ListView1.ColumnHeaderCollection
+
+        Next
 
 
     End Sub
