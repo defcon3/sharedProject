@@ -603,6 +603,7 @@ Public Class frmAutoBetEngine
         Dim mf As New ListView.ColumnHeaderCollection(ListView1)
 
 
+        ListView1.View = View.List
         ListView1.View = View.Details
         ListView1.Scrollable = True
         ListView1.FullRowSelect = True
@@ -619,11 +620,38 @@ Public Class frmAutoBetEngine
 
         If TextBox2.Text.Length > 50 Then
             ListView1.Items.Add(TextBox2.Text.PadRight(100, " "))
-            mf.Item(0).AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent)
-            ListView1.HeaderStyle = ColumnHeaderStyle.None
+            For i As Integer = 0 To ListView1.Columns.Count() - 1 Step 1
+                mf.Item(i).AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent)
+
+            Next
+            'mf.Item(0).AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent)
+            'ListView1.HeaderStyle = ColumnHeaderStyle.None
+            'ListView1.Items.Add(TextBox2.Text.PadRight(100, " "))
+
         End If
 
         'mf.Item(0).AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent)
+
+        For Each tt As ListViewItem In ListView1.Items
+            tt.Selected = True
+            ListView1.Select()
+            ListView1.SelectedItems(tt.Index).EnsureVisible()
+
+        Next
+
+        ListView1.Font.Size = 6
+
+
+    End Sub
+
+    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
+
+        For i As Integer = 0 To ListView1.Items.Count() - 1 Step 1
+            If ListView1.Items(i).Selected = True Then
+                MsgBox(ListView1.Items(i).ToString())
+            End If
+        Next
+
 
 
     End Sub
