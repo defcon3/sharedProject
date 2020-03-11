@@ -593,15 +593,6 @@ Public Class frmAutoBetEngine
 
     End Sub
 
-    Private Sub pageMarketCatalogue_Click(sender As Object, e As EventArgs) Handles pageMarketCatalogue.Click
-
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-
-
-    End Sub
-
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
 
         Dim m As New ColumnHeader
@@ -612,13 +603,14 @@ Public Class frmAutoBetEngine
         Dim mf As New ListView.ColumnHeaderCollection(ListView1)
 
 
-        ListView1.View = View.List
+        ListView1.View = View.Details
         ListView1.Scrollable = True
         ListView1.FullRowSelect = True
         ListView1.Columns.Add(m)
+
         ' ListView1.Columns.Add(m)
         'ListView1.Columns("jsfjsdf").AutoResize(New a As ColumnHeaderAutoResizeStyle.ColumnContent)
-        'ListView1.Columns(0).Width = ListView1.ClientSize.Width * 3
+        'ListView1.Columns(0).Width = ListView1.ClientSize.Width * 30
 
 
         ListView1.HeaderStyle = ColumnHeaderStyle.Clickable
@@ -626,13 +618,12 @@ Public Class frmAutoBetEngine
 
 
         If TextBox2.Text.Length > 50 Then
-            ListView1.Items.Add(TextBox2.Text)
+            ListView1.Items.Add(TextBox2.Text.PadRight(100, " "))
+            mf.Item(0).AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent)
+            ListView1.HeaderStyle = ColumnHeaderStyle.None
         End If
 
-
-        For Each itm As ColumnHeader In ListView1.ColumnHeaderCollection
-
-        Next
+        'mf.Item(0).AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent)
 
 
     End Sub

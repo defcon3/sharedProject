@@ -123,4 +123,7 @@
   <metadata name="StatusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
   </metadata>
+  <data name="ListView1.Items" xml:space="preserve">
+    <value>"{""method"":""SportsAPING/v1.0/listMarketCatalogue"",""params"":{""filter"":{""eventTypeIds"":[],""marketCountries"":[],""marketTypeCodes"":[],""marketStartTime"":{""from"":null,""to"":null},""eventIds"":[]},""sort"":""FIRST_TO_START"",""maxResults"":""20"",""marketProjection"":[]},""jsonrpc"":""2.0"",""id"":1}"</value>
+  </data>
 </root>
