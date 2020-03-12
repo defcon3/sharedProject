@@ -57,6 +57,7 @@ Partial Class frmAutoBetEngine
         Me.cboSort = New System.Windows.Forms.ComboBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -220,6 +221,7 @@ Partial Class frmAutoBetEngine
         '
         'pageMarketCatalogue
         '
+        Me.pageMarketCatalogue.Controls.Add(Me.Button6)
         Me.pageMarketCatalogue.Controls.Add(Me.ListView1)
         Me.pageMarketCatalogue.Controls.Add(Me.Button5)
         Me.pageMarketCatalogue.Controls.Add(Me.TextBox2)
@@ -370,6 +372,16 @@ Partial Class frmAutoBetEngine
         Me.TabPage3.Text = "TabPage3"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
+        'Button6
+        '
+        Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.Location = New System.Drawing.Point(1041, 214)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(30, 43)
+        Me.Button6.TabIndex = 43
+        Me.Button6.Text = "V"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
         'frmAutoBetEngine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -440,4 +452,5 @@ Partial Class frmAutoBetEngine
     Friend WithEvents Button5 As Button
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents ListView1 As ListView
+    Friend WithEvents Button6 As Button
 End Class

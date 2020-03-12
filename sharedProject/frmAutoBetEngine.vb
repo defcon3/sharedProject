@@ -596,7 +596,7 @@ Public Class frmAutoBetEngine
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
 
         Dim m As New ColumnHeader
-        m.Text = "jsfjsdf"
+        m.Text = "Ausgabe"
         m.Width = ColumnHeaderAutoResizeStyle.ColumnContent
 
 
@@ -632,14 +632,24 @@ Public Class frmAutoBetEngine
 
         'mf.Item(0).AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent)
 
+
+
+
         For Each tt As ListViewItem In ListView1.Items
             tt.Selected = True
             ListView1.Select()
             ListView1.SelectedItems(tt.Index).EnsureVisible()
+            ListView1.Items(tt.Index).Font = New Font("Arial", 8, FontStyle.Regular)
 
         Next
 
-        ListView1.Font.Size = 6
+        If ListView1.Items.Count > 0 Then
+            ListView1.MultiSelect = False
+            ListView1.CheckBoxes = True
+            ListView1.Items(0).Selected = True
+        End If
+
+
 
 
     End Sub
@@ -648,11 +658,17 @@ Public Class frmAutoBetEngine
 
         For i As Integer = 0 To ListView1.Items.Count() - 1 Step 1
             If ListView1.Items(i).Selected = True Then
-                MsgBox(ListView1.Items(i).ToString())
+                '                MsgBox(ListView1.Items(i).ToString())
             End If
         Next
 
 
 
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        For Each itm As ListViewItem In ListView1.SelectedItems
+            MsgBox(itm.Text)
+        Next
     End Sub
 End Class
