@@ -22,8 +22,6 @@ Partial Class frmAutoBetEngine
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAutoBetEngine))
-        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(resources.GetString("ListView1.Items"))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolStripComboBox1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -44,6 +42,7 @@ Partial Class frmAutoBetEngine
         Me.DataGrid1 = New System.Windows.Forms.DataGrid()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.pageMarketCatalogue = New System.Windows.Forms.TabPage()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.ListView1 = New System.Windows.Forms.ListView()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
@@ -57,7 +56,7 @@ Partial Class frmAutoBetEngine
         Me.cboSort = New System.Windows.Forms.ComboBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.DataGridView5 = New System.Windows.Forms.DataGridView()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -67,6 +66,7 @@ Partial Class frmAutoBetEngine
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.pageMarketCatalogue.SuspendLayout()
+        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -221,6 +221,7 @@ Partial Class frmAutoBetEngine
         '
         'pageMarketCatalogue
         '
+        Me.pageMarketCatalogue.Controls.Add(Me.DataGridView5)
         Me.pageMarketCatalogue.Controls.Add(Me.Button6)
         Me.pageMarketCatalogue.Controls.Add(Me.ListView1)
         Me.pageMarketCatalogue.Controls.Add(Me.Button5)
@@ -241,12 +242,21 @@ Partial Class frmAutoBetEngine
         Me.pageMarketCatalogue.Text = "MarketCatalogue"
         Me.pageMarketCatalogue.UseVisualStyleBackColor = True
         '
+        'Button6
+        '
+        Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.Location = New System.Drawing.Point(1041, 214)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(30, 43)
+        Me.Button6.TabIndex = 43
+        Me.Button6.Text = "V"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
         'ListView1
         '
-        Me.ListView1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ListView1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.ListView1.FullRowSelect = True
         Me.ListView1.HideSelection = False
-        Me.ListView1.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
         Me.ListView1.Location = New System.Drawing.Point(332, 147)
         Me.ListView1.Name = "ListView1"
         Me.ListView1.Size = New System.Drawing.Size(704, 112)
@@ -372,15 +382,13 @@ Partial Class frmAutoBetEngine
         Me.TabPage3.Text = "TabPage3"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
-        'Button6
+        'DataGridView5
         '
-        Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.Location = New System.Drawing.Point(1041, 214)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(30, 43)
-        Me.Button6.TabIndex = 43
-        Me.Button6.Text = "V"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.DataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView5.Location = New System.Drawing.Point(332, 274)
+        Me.DataGridView5.Name = "DataGridView5"
+        Me.DataGridView5.Size = New System.Drawing.Size(704, 194)
+        Me.DataGridView5.TabIndex = 44
         '
         'frmAutoBetEngine
         '
@@ -414,6 +422,7 @@ Partial Class frmAutoBetEngine
         Me.TabControl1.ResumeLayout(False)
         Me.pageMarketCatalogue.ResumeLayout(False)
         Me.pageMarketCatalogue.PerformLayout()
+        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -453,4 +462,5 @@ Partial Class frmAutoBetEngine
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents ListView1 As ListView
     Friend WithEvents Button6 As Button
+    Friend WithEvents DataGridView5 As DataGridView
 End Class

@@ -609,13 +609,8 @@ Public Class frmAutoBetEngine
         ListView1.FullRowSelect = True
         ListView1.Columns.Add(m)
 
-        ' ListView1.Columns.Add(m)
-        'ListView1.Columns("jsfjsdf").AutoResize(New a As ColumnHeaderAutoResizeStyle.ColumnContent)
-        'ListView1.Columns(0).Width = ListView1.ClientSize.Width * 30
-
 
         ListView1.HeaderStyle = ColumnHeaderStyle.Clickable
-        '        Dim t As ListView.ColumnHeaderCollection = ListView1.colu
 
 
         If TextBox2.Text.Length > 50 Then
@@ -624,13 +619,8 @@ Public Class frmAutoBetEngine
                 mf.Item(i).AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent)
 
             Next
-            'mf.Item(0).AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent)
-            'ListView1.HeaderStyle = ColumnHeaderStyle.None
-            'ListView1.Items.Add(TextBox2.Text.PadRight(100, " "))
 
         End If
-
-        'mf.Item(0).AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent)
 
 
 
@@ -638,7 +628,7 @@ Public Class frmAutoBetEngine
         For Each tt As ListViewItem In ListView1.Items
             tt.Selected = True
             ListView1.Select()
-            ListView1.SelectedItems(tt.Index).EnsureVisible()
+            'ListView1.SelectedItems.EnsureVisible()
             ListView1.Items(tt.Index).Font = New Font("Arial", 8, FontStyle.Regular)
 
         Next
@@ -667,8 +657,24 @@ Public Class frmAutoBetEngine
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        For Each itm As ListViewItem In ListView1.SelectedItems
-            MsgBox(itm.Text)
+
+        Dim reqstring As String = ""
+        For Each itm As ListViewItem In ListView1.Items
+            If itm.Checked = True Then
+                reqstring = itm.Text
+            End If
         Next
+
+
+        Dim betreq As New clsBetConnection(reqstring)
+
+        Dim dt As New DataTable
+
+
+        Dim jtd As New clsJsonToDatatable
+        dt = jtd.funcParseString(reqstring, betreq.Answerstring)
+
+
+
     End Sub
 End Class
