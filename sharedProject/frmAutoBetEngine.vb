@@ -674,7 +674,7 @@ Public Class frmAutoBetEngine
         Dim jtd As New clsJsonToDatatable
         dt = jtd.funcParseString(reqstring, betreq.Answerstring)
 
-
+        Me.DataGridView5.DataSource = dt
 
     End Sub
 End Class

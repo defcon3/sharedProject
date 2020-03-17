@@ -1,4 +1,11 @@
-﻿Public Class clsJsonToDatatable
+﻿''' <summary>
+''' Die Klasse enthält die Funktion funcParseString, welche mit einer JSON Anfrage und der entsprechenden JSON Antwort eine Tabelle zurückgeben kann.
+''' </summary>
+Public Class clsJsonToDatatable
+    ''' <summary>
+    ''' Tabelle, die aus dem Antwortstring ausgeparst wurde.
+    ''' </summary>
+    ''' <returns></returns>
     Public Property exportDatatable As DataTable
 
     Public Property zuParsenderString As String = Constants.vbNullString
@@ -14,7 +21,7 @@
 
         ''' development
         Dim xmlDoc As New Xml.XmlDocument
-        xmlDoc.Load("C:\Temp\tempdoc.xml")
+        xmlDoc.Load("C:\Temp\tempdoc.xml")  '' das wird in der unteren Schleife erstellt und dient an dieser Stelle nur Entwicklungszwecken.
 
 
 
@@ -52,11 +59,6 @@
 
 
 
-            'Dim gg As New Xml.XmlDocument
-            'gg.Load("C:\Temp\AutoBetEngine\Responses\MarketCatalogue_" & ticks & ".xml")
-            'Dim js = Newtonsoft.Json.JsonConvert.SerializeXmlNode(gg)
-            'Dim ofa As New Object
-
 
             'Dim xslt As New Xml.Xsl.XslCompiledTransform() -- wenn die Transformationsdatei zu 100% funzt, wird das xslt file kompiliert
             Dim xslt As New Xml.Xsl.XslTransform
@@ -69,40 +71,6 @@
             ''' Einlesen des transformierten XML in eine Tabelle zur Anzeige
             tt.ReadXmlSchema("C:\Temp\AutoBetEngine\Schemas\MarketCatalogue2.xsd")
             tt.ReadXml("C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & ticks & ".xml")
-
-
-
-
-
-            'gg.Load("C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & ticks & ".xml")
-
-            'Dim arglist As New Xml.Xsl.XsltArgumentList
-            'Dim t As New System.IO.MemoryStream
-            ' xslt.Transform(gg, arglist, t)
-
-            'Dim rr As New DataTable
-            'Dim zz As New DataSet
-            'zz.ReadXml("c:\temp\market_catalogue.xml")
-
-            'rr = zz.Tables(0)
-            'rr.WriteXmlSchema("C:\Temp\tempo.xsd")
-
-            'Dim tt As New DataTable()
-            'tt.Columns.Add("Zeitstempel", GetType(Int64))
-            'tt.Columns.Add("marketId", GetType(Decimal))
-            'tt.Columns.Add("marketName", GetType(String))
-            'tt.Columns.Add("totalMatched", GetType(Decimal))
-            'tt.Columns.Add("selectionId", GetType(Decimal))
-            'tt.Columns.Add("runnerName", GetType(String))
-            'tt.Columns.Add("handicap", GetType(Decimal))
-            'tt.Columns.Add("sortPriority", GetType(Int64))
-            'tt.Columns.Add("id", GetType(Int64))
-            'tt.Columns.Add("name", GetType(String))
-
-            'tt.WriteXmlSchema("C:\Temp\AutoBetEngine\Schemas\MarketCatalogue2.xsd")
-
-
-
 
 
         End If
