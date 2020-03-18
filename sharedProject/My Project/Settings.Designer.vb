@@ -68,7 +68,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("fJWrrsDoo4ays822")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("s295nbAa7hVNS7Pr")>  _
         Public Property me_delayKey() As String
             Get
                 Return CType(Me("me_delayKey"),String)
@@ -140,7 +140,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("vb0GqKJUPozKinAD")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("s295nbAa7hVNS7Pr")>  _
         Public Property me_normalKey() As String
             Get
                 Return CType(Me("me_normalKey"),String)
@@ -176,7 +176,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("fJWrrsDoo4ays822")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("s295nbAa7hVNS7Pr")>  _
         Public Property me_delayKey_backup() As String
             Get
                 Return CType(Me("me_delayKey_backup"),String)
@@ -188,7 +188,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("fJWrrsDoo4ays822")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("s295nbAa7hVNS7Pr")>  _
         Public Property me_keyValue() As String
             Get
                 Return CType(Me("me_keyValue"),String)

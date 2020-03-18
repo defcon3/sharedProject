@@ -6,7 +6,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="me_delayKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)">fJWrrsDoo4ays822</Value>
+      <Value Profile="(Default)">s295nbAa7hVNS7Pr</Value>
     </Setting>
     <Setting Name="me_heartbeat_uri" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://api.betfair.com/exchange/heartbeat/json-rpc/v1</Value>
@@ -27,7 +27,7 @@
       <Value Profile="(Default)">me_delay_key</Value>
     </Setting>
     <Setting Name="me_normalKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)">vb0GqKJUPozKinAD</Value>
+      <Value Profile="(Default)">s295nbAa7hVNS7Pr</Value>
     </Setting>
     <Setting Name="me_temppath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Temp</Value>
@@ -36,10 +36,10 @@
       <Value Profile="(Default)">C:\Temp\AutoBetEngine\Log</Value>
     </Setting>
     <Setting Name="me_delayKey_backup" Type="System.String" Scope="User">
-      <Value Profile="(Default)">fJWrrsDoo4ays822</Value>
+      <Value Profile="(Default)">s295nbAa7hVNS7Pr</Value>
     </Setting>
     <Setting Name="me_keyValue" Type="System.String" Scope="User">
-      <Value Profile="(Default)">fJWrrsDoo4ays822</Value>
+      <Value Profile="(Default)">s295nbAa7hVNS7Pr</Value>
     </Setting>
     <Setting Name="me_logpaht" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Temp</Value>
