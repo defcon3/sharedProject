@@ -22,10 +22,11 @@ Public Class clsJsonToDatatable
 
         Dim fileReader As System.IO.StreamReader
         fileReader =
-        My.Computer.FileSystem.OpenTextFileReader("C:\\testfile.txt")
+        My.Computer.FileSystem.OpenTextFileReader("C:\Temp\AutoBetEngine\jsons-files\MarketCatalogue_Competition.json")
         Dim stringReader As String
-        stringReader = fileReader.ReadLine()
-        MsgBox("The first line of the file is " & stringReader)
+        stringReader = fileReader.ReadToEnd
+
+
 
 
 
@@ -37,7 +38,7 @@ Public Class clsJsonToDatatable
 
 
         ''' wenn die Answer ein json ist, muss es noch in ein xml umgewandelt werden.
-        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode("")
+        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(stringReader, "MarketCatalogue")
 
 
         Dim tt As New DataTable
