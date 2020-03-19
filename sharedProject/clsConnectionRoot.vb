@@ -13,7 +13,10 @@ Public MustInherit Class clsConnectionRoot
 
     Public MustOverride Property webReq As System.Net.WebRequest
     Public Property Requeststring As System.String = vbNullString
-
+    ''' <summary>
+    ''' Das ist der JSON String der vom Betfair Server zurückkommt
+    ''' </summary>
+    ''' <returns>JSON String</returns>
     Public Property Answerstring As System.String = vbNullString
 
 

@@ -19,10 +19,25 @@ Public Class clsJsonToDatatable
         End If
 
 
+
+        Dim fileReader As System.IO.StreamReader
+        fileReader =
+        My.Computer.FileSystem.OpenTextFileReader("C:\\testfile.txt")
+        Dim stringReader As String
+        stringReader = fileReader.ReadLine()
+        MsgBox("The first line of the file is " & stringReader)
+
+
+
+
+
         ''' development
         Dim xmlDoc As New Xml.XmlDocument
         xmlDoc.Load("C:\Temp\tempdoc.xml")  '' das wird in der unteren Schleife erstellt und dient an dieser Stelle nur Entwicklungszwecken.
 
+
+        ''' wenn die Answer ein json ist, muss es noch in ein xml umgewandelt werden.
+        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode("")
 
 
         Dim tt As New DataTable

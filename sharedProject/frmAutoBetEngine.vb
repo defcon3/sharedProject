@@ -668,6 +668,8 @@ Public Class frmAutoBetEngine
 
         Dim betreq As New clsBetConnection(reqstring)
 
+
+
         Dim dt As New DataTable
 
 
