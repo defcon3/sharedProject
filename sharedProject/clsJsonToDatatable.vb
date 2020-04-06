@@ -10,7 +10,12 @@ Public Class clsJsonToDatatable
 
     Public Property zuParsenderString As String = Constants.vbNullString
 
-    ''' <param name="str">Das ist der String der geparst werden soll.</param>
+    ''' <summary>
+    ''' Das ist der String der geparst werden soll.
+    ''' </summary>
+    ''' <param name="request">Das ist der Requeststring, der an den Betfair Server geschickt wurde. Er wird benötigt um das Stammelement des zu parsenden XMLs zu ermiiteln.</param>
+    ''' <param name="answer">Das ist der Antwortstring, der vom Betfair Server zuruck kam.</param>
+    ''' <returns>Eine Datentabelle, die aus dem Antworstring erstellt wurde</returns>
     Public Function funcParseString(ByVal request As String, ByVal answer As String) As DataTable
         Dim myNewLogWriter As New clsLogWriter
 
@@ -22,7 +27,7 @@ Public Class clsJsonToDatatable
 
         Dim fileReader As System.IO.StreamReader
         fileReader =
-        My.Computer.FileSystem.OpenTextFileReader("C:\Temp\AutoBetEngine\jsons-files\MarketCatalogue_Competition.json")
+        My.Computer.FileSystem.OpenTextFileReader("C:\Temp\AutoBetEngine\jsons-files\MarketCatalogue_Runnerdescription.json")
         Dim stringReader As String
         stringReader = fileReader.ReadToEnd
 
@@ -38,7 +43,7 @@ Public Class clsJsonToDatatable
 
 
         ''' wenn die Answer ein json ist, muss es noch in ein xml umgewandelt werden.
-        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(stringReader, "MarketCatalogue")
+        'xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(stringReader, "MarketCatalogue")
 
 
         Dim tt As New DataTable
