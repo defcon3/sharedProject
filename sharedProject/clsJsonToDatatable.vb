@@ -39,11 +39,11 @@ Public Class clsJsonToDatatable
 
         ''' development
         Dim xmlDoc As New Xml.XmlDocument
-        xmlDoc.Load("C:\Temp\tempdoc.xml")  '' das wird in der unteren Schleife erstellt und dient an dieser Stelle nur Entwicklungszwecken.
+        'xmlDoc.Load("C:\Temp\tempdoc.xml")  '' das wird in der unteren Schleife erstellt und dient an dieser Stelle nur Entwicklungszwecken.
 
 
         ''' wenn die Answer ein json ist, muss es noch in ein xml umgewandelt werden.
-        'xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(stringReader, "MarketCatalogue")
+        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(stringReader, "MarketCatalogue")
 
 
         Dim tt As New DataTable
