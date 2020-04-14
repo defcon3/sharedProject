@@ -681,6 +681,9 @@ Public Class frmAutoBetEngine
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        Dim xslt As New Xml.Xsl.XslCompiledTransform()
+        xslt.Load("C:\Temp\attempt\transformationsdefinition.xslt")
+        xslt.Transform("C:\Temp\attempt\quelle.xml", "C:\Temp\attempt\ziel.xml")
 
     End Sub
 End Class
