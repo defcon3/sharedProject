@@ -505,33 +505,6 @@ Public Class frmAutoBetEngine
 
     End Sub
 
-
-    Public Function getcol(ByVal name As String) As DataColumn
-
-        Dim col As New DataColumn
-
-        Select Case name.ToUpper
-            Case = "veit".ToUpper
-                With col
-                    .ColumnName = "veit"
-                    .DataType = GetType(System.Decimal)
-                End With
-            Case = "dorit".ToUpper
-                With col
-                    .ColumnName = "dorit"
-                    .DataType = GetType(System.Decimal)
-                End With
-        End Select
-
-        Return col
-
-
-
-
-
-
-    End Function
-
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
 
         Dim myNewListMarketCatalogue As New bfObjects.clsListMarketCatalogue
