@@ -658,5 +658,20 @@ Public Class frmAutoBetEngine
         xslt.Load("C:\Temp\attempt\transformationsdefinition.xslt")
         xslt.Transform("C:\Temp\attempt\quelle.xml", "C:\Temp\attempt\ziel.xml")
 
+        Dim ds As New DataSet
+        ds.ReadXml("C:\Temp\AutoBetEngine\jsons-files\MarketCatalogue_Competition.xml")
+
+        Dim ttt As New System.Windows.Forms.DataGrid
+        ttt.Visible = True
+
+        DataGrid1.DataSource = ds
+
+
+
     End Sub
+
+
+
+
+
 End Class

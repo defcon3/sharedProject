@@ -144,7 +144,7 @@ Partial Class frmAutoBetEngine
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(1125, 258)
+        Me.TextBox1.Location = New System.Drawing.Point(1102, 146)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(117, 120)
@@ -204,9 +204,9 @@ Partial Class frmAutoBetEngine
         '
         Me.DataGrid1.DataMember = ""
         Me.DataGrid1.HeaderForeColor = System.Drawing.SystemColors.ControlText
-        Me.DataGrid1.Location = New System.Drawing.Point(1471, 166)
+        Me.DataGrid1.Location = New System.Drawing.Point(405, 58)
         Me.DataGrid1.Name = "DataGrid1"
-        Me.DataGrid1.Size = New System.Drawing.Size(43, 308)
+        Me.DataGrid1.Size = New System.Drawing.Size(587, 199)
         Me.DataGrid1.TabIndex = 25
         '
         'TabControl1
@@ -224,6 +224,7 @@ Partial Class frmAutoBetEngine
         '
         Me.pageMarketCatalogue.Controls.Add(Me.DataGridView5)
         Me.pageMarketCatalogue.Controls.Add(Me.Button6)
+        Me.pageMarketCatalogue.Controls.Add(Me.DataGrid1)
         Me.pageMarketCatalogue.Controls.Add(Me.ListView1)
         Me.pageMarketCatalogue.Controls.Add(Me.Button5)
         Me.pageMarketCatalogue.Controls.Add(Me.TextBox2)
@@ -407,7 +408,6 @@ Partial Class frmAutoBetEngine
         Me.ClientSize = New System.Drawing.Size(1526, 742)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.TabControl1)
-        Me.Controls.Add(Me.DataGrid1)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.DataGridView4)
         Me.Controls.Add(Me.DataGridView3)
