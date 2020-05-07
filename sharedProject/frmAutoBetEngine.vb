@@ -668,6 +668,55 @@ Public Class frmAutoBetEngine
 
 
 
+
+
+        Dim fileReader As String
+        fileReader = My.Computer.FileSystem.ReadAllText("C:\Temp\timo\1170265002.json",
+          System.Text.Encoding.UTF8)
+
+
+
+        'fileReader = My.Computer.FileSystem.ReadAllText("C:\Temp\AutoBetEngine\jsons-files\MarketCatalogue_alles.json",
+        'System.Text.Encoding.UTF8)
+
+
+
+        'Dim xmlDoc As New Xml.XmlDocument
+        'xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(fileReader, "wurzel")
+
+        'xmlDoc.Save("c:\temp\timo\1170265002.xml")
+        'MsgBox(xmlDoc.Schemas.Schemas.ToString())
+
+        Dim newxml As New Xml.XmlDocument
+
+
+        Dim xmlnode As Xml.XmlNode
+
+
+        Dim sb As New StringBuilder
+
+        Dim i = 0
+        For Each Line As String In File.ReadLines("C:\Temp\timo\1170265005.json")
+            'If i <= 1 Then
+
+            newxml = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(Line, "wurzel")
+            newxml.Save("C:\Temp\timo\fertig.xml")
+
+            fileReader = My.Computer.FileSystem.ReadAllText("C:\Temp\timo\fertig.xml",
+          System.Text.Encoding.UTF8)
+
+            sb.Append(fileReader)
+            Debug.Print(i)
+            'End If
+            i += 1
+        Next
+
+
+        My.Computer.FileSystem.WriteAllText("C:\Temp\timo\1170265005.xml",
+"<pennergaul>" & vbCrLf & sb.ToString & vbCrLf & "</pennergaul>" & vbCrLf, True)
+
+        MsgBox(i)
+
     End Sub
 
 
