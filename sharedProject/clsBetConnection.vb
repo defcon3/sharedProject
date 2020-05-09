@@ -79,6 +79,9 @@ Public Class clsBetConnection
 
 
         Requeststring = f3j
+        Requeststring = Anfrage
+
+
 
         Dim myNewLogWriter As New clsLogWriter
         myNewLogWriter.write_log(Requeststring)

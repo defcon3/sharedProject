@@ -25,6 +25,14 @@ Public Class clsJsonToDatatable
 
 
 
+
+
+
+
+
+
+
+
         Dim fileReader As System.IO.StreamReader
         fileReader =
          My.Computer.FileSystem.OpenTextFileReader("C:\Temp\AutoBetEngine\jsons-files\MarketCatalogue_alles.json")
