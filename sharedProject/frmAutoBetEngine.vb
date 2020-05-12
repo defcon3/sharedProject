@@ -12,6 +12,7 @@ Imports System.Reflection
 Imports System.Collections.Generic
 Imports System.Collections
 Imports System.Collections.Immutable
+Imports System.Resources
 
 Public Class frmAutoBetEngine
     Implements ILogWriter
@@ -196,8 +197,6 @@ Public Class frmAutoBetEngine
 
 
 
-        Me.TextBox1.Text = answer
-
 
         Dim uu As bfObjects.structMarketCatalogueResponse
 
@@ -244,7 +243,7 @@ Public Class frmAutoBetEngine
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
 
 
         Dim r As New clsBetConnection("afd")
@@ -264,11 +263,24 @@ Public Class frmAutoBetEngine
 
     Private Sub frmAutoBetEngine_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.WindowState = FormWindowState.Maximized
+        ListView2.Columns.Add("Sportart")
+        ListView2.Items.Add("NeutralResourcesLanguageAttribute")
+
+
+        For Each iSART As Object In [Enum].GetValues(GetType(enumSportarten))
+            Debug.Print(CInt(iSART))
+
+        Next
+
+
+
+
+
     End Sub
 
 
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs)
         Dim fileReader As String
         fileReader = My.Computer.FileSystem.ReadAllText("C:\Temp\Text1.json",
           System.Text.Encoding.UTF8)
@@ -357,11 +369,6 @@ Public Class frmAutoBetEngine
 
 
 
-        DataGridView1.DataSource = dataset.Tables(0)
-        DataGridView2.DataSource = dataset.Tables(1)
-        DataGridView3.DataSource = dataset.Tables(2)
-        DataGridView4.DataSource = dataset.Tables(3)
-
         'DataGrid1.DataSource = dataset
 
         'dataset.WriteXmlSchema("C:\temp\schema.xml")
@@ -400,11 +407,11 @@ Public Class frmAutoBetEngine
 
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs)
 
 
         Dim b As New clsJsonToDatatable
-        DataGridView4.DataSource = b.funcParseString("", "")
+
 
         ' das xml welches gelesen werden soll
 
@@ -817,13 +824,13 @@ Public Class frmAutoBetEngine
 
     End Sub
 
-    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+    Private Sub Button8_Click(sender As Object, e As EventArgs)
 
 
     End Sub
 
     Private Sub TreeView1_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterSelect
-
+        MsgBox(TreeView1.SelectedNode.Tag)
     End Sub
 
     Private Sub TreeView1_Click(sender As Object, e As EventArgs) Handles TreeView1.Click
@@ -833,8 +840,29 @@ Public Class frmAutoBetEngine
     Private Sub TreeView1_MouseUp(sender As Object, e As MouseEventArgs) Handles TreeView1.MouseUp
         If TreeView1.SelectedNode Is Nothing Then
         Else
-            MsgBox(TreeView1.SelectedNode.Tag)
+            '  MsgBox(TreeView1.SelectedNode.Tag)
 
         End If
+    End Sub
+
+    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
+
+    End Sub
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+        ListView2.Clear()
+        'Me.ListView2 = New ListView
+        Me.ListView2.View = View.Details
+        'Add columns And set their text.
+        Me.ListView2.Columns.Add(New ColumnHeader)
+        Me.ListView2.Columns(0).Text = "Sportart"
+        Me.ListView2.Columns(0).Width = 100
+        Me.ListView2.CheckBoxes = True
+        Me.ListView2.Items.Add("alkfj")
+
+    End Sub
+
+    Private Sub ListView2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView2.SelectedIndexChanged
+
     End Sub
 End Class

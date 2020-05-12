@@ -31,16 +31,9 @@ Partial Class frmAutoBetEngine
         Me.btnListMarketCatalogue = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.DataGridView3 = New System.Windows.Forms.DataGridView()
-        Me.DataGridView4 = New System.Windows.Forms.DataGridView()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.pageMarketCatalogue = New System.Windows.Forms.TabPage()
+        Me.ListView2 = New System.Windows.Forms.ListView()
         Me.TreeView1 = New System.Windows.Forms.TreeView()
         Me.DataGridView5 = New System.Windows.Forms.DataGridView()
         Me.Button6 = New System.Windows.Forms.Button()
@@ -58,13 +51,9 @@ Partial Class frmAutoBetEngine
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.pageMarketCatalogue.SuspendLayout()
         CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,7 +64,7 @@ Partial Class frmAutoBetEngine
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripComboBox1, Me.LoginToolStripMenuItem, Me.EinstellungenToolStripMenuItem, Me.ToolStripMenuItem1})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1526, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1064, 24)
         Me.MenuStrip1.TabIndex = 12
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -121,9 +110,9 @@ Partial Class frmAutoBetEngine
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 903)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 840)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1526, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1064, 22)
         Me.StatusStrip1.TabIndex = 16
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -133,73 +122,6 @@ Partial Class frmAutoBetEngine
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(119, 17)
         Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
         '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(1248, 44)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 17
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(1102, 146)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(117, 120)
-        Me.TextBox1.TabIndex = 18
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(1197, 102)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(192, 97)
-        Me.Button3.TabIndex = 19
-        Me.Button3.Text = "Button3"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(1404, 27)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(51, 55)
-        Me.DataGridView1.TabIndex = 20
-        '
-        'DataGridView2
-        '
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(1411, 88)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(44, 150)
-        Me.DataGridView2.TabIndex = 21
-        '
-        'DataGridView3
-        '
-        Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView3.Location = New System.Drawing.Point(1411, 244)
-        Me.DataGridView3.Name = "DataGridView3"
-        Me.DataGridView3.Size = New System.Drawing.Size(47, 151)
-        Me.DataGridView3.TabIndex = 22
-        '
-        'DataGridView4
-        '
-        Me.DataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView4.Location = New System.Drawing.Point(1102, 401)
-        Me.DataGridView4.Name = "DataGridView4"
-        Me.DataGridView4.Size = New System.Drawing.Size(353, 169)
-        Me.DataGridView4.TabIndex = 23
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(1248, 205)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 24
-        Me.Button4.Text = "Button4"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.pageMarketCatalogue)
@@ -208,11 +130,12 @@ Partial Class frmAutoBetEngine
         Me.TabControl1.Location = New System.Drawing.Point(12, 88)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1084, 812)
+        Me.TabControl1.Size = New System.Drawing.Size(1084, 717)
         Me.TabControl1.TabIndex = 26
         '
         'pageMarketCatalogue
         '
+        Me.pageMarketCatalogue.Controls.Add(Me.ListView2)
         Me.pageMarketCatalogue.Controls.Add(Me.TreeView1)
         Me.pageMarketCatalogue.Controls.Add(Me.DataGridView5)
         Me.pageMarketCatalogue.Controls.Add(Me.Button6)
@@ -230,16 +153,27 @@ Partial Class frmAutoBetEngine
         Me.pageMarketCatalogue.Location = New System.Drawing.Point(4, 22)
         Me.pageMarketCatalogue.Name = "pageMarketCatalogue"
         Me.pageMarketCatalogue.Padding = New System.Windows.Forms.Padding(3)
-        Me.pageMarketCatalogue.Size = New System.Drawing.Size(1076, 786)
+        Me.pageMarketCatalogue.Size = New System.Drawing.Size(1076, 691)
         Me.pageMarketCatalogue.TabIndex = 0
         Me.pageMarketCatalogue.Text = "MarketCatalogue"
         Me.pageMarketCatalogue.UseVisualStyleBackColor = True
+        '
+        'ListView2
+        '
+        Me.ListView2.CheckBoxes = True
+        Me.ListView2.HideSelection = False
+        Me.ListView2.Location = New System.Drawing.Point(34, 251)
+        Me.ListView2.Name = "ListView2"
+        Me.ListView2.Size = New System.Drawing.Size(206, 97)
+        Me.ListView2.TabIndex = 46
+        Me.ListView2.UseCompatibleStateImageBehavior = False
+        Me.ListView2.View = System.Windows.Forms.View.Details
         '
         'TreeView1
         '
         Me.TreeView1.Location = New System.Drawing.Point(332, 274)
         Me.TreeView1.Name = "TreeView1"
-        Me.TreeView1.Size = New System.Drawing.Size(532, 506)
+        Me.TreeView1.Size = New System.Drawing.Size(532, 305)
         Me.TreeView1.TabIndex = 45
         '
         'DataGridView5
@@ -315,7 +249,7 @@ Partial Class frmAutoBetEngine
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(83, 420)
+        Me.Label3.Location = New System.Drawing.Point(83, 539)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(112, 24)
         Me.Label3.TabIndex = 24
@@ -325,7 +259,7 @@ Partial Class frmAutoBetEngine
         '
         Me.cboMaxResults.FormattingEnabled = True
         Me.cboMaxResults.Items.AddRange(New Object() {"20", "50", "100", "250", "500", "1000"})
-        Me.cboMaxResults.Location = New System.Drawing.Point(34, 447)
+        Me.cboMaxResults.Location = New System.Drawing.Point(34, 607)
         Me.cboMaxResults.Name = "cboMaxResults"
         Me.cboMaxResults.Size = New System.Drawing.Size(206, 21)
         Me.cboMaxResults.TabIndex = 23
@@ -375,7 +309,7 @@ Partial Class frmAutoBetEngine
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1076, 603)
+        Me.TabPage2.Size = New System.Drawing.Size(1076, 691)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -385,7 +319,7 @@ Partial Class frmAutoBetEngine
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(1076, 603)
+        Me.TabPage3.Size = New System.Drawing.Size(1076, 691)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "TabPage3"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -399,31 +333,23 @@ Partial Class frmAutoBetEngine
         Me.Button7.Text = "Button7"
         Me.Button7.UseVisualStyleBackColor = True
         '
-        'Button8
+        'Button2
         '
-        Me.Button8.Location = New System.Drawing.Point(540, 59)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(75, 23)
-        Me.Button8.TabIndex = 28
-        Me.Button8.Text = "Button8"
-        Me.Button8.UseVisualStyleBackColor = True
+        Me.Button2.Location = New System.Drawing.Point(518, 43)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 28
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'frmAutoBetEngine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1526, 925)
-        Me.Controls.Add(Me.Button8)
+        Me.ClientSize = New System.Drawing.Size(1064, 862)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.TabControl1)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.DataGridView4)
-        Me.Controls.Add(Me.DataGridView3)
-        Me.Controls.Add(Me.DataGridView2)
-        Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.btnListMarketCatalogue)
         Me.Controls.Add(Me.MenuStrip1)
@@ -433,10 +359,6 @@ Partial Class frmAutoBetEngine
         Me.MenuStrip1.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl1.ResumeLayout(False)
         Me.pageMarketCatalogue.ResumeLayout(False)
         Me.pageMarketCatalogue.PerformLayout()
@@ -454,15 +376,7 @@ Partial Class frmAutoBetEngine
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents btnListMarketCatalogue As Button
     Friend WithEvents StatusStrip1 As StatusStrip
-    Friend WithEvents Button2 As Button
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button3 As Button
-    Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents DataGridView2 As DataGridView
-    Friend WithEvents DataGridView3 As DataGridView
-    Friend WithEvents DataGridView4 As DataGridView
-    Friend WithEvents Button4 As Button
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents pageMarketCatalogue As TabPage
     Friend WithEvents TabPage2 As TabPage
@@ -481,6 +395,7 @@ Partial Class frmAutoBetEngine
     Friend WithEvents Button6 As Button
     Friend WithEvents DataGridView5 As DataGridView
     Friend WithEvents Button7 As Button
-    Friend WithEvents Button8 As Button
     Friend WithEvents TreeView1 As TreeView
+    Friend WithEvents ListView2 As ListView
+    Friend WithEvents Button2 As Button
 End Class
