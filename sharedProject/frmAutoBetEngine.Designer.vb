@@ -52,11 +52,16 @@ Partial Class frmAutoBetEngine
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.ListView3 = New System.Windows.Forms.ListView()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.pageMarketCatalogue.SuspendLayout()
         CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -64,7 +69,7 @@ Partial Class frmAutoBetEngine
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripComboBox1, Me.LoginToolStripMenuItem, Me.EinstellungenToolStripMenuItem, Me.ToolStripMenuItem1})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1064, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1117, 24)
         Me.MenuStrip1.TabIndex = 12
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -112,7 +117,7 @@ Partial Class frmAutoBetEngine
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 840)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1064, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1117, 22)
         Me.StatusStrip1.TabIndex = 16
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -135,6 +140,8 @@ Partial Class frmAutoBetEngine
         '
         'pageMarketCatalogue
         '
+        Me.pageMarketCatalogue.Controls.Add(Me.GroupBox1)
+        Me.pageMarketCatalogue.Controls.Add(Me.ListView3)
         Me.pageMarketCatalogue.Controls.Add(Me.ListView2)
         Me.pageMarketCatalogue.Controls.Add(Me.TreeView1)
         Me.pageMarketCatalogue.Controls.Add(Me.DataGridView5)
@@ -164,7 +171,7 @@ Partial Class frmAutoBetEngine
         Me.ListView2.HideSelection = False
         Me.ListView2.Location = New System.Drawing.Point(34, 251)
         Me.ListView2.Name = "ListView2"
-        Me.ListView2.Size = New System.Drawing.Size(206, 97)
+        Me.ListView2.Size = New System.Drawing.Size(88, 97)
         Me.ListView2.TabIndex = 46
         Me.ListView2.UseCompatibleStateImageBehavior = False
         Me.ListView2.View = System.Windows.Forms.View.Details
@@ -249,7 +256,7 @@ Partial Class frmAutoBetEngine
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(83, 539)
+        Me.Label3.Location = New System.Drawing.Point(83, 624)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(112, 24)
         Me.Label3.TabIndex = 24
@@ -259,7 +266,7 @@ Partial Class frmAutoBetEngine
         '
         Me.cboMaxResults.FormattingEnabled = True
         Me.cboMaxResults.Items.AddRange(New Object() {"20", "50", "100", "250", "500", "1000"})
-        Me.cboMaxResults.Location = New System.Drawing.Point(34, 607)
+        Me.cboMaxResults.Location = New System.Drawing.Point(34, 651)
         Me.cboMaxResults.Name = "cboMaxResults"
         Me.cboMaxResults.Size = New System.Drawing.Size(206, 21)
         Me.cboMaxResults.TabIndex = 23
@@ -342,11 +349,55 @@ Partial Class frmAutoBetEngine
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'ListView3
+        '
+        Me.ListView3.CheckBoxes = True
+        Me.ListView3.HideSelection = False
+        Me.ListView3.Location = New System.Drawing.Point(152, 251)
+        Me.ListView3.Name = "ListView3"
+        Me.ListView3.Size = New System.Drawing.Size(88, 97)
+        Me.ListView3.TabIndex = 47
+        Me.ListView3.UseCompatibleStateImageBehavior = False
+        Me.ListView3.View = System.Windows.Forms.View.Details
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.RadioButton2)
+        Me.GroupBox1.Controls.Add(Me.RadioButton1)
+        Me.GroupBox1.Location = New System.Drawing.Point(40, 491)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(200, 45)
+        Me.GroupBox1.TabIndex = 48
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "TurnInPlay"
+        '
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Location = New System.Drawing.Point(17, 20)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(33, 17)
+        Me.RadioButton1.TabIndex = 0
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "ja"
+        Me.RadioButton1.UseVisualStyleBackColor = True
+        '
+        'RadioButton2
+        '
+        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.Location = New System.Drawing.Point(104, 20)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(45, 17)
+        Me.RadioButton2.TabIndex = 1
+        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.Text = "nein"
+        Me.RadioButton2.UseVisualStyleBackColor = True
+        '
         'frmAutoBetEngine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1064, 862)
+        Me.ClientSize = New System.Drawing.Size(1117, 862)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.TabControl1)
@@ -363,6 +414,8 @@ Partial Class frmAutoBetEngine
         Me.pageMarketCatalogue.ResumeLayout(False)
         Me.pageMarketCatalogue.PerformLayout()
         CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -398,4 +451,8 @@ Partial Class frmAutoBetEngine
     Friend WithEvents TreeView1 As TreeView
     Friend WithEvents ListView2 As ListView
     Friend WithEvents Button2 As Button
+    Friend WithEvents ListView3 As ListView
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents RadioButton2 As RadioButton
+    Friend WithEvents RadioButton1 As RadioButton
 End Class

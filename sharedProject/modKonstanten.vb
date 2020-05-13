@@ -68,6 +68,16 @@ Module modKonstanten
         normal_key = 2
     End Enum
 
+
+    Public Enum enumlaender
+        DE
+        GB
+        IT
+        AT
+        US
+    End Enum
+
+
     Public Enum enumSportarten As System.Int64
         Soccer = 1
         Tennis = 2

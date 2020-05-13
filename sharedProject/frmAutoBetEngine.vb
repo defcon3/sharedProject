@@ -264,20 +264,26 @@ Public Class frmAutoBetEngine
 
     Private Sub frmAutoBetEngine_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.WindowState = FormWindowState.Maximized
+
+
         ListView2.Columns.Add("Sportart")
-
-
-
         Dim values() As Long = CType([Enum].GetValues(GetType(enumSportarten)), Long())
         Dim names() As String = CType([Enum].GetNames(GetType(enumSportarten)), String())
         For i = 0 To [Enum].GetValues(GetType(enumSportarten)).Length - 1
             'Debug.Print(values(i) & " uuunnnddddd " & names(i))
-            ListView2.Items.Add(New ListViewItem With {.Text = names(i).ToString, .Tag = values(i)})
-
-
-
-
+            ListView2.Items.Add(New ListViewItem With {.Text = names(i).ToString, .Tag = values(i), .Checked = IIf(values(i) = 1, True, False)})
         Next
+
+
+        ListView3.Columns.Add("Laender")
+        'Dim vals() As String = CType([Enum].GetValues(GetType(enumlaender)), String())
+        Dim nmes() As String = CType([Enum].GetNames(GetType(enumlaender)), String())
+        For i = 0 To [Enum].GetValues(GetType(enumlaender)).Length - 1
+            'Debug.Print(values(i) & " uuunnnddddd " & names(i))
+            ListView3.Items.Add(New ListViewItem With {.Text = nmes(i).ToString, .Tag = nmes(i), .Checked = IIf(nmes(i) = "DE", True, False)})
+        Next
+
+
 
 
 
@@ -523,6 +529,15 @@ Public Class frmAutoBetEngine
 
         myNewListMarketCatalogue.params.sort = cboSort.Text
         myNewListMarketCatalogue.params.maxResults = cboMaxResults.Text
+
+        For Each checkeditemsinlistview2 As ListViewItem In ListView2.CheckedItems
+            myNewListMarketCatalogue.params.filter.eventTypeIds.Add(checkeditemsinlistview2.Tag)
+        Next
+
+        For Each checkeditemsinlistview3 As ListViewItem In ListView3.CheckedItems
+            myNewListMarketCatalogue.params.filter.marketCountries.Add(checkeditemsinlistview3.Tag)
+        Next
+
 
         Dim myNewListOfString As New List(Of System.String)
 
