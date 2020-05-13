@@ -13,6 +13,7 @@ Imports System.Collections.Generic
 Imports System.Collections
 Imports System.Collections.Immutable
 Imports System.Resources
+Imports Microsoft.Office.Interop.Excel
 
 Public Class frmAutoBetEngine
     Implements ILogWriter
@@ -263,15 +264,19 @@ Public Class frmAutoBetEngine
 
     Private Sub frmAutoBetEngine_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.WindowState = FormWindowState.Maximized
-        ListView2.Columns.Add("Sportart")
-        ListView2.Items.Add("NeutralResourcesLanguageAttribute")
+        'ListView2.Columns.Add("Sportart")
+
 
 
         Dim values() As Long = CType([Enum].GetValues(GetType(enumSportarten)), Long())
         Dim names() As String = CType([Enum].GetNames(GetType(enumSportarten)), String())
         For i = 0 To [Enum].GetValues(GetType(enumSportarten)).Length - 1
             'Debug.Print(values(i) & " uuunnnddddd " & names(i))
-            ListView2.Items.Add(values(i).ToString, names(i).ToString)
+            ListView2.Items.Add(New ListViewItem With {.Text = "text" & i, .Name = "Name" & i})
+
+
+
+
         Next
 
 
@@ -303,13 +308,13 @@ Public Class frmAutoBetEngine
 
 
         Dim ms As New System.IO.MemoryStream
-        Dim vvv As New DataTable("wurzel")
+        Dim vvv As New System.Data.DataTable("wurzel")
 
         xmlDoc.Save(ms)
 
         ms.Position = 0
 
-        Dim t6 As New DataTable
+        Dim t6 As New System.Data.DataTable
         '   t6.ReadXml(ms)
 
 
@@ -348,7 +353,7 @@ Public Class frmAutoBetEngine
         dataset = New DataSet()
         dataset.ReadXml(xmlreader)
 
-        Dim dta As New DataTable
+        Dim dta As New System.Data.DataTable
         dta.ReadXml(xmlreader)
 
 
@@ -424,12 +429,12 @@ Public Class frmAutoBetEngine
 
         Exit Sub
 
-        Dim rr As New DataTable
+        Dim rr As New System.Data.DataTable
         rr.ReadXmlSchema("C:\Temp\AutoBetEngine\Schemas\auto_generated_market_catalogue.xsd")
 
 
 
-        Dim zu As New DataTable
+        Dim zu As New System.Data.DataTable
 
         With zu
 
@@ -609,7 +614,7 @@ Public Class frmAutoBetEngine
             tt.Selected = True
             ListView1.Select()
             'ListView1.SelectedItems.EnsureVisible()
-            ListView1.Items(tt.Index).Font = New Font("Arial", 8, FontStyle.Regular)
+            ListView1.Items(tt.Index).Font = New System.Font("Arial", 8, FontStyle.Regular)
 
         Next
 
