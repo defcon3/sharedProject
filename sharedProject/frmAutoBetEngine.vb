@@ -267,12 +267,12 @@ Public Class frmAutoBetEngine
         ListView2.Items.Add("NeutralResourcesLanguageAttribute")
 
 
-        For Each iSART As Object In [Enum].GetValues(GetType(enumSportarten))
-            Debug.Print(CInt(iSART))
-
+        Dim values() As Long = CType([Enum].GetValues(GetType(enumSportarten)), Long())
+        Dim names() As String = CType([Enum].GetNames(GetType(enumSportarten)), String())
+        For i = 0 To [Enum].GetValues(GetType(enumSportarten)).Length - 1
+            'Debug.Print(values(i) & " uuunnnddddd " & names(i))
+            ListView2.Items.Add(values(i).ToString, names(i).ToString)
         Next
-
-
 
 
 
