@@ -14,6 +14,7 @@ Imports System.Collections
 Imports System.Collections.Immutable
 Imports System.Resources
 Imports Microsoft.Office.Interop.Excel
+Imports System.Globalization
 
 Public Class frmAutoBetEngine
     Implements ILogWriter
@@ -264,7 +265,8 @@ Public Class frmAutoBetEngine
 
     Private Sub frmAutoBetEngine_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.WindowState = FormWindowState.Maximized
-
+        Me.DateTimePicker1.Value = Date.Now
+        Me.DateTimePicker2.Value = DateTime.UtcNow.AddDays(1)
 
         ListView2.Columns.Add("Sportart")
         Dim values() As Long = CType([Enum].GetValues(GetType(enumSportarten)), Long())
@@ -282,7 +284,6 @@ Public Class frmAutoBetEngine
             'Debug.Print(values(i) & " uuunnnddddd " & names(i))
             ListView3.Items.Add(New ListViewItem With {.Text = nmes(i).ToString, .Tag = nmes(i), .Checked = IIf(nmes(i) = "DE", True, False)})
         Next
-
 
 
 
@@ -537,6 +538,22 @@ Public Class frmAutoBetEngine
         For Each checkeditemsinlistview3 As ListViewItem In ListView3.CheckedItems
             myNewListMarketCatalogue.params.filter.marketCountries.Add(checkeditemsinlistview3.Tag)
         Next
+
+
+        If RadioButton1.Checked = True Then
+            myNewListMarketCatalogue.params.filter.turnInPlayEnabled = True
+        End If
+
+        If RadioButton2.Checked = True Then
+            myNewListMarketCatalogue.params.filter.turnInPlayEnabled = False
+        End If
+
+        Dim m As New bfObjects.clsStartTime
+        m.from = DateTimePicker1.Value.ToString("yyyy-MM-dd") & "T00:00:00Z"
+        m.to = DateTimePicker2.Value.ToString("yyyy-MM-dd") & "T23:59:00Z"
+        myNewListMarketCatalogue.params.filter.marketStartTime = m
+
+
 
 
         Dim myNewListOfString As New List(Of System.String)
@@ -895,5 +912,10 @@ Public Class frmAutoBetEngine
             End If
         Next
 
+    End Sub
+
+    Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
+        MsgBox(DateTimePicker1.Value.ToString("yyyy-MM-dd") & "T00:00:00Z" & vbCrLf _
+               & DateTime.UtcNow.ToString)
     End Sub
 End Class

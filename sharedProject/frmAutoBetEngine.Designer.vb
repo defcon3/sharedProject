@@ -33,6 +33,15 @@ Partial Class frmAutoBetEngine
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.pageMarketCatalogue = New System.Windows.Forms.TabPage()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.ListView3 = New System.Windows.Forms.ListView()
         Me.ListView2 = New System.Windows.Forms.ListView()
         Me.TreeView1 = New System.Windows.Forms.TreeView()
         Me.DataGridView5 = New System.Windows.Forms.DataGridView()
@@ -52,16 +61,12 @@ Partial Class frmAutoBetEngine
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.ListView3 = New System.Windows.Forms.ListView()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.pageMarketCatalogue.SuspendLayout()
-        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -140,6 +145,11 @@ Partial Class frmAutoBetEngine
         '
         'pageMarketCatalogue
         '
+        Me.pageMarketCatalogue.Controls.Add(Me.Button3)
+        Me.pageMarketCatalogue.Controls.Add(Me.Label5)
+        Me.pageMarketCatalogue.Controls.Add(Me.Label4)
+        Me.pageMarketCatalogue.Controls.Add(Me.DateTimePicker2)
+        Me.pageMarketCatalogue.Controls.Add(Me.DateTimePicker1)
         Me.pageMarketCatalogue.Controls.Add(Me.GroupBox1)
         Me.pageMarketCatalogue.Controls.Add(Me.ListView3)
         Me.pageMarketCatalogue.Controls.Add(Me.ListView2)
@@ -164,6 +174,91 @@ Partial Class frmAutoBetEngine
         Me.pageMarketCatalogue.TabIndex = 0
         Me.pageMarketCatalogue.Text = "MarketCatalogue"
         Me.pageMarketCatalogue.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(267, 596)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 53
+        Me.Button3.Text = "Button3"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(9, 420)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(20, 13)
+        Me.Label5.TabIndex = 52
+        Me.Label5.Text = "bis"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(9, 394)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(25, 13)
+        Me.Label4.TabIndex = 51
+        Me.Label4.Text = "von"
+        '
+        'DateTimePicker2
+        '
+        Me.DateTimePicker2.Location = New System.Drawing.Point(40, 414)
+        Me.DateTimePicker2.Name = "DateTimePicker2"
+        Me.DateTimePicker2.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker2.TabIndex = 50
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Location = New System.Drawing.Point(40, 388)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker1.TabIndex = 49
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.RadioButton2)
+        Me.GroupBox1.Controls.Add(Me.RadioButton1)
+        Me.GroupBox1.Location = New System.Drawing.Point(40, 491)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(200, 45)
+        Me.GroupBox1.TabIndex = 48
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "TurnInPlay"
+        '
+        'RadioButton2
+        '
+        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.Location = New System.Drawing.Point(104, 20)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(45, 17)
+        Me.RadioButton2.TabIndex = 1
+        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.Text = "nein"
+        Me.RadioButton2.UseVisualStyleBackColor = True
+        '
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Location = New System.Drawing.Point(17, 20)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(33, 17)
+        Me.RadioButton1.TabIndex = 0
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "ja"
+        Me.RadioButton1.UseVisualStyleBackColor = True
+        '
+        'ListView3
+        '
+        Me.ListView3.CheckBoxes = True
+        Me.ListView3.HideSelection = False
+        Me.ListView3.Location = New System.Drawing.Point(152, 251)
+        Me.ListView3.Name = "ListView3"
+        Me.ListView3.Size = New System.Drawing.Size(88, 97)
+        Me.ListView3.TabIndex = 47
+        Me.ListView3.UseCompatibleStateImageBehavior = False
+        Me.ListView3.View = System.Windows.Forms.View.Details
         '
         'ListView2
         '
@@ -349,50 +444,6 @@ Partial Class frmAutoBetEngine
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'ListView3
-        '
-        Me.ListView3.CheckBoxes = True
-        Me.ListView3.HideSelection = False
-        Me.ListView3.Location = New System.Drawing.Point(152, 251)
-        Me.ListView3.Name = "ListView3"
-        Me.ListView3.Size = New System.Drawing.Size(88, 97)
-        Me.ListView3.TabIndex = 47
-        Me.ListView3.UseCompatibleStateImageBehavior = False
-        Me.ListView3.View = System.Windows.Forms.View.Details
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.RadioButton2)
-        Me.GroupBox1.Controls.Add(Me.RadioButton1)
-        Me.GroupBox1.Location = New System.Drawing.Point(40, 491)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(200, 45)
-        Me.GroupBox1.TabIndex = 48
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "TurnInPlay"
-        '
-        'RadioButton1
-        '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(17, 20)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(33, 17)
-        Me.RadioButton1.TabIndex = 0
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "ja"
-        Me.RadioButton1.UseVisualStyleBackColor = True
-        '
-        'RadioButton2
-        '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(104, 20)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(45, 17)
-        Me.RadioButton2.TabIndex = 1
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "nein"
-        Me.RadioButton2.UseVisualStyleBackColor = True
-        '
         'frmAutoBetEngine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -413,9 +464,9 @@ Partial Class frmAutoBetEngine
         Me.TabControl1.ResumeLayout(False)
         Me.pageMarketCatalogue.ResumeLayout(False)
         Me.pageMarketCatalogue.PerformLayout()
-        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -455,4 +506,9 @@ Partial Class frmAutoBetEngine
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents RadioButton2 As RadioButton
     Friend WithEvents RadioButton1 As RadioButton
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents DateTimePicker2 As DateTimePicker
+    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents Button3 As Button
 End Class
