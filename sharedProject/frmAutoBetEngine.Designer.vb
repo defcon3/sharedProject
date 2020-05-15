@@ -33,6 +33,7 @@ Partial Class frmAutoBetEngine
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.pageMarketCatalogue = New System.Windows.Forms.TabPage()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -58,15 +59,23 @@ Partial Class frmAutoBetEngine
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cboSort = New System.Windows.Forms.ComboBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.ListBox2 = New System.Windows.Forms.ListBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.clbMarkets_OrderProjection = New System.Windows.Forms.CheckedListBox()
+        Me.clbMarkets_MatchProjection = New System.Windows.Forms.CheckedListBox()
+        Me.clbMarkets_PriceData = New System.Windows.Forms.CheckedListBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.pageMarketCatalogue.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.TabPage2.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -175,6 +184,15 @@ Partial Class frmAutoBetEngine
         Me.pageMarketCatalogue.TabIndex = 0
         Me.pageMarketCatalogue.Text = "MarketCatalogue"
         Me.pageMarketCatalogue.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(871, 583)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(165, 23)
+        Me.Button4.TabIndex = 55
+        Me.Button4.Text = "zu den Märkten"
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'ListBox1
         '
@@ -409,13 +427,29 @@ Partial Class frmAutoBetEngine
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.Label8)
+        Me.TabPage2.Controls.Add(Me.Label7)
+        Me.TabPage2.Controls.Add(Me.Label6)
+        Me.TabPage2.Controls.Add(Me.clbMarkets_PriceData)
+        Me.TabPage2.Controls.Add(Me.clbMarkets_MatchProjection)
+        Me.TabPage2.Controls.Add(Me.clbMarkets_OrderProjection)
+        Me.TabPage2.Controls.Add(Me.Button8)
+        Me.TabPage2.Controls.Add(Me.ListBox2)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage2.Size = New System.Drawing.Size(1076, 691)
         Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "TabPage2"
+        Me.TabPage2.Text = "Markets"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'ListBox2
+        '
+        Me.ListBox2.FormattingEnabled = True
+        Me.ListBox2.Location = New System.Drawing.Point(23, 18)
+        Me.ListBox2.Name = "ListBox2"
+        Me.ListBox2.Size = New System.Drawing.Size(139, 342)
+        Me.ListBox2.TabIndex = 0
         '
         'TabPage3
         '
@@ -445,14 +479,68 @@ Partial Class frmAutoBetEngine
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'Button4
+        'Button8
         '
-        Me.Button4.Location = New System.Drawing.Point(871, 583)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(165, 23)
-        Me.Button4.TabIndex = 55
-        Me.Button4.Text = "zu den Märkten"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.Button8.Location = New System.Drawing.Point(380, 34)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(75, 23)
+        Me.Button8.TabIndex = 1
+        Me.Button8.Text = "Button8"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
+        'clbMarkets_OrderProjection
+        '
+        Me.clbMarkets_OrderProjection.FormattingEnabled = True
+        Me.clbMarkets_OrderProjection.Items.AddRange(New Object() {"ALL", "EXECUTABLE", "EXECUTION_COMPLETE"})
+        Me.clbMarkets_OrderProjection.Location = New System.Drawing.Point(168, 200)
+        Me.clbMarkets_OrderProjection.Name = "clbMarkets_OrderProjection"
+        Me.clbMarkets_OrderProjection.Size = New System.Drawing.Size(206, 49)
+        Me.clbMarkets_OrderProjection.TabIndex = 22
+        '
+        'clbMarkets_MatchProjection
+        '
+        Me.clbMarkets_MatchProjection.FormattingEnabled = True
+        Me.clbMarkets_MatchProjection.Items.AddRange(New Object() {"NO_ROLLUP", "ROLLED_UP_BY_PRICE", "ROLLED_UP_BY_AVG_PRICE"})
+        Me.clbMarkets_MatchProjection.Location = New System.Drawing.Point(168, 132)
+        Me.clbMarkets_MatchProjection.Name = "clbMarkets_MatchProjection"
+        Me.clbMarkets_MatchProjection.Size = New System.Drawing.Size(206, 49)
+        Me.clbMarkets_MatchProjection.TabIndex = 23
+        '
+        'clbMarkets_PriceData
+        '
+        Me.clbMarkets_PriceData.FormattingEnabled = True
+        Me.clbMarkets_PriceData.Items.AddRange(New Object() {"SP_AVAILABLE", "SP_TRADED", "EX_BEST_OFFERS", "EX_ALL_OFFERS", "EX_TRADED"})
+        Me.clbMarkets_PriceData.Location = New System.Drawing.Point(168, 34)
+        Me.clbMarkets_PriceData.Name = "clbMarkets_PriceData"
+        Me.clbMarkets_PriceData.Size = New System.Drawing.Size(206, 79)
+        Me.clbMarkets_PriceData.TabIndex = 24
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(208, 18)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(54, 13)
+        Me.Label6.TabIndex = 25
+        Me.Label6.Text = "PriceData"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(208, 116)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(84, 13)
+        Me.Label7.TabIndex = 26
+        Me.Label7.Text = "MatchProjection"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(208, 184)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(80, 13)
+        Me.Label8.TabIndex = 27
+        Me.Label8.Text = "OrderProjection"
         '
         'frmAutoBetEngine
         '
@@ -476,6 +564,8 @@ Partial Class frmAutoBetEngine
         Me.pageMarketCatalogue.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.TabPage2.ResumeLayout(False)
+        Me.TabPage2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -521,4 +611,12 @@ Partial Class frmAutoBetEngine
     Friend WithEvents Button3 As Button
     Friend WithEvents ListBox1 As ListBox
     Friend WithEvents Button4 As Button
+    Friend WithEvents ListBox2 As ListBox
+    Friend WithEvents Button8 As Button
+    Friend WithEvents clbMarkets_PriceData As CheckedListBox
+    Friend WithEvents clbMarkets_MatchProjection As CheckedListBox
+    Friend WithEvents clbMarkets_OrderProjection As CheckedListBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label6 As Label
 End Class

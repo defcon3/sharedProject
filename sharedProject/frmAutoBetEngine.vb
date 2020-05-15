@@ -928,4 +928,68 @@ Public Class frmAutoBetEngine
 
 
     End Sub
+
+    Private Sub Button4_Click_1(sender As Object, e As EventArgs) Handles Button4.Click
+        TabControl1.SelectedTab = TabControl1.TabPages(1)
+        For Each li In ListBox1.Items
+            ListBox2.Items.Add(li.ToString)
+        Next
+    End Sub
+
+    Private Sub Button8_Click_1(sender As Object, e As EventArgs) Handles Button8.Click
+        Dim myNewListMarketBook As New bfObjects.clsListMarketBook
+        For Each itm In ListBox2.Items
+            myNewListMarketBook.params.marketIds.Add(itm)
+        Next
+
+        Dim requeststring As String = ""
+
+
+
+        Dim myNewListOfString As New List(Of System.String)
+
+        For Each ea In clbMarkets_MatchProjection.CheckedItems
+            myNewListOfString.Add(ea.ToString)
+        Next
+        myNewListMarketBook.params.matchkProjection = myNewListOfString
+
+
+
+        myNewListOfString = New List(Of System.String)
+
+        For Each ea In clbMarkets_OrderProjection.CheckedItems
+            myNewListOfString.Add(ea.ToString)
+        Next
+        myNewListMarketBook.params.orderProjection = myNewListOfString
+
+
+
+        Dim myNewPriceProjection As New bfObjects.clsPriceProjection
+
+        For Each ea In clbMarkets_PriceData.CheckedItems
+            myNewPriceProjection.priceData.Add(ea.ToString)
+        Next
+
+
+
+        requeststring = Newtonsoft.Json.JsonConvert.SerializeObject(myNewListMarketBook)
+
+        Dim betreq As New clsBetConnection(requeststring)
+
+        ''' sendet die Anfrage an den Server
+        betreq.sendeAnfrage()
+
+        'MsgBox(betreq.Answerstring)
+
+
+        Dim dtvalue = New bfObjects.clsMarketBookResponse
+
+        dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(betreq.Answerstring)
+
+
+    End Sub
+
+    Private Sub CheckedListBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles clbMarkets_MatchProjection.SelectedIndexChanged
+
+    End Sub
 End Class
