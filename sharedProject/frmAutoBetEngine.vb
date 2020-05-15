@@ -15,6 +15,8 @@ Imports System.Collections.Immutable
 Imports System.Resources
 Imports Microsoft.Office.Interop.Excel
 Imports System.Globalization
+Imports System.Windows.Controls
+Imports System.Windows.Forms
 
 Public Class frmAutoBetEngine
     Implements ILogWriter
@@ -273,7 +275,7 @@ Public Class frmAutoBetEngine
         Dim names() As String = CType([Enum].GetNames(GetType(enumSportarten)), String())
         For i = 0 To [Enum].GetValues(GetType(enumSportarten)).Length - 1
             'Debug.Print(values(i) & " uuunnnddddd " & names(i))
-            ListView2.Items.Add(New ListViewItem With {.Text = names(i).ToString, .Tag = values(i), .Checked = IIf(values(i) = 1, True, False)})
+            ListView2.Items.Add(New System.Windows.Forms.ListViewItem With {.Text = names(i).ToString, .Tag = values(i), .Checked = IIf(values(i) = 1, True, False)})
         Next
 
 
@@ -282,7 +284,7 @@ Public Class frmAutoBetEngine
         Dim nmes() As String = CType([Enum].GetNames(GetType(enumlaender)), String())
         For i = 0 To [Enum].GetValues(GetType(enumlaender)).Length - 1
             'Debug.Print(values(i) & " uuunnnddddd " & names(i))
-            ListView3.Items.Add(New ListViewItem With {.Text = nmes(i).ToString, .Tag = nmes(i), .Checked = IIf(nmes(i) = "DE", True, False)})
+            ListView3.Items.Add(New System.Windows.Forms.ListViewItem With {.Text = nmes(i).ToString, .Tag = nmes(i), .Checked = IIf(nmes(i) = "DE", True, False)})
         Next
 
 
@@ -531,11 +533,11 @@ Public Class frmAutoBetEngine
         myNewListMarketCatalogue.params.sort = cboSort.Text
         myNewListMarketCatalogue.params.maxResults = cboMaxResults.Text
 
-        For Each checkeditemsinlistview2 As ListViewItem In ListView2.CheckedItems
+        For Each checkeditemsinlistview2 As System.Windows.Forms.ListViewItem In ListView2.CheckedItems
             myNewListMarketCatalogue.params.filter.eventTypeIds.Add(checkeditemsinlistview2.Tag)
         Next
 
-        For Each checkeditemsinlistview3 As ListViewItem In ListView3.CheckedItems
+        For Each checkeditemsinlistview3 As System.Windows.Forms.ListViewItem In ListView3.CheckedItems
             myNewListMarketCatalogue.params.filter.marketCountries.Add(checkeditemsinlistview3.Tag)
         Next
 
@@ -617,7 +619,7 @@ Public Class frmAutoBetEngine
         m.Width = ColumnHeaderAutoResizeStyle.ColumnContent
 
 
-        Dim mf As New ListView.ColumnHeaderCollection(ListView1)
+        Dim mf As New System.Windows.Forms.ListView.ColumnHeaderCollection(ListView1)
 
 
         ListView1.View = View.List
@@ -642,7 +644,7 @@ Public Class frmAutoBetEngine
 
 
 
-        For Each tt As ListViewItem In ListView1.Items
+        For Each tt As System.Windows.Forms.ListViewItem In ListView1.Items
             tt.Selected = True
             ListView1.Select()
             'ListView1.SelectedItems.EnsureVisible()
@@ -676,7 +678,7 @@ Public Class frmAutoBetEngine
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
 
         Dim requeststring As String = ""
-        For Each itm As ListViewItem In ListView1.Items
+        For Each itm As System.Windows.Forms.ListViewItem In ListView1.Items
             If itm.Checked = True Then
                 requeststring = itm.Text
             End If
@@ -867,7 +869,8 @@ Public Class frmAutoBetEngine
     End Sub
 
     Private Sub TreeView1_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterSelect
-        MsgBox(TreeView1.SelectedNode.Tag)
+        ListBox1.Items.Add(TreeView1.SelectedNode.Tag)
+
     End Sub
 
     Private Sub TreeView1_Click(sender As Object, e As EventArgs) Handles TreeView1.Click
@@ -906,7 +909,7 @@ Public Class frmAutoBetEngine
             End If
         Next
 
-        For Each itm As ListViewItem In ListView2.Items
+        For Each itm As System.Windows.Forms.ListViewItem In ListView2.Items
             If itm.Checked Then
                 MsgBox(itm.Tag)
             End If
@@ -917,5 +920,13 @@ Public Class frmAutoBetEngine
     Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
         MsgBox(DateTimePicker1.Value.ToString("yyyy-MM-dd") & "T00:00:00Z" & vbCrLf _
                & DateTime.UtcNow.ToString)
+    End Sub
+
+    Private Sub ListBox1_Click(sender As Object, e As EventArgs) Handles ListBox1.Click
+        Dim t = ListBox1.SelectedItem.ToString()
+
+        ListBox1.Items.Remove(t)
+
+
     End Sub
 End Class
