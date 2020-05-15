@@ -268,7 +268,7 @@ Public Class frmAutoBetEngine
     Private Sub frmAutoBetEngine_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.WindowState = FormWindowState.Maximized
         Me.DateTimePicker1.Value = Date.Now
-        Me.DateTimePicker2.Value = DateTime.UtcNow.AddDays(1)
+        Me.DateTimePicker2.Value = DateTime.UtcNow.AddDays(3)
 
         ListView2.Columns.Add("Sportart")
         Dim values() As Long = CType([Enum].GetValues(GetType(enumSportarten)), Long())
@@ -551,8 +551,8 @@ Public Class frmAutoBetEngine
         End If
 
         Dim m As New bfObjects.clsStartTime
-        m.from = DateTimePicker1.Value.ToString("yyyy-MM-dd") & "T00:00:00Z"
-        m.to = DateTimePicker2.Value.ToString("yyyy-MM-dd") & "T23:59:00Z"
+        m.from = DateTimePicker1.Value.ToString("yyyy-MM-ddTHH:mm:ssZ")
+        m.to = DateTimePicker2.Value.ToString("yyyy-MM-ddTHH:mm:ssZ")
         myNewListMarketCatalogue.params.filter.marketStartTime = m
 
 
@@ -918,8 +918,7 @@ Public Class frmAutoBetEngine
     End Sub
 
     Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
-        MsgBox(DateTimePicker1.Value.ToString("yyyy-MM-dd") & "T00:00:00Z" & vbCrLf _
-               & DateTime.UtcNow.ToString)
+        MsgBox(DateTimePicker1.Value.ToString("yyyy-MM-ddTHH:mm:ssZ"))
     End Sub
 
     Private Sub ListBox1_Click(sender As Object, e As EventArgs) Handles ListBox1.Click
