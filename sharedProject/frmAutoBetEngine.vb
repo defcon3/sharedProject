@@ -942,6 +942,14 @@ Public Class frmAutoBetEngine
             myNewListMarketBook.params.marketIds.Add(itm)
         Next
 
+        Dim priceprojection As New bfObjects.clsPriceProjection
+        'priceprojection.priceData.Add("")
+
+        For Each i In clbMarkets_PriceData.CheckedItems
+
+            priceprojection.priceData.Add(i.ToString)
+        Next
+
         Dim requeststring As String = ""
 
 
