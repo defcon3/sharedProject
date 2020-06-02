@@ -951,7 +951,7 @@ Public Class frmAutoBetEngine
         For Each ea In clbMarkets_MatchProjection.CheckedItems
             myNewListOfString.Add(ea.ToString)
         Next
-        myNewListMarketBook.params.matchkProjection = myNewListOfString
+        'myNewListMarketBook.params.matchkProjection = myNewListOfString
 
 
 
@@ -960,7 +960,7 @@ Public Class frmAutoBetEngine
         For Each ea In clbMarkets_OrderProjection.CheckedItems
             myNewListOfString.Add(ea.ToString)
         Next
-        myNewListMarketBook.params.orderProjection = myNewListOfString
+        'myNewListMarketBook.params.orderProjection = myNewListOfString
 
 
 
