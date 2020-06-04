@@ -954,12 +954,12 @@ Public Class frmAutoBetEngine
 
         'orderprojection abfragen
         For Each i In clbMarkets_OrderProjection.CheckedItems
-            myNewListMarketBook.params.orderProjection.Add(i.ToString)
+            'myNewListMarketBook.params.orderProjection.Add(i.ToString)
         Next
 
         'matchprojection abfragen
         For Each i In clbMarkets_MatchProjection.CheckedItems
-            myNewListMarketBook.params.matchkProjection.Add(i.ToString)
+            'myNewListMarketBook.params.matchProjection.Add(i.ToString)
         Next
 
         Dim requeststring As System.String = ""
