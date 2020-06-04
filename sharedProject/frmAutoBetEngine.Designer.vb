@@ -59,17 +59,18 @@ Partial Class frmAutoBetEngine
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cboSort = New System.Windows.Forms.ComboBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.clbMarkets_PriceData = New System.Windows.Forms.CheckedListBox()
+        Me.clbMarkets_MatchProjection = New System.Windows.Forms.CheckedListBox()
+        Me.clbMarkets_OrderProjection = New System.Windows.Forms.CheckedListBox()
+        Me.Button8 = New System.Windows.Forms.Button()
         Me.ListBox2 = New System.Windows.Forms.ListBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.clbMarkets_OrderProjection = New System.Windows.Forms.CheckedListBox()
-        Me.clbMarkets_MatchProjection = New System.Windows.Forms.CheckedListBox()
-        Me.clbMarkets_PriceData = New System.Windows.Forms.CheckedListBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtMarkets = New System.Windows.Forms.TextBox()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -427,6 +428,7 @@ Partial Class frmAutoBetEngine
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.txtMarkets)
         Me.TabPage2.Controls.Add(Me.Label8)
         Me.TabPage2.Controls.Add(Me.Label7)
         Me.TabPage2.Controls.Add(Me.Label6)
@@ -442,6 +444,69 @@ Partial Class frmAutoBetEngine
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Markets"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(208, 184)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(80, 13)
+        Me.Label8.TabIndex = 27
+        Me.Label8.Text = "OrderProjection"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(208, 116)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(84, 13)
+        Me.Label7.TabIndex = 26
+        Me.Label7.Text = "MatchProjection"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(208, 18)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(54, 13)
+        Me.Label6.TabIndex = 25
+        Me.Label6.Text = "PriceData"
+        '
+        'clbMarkets_PriceData
+        '
+        Me.clbMarkets_PriceData.FormattingEnabled = True
+        Me.clbMarkets_PriceData.Items.AddRange(New Object() {"SP_AVAILABLE", "SP_TRADED", "EX_BEST_OFFERS", "EX_ALL_OFFERS", "EX_TRADED"})
+        Me.clbMarkets_PriceData.Location = New System.Drawing.Point(168, 34)
+        Me.clbMarkets_PriceData.Name = "clbMarkets_PriceData"
+        Me.clbMarkets_PriceData.Size = New System.Drawing.Size(206, 79)
+        Me.clbMarkets_PriceData.TabIndex = 24
+        '
+        'clbMarkets_MatchProjection
+        '
+        Me.clbMarkets_MatchProjection.FormattingEnabled = True
+        Me.clbMarkets_MatchProjection.Items.AddRange(New Object() {"NO_ROLLUP", "ROLLED_UP_BY_PRICE", "ROLLED_UP_BY_AVG_PRICE"})
+        Me.clbMarkets_MatchProjection.Location = New System.Drawing.Point(168, 132)
+        Me.clbMarkets_MatchProjection.Name = "clbMarkets_MatchProjection"
+        Me.clbMarkets_MatchProjection.Size = New System.Drawing.Size(206, 49)
+        Me.clbMarkets_MatchProjection.TabIndex = 23
+        '
+        'clbMarkets_OrderProjection
+        '
+        Me.clbMarkets_OrderProjection.FormattingEnabled = True
+        Me.clbMarkets_OrderProjection.Items.AddRange(New Object() {"ALL", "EXECUTABLE", "EXECUTION_COMPLETE"})
+        Me.clbMarkets_OrderProjection.Location = New System.Drawing.Point(168, 200)
+        Me.clbMarkets_OrderProjection.Name = "clbMarkets_OrderProjection"
+        Me.clbMarkets_OrderProjection.Size = New System.Drawing.Size(206, 49)
+        Me.clbMarkets_OrderProjection.TabIndex = 22
+        '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(380, 34)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(75, 23)
+        Me.Button8.TabIndex = 1
+        Me.Button8.Text = "Button8"
+        Me.Button8.UseVisualStyleBackColor = True
         '
         'ListBox2
         '
@@ -479,68 +544,13 @@ Partial Class frmAutoBetEngine
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'Button8
+        'txtMarkets
         '
-        Me.Button8.Location = New System.Drawing.Point(380, 34)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(75, 23)
-        Me.Button8.TabIndex = 1
-        Me.Button8.Text = "Button8"
-        Me.Button8.UseVisualStyleBackColor = True
-        '
-        'clbMarkets_OrderProjection
-        '
-        Me.clbMarkets_OrderProjection.FormattingEnabled = True
-        Me.clbMarkets_OrderProjection.Items.AddRange(New Object() {"ALL", "EXECUTABLE", "EXECUTION_COMPLETE"})
-        Me.clbMarkets_OrderProjection.Location = New System.Drawing.Point(168, 200)
-        Me.clbMarkets_OrderProjection.Name = "clbMarkets_OrderProjection"
-        Me.clbMarkets_OrderProjection.Size = New System.Drawing.Size(206, 49)
-        Me.clbMarkets_OrderProjection.TabIndex = 22
-        '
-        'clbMarkets_MatchProjection
-        '
-        Me.clbMarkets_MatchProjection.FormattingEnabled = True
-        Me.clbMarkets_MatchProjection.Items.AddRange(New Object() {"NO_ROLLUP", "ROLLED_UP_BY_PRICE", "ROLLED_UP_BY_AVG_PRICE"})
-        Me.clbMarkets_MatchProjection.Location = New System.Drawing.Point(168, 132)
-        Me.clbMarkets_MatchProjection.Name = "clbMarkets_MatchProjection"
-        Me.clbMarkets_MatchProjection.Size = New System.Drawing.Size(206, 49)
-        Me.clbMarkets_MatchProjection.TabIndex = 23
-        '
-        'clbMarkets_PriceData
-        '
-        Me.clbMarkets_PriceData.FormattingEnabled = True
-        Me.clbMarkets_PriceData.Items.AddRange(New Object() {"SP_AVAILABLE", "SP_TRADED", "EX_BEST_OFFERS", "EX_ALL_OFFERS", "EX_TRADED"})
-        Me.clbMarkets_PriceData.Location = New System.Drawing.Point(168, 34)
-        Me.clbMarkets_PriceData.Name = "clbMarkets_PriceData"
-        Me.clbMarkets_PriceData.Size = New System.Drawing.Size(206, 79)
-        Me.clbMarkets_PriceData.TabIndex = 24
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(208, 18)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(54, 13)
-        Me.Label6.TabIndex = 25
-        Me.Label6.Text = "PriceData"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(208, 116)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(84, 13)
-        Me.Label7.TabIndex = 26
-        Me.Label7.Text = "MatchProjection"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(208, 184)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(80, 13)
-        Me.Label8.TabIndex = 27
-        Me.Label8.Text = "OrderProjection"
+        Me.txtMarkets.Location = New System.Drawing.Point(502, 86)
+        Me.txtMarkets.Multiline = True
+        Me.txtMarkets.Name = "txtMarkets"
+        Me.txtMarkets.Size = New System.Drawing.Size(568, 75)
+        Me.txtMarkets.TabIndex = 28
         '
         'frmAutoBetEngine
         '
@@ -619,4 +629,5 @@ Partial Class frmAutoBetEngine
     Friend WithEvents Label8 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label6 As Label
+    Friend WithEvents txtMarkets As TextBox
 End Class

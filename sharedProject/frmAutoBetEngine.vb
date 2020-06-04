@@ -267,6 +267,7 @@ Public Class frmAutoBetEngine
 
     Private Sub frmAutoBetEngine_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.WindowState = FormWindowState.Maximized
+        Me.TabControl1.Width = Me.Width - 88
         Me.DateTimePicker1.Value = Date.Now
         Me.DateTimePicker2.Value = DateTime.UtcNow.AddDays(3)
 
@@ -945,42 +946,29 @@ Public Class frmAutoBetEngine
         Dim priceprojection As New bfObjects.clsPriceProjection
         'priceprojection.priceData.Add("")
 
+        'priceprojection abfragen
         For Each i In clbMarkets_PriceData.CheckedItems
-
             priceprojection.priceData.Add(i.ToString)
         Next
+        myNewListMarketBook.params.priceProjection = priceprojection
 
-        Dim requeststring As String = ""
-
-
-
-        Dim myNewListOfString As New List(Of System.String)
-
-        For Each ea In clbMarkets_MatchProjection.CheckedItems
-            myNewListOfString.Add(ea.ToString)
+        'orderprojection abfragen
+        For Each i In clbMarkets_OrderProjection.CheckedItems
+            myNewListMarketBook.params.orderProjection.Add(i.ToString)
         Next
-        'myNewListMarketBook.params.matchkProjection = myNewListOfString
 
-
-
-        myNewListOfString = New List(Of System.String)
-
-        For Each ea In clbMarkets_OrderProjection.CheckedItems
-            myNewListOfString.Add(ea.ToString)
+        'matchprojection abfragen
+        For Each i In clbMarkets_MatchProjection.CheckedItems
+            myNewListMarketBook.params.matchkProjection.Add(i.ToString)
         Next
-        'myNewListMarketBook.params.orderProjection = myNewListOfString
 
-
-
-        Dim myNewPriceProjection As New bfObjects.clsPriceProjection
-
-        For Each ea In clbMarkets_PriceData.CheckedItems
-            myNewPriceProjection.priceData.Add(ea.ToString)
-        Next
+        Dim requeststring As System.String = ""
 
 
 
         requeststring = Newtonsoft.Json.JsonConvert.SerializeObject(myNewListMarketBook)
+
+        txtMarkets.Text = requeststring.ToString
 
         Dim betreq As New clsBetConnection(requeststring)
 
