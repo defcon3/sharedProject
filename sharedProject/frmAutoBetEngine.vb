@@ -943,8 +943,13 @@ Public Class frmAutoBetEngine
             myNewListMarketBook.params.marketIds.Add(itm)
         Next
 
+
+
         Dim priceprojection As New bfObjects.clsPriceProjection
         'priceprojection.priceData.Add("")
+
+        priceprojection.virtualise = IIf(rbY.Checked, True, False)
+        priceprojection.rolloverStakes = IIf(rbRY.Checked, True, False)
 
         'priceprojection abfragen
         For Each i In clbMarkets_PriceData.CheckedItems
@@ -982,10 +987,18 @@ Public Class frmAutoBetEngine
 
         dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(betreq.Answerstring)
 
+        txtAnswerstring.Text = betreq.Answerstring
+
+
+
 
     End Sub
 
     Private Sub CheckedListBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles clbMarkets_MatchProjection.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub TabPage2_Click(sender As Object, e As EventArgs) Handles TabPage2.Click
 
     End Sub
 End Class

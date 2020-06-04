@@ -59,6 +59,7 @@ Partial Class frmAutoBetEngine
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cboSort = New System.Windows.Forms.ComboBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.txtMarkets = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -70,13 +71,21 @@ Partial Class frmAutoBetEngine
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.txtMarkets = New System.Windows.Forms.TextBox()
+        Me.txtAnswerstring = New System.Windows.Forms.TextBox()
+        Me.grbVirtualize = New System.Windows.Forms.GroupBox()
+        Me.rbY = New System.Windows.Forms.RadioButton()
+        Me.rbN = New System.Windows.Forms.RadioButton()
+        Me.grbRollover = New System.Windows.Forms.GroupBox()
+        Me.rbRN = New System.Windows.Forms.RadioButton()
+        Me.rbRY = New System.Windows.Forms.RadioButton()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.pageMarketCatalogue.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
+        Me.grbVirtualize.SuspendLayout()
+        Me.grbRollover.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -428,6 +437,9 @@ Partial Class frmAutoBetEngine
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.grbRollover)
+        Me.TabPage2.Controls.Add(Me.grbVirtualize)
+        Me.TabPage2.Controls.Add(Me.txtAnswerstring)
         Me.TabPage2.Controls.Add(Me.txtMarkets)
         Me.TabPage2.Controls.Add(Me.Label8)
         Me.TabPage2.Controls.Add(Me.Label7)
@@ -445,10 +457,18 @@ Partial Class frmAutoBetEngine
         Me.TabPage2.Text = "Markets"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'txtMarkets
+        '
+        Me.txtMarkets.Location = New System.Drawing.Point(502, 86)
+        Me.txtMarkets.Multiline = True
+        Me.txtMarkets.Name = "txtMarkets"
+        Me.txtMarkets.Size = New System.Drawing.Size(568, 75)
+        Me.txtMarkets.TabIndex = 28
+        '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(208, 184)
+        Me.Label8.Location = New System.Drawing.Point(208, 232)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(80, 13)
         Me.Label8.TabIndex = 27
@@ -457,7 +477,7 @@ Partial Class frmAutoBetEngine
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(208, 116)
+        Me.Label7.Location = New System.Drawing.Point(208, 164)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(84, 13)
         Me.Label7.TabIndex = 26
@@ -478,14 +498,14 @@ Partial Class frmAutoBetEngine
         Me.clbMarkets_PriceData.Items.AddRange(New Object() {"SP_AVAILABLE", "SP_TRADED", "EX_BEST_OFFERS", "EX_ALL_OFFERS", "EX_TRADED"})
         Me.clbMarkets_PriceData.Location = New System.Drawing.Point(168, 34)
         Me.clbMarkets_PriceData.Name = "clbMarkets_PriceData"
-        Me.clbMarkets_PriceData.Size = New System.Drawing.Size(206, 79)
+        Me.clbMarkets_PriceData.Size = New System.Drawing.Size(206, 109)
         Me.clbMarkets_PriceData.TabIndex = 24
         '
         'clbMarkets_MatchProjection
         '
         Me.clbMarkets_MatchProjection.FormattingEnabled = True
         Me.clbMarkets_MatchProjection.Items.AddRange(New Object() {"NO_ROLLUP", "ROLLED_UP_BY_PRICE", "ROLLED_UP_BY_AVG_PRICE"})
-        Me.clbMarkets_MatchProjection.Location = New System.Drawing.Point(168, 132)
+        Me.clbMarkets_MatchProjection.Location = New System.Drawing.Point(168, 180)
         Me.clbMarkets_MatchProjection.Name = "clbMarkets_MatchProjection"
         Me.clbMarkets_MatchProjection.Size = New System.Drawing.Size(206, 49)
         Me.clbMarkets_MatchProjection.TabIndex = 23
@@ -494,14 +514,14 @@ Partial Class frmAutoBetEngine
         '
         Me.clbMarkets_OrderProjection.FormattingEnabled = True
         Me.clbMarkets_OrderProjection.Items.AddRange(New Object() {"ALL", "EXECUTABLE", "EXECUTION_COMPLETE"})
-        Me.clbMarkets_OrderProjection.Location = New System.Drawing.Point(168, 200)
+        Me.clbMarkets_OrderProjection.Location = New System.Drawing.Point(168, 248)
         Me.clbMarkets_OrderProjection.Name = "clbMarkets_OrderProjection"
         Me.clbMarkets_OrderProjection.Size = New System.Drawing.Size(206, 49)
         Me.clbMarkets_OrderProjection.TabIndex = 22
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(380, 34)
+        Me.Button8.Location = New System.Drawing.Point(380, 8)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(75, 23)
         Me.Button8.TabIndex = 1
@@ -544,13 +564,79 @@ Partial Class frmAutoBetEngine
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'txtMarkets
+        'txtAnswerstring
         '
-        Me.txtMarkets.Location = New System.Drawing.Point(502, 86)
-        Me.txtMarkets.Multiline = True
-        Me.txtMarkets.Name = "txtMarkets"
-        Me.txtMarkets.Size = New System.Drawing.Size(568, 75)
-        Me.txtMarkets.TabIndex = 28
+        Me.txtAnswerstring.Location = New System.Drawing.Point(457, 200)
+        Me.txtAnswerstring.Multiline = True
+        Me.txtAnswerstring.Name = "txtAnswerstring"
+        Me.txtAnswerstring.Size = New System.Drawing.Size(568, 295)
+        Me.txtAnswerstring.TabIndex = 29
+        '
+        'grbVirtualize
+        '
+        Me.grbVirtualize.Controls.Add(Me.rbN)
+        Me.grbVirtualize.Controls.Add(Me.rbY)
+        Me.grbVirtualize.Location = New System.Drawing.Point(380, 34)
+        Me.grbVirtualize.Name = "grbVirtualize"
+        Me.grbVirtualize.Size = New System.Drawing.Size(82, 50)
+        Me.grbVirtualize.TabIndex = 30
+        Me.grbVirtualize.TabStop = False
+        Me.grbVirtualize.Text = " Virtualize"
+        '
+        'rbY
+        '
+        Me.rbY.AutoSize = True
+        Me.rbY.Checked = True
+        Me.rbY.Location = New System.Drawing.Point(6, 19)
+        Me.rbY.Name = "rbY"
+        Me.rbY.Size = New System.Drawing.Size(32, 17)
+        Me.rbY.TabIndex = 0
+        Me.rbY.TabStop = True
+        Me.rbY.Text = "Y"
+        Me.rbY.UseVisualStyleBackColor = True
+        '
+        'rbN
+        '
+        Me.rbN.AutoSize = True
+        Me.rbN.Location = New System.Drawing.Point(45, 19)
+        Me.rbN.Name = "rbN"
+        Me.rbN.Size = New System.Drawing.Size(33, 17)
+        Me.rbN.TabIndex = 1
+        Me.rbN.Text = "N"
+        Me.rbN.UseVisualStyleBackColor = True
+        '
+        'grbRollover
+        '
+        Me.grbRollover.Controls.Add(Me.rbRN)
+        Me.grbRollover.Controls.Add(Me.rbRY)
+        Me.grbRollover.Location = New System.Drawing.Point(380, 90)
+        Me.grbRollover.Name = "grbRollover"
+        Me.grbRollover.Size = New System.Drawing.Size(82, 50)
+        Me.grbRollover.TabIndex = 31
+        Me.grbRollover.TabStop = False
+        Me.grbRollover.Text = "Rollover"
+        '
+        'rbRN
+        '
+        Me.rbRN.AutoSize = True
+        Me.rbRN.Location = New System.Drawing.Point(45, 19)
+        Me.rbRN.Name = "rbRN"
+        Me.rbRN.Size = New System.Drawing.Size(33, 17)
+        Me.rbRN.TabIndex = 1
+        Me.rbRN.Text = "N"
+        Me.rbRN.UseVisualStyleBackColor = True
+        '
+        'rbRY
+        '
+        Me.rbRY.AutoSize = True
+        Me.rbRY.Checked = True
+        Me.rbRY.Location = New System.Drawing.Point(6, 19)
+        Me.rbRY.Name = "rbRY"
+        Me.rbRY.Size = New System.Drawing.Size(32, 17)
+        Me.rbRY.TabIndex = 0
+        Me.rbRY.TabStop = True
+        Me.rbRY.Text = "Y"
+        Me.rbRY.UseVisualStyleBackColor = True
         '
         'frmAutoBetEngine
         '
@@ -576,6 +662,10 @@ Partial Class frmAutoBetEngine
         Me.GroupBox1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
+        Me.grbVirtualize.ResumeLayout(False)
+        Me.grbVirtualize.PerformLayout()
+        Me.grbRollover.ResumeLayout(False)
+        Me.grbRollover.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -630,4 +720,11 @@ Partial Class frmAutoBetEngine
     Friend WithEvents Label7 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents txtMarkets As TextBox
+    Friend WithEvents txtAnswerstring As TextBox
+    Friend WithEvents grbVirtualize As GroupBox
+    Friend WithEvents rbN As RadioButton
+    Friend WithEvents rbY As RadioButton
+    Friend WithEvents grbRollover As GroupBox
+    Friend WithEvents rbRN As RadioButton
+    Friend WithEvents rbRY As RadioButton
 End Class
