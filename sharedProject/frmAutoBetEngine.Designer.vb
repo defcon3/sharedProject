@@ -59,6 +59,13 @@ Partial Class frmAutoBetEngine
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cboSort = New System.Windows.Forms.ComboBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.grbRollover = New System.Windows.Forms.GroupBox()
+        Me.rbRN = New System.Windows.Forms.RadioButton()
+        Me.rbRY = New System.Windows.Forms.RadioButton()
+        Me.grbVirtualize = New System.Windows.Forms.GroupBox()
+        Me.rbN = New System.Windows.Forms.RadioButton()
+        Me.rbY = New System.Windows.Forms.RadioButton()
+        Me.txtAnswerstring = New System.Windows.Forms.TextBox()
         Me.txtMarkets = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -71,21 +78,15 @@ Partial Class frmAutoBetEngine
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.txtAnswerstring = New System.Windows.Forms.TextBox()
-        Me.grbVirtualize = New System.Windows.Forms.GroupBox()
-        Me.rbY = New System.Windows.Forms.RadioButton()
-        Me.rbN = New System.Windows.Forms.RadioButton()
-        Me.grbRollover = New System.Windows.Forms.GroupBox()
-        Me.rbRN = New System.Windows.Forms.RadioButton()
-        Me.rbRY = New System.Windows.Forms.RadioButton()
+        Me.TreeView2 = New System.Windows.Forms.TreeView()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.pageMarketCatalogue.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
-        Me.grbVirtualize.SuspendLayout()
         Me.grbRollover.SuspendLayout()
+        Me.grbVirtualize.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -437,6 +438,7 @@ Partial Class frmAutoBetEngine
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.TreeView2)
         Me.TabPage2.Controls.Add(Me.grbRollover)
         Me.TabPage2.Controls.Add(Me.grbVirtualize)
         Me.TabPage2.Controls.Add(Me.txtAnswerstring)
@@ -456,6 +458,80 @@ Partial Class frmAutoBetEngine
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Markets"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'grbRollover
+        '
+        Me.grbRollover.Controls.Add(Me.rbRN)
+        Me.grbRollover.Controls.Add(Me.rbRY)
+        Me.grbRollover.Location = New System.Drawing.Point(380, 90)
+        Me.grbRollover.Name = "grbRollover"
+        Me.grbRollover.Size = New System.Drawing.Size(82, 50)
+        Me.grbRollover.TabIndex = 31
+        Me.grbRollover.TabStop = False
+        Me.grbRollover.Text = "Rollover"
+        '
+        'rbRN
+        '
+        Me.rbRN.AutoSize = True
+        Me.rbRN.Location = New System.Drawing.Point(45, 19)
+        Me.rbRN.Name = "rbRN"
+        Me.rbRN.Size = New System.Drawing.Size(33, 17)
+        Me.rbRN.TabIndex = 1
+        Me.rbRN.Text = "N"
+        Me.rbRN.UseVisualStyleBackColor = True
+        '
+        'rbRY
+        '
+        Me.rbRY.AutoSize = True
+        Me.rbRY.Checked = True
+        Me.rbRY.Location = New System.Drawing.Point(6, 19)
+        Me.rbRY.Name = "rbRY"
+        Me.rbRY.Size = New System.Drawing.Size(32, 17)
+        Me.rbRY.TabIndex = 0
+        Me.rbRY.TabStop = True
+        Me.rbRY.Text = "Y"
+        Me.rbRY.UseVisualStyleBackColor = True
+        '
+        'grbVirtualize
+        '
+        Me.grbVirtualize.Controls.Add(Me.rbN)
+        Me.grbVirtualize.Controls.Add(Me.rbY)
+        Me.grbVirtualize.Location = New System.Drawing.Point(380, 34)
+        Me.grbVirtualize.Name = "grbVirtualize"
+        Me.grbVirtualize.Size = New System.Drawing.Size(82, 50)
+        Me.grbVirtualize.TabIndex = 30
+        Me.grbVirtualize.TabStop = False
+        Me.grbVirtualize.Text = " Virtualize"
+        '
+        'rbN
+        '
+        Me.rbN.AutoSize = True
+        Me.rbN.Location = New System.Drawing.Point(45, 19)
+        Me.rbN.Name = "rbN"
+        Me.rbN.Size = New System.Drawing.Size(33, 17)
+        Me.rbN.TabIndex = 1
+        Me.rbN.Text = "N"
+        Me.rbN.UseVisualStyleBackColor = True
+        '
+        'rbY
+        '
+        Me.rbY.AutoSize = True
+        Me.rbY.Checked = True
+        Me.rbY.Location = New System.Drawing.Point(6, 19)
+        Me.rbY.Name = "rbY"
+        Me.rbY.Size = New System.Drawing.Size(32, 17)
+        Me.rbY.TabIndex = 0
+        Me.rbY.TabStop = True
+        Me.rbY.Text = "Y"
+        Me.rbY.UseVisualStyleBackColor = True
+        '
+        'txtAnswerstring
+        '
+        Me.txtAnswerstring.Location = New System.Drawing.Point(502, 167)
+        Me.txtAnswerstring.Multiline = True
+        Me.txtAnswerstring.Name = "txtAnswerstring"
+        Me.txtAnswerstring.Size = New System.Drawing.Size(568, 110)
+        Me.txtAnswerstring.TabIndex = 29
         '
         'txtMarkets
         '
@@ -564,79 +640,12 @@ Partial Class frmAutoBetEngine
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'txtAnswerstring
+        'TreeView2
         '
-        Me.txtAnswerstring.Location = New System.Drawing.Point(457, 200)
-        Me.txtAnswerstring.Multiline = True
-        Me.txtAnswerstring.Name = "txtAnswerstring"
-        Me.txtAnswerstring.Size = New System.Drawing.Size(568, 295)
-        Me.txtAnswerstring.TabIndex = 29
-        '
-        'grbVirtualize
-        '
-        Me.grbVirtualize.Controls.Add(Me.rbN)
-        Me.grbVirtualize.Controls.Add(Me.rbY)
-        Me.grbVirtualize.Location = New System.Drawing.Point(380, 34)
-        Me.grbVirtualize.Name = "grbVirtualize"
-        Me.grbVirtualize.Size = New System.Drawing.Size(82, 50)
-        Me.grbVirtualize.TabIndex = 30
-        Me.grbVirtualize.TabStop = False
-        Me.grbVirtualize.Text = " Virtualize"
-        '
-        'rbY
-        '
-        Me.rbY.AutoSize = True
-        Me.rbY.Checked = True
-        Me.rbY.Location = New System.Drawing.Point(6, 19)
-        Me.rbY.Name = "rbY"
-        Me.rbY.Size = New System.Drawing.Size(32, 17)
-        Me.rbY.TabIndex = 0
-        Me.rbY.TabStop = True
-        Me.rbY.Text = "Y"
-        Me.rbY.UseVisualStyleBackColor = True
-        '
-        'rbN
-        '
-        Me.rbN.AutoSize = True
-        Me.rbN.Location = New System.Drawing.Point(45, 19)
-        Me.rbN.Name = "rbN"
-        Me.rbN.Size = New System.Drawing.Size(33, 17)
-        Me.rbN.TabIndex = 1
-        Me.rbN.Text = "N"
-        Me.rbN.UseVisualStyleBackColor = True
-        '
-        'grbRollover
-        '
-        Me.grbRollover.Controls.Add(Me.rbRN)
-        Me.grbRollover.Controls.Add(Me.rbRY)
-        Me.grbRollover.Location = New System.Drawing.Point(380, 90)
-        Me.grbRollover.Name = "grbRollover"
-        Me.grbRollover.Size = New System.Drawing.Size(82, 50)
-        Me.grbRollover.TabIndex = 31
-        Me.grbRollover.TabStop = False
-        Me.grbRollover.Text = "Rollover"
-        '
-        'rbRN
-        '
-        Me.rbRN.AutoSize = True
-        Me.rbRN.Location = New System.Drawing.Point(45, 19)
-        Me.rbRN.Name = "rbRN"
-        Me.rbRN.Size = New System.Drawing.Size(33, 17)
-        Me.rbRN.TabIndex = 1
-        Me.rbRN.Text = "N"
-        Me.rbRN.UseVisualStyleBackColor = True
-        '
-        'rbRY
-        '
-        Me.rbRY.AutoSize = True
-        Me.rbRY.Checked = True
-        Me.rbRY.Location = New System.Drawing.Point(6, 19)
-        Me.rbRY.Name = "rbRY"
-        Me.rbRY.Size = New System.Drawing.Size(32, 17)
-        Me.rbRY.TabIndex = 0
-        Me.rbRY.TabStop = True
-        Me.rbRY.Text = "Y"
-        Me.rbRY.UseVisualStyleBackColor = True
+        Me.TreeView2.Location = New System.Drawing.Point(502, 283)
+        Me.TreeView2.Name = "TreeView2"
+        Me.TreeView2.Size = New System.Drawing.Size(568, 402)
+        Me.TreeView2.TabIndex = 32
         '
         'frmAutoBetEngine
         '
@@ -662,10 +671,10 @@ Partial Class frmAutoBetEngine
         Me.GroupBox1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
-        Me.grbVirtualize.ResumeLayout(False)
-        Me.grbVirtualize.PerformLayout()
         Me.grbRollover.ResumeLayout(False)
         Me.grbRollover.PerformLayout()
+        Me.grbVirtualize.ResumeLayout(False)
+        Me.grbVirtualize.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -727,4 +736,5 @@ Partial Class frmAutoBetEngine
     Friend WithEvents grbRollover As GroupBox
     Friend WithEvents rbRN As RadioButton
     Friend WithEvents rbRY As RadioButton
+    Friend WithEvents TreeView2 As TreeView
 End Class

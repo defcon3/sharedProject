@@ -706,7 +706,7 @@ Public Class frmAutoBetEngine
 
 
         Dim j As Integer = 0
-        Dim k As Integer = 0
+        'Dim k As Integer = 0
 
         Dim ts = DateTime.UtcNow
 
@@ -785,7 +785,7 @@ Public Class frmAutoBetEngine
                     TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_CLOTH_NUMBER_ALPHA: " & runner.metadata.CLOTH_NUMBER_ALPHA, .Tag = runner.metadata.CLOTH_NUMBER_ALPHA})
                 End If
 
-                k += 1
+
             Next
 
 
@@ -864,31 +864,12 @@ Public Class frmAutoBetEngine
 
     End Sub
 
-    Private Sub Button8_Click(sender As Object, e As EventArgs)
-
-
-    End Sub
 
     Private Sub TreeView1_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterSelect
         ListBox1.Items.Add(TreeView1.SelectedNode.Tag)
 
     End Sub
 
-    Private Sub TreeView1_Click(sender As Object, e As EventArgs) Handles TreeView1.Click
-
-    End Sub
-
-    Private Sub TreeView1_MouseUp(sender As Object, e As MouseEventArgs) Handles TreeView1.MouseUp
-        If TreeView1.SelectedNode Is Nothing Then
-        Else
-            '  MsgBox(TreeView1.SelectedNode.Tag)
-
-        End If
-    End Sub
-
-    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
-
-    End Sub
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
         ListView2.Clear()
@@ -990,6 +971,77 @@ Public Class frmAutoBetEngine
         txtAnswerstring.Text = betreq.Answerstring
 
 
+
+        Dim j As Integer = 0
+        Dim k As Integer = 0
+        Dim a As Integer = 0
+        Dim b As Integer = 0
+        Dim c As Integer = 0
+
+
+
+        Dim ts = DateTime.UtcNow
+
+        TreeView2.Nodes.Clear()
+
+
+
+        For Each le As ABEresponses.MarketBook In dtvalue.result
+
+            TreeView2.Nodes.Add(New TreeNode With {.Text = "marketId: " & le.marketId, .Name = j, .Tag = le.marketId})
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "Zeitstempel: " & DateAndTime.Now, .Tag = DateAndTime.Now})
+
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "isMarketDataDelayed: " & le.isMarketDataDelayed, .Tag = le.isMarketDataDelayed})
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "status: " & le.status, .Tag = le.status})
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "betDelay: " & le.betDelay, .Tag = le.betDelay})
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "totalMatched: " & le.totalMatched, .Tag = le.totalMatched})
+
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "bspReconciled: " & le.bspReconciled, .Tag = le.bspReconciled})
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "complete: " & le.complete, .Tag = le.complete})
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "inplay: " & le.inplay, .Tag = le.inplay})
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "numberOfWinners: " & le.numberOfWinners, .Tag = le.numberOfWinners})
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "numberOfRunners: " & le.numberOfRunners, .Tag = le.numberOfRunners})
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "numberOfActiveRunners: " & le.numberOfActiveRunners, .Tag = le.numberOfActiveRunners})
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "lastMatchTime: " & le.lastMatchTime, .Tag = le.lastMatchTime})
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "totalAvailable: " & le.totalAvailable, .Tag = le.totalAvailable})
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "crossMatching: " & le.crossMatching, .Tag = le.crossMatching})
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "runnersVoidable: " & le.runnersVoidable, .Tag = le.runnersVoidable})
+            TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "Version: " & le.version, .Tag = le.version})
+
+            For Each ru In le.runners
+
+                TreeView2.Nodes(j).Nodes(TreeView2.Nodes(a).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "selectionId: " & ru.selectionId, .Tag = ru.selectionId})
+                TreeView2.Nodes(j).Nodes(TreeView2.Nodes(a).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "handicap: " & ru.handicap, .Tag = ru.handicap})
+                TreeView2.Nodes(j).Nodes(TreeView2.Nodes(a).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "status: " & ru.status, .Tag = ru.status})
+                TreeView2.Nodes(j).Nodes(TreeView2.Nodes(a).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "adjustmentFactor: " & ru.adjustmentFactor, .Tag = ru.adjustmentFactor})
+                TreeView2.Nodes(j).Nodes(TreeView2.Nodes(a).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "lastPriceTraded: " & ru.lastPriceTraded, .Tag = ru.lastPriceTraded})
+                TreeView2.Nodes(j).Nodes(TreeView2.Nodes(a).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "totalMatched: " & ru.totalMatched, .Tag = ru.totalMatched})
+                TreeView2.Nodes(j).Nodes(TreeView2.Nodes(a).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "removalDate: " & ru.removalDate, .Tag = ru.removalDate})
+                TreeView2.Nodes(j).Nodes(TreeView2.Nodes(a).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "ex: " & ru.ex.ToString, .Tag = ru.ex})
+                For Each atb As ABEresponses.PriceSize In ru.ex.availableToBack
+                    TreeView2.Nodes(j).Nodes(TreeView2.Nodes(a).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "calling"})
+
+                Next
+
+                a += 1
+
+
+            Next
+
+
+
+
+
+            j += 1
+
+
+
+            a = 0
+        Next
+
+
+
+        '@@@
 
 
     End Sub
