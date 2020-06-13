@@ -912,7 +912,8 @@ Public Class frmAutoBetEngine
 
         ReportViewer1.LocalReport.DataSources.Clear()
         ReportViewer1.LocalReport.DataSources.Add(rds)
-        ReportViewer1.LocalReport.ReportEmbeddedResource = "sharedProject.ReportViewer1.rdlc"
+        ReportViewer1.LocalReport.ReportPath = "temp.rdcl"
+        'ReportViewer1.LocalReport.ReportEmbeddedResource = "sharedProject.ReportViewer1.rdlc"
         ReportViewer1.RefreshReport()
 
 
