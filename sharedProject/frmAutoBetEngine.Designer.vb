@@ -79,6 +79,7 @@ Partial Class frmAutoBetEngine
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -87,6 +88,7 @@ Partial Class frmAutoBetEngine
         Me.TabPage2.SuspendLayout()
         Me.grbRollover.SuspendLayout()
         Me.grbVirtualize.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -621,6 +623,7 @@ Partial Class frmAutoBetEngine
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.ReportViewer1)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
@@ -646,6 +649,15 @@ Partial Class frmAutoBetEngine
         Me.Button2.TabIndex = 28
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
+        '
+        'ReportViewer1
+        '
+        Me.ReportViewer1.Location = New System.Drawing.Point(192, 31)
+        Me.ReportViewer1.Name = "ReportViewer1"
+        Me.ReportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Remote
+        Me.ReportViewer1.ServerReport.BearerToken = Nothing
+        Me.ReportViewer1.Size = New System.Drawing.Size(824, 365)
+        Me.ReportViewer1.TabIndex = 0
         '
         'frmAutoBetEngine
         '
@@ -675,6 +687,7 @@ Partial Class frmAutoBetEngine
         Me.grbRollover.PerformLayout()
         Me.grbVirtualize.ResumeLayout(False)
         Me.grbVirtualize.PerformLayout()
+        Me.TabPage3.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -737,4 +750,5 @@ Partial Class frmAutoBetEngine
     Friend WithEvents rbRN As RadioButton
     Friend WithEvents rbRY As RadioButton
     Friend WithEvents TreeView2 As TreeView
+    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
 End Class

@@ -17,6 +17,11 @@ Imports Microsoft.Office.Interop.Excel
 Imports System.Globalization
 Imports System.Windows.Controls
 Imports System.Windows.Forms
+Imports Microsoft.ReportingServices.ReportProcessing.ReportObjectModel
+Imports Microsoft.ReportingServices.Diagnostics.Internal
+Imports Microsoft.Reporting.WinForms
+Imports System.Web.UI
+Imports System.Xml
 
 Public Class frmAutoBetEngine
     Implements ILogWriter
@@ -291,6 +296,8 @@ Public Class frmAutoBetEngine
 
 
 
+        Me.ReportViewer1.RefreshReport()
+        Me.ReportViewer1.RefreshReport()
     End Sub
 
 
@@ -359,8 +366,8 @@ Public Class frmAutoBetEngine
         Dim xmlreader As Xml.XmlNodeReader
 
         xmlreader = New Xml.XmlNodeReader(xmlDoc)
-        Dim dataset As DataSet
-        dataset = New DataSet()
+        Dim dataset As System.Data.DataSet
+        dataset = New System.Data.DataSet()
         dataset.ReadXml(xmlreader)
 
         Dim dta As New System.Data.DataTable
@@ -379,7 +386,7 @@ Public Class frmAutoBetEngine
 
 
 
-        Dim dss As New DataSet
+        Dim dss As New System.Data.DataSet
         dss.GetXml()
 
 
@@ -399,7 +406,7 @@ Public Class frmAutoBetEngine
         'DataGridView3.DataSource = dt2
 
 
-        Dim ds As New DataSet
+        Dim ds As New System.Data.DataSet
 
 
         Dim dt As DataTable
@@ -473,7 +480,7 @@ Public Class frmAutoBetEngine
 
 
 
-        Dim ds1 As New DataSet
+        Dim ds1 As New System.Data.DataSet
 
         Dim xmlfile As XDocument = XDocument.Load("C:\temp\aaa.xml")
 
@@ -486,7 +493,7 @@ Public Class frmAutoBetEngine
         xslt.Transform("C:\Temp\neu\datatable_test2.xml", "C:\Temp\neu\xslt_transform_result.xml")
         'System.Diagnostics.Process.Start("")
 
-        Dim tsttt As New DataSet
+        Dim tsttt As New System.Data.DataSet
 
         tsttt.ReadXml("C:\Temp\neu\xslt.xml")
 
@@ -803,7 +810,7 @@ Public Class frmAutoBetEngine
         xslt.Load("C:\Temp\attempt\transformationsdefinition.xslt")
         xslt.Transform("C:\Temp\attempt\quelle.xml", "C:\Temp\attempt\ziel.xml")
 
-        Dim ds As New DataSet
+        Dim ds As New System.Data.DataSet
         ds.ReadXml("C:\Temp\AutoBetEngine\jsons-files\MarketCatalogue_Competition.xml")
 
         Dim ttt As New System.Windows.Forms.DataGrid
@@ -873,17 +880,40 @@ Public Class frmAutoBetEngine
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
 
-        MsgBox(TreeView2.Nodes.Count)
-
-        Dim k As TreeNode
-
-        For Each kk As TreeNode In TreeView2.Nodes
-
-            k = kk
-
-        Next
+        Dim dt = New System.Data.DataTable("veit")
+        dt.Columns.Add("eins")
+        dt.Columns.Add("zwei")
+        dt.Columns.Add("drei")
 
 
+
+        Dim dr As DataRow = dt.NewRow
+        dr(0) = 1
+        dr(1) = 2
+        dr(2) = 3
+
+        dt.Rows.Add(dr)
+
+        Dim dr1 As DataRow = dt.NewRow
+        dr1(0) = 11
+        dr1(1) = 12
+        dr1(2) = 13
+
+        dt.Rows.Add(dr1)
+
+        Dim ds As New System.Data.DataSet("dorit")
+        ds.Tables.Add(dt)
+
+        ReportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
+
+        Dim rds As New ReportDataSource("eins", dt)
+        'rds.Name = "dorit"
+        'rds.Value = ds.Tables(0)
+
+        ReportViewer1.LocalReport.DataSources.Clear()
+        ReportViewer1.LocalReport.DataSources.Add(rds)
+        ReportViewer1.LocalReport.ReportEmbeddedResource = "sharedProject.ReportViewer1.rdlc"
+        ReportViewer1.RefreshReport()
 
 
 
@@ -1073,6 +1103,10 @@ Public Class frmAutoBetEngine
     End Sub
 
     Private Sub TabPage2_Click(sender As Object, e As EventArgs) Handles TabPage2.Click
+
+    End Sub
+
+    Private Sub ReportViewer1_Load(sender As Object, e As EventArgs) Handles ReportViewer1.Load
 
     End Sub
 End Class
