@@ -59,6 +59,7 @@ Partial Class frmAutoBetEngine
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cboSort = New System.Windows.Forms.ComboBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.TreeView2 = New System.Windows.Forms.TreeView()
         Me.grbRollover = New System.Windows.Forms.GroupBox()
         Me.rbRN = New System.Windows.Forms.RadioButton()
         Me.rbRY = New System.Windows.Forms.RadioButton()
@@ -78,7 +79,6 @@ Partial Class frmAutoBetEngine
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.TreeView2 = New System.Windows.Forms.TreeView()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -459,6 +459,13 @@ Partial Class frmAutoBetEngine
         Me.TabPage2.Text = "Markets"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'TreeView2
+        '
+        Me.TreeView2.Location = New System.Drawing.Point(502, 283)
+        Me.TreeView2.Name = "TreeView2"
+        Me.TreeView2.Size = New System.Drawing.Size(568, 402)
+        Me.TreeView2.TabIndex = 32
+        '
         'grbRollover
         '
         Me.grbRollover.Controls.Add(Me.rbRN)
@@ -639,13 +646,6 @@ Partial Class frmAutoBetEngine
         Me.Button2.TabIndex = 28
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
-        '
-        'TreeView2
-        '
-        Me.TreeView2.Location = New System.Drawing.Point(502, 283)
-        Me.TreeView2.Name = "TreeView2"
-        Me.TreeView2.Size = New System.Drawing.Size(568, 402)
-        Me.TreeView2.TabIndex = 32
         '
         'frmAutoBetEngine
         '

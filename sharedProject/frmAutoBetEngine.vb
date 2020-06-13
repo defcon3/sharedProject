@@ -1020,8 +1020,7 @@ Public Class frmAutoBetEngine
             TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "crossMatching: " & le.crossMatching, .Tag = le.crossMatching})
             TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "runnersVoidable: " & le.runnersVoidable, .Tag = le.runnersVoidable})
             TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "Version: " & le.version, .Tag = le.version})
-            'TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "selectionId: " & le.runners(j).selectionId, .Tag = le.runners(j).selectionId})
-
+            ''TreeView2.Nodes(j).Nodes.Add()
 
             For Each ru In le.runners
                 'TreeView2.Nodes(j).Nodes.Add(New TreeNode With {.Text = "selectionId: " & le.runners(j).selectionId, .Tag = le.runners(j).selectionId})
