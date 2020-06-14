@@ -171,9 +171,9 @@ Public Class frmAutoBetEngine
 
 
         ''' neues Auswahlfenster für ListMarketCatalogue öffnen
-        Dim myNewListMarketCatalogue As New frmListMarketCatalogue
+        Dim myNewListMarketCatalogue As New Form
         Dim myNewlogWriter As New clsLogWriter
-        AddHandler myNewListMarketCatalogue.writeToLog, AddressOf myNewlogWriter.write_log
+        'AddHandler myNewListMarketCatalogue.writeToLog, AddressOf myNewlogWriter.write_log
 
         myNewListMarketCatalogue.ShowDialog()
         ''' das Auswahlfenster wieder schließen
@@ -192,7 +192,7 @@ Public Class frmAutoBetEngine
 
 
         Dim strg As System.String = ""
-        strg = serializeRequest(myNewListMarketCatalogue.myNewListMarketCatalogue)
+        ' strg = serializeRequest(myNewListMarketCatalogue.myNewListMarketCatalogue)
 
         Console.WriteLine(strg)
 
