@@ -22,6 +22,9 @@ Partial Class frmAutoBetEngine
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolStripComboBox1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -79,7 +82,7 @@ Partial Class frmAutoBetEngine
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -89,6 +92,7 @@ Partial Class frmAutoBetEngine
         Me.grbRollover.SuspendLayout()
         Me.grbVirtualize.SuspendLayout()
         Me.TabPage3.SuspendLayout()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -623,7 +627,7 @@ Partial Class frmAutoBetEngine
         '
         'TabPage3
         '
-        Me.TabPage3.Controls.Add(Me.ReportViewer1)
+        Me.TabPage3.Controls.Add(Me.Chart1)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
@@ -650,14 +654,21 @@ Partial Class frmAutoBetEngine
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'ReportViewer1
+        'Chart1
         '
-        Me.ReportViewer1.Location = New System.Drawing.Point(192, 31)
-        Me.ReportViewer1.Name = "ReportViewer1"
-        Me.ReportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Remote
-        Me.ReportViewer1.ServerReport.BearerToken = Nothing
-        Me.ReportViewer1.Size = New System.Drawing.Size(824, 365)
-        Me.ReportViewer1.TabIndex = 0
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
+        Me.Chart1.Location = New System.Drawing.Point(107, 65)
+        Me.Chart1.Name = "Chart1"
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Size = New System.Drawing.Size(542, 300)
+        Me.Chart1.TabIndex = 0
+        Me.Chart1.Text = "Chart1"
         '
         'frmAutoBetEngine
         '
@@ -688,6 +699,7 @@ Partial Class frmAutoBetEngine
         Me.grbVirtualize.ResumeLayout(False)
         Me.grbVirtualize.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -750,5 +762,5 @@ Partial Class frmAutoBetEngine
     Friend WithEvents rbRN As RadioButton
     Friend WithEvents rbRY As RadioButton
     Friend WithEvents TreeView2 As TreeView
-    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
 End Class
