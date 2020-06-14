@@ -928,6 +928,7 @@ Public Class frmAutoBetEngine
         Next
 
         For Each itm As System.Windows.Forms.ListViewItem In ListView2.Items
+
             If itm.Checked Then
                 MsgBox(itm.Tag)
             End If
