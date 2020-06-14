@@ -296,8 +296,7 @@ Public Class frmAutoBetEngine
 
 
 
-        Me.ReportViewer1.RefreshReport()
-        Me.ReportViewer1.RefreshReport()
+
     End Sub
 
 
@@ -842,7 +841,7 @@ Public Class frmAutoBetEngine
         Dim newxml As New Xml.XmlDocument
 
 
-        Dim xmlnode As Xml.XmlNode
+        'Dim xmlnode As Xml.XmlNode
 
 
         Dim sb As New StringBuilder
@@ -904,17 +903,20 @@ Public Class frmAutoBetEngine
         Dim ds As New System.Data.DataSet("dorit")
         ds.Tables.Add(dt)
 
-        ReportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
+        Chart1.DataSource = dt
 
-        Dim rds As New ReportDataSource("eins", dt)
+
+        'ReportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
+
+        'Dim rds As New ReportDataSource("eins", dt)
         'rds.Name = "dorit"
         'rds.Value = ds.Tables(0)
 
-        ReportViewer1.LocalReport.DataSources.Clear()
-        ReportViewer1.LocalReport.DataSources.Add(rds)
-        ReportViewer1.LocalReport.ReportPath = "temp.rdcl"
+        'ReportViewer1.LocalReport.DataSources.Clear()
+        'ReportViewer1.LocalReport.DataSources.Add(rds)
+        'ReportViewer1.LocalReport.ReportPath = "temp.rdcl"
         'ReportViewer1.LocalReport.ReportEmbeddedResource = "sharedProject.ReportViewer1.rdlc"
-        ReportViewer1.RefreshReport()
+        'ReportViewer1.RefreshReport()
 
 
 
@@ -1107,7 +1109,4 @@ Public Class frmAutoBetEngine
 
     End Sub
 
-    Private Sub ReportViewer1_Load(sender As Object, e As EventArgs) Handles ReportViewer1.Load
-
-    End Sub
 End Class
