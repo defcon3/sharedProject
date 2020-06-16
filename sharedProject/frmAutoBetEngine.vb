@@ -22,6 +22,7 @@ Imports Microsoft.ReportingServices.Diagnostics.Internal
 Imports Microsoft.Reporting.WinForms
 Imports System.Web.UI
 Imports System.Xml
+Imports System.Linq.Expressions
 
 Public Class frmAutoBetEngine
     Implements ILogWriter
@@ -1009,12 +1010,17 @@ Public Class frmAutoBetEngine
 
         txtAnswerstring.Text = betreq.Answerstring
 
+        Dim mm As New ABEresponses.MarketBook
 
-        Dim ff As ABEresponses.MarketBook = dtvalue.result(0)
-
+        'Dim ff As ABEresponses.MarketBook = dtvalue.result(0)
         TreeView2.Nodes.Clear()
-        TreeView2.Nodes.Add(ff.getnode)
-        'Dim t = 
+        For Each mbr As ABEresponses.MarketBook In dtvalue.result
+            TreeView2.Nodes.Add(mbr.getnode)
+            mm = mbr
+        Next
+
+        DataGridView1.DataSource = mm.runners(0).gettable
+
 
 
 

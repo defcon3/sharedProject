@@ -22,9 +22,9 @@ Partial Class frmAutoBetEngine
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolStripComboBox1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -80,9 +80,10 @@ Partial Class frmAutoBetEngine
         Me.Button8 = New System.Windows.Forms.Button()
         Me.ListBox2 = New System.Windows.Forms.ListBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -93,6 +94,7 @@ Partial Class frmAutoBetEngine
         Me.grbVirtualize.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -444,6 +446,7 @@ Partial Class frmAutoBetEngine
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.DataGridView1)
         Me.TabPage2.Controls.Add(Me.TreeView2)
         Me.TabPage2.Controls.Add(Me.grbRollover)
         Me.TabPage2.Controls.Add(Me.grbVirtualize)
@@ -636,6 +639,22 @@ Partial Class frmAutoBetEngine
         Me.TabPage3.Text = "TabPage3"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
+        'Chart1
+        '
+        ChartArea2.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea2)
+        Legend2.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend2)
+        Me.Chart1.Location = New System.Drawing.Point(107, 65)
+        Me.Chart1.Name = "Chart1"
+        Series2.ChartArea = "ChartArea1"
+        Series2.Legend = "Legend1"
+        Series2.Name = "Series1"
+        Me.Chart1.Series.Add(Series2)
+        Me.Chart1.Size = New System.Drawing.Size(542, 300)
+        Me.Chart1.TabIndex = 0
+        Me.Chart1.Text = "Chart1"
+        '
         'Button7
         '
         Me.Button7.Location = New System.Drawing.Point(348, 44)
@@ -654,21 +673,13 @@ Partial Class frmAutoBetEngine
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'Chart1
+        'DataGridView1
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
-        Me.Chart1.Location = New System.Drawing.Point(107, 65)
-        Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Size = New System.Drawing.Size(542, 300)
-        Me.Chart1.TabIndex = 0
-        Me.Chart1.Text = "Chart1"
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(23, 378)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(439, 206)
+        Me.DataGridView1.TabIndex = 29
         '
         'frmAutoBetEngine
         '
@@ -700,6 +711,7 @@ Partial Class frmAutoBetEngine
         Me.grbVirtualize.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -763,4 +775,5 @@ Partial Class frmAutoBetEngine
     Friend WithEvents rbRY As RadioButton
     Friend WithEvents TreeView2 As TreeView
     Friend WithEvents Chart1 As DataVisualization.Charting.Chart
+    Friend WithEvents DataGridView1 As DataGridView
 End Class
