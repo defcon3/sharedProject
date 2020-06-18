@@ -1019,10 +1019,12 @@ Public Class frmAutoBetEngine
             mm = mbr
         Next
 
-        DataGridView1.DataSource = mm.runners(0).gettable
+        DataGridView1.DataSource = mm.gettable
 
 
-
+        For Each col As DataColumn In mm.gettable.Columns
+            Debug.Print(col.ColumnName & " - " & col.DataType.ToString)
+        Next
 
     End Sub
 
