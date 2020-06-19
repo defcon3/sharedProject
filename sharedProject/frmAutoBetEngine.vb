@@ -1022,6 +1022,9 @@ Public Class frmAutoBetEngine
         DataGridView1.DataSource = mm.gettable
 
 
+
+
+
         For Each col As DataColumn In mm.gettable.Columns
             Debug.Print(col.ColumnName & " - " & col.DataType.ToString)
         Next
