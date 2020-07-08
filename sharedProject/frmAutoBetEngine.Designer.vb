@@ -31,7 +31,6 @@ Partial Class frmAutoBetEngine
         Me.EinstellungenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConnectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnListMarketCatalogue = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -135,15 +134,6 @@ Partial Class frmAutoBetEngine
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(63, 20)
         Me.ToolStripMenuItem1.Text = "Logging"
-        '
-        'btnListMarketCatalogue
-        '
-        Me.btnListMarketCatalogue.Location = New System.Drawing.Point(12, 44)
-        Me.btnListMarketCatalogue.Name = "btnListMarketCatalogue"
-        Me.btnListMarketCatalogue.Size = New System.Drawing.Size(184, 23)
-        Me.btnListMarketCatalogue.TabIndex = 14
-        Me.btnListMarketCatalogue.Text = "ListMarketCatalogue"
-        Me.btnListMarketCatalogue.UseVisualStyleBackColor = True
         '
         'StatusStrip1
         '
@@ -690,7 +680,6 @@ Partial Class frmAutoBetEngine
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.StatusStrip1)
-        Me.Controls.Add(Me.btnListMarketCatalogue)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Name = "frmAutoBetEngine"
         Me.Text = "AutoBetEngine"
@@ -723,7 +712,6 @@ Partial Class frmAutoBetEngine
     Friend WithEvents EinstellungenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ConnectionToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents btnListMarketCatalogue As Button
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
     Friend WithEvents TabControl1 As TabControl

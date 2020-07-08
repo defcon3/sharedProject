@@ -23,6 +23,7 @@ Imports Microsoft.Reporting.WinForms
 Imports System.Web.UI
 Imports System.Xml
 Imports System.Linq.Expressions
+Imports System.Data.SqlClient
 
 Public Class frmAutoBetEngine
     Implements ILogWriter
@@ -162,115 +163,6 @@ Public Class frmAutoBetEngine
 
     End Function
 
-
-    ''' <summary>
-    ''' Button ListMarketCatalogue
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub btnListMarketCatalogue_Click(sender As Object, e As EventArgs) Handles btnListMarketCatalogue.Click
-
-
-        ''' neues Auswahlfenster für ListMarketCatalogue öffnen
-        Dim myNewListMarketCatalogue As New Form
-        Dim myNewlogWriter As New clsLogWriter
-        'AddHandler myNewListMarketCatalogue.writeToLog, AddressOf myNewlogWriter.write_log
-
-        myNewListMarketCatalogue.ShowDialog()
-        ''' das Auswahlfenster wieder schließen
-
-
-        Dim f3j As String = "{@method@:@SportsAPING/v1.0/listMarketCatalogue@,@params@:{@filter@:{@eventTypeIds@:[],@marketCountries@:[],@marketTypeCodes@:[],@marketStartTime@:{@from@:null,@to@:null},@eventIds@:[]},@sort@:@FIRST_TO_START@,@maxResults@:@20@,@marketProjection@:[]},@jsonrpc@:@2.0@,@id@:1}".Replace("@", Chr(34))
-
-
-
-
-
-        ' Dim fj As New clsBetConnection(f3j)
-        'Stop
-
-
-
-
-        Dim strg As System.String = ""
-        ' strg = serializeRequest(myNewListMarketCatalogue.myNewListMarketCatalogue)
-
-        Console.WriteLine(strg)
-
-        Dim answer As String
-        answer = SendSportsReq(strg)
-
-        Dim xmlDoc As New Xml.XmlDocument
-        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(answer, "wurzel")
-
-        'xmlDoc.Save("C:\Temp\AutoBetEngine\Responses\Market_Catalogue_" & DateTime.Now.Ticks & ".xml")
-
-
-
-
-        Dim uu As bfObjects.structMarketCatalogueResponse
-
-
-
-        'Dim mc As New MongoClient("mongodb://192.168.178.44:27017")  - das ist der derzeit nicht laufende server
-        Dim mc As New MongoClient("mongodb://127.0.0.1:27017")
-
-
-        Dim md As IMongoDatabase = mc.GetDatabase("neue")
-
-
-
-        Dim t As BsonDocument = MongoDB.Bson.BsonDocument.Parse(answer)
-
-        Dim userCollection As IMongoCollection(Of BsonDocument) = md.GetCollection(Of BsonDocument)("ljkl")
-
-        Try
-            userCollection.InsertOne(t)
-        Catch ex As Exception
-            Stop
-        End Try
-
-
-        'Dim dtvalue As New clsMarketCatalogue
-        Dim dtvalue As New bfObjects.clsMarketBookResponse
-        'dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of clsMarketCatalogue)(answer)
-        dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(answer)
-
-        Dim uue = dtvalue.result.ToArray()
-
-
-
-        Dim www As bfObjects.clsMarketBookResponse = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(answer)
-
-        Dim asdf = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.structMarketCatalogueResponse)(answer)
-
-
-        Dim dorit As bfObjects.structMarketCatalogueResponse.structMarketCatalogue.structCompetition
-        dorit.id = 9
-
-
-
-
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs)
-
-
-        Dim r As New clsBetConnection("afd")
-
-        r.sendeAnfrage()
-
-
-        Dim m As New clsJsonToDatatable
-        m.zuParsenderString = r.Answerstring
-
-
-        m.funcParseString(r.Requeststring, r.Answerstring)
-
-
-
-    End Sub
-
     Private Sub frmAutoBetEngine_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.WindowState = FormWindowState.Maximized
         Me.TabControl1.Width = Me.Width - 88
@@ -300,239 +192,6 @@ Public Class frmAutoBetEngine
 
     End Sub
 
-
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs)
-        Dim fileReader As String
-        fileReader = My.Computer.FileSystem.ReadAllText("C:\Temp\Text1.json",
-          System.Text.Encoding.UTF8)
-
-
-
-        Dim xmlDoc As New Xml.XmlDocument
-        xmlDoc = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(fileReader, "wurzel")
-
-        xmlDoc.Save("c:\temp\aaa.xml")
-        MsgBox(xmlDoc.Schemas.Schemas.ToString())
-
-
-
-
-
-        Dim bytes() As Byte
-
-
-
-
-        Dim ms As New System.IO.MemoryStream
-        Dim vvv As New System.Data.DataTable("wurzel")
-
-        xmlDoc.Save(ms)
-
-        ms.Position = 0
-
-        Dim t6 As New System.Data.DataTable
-        '   t6.ReadXml(ms)
-
-
-        bytes = ms.ToArray
-
-        Dim gg = bytes.ToList
-
-
-
-
-        Dim jsadf = ms.ToArray
-
-        vvv.WriteXml(ms)
-
-        ms.Position = 0
-
-
-
-
-        'Using (memStream = New MemoryStream(Convert.FromBase64String(extractedBaseString)))
-        '    xmlDoc.Load(memStream)
-
-        'End Using
-
-
-
-
-
-
-
-
-        Dim xmlreader As Xml.XmlNodeReader
-
-        xmlreader = New Xml.XmlNodeReader(xmlDoc)
-        Dim dataset As System.Data.DataSet
-        dataset = New System.Data.DataSet()
-        dataset.ReadXml(xmlreader)
-
-        Dim dta As New System.Data.DataTable
-        dta.ReadXml(xmlreader)
-
-
-        dataset.Relations.Clear()
-
-        Dim rr As New System.Xml.XmlDataDocument(dataset)
-
-
-
-        'Dim xmlDoc As XmlDataDocument = New XmlDataDocument(dataset)
-        'xmlDoc.Load("XMLDocument.xml")
-
-
-
-
-        Dim dss As New System.Data.DataSet
-        dss.GetXml()
-
-
-
-        'DataGrid1.DataSource = dataset
-
-        'dataset.WriteXmlSchema("C:\temp\schema.xml")
-
-
-        Dim dt2 = New System.Data.DataTable("wurzel")
-        dt2.ReadXmlSchema("C:\temp\schema.xml")
-        dt2.ReadXml("c:\temp\aaa.xml")
-
-
-        Dim t As New DataViewManager(dataset)
-
-        'DataGridView3.DataSource = dt2
-
-
-        Dim ds As New System.Data.DataSet
-
-
-        Dim dt As DataTable
-
-        ' ds = Newtonsoft.Json.JsonConvert.DeserializeObject(fileReader, GetType(DataSet))
-
-
-
-        '        DataSet DataSet = JsonConvert.DeserializeObject < DataSet > (json);
-
-        'DataTable DataTable = DataSet.Tables["Table1"];
-
-        'Console.WriteLine(DataTable.Rows.Count);
-        '// 2
-
-        'foreach(DataRow row In dataTable.Rows)
-        '{
-        '    Console.WriteLine(row["id"] + " - " + row["item"]);
-
-
-    End Sub
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs)
-
-
-        Dim b As New clsJsonToDatatable
-
-
-        ' das xml welches gelesen werden soll
-
-        ' das schema welches die struktur der zieltabelle erstellt
-
-        ' die transformation welches das ausgangs-xml in die struktur der zieltabelle ueberfuehrt
-
-        ' anpimmeln des xml's in die tabelle mittles readxml
-
-
-        Exit Sub
-
-        Dim rr As New System.Data.DataTable
-        rr.ReadXmlSchema("C:\Temp\AutoBetEngine\Schemas\auto_generated_market_catalogue.xsd")
-
-
-
-        Dim zu As New System.Data.DataTable
-
-        With zu
-
-            .Columns.Add("jsonrpc", GetType(System.String))
-            .Columns.Add("marketId", GetType(System.String))
-            .Columns.Add("marketName", GetType(System.String))
-            .Columns.Add("totalMatched", GetType(System.Decimal))
-            .Columns.Add("selectionId", GetType(System.Int64))
-            .Columns.Add("runnerName", GetType(System.String))
-            .Columns.Add("handicap", GetType(System.Decimal))
-            .Columns.Add("sortPriority", GetType(System.Int64))
-            .Columns.Add("id", GetType(System.Int64))
-            .Columns.Add("Name", GetType(System.String))
-            .TableName = "MarketCatalogue"
-        End With
-
-
-        zu.WriteXmlSchema("C:\Temp\AutoBetEngine\Schemas\auto_generated_market_catalogue.xsd")
-
-
-        zu.ReadXmlSchema("C:\Temp\neu\xslt_schema.xml")
-
-        zu.ReadXmlSchema("C:\Temp\AutoBetEngine\Schemas\MarketCatalogue.xsd")
-
-        Stop
-
-
-
-        Dim ds1 As New System.Data.DataSet
-
-        Dim xmlfile As XDocument = XDocument.Load("C:\temp\aaa.xml")
-
-        Dim reader As Xml.XmlReader = xmlfile.CreateReader
-
-        ds1.ReadXml(reader)
-
-        Dim xslt As New Xml.Xsl.XslCompiledTransform()
-        xslt.Load("C:\Temp\neu\datatable_test2.xsl")
-        xslt.Transform("C:\Temp\neu\datatable_test2.xml", "C:\Temp\neu\xslt_transform_result.xml")
-        'System.Diagnostics.Process.Start("")
-
-        Dim tsttt As New System.Data.DataSet
-
-        tsttt.ReadXml("C:\Temp\neu\xslt.xml")
-
-
-
-
-
-
-
-        Dim t2 As Xml.XmlReader
-
-
-        Dim tttt As New System.Data.DataTable("runners")
-        'tttt.Columns.Add(getcol("dorit"))
-        'tttt.Columns.Add(getcol("veit"))
-        'tttt.Columns.Add("tyler")
-
-
-        tttt.ReadXmlSchema("C:\Temp\neu\xslt_schema.xml")
-
-        tttt.ReadXml("C:\Temp\neu\xslt.xml")
-
-        'tttt.WriteXmlSchema("C:\Temp\neu\xslt_schema.xml")
-
-
-
-
-        'marketId
-        'marketName
-        'totalMatched
-        'id
-        'Name
-        'selectionId
-        'runnerName
-        'handicap
-        'sortPriority
-
-
-    End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
 
@@ -878,51 +537,6 @@ Public Class frmAutoBetEngine
     End Sub
 
 
-    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
-
-        Dim dt = New System.Data.DataTable("veit")
-        dt.Columns.Add("eins")
-        dt.Columns.Add("zwei")
-        dt.Columns.Add("drei")
-
-
-
-        Dim dr As DataRow = dt.NewRow
-        dr(0) = 1
-        dr(1) = 2
-        dr(2) = 3
-
-        dt.Rows.Add(dr)
-
-        Dim dr1 As DataRow = dt.NewRow
-        dr1(0) = 11
-        dr1(1) = 12
-        dr1(2) = 13
-
-        dt.Rows.Add(dr1)
-
-        Dim ds As New System.Data.DataSet("dorit")
-        ds.Tables.Add(dt)
-
-        Chart1.DataSource = dt
-
-
-        'ReportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
-
-        'Dim rds As New ReportDataSource("eins", dt)
-        'rds.Name = "dorit"
-        'rds.Value = ds.Tables(0)
-
-        'ReportViewer1.LocalReport.DataSources.Clear()
-        'ReportViewer1.LocalReport.DataSources.Add(rds)
-        'ReportViewer1.LocalReport.ReportPath = "temp.rdcl"
-        'ReportViewer1.LocalReport.ReportEmbeddedResource = "sharedProject.ReportViewer1.rdlc"
-        'ReportViewer1.RefreshReport()
-
-
-
-    End Sub
-
     Private Sub ListView2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView2.SelectedIndexChanged
         For i As Integer = 0 To ListView2.Items.Count() - 1 Step 1
             If ListView2.Items(i).Selected = True Then
@@ -985,7 +599,7 @@ Public Class frmAutoBetEngine
 
         'matchprojection abfragen
         For Each i In clbMarkets_MatchProjection.CheckedItems
-            'myNewListMarketBook.params.matchProjection.Add(i.ToString)
+
         Next
 
         Dim requeststring As System.String = ""
@@ -1021,21 +635,20 @@ Public Class frmAutoBetEngine
 
         DataGridView1.DataSource = mm.gettable
 
+        Using connection As New SqlConnection("Server=158.181.48.94; Database=dbdata; User=326773; Password=" & getSqlServerPasswort())
+
+            Using SqlBulkCopy As New SqlBulkCopy(connection)
+
+                SqlBulkCopy.DestinationTableName = "tabMarketBook"
+
+                connection.Open()
+                SqlBulkCopy.WriteToServer(mm.gettable)
+                connection.Close()
+            End Using
+
+        End Using
 
 
-
-
-        For Each col As DataColumn In mm.gettable.Columns
-            Debug.Print(col.ColumnName & " - " & col.DataType.ToString)
-        Next
-
-    End Sub
-
-    Private Sub CheckedListBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles clbMarkets_MatchProjection.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub TabPage2_Click(sender As Object, e As EventArgs) Handles TabPage2.Click
 
     End Sub
 

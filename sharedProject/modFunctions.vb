@@ -34,6 +34,17 @@
 
     End Function
 
+    Public Function getSqlServerPasswort() As String
+        Dim password As System.String = ""
+
+        Dim fileReader As System.IO.StreamReader
+        fileReader = My.Computer.FileSystem.OpenTextFileReader("C:\Temp\AutoBetEngine\Settings\SQLServerPassword.txt")
+        password = fileReader.ReadLine()
+
+        Return password
+    End Function
+
+
 
 End Module
 
