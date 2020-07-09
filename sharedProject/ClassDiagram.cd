@@ -39,7 +39,7 @@
   <Class Name="sharedProject.frmAutoBetEngine" Collapsed="true">
     <Position X="11.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAQgCFGCAAEAAAKGAQjBCFCAUfAh6AJAAgQFCBIA=</HashCode>
+      <HashCode>AQAAAQAiFGGAgEAEQCCD1jtCBCAEbAZqgMAihwNCgAA=</HashCode>
       <FileName>frmAutoBetEngine.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -49,13 +49,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAIARECAAAIAAAACAEBACAAAQYAAACIAgEAAAAAA=</HashCode>
       <FileName>frmConnection.vb</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="sharedProject.frmListMarketCatalogue" Collapsed="true">
-    <Position X="6.25" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAgAECAgAEAAIIGAAgACAAAAQAAAAIAA1AACAIA=</HashCode>
-      <FileName>frmListMarketCatalogue.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="sharedProject.frmLog" Collapsed="true">
@@ -101,6 +94,28 @@
       <FileName>clsJsonToDatatable.vb</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="sharedProject.clsAutoRequester">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="sharedProject.clsAutoRequester.enumstartstop" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>clsAutoRequester.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="sharedProject.clsAutoRequester.clsAnfragestring" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>clsAutoRequester.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAABAAACAAAAAEAIBAAAAQAAAAgAAAAgAAAQACAAE=</HashCode>
+      <FileName>clsAutoRequester.vb</FileName>
+    </TypeIdentifier>
+  </Class>
   <Enum Name="sharedProject.enumRequest">
     <Position X="0.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
@@ -117,7 +132,7 @@
   <Module Name="sharedProject.modFunctions" Collapsed="true">
     <Position X="6.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAAAAAAAAAABAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAEAAAAAAAAAABAAABCAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>modFunctions.vb</FileName>
     </TypeIdentifier>
   </Module>
