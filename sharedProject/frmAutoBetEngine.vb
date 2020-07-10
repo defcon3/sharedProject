@@ -558,6 +558,9 @@ Public Class frmAutoBetEngine
 
         txtAnswerstring.Text = betreq.Answerstring
 
+
+
+
         Dim mm As New ABEresponses.MarketBook
 
         'Dim ff As ABEresponses.MarketBook = dtvalue.result(0)
@@ -569,21 +572,69 @@ Public Class frmAutoBetEngine
 
         DataGridView1.DataSource = mm.gettable
 
-        Using connection As New SqlConnection("Server=158.181.48.94; Database=dbdata; User=326773; Password=" & getSqlServerPasswort())
+        'Using connection As New SqlConnection("Server=158.181.48.94; Database=dbdata; User=326773; Password=" & getSqlServerPasswort())
 
-            Using SqlBulkCopy As New SqlBulkCopy(connection)
+        '    Using SqlBulkCopy As New SqlBulkCopy(connection)
 
-                SqlBulkCopy.DestinationTableName = "tabMarketBook"
+        '        SqlBulkCopy.DestinationTableName = "tabMarketBook"
 
-                connection.Open()
-                SqlBulkCopy.WriteToServer(mm.gettable)
-                connection.Close()
-            End Using
+        '        connection.Open()
+        '        SqlBulkCopy.WriteToServer(mm.gettable)
+        '        connection.Close()
+        '    End Using
 
-        End Using
+        'End Using
+
 
 
 
     End Sub
 
+    Property col As New Collection
+    Property listOfClsAutoRequester As New List(Of clsAutoRequester)
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        'es wird eine instanz gestartet mit dem string aus dem mittleren steuerelement gestertet und in  der requesterklasse gestartet und diese wird in eine liste gepackt.
+        'diese liste ist die grundlage für das listview steuerelement
+        Dim anzahlListviewElemente As String = ListView4.Items.Count.ToString
+        Dim i As Integer
+
+        col.Add(txtMarkets.Text, anzahlListviewElemente)
+
+        ListView4.Items.Clear()
+
+        Dim lvitem As System.Windows.Forms.ListViewItem
+
+        For i = 0 To col.Count - 1
+            lvitem = New System.Windows.Forms.ListViewItem
+            lvitem.Text = i
+            lvitem.SubItems.Add(txtMarkets.Text)
+            lvitem.SubItems.Add("tabMarketBook")
+            ListView4.Items.Add(lvitem)
+        Next
+
+        For Each c As clsAutoRequester In listOfClsAutoRequester
+            c.StartStopp = clsAutoRequester.enumstartstop.stopp
+        Next
+
+        listOfClsAutoRequester = New List(Of clsAutoRequester)
+
+        Dim m As New clsAutoRequester
+
+        For j = 0 To ListView4.Items.Count - 1
+
+            m = New clsAutoRequester
+            m.add(ListView4.Items(j).SubItems(1).Text, ListView4.Items(j).SubItems(2).Text)
+            m.StartStopp = clsAutoRequester.enumstartstop.start
+            listOfClsAutoRequester.Add(m)
+
+        Next
+
+
+
+
+
+
+
+
+    End Sub
 End Class

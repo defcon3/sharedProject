@@ -83,6 +83,11 @@ Partial Class frmAutoBetEngine
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button9 = New System.Windows.Forms.Button()
+        Me.ListView4 = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -101,7 +106,7 @@ Partial Class frmAutoBetEngine
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripComboBox1, Me.LoginToolStripMenuItem, Me.EinstellungenToolStripMenuItem, Me.ToolStripMenuItem1})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1117, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1414, 24)
         Me.MenuStrip1.TabIndex = 12
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -140,7 +145,7 @@ Partial Class frmAutoBetEngine
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 840)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1117, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1414, 22)
         Me.StatusStrip1.TabIndex = 16
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -158,7 +163,7 @@ Partial Class frmAutoBetEngine
         Me.TabControl1.Location = New System.Drawing.Point(12, 88)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1084, 717)
+        Me.TabControl1.Size = New System.Drawing.Size(1363, 717)
         Me.TabControl1.TabIndex = 26
         '
         'pageMarketCatalogue
@@ -189,7 +194,7 @@ Partial Class frmAutoBetEngine
         Me.pageMarketCatalogue.Location = New System.Drawing.Point(4, 22)
         Me.pageMarketCatalogue.Name = "pageMarketCatalogue"
         Me.pageMarketCatalogue.Padding = New System.Windows.Forms.Padding(3)
-        Me.pageMarketCatalogue.Size = New System.Drawing.Size(1076, 691)
+        Me.pageMarketCatalogue.Size = New System.Drawing.Size(1355, 691)
         Me.pageMarketCatalogue.TabIndex = 0
         Me.pageMarketCatalogue.Text = "MarketCatalogue"
         Me.pageMarketCatalogue.UseVisualStyleBackColor = True
@@ -436,6 +441,8 @@ Partial Class frmAutoBetEngine
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.ListView4)
+        Me.TabPage2.Controls.Add(Me.Button9)
         Me.TabPage2.Controls.Add(Me.DataGridView1)
         Me.TabPage2.Controls.Add(Me.TreeView2)
         Me.TabPage2.Controls.Add(Me.grbRollover)
@@ -453,7 +460,7 @@ Partial Class frmAutoBetEngine
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1076, 691)
+        Me.TabPage2.Size = New System.Drawing.Size(1355, 691)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Markets"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -671,11 +678,43 @@ Partial Class frmAutoBetEngine
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'Button9
+        '
+        Me.Button9.Location = New System.Drawing.Point(1101, 86)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(75, 23)
+        Me.Button9.TabIndex = 33
+        Me.Button9.Text = "Button9"
+        Me.Button9.UseVisualStyleBackColor = True
+        '
+        'ListView4
+        '
+        Me.ListView4.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
+        Me.ListView4.HideSelection = False
+        Me.ListView4.Location = New System.Drawing.Point(1101, 132)
+        Me.ListView4.Name = "ListView4"
+        Me.ListView4.Size = New System.Drawing.Size(248, 97)
+        Me.ListView4.TabIndex = 34
+        Me.ListView4.UseCompatibleStateImageBehavior = False
+        Me.ListView4.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "ID"
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Requeststring"
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Zieltabelle"
+        '
         'frmAutoBetEngine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1117, 862)
+        Me.ClientSize = New System.Drawing.Size(1414, 862)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.TabControl1)
@@ -764,4 +803,9 @@ Partial Class frmAutoBetEngine
     Friend WithEvents TreeView2 As TreeView
     Friend WithEvents Chart1 As DataVisualization.Charting.Chart
     Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Button9 As Button
+    Friend WithEvents ListView4 As ListView
+    Friend WithEvents ColumnHeader1 As ColumnHeader
+    Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents ColumnHeader3 As ColumnHeader
 End Class
