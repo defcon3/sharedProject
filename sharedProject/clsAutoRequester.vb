@@ -8,6 +8,7 @@ Public Class clsAutoRequester
     Private _i As Integer = 0
     Private _dread As System.Threading.Thread
     Event undlos()
+    Private _tabellenname As String
 
     Public WriteOnly Property StartStopp As enumstartstop
         Set(value As enumstartstop)
@@ -44,6 +45,7 @@ Public Class clsAutoRequester
         Dim newClsAnfragesting As New clsAnfragestring
         newClsAnfragesting.Anfragestring = Anfragestring
         newClsAnfragesting.Tabellenname = Tabellenname
+        _tabellenname = Tabellenname
         _col.Add(newClsAnfragesting, _i)
         _i += 1
         str = Anfragestring
@@ -63,7 +65,7 @@ Public Class clsAutoRequester
 
                 Do
                     _datenAbfragen()
-                    _writeToDatabase(tabelle, "tabMarketBook")
+                    _writeToDatabase(tabelle, _tabellenname)
                     Application.DoEvents()
                     Threading.Thread.Sleep(New TimeSpan(0, 0, 1))
                 Loop
