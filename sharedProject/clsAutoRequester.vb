@@ -7,8 +7,11 @@ Public Class clsAutoRequester
     Private _intervall As Int16 = 1
     Private _i As Integer = 0
     Private _dread As System.Threading.Thread
-    Event undlos()
     Private _tabellenname As String
+    Private tabelle As DataTable
+    Private str As String
+
+    Event undlos()
 
     Public WriteOnly Property StartStopp As enumstartstop
         Set(value As enumstartstop)
@@ -49,10 +52,6 @@ Public Class clsAutoRequester
         _col.Add(newClsAnfragesting, _i)
         _i += 1
         str = Anfragestring
-    End Sub
-
-    Public Sub remove(ByVal Listennummer As Int16)
-        _col.Remove(Listennummer)
     End Sub
 
     Private Sub _funcRequest() Handles Me.undlos
@@ -108,9 +107,6 @@ Public Class clsAutoRequester
 
     End Sub
 
-    Private tabelle As DataTable
-    Private str As String
-
 
     Private Sub _datenAbfragen()
         Dim betreq As New clsBetConnection(str)
@@ -120,10 +116,24 @@ Public Class clsAutoRequester
 
         'MsgBox(betreq.Answerstring)
 
+        Dim dtvalue = New Object
 
-        Dim dtvalue = New bfObjects.clsMarketBookResponse
+        Select Case _tabellenname
+            Case "tabMarketBook"
 
-        dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(betreq.Answerstring)
+
+                dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(betreq.Answerstring)
+
+            Case "tabMarketCatalogue"
+
+                dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketCatalogueResponse)(betreq.Answerstring)
+
+
+
+        End Select
+
+
+
         tabelle = dtvalue.result(0).gettable
 
     End Sub

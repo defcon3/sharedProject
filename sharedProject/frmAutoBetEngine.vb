@@ -369,6 +369,41 @@ Public Class frmAutoBetEngine
         'tn.Text = "klsjdf"
         'TreeView1.Nodes.Add(tn)
 
+        Dim t4 As New System.Data.DataTable
+
+
+        Dim u = 0
+
+        t4 = dtvalue.result(0).gettable
+
+        If dtvalue.result.Count > 1 Then
+            For u = 1 To dtvalue.result.Count - 1
+                't4.AsEnumerable.Union().CopyToDataTable(dtvalue.result(u).gettable)
+            Next
+        End If
+
+
+
+        If dtvalue.result.Count > 0 Then
+            DataGridView2.DataSource = dtvalue.result(6).gettable()
+        End If
+
+        'For Each col As DataColumn In DataGridView2.DataSource.columns
+        '    Debug.Print(col.ColumnName.ToString & "|" & col.DataType.ToString)
+        'Next
+
+
+        Dim m As New clsAutoRequester
+
+
+        m = New clsAutoRequester
+        m.add(requeststring, "tabMarketCatalogue")
+        m.StartStopp = clsAutoRequester.enumstartstop.start
+        listOfClsAutoRequester.Add(m)
+        'Threading.Thread.Sleep(10000)
+        'm.StartStopp = clsAutoRequester.enumstartstop.stopp
+
+
 
 
         Dim j As Integer = 0
@@ -377,8 +412,6 @@ Public Class frmAutoBetEngine
         Dim ts = DateTime.UtcNow
 
         TreeView1.Nodes.Clear()
-
-        Dim md As New ABEresponses.MarketDescription
 
 
         For Each le As ABEresponses.MarketCatalogue In dtvalue.result
