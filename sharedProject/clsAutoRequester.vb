@@ -88,6 +88,11 @@ Public Class clsAutoRequester
 
     Private Sub _writeToDatabase(ByVal dt As System.Data.DataTable, ByVal tabellenname As String)
 
+        'For Each col As DataColumn In dt.Columns
+        '    Debug.Print(col.Ordinal.ToString & " - " & col.ColumnName & " - " & col.DataType.ToString)
+        'Next
+
+
         If Not dt Is Nothing Then
 
             Using connection As New SqlConnection("Server=158.181.48.94; Database=dbdata; User=326773; Password=" & getSqlServerPasswort())
@@ -97,7 +102,12 @@ Public Class clsAutoRequester
                     SqlBulkCopy.DestinationTableName = tabellenname
 
                     connection.Open()
-                    SqlBulkCopy.WriteToServer(dt)
+                    Try
+                        SqlBulkCopy.WriteToServer(dt)
+                    Catch ex As Exception
+                        Debug.Print(ex.Message)
+                    End Try
+
                     connection.Close()
                 End Using
 
