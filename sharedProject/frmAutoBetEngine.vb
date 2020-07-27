@@ -353,145 +353,39 @@ Public Class frmAutoBetEngine
 
 
         Dim betreq As New clsBetConnection(requeststring)
-
-        ''' sendet die Anfrage an den Server
         betreq.sendeAnfrage()
 
-        'MsgBox(betreq.Answerstring)
+
 
 
         Dim dtvalue = New bfObjects.clsMarketCatalogueResponse
         dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketCatalogueResponse)(betreq.Answerstring)
 
-        'MsgBox(betreq.Answerstring)
-
-        'Dim tn As TreeNode = New TreeNode()
-        'tn.Text = "klsjdf"
-        'TreeView1.Nodes.Add(tn)
 
         Dim t4 As New System.Data.DataTable
 
-
-        Dim u = 0
-
-        t4 = dtvalue.result(0).gettable
-
-        If dtvalue.result.Count > 1 Then
-            For u = 1 To dtvalue.result.Count - 1
-                't4.AsEnumerable.Union().CopyToDataTable(dtvalue.result(u).gettable)
-            Next
-        End If
+        dtvalue.gettables()
+        t4 = dtvalue.tabs
 
 
 
-        If dtvalue.result.Count > 0 Then
-            DataGridView2.DataSource = dtvalue.result(6).gettable()
-        End If
+        TreeView1.Nodes.Clear()
 
-        'For Each col As DataColumn In DataGridView2.DataSource.columns
-        '    Debug.Print(col.ColumnName.ToString & "|" & col.DataType.ToString)
-        'Next
+        For Each w As ABEresponses.MarketCatalogue In dtvalue.result
+            TreeView1.Nodes.Add(w.getnode)
+        Next
+
 
 
         Dim m As New clsAutoRequester
 
 
         m = New clsAutoRequester
+        m.runonce = True
         m.add(requeststring, "tabMarketCatalogue")
         m.StartStopp = clsAutoRequester.enumstartstop.start
-        listOfClsAutoRequester.Add(m)
-        'Threading.Thread.Sleep(10000)
-        'm.StartStopp = clsAutoRequester.enumstartstop.stopp
-
-
-
-
-        Dim j As Integer = 0
-        'Dim k As Integer = 0
-
-        Dim ts = DateTime.UtcNow
-
-        TreeView1.Nodes.Clear()
-
-
-        For Each le As ABEresponses.MarketCatalogue In dtvalue.result
-
-            TreeView1.Nodes.Add(New TreeNode With {.Text = "marketName: " & le.marketName, .Name = j, .Tag = le.marketName})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "ID : " & j, .Name = j, .Tag = j})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "Zeitstempel: " & ts, .Tag = ts})
-
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "marketId: " & le.marketId, .Tag = le.marketId})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "marketName: " & le.marketName, .Tag = le.marketName})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "marketStartTime: " & le.marketStartTime, .Tag = le.marketStartTime})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "totalMatched: " & le.totalMatched, .Tag = le.totalMatched})
-
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "description_persistenceEnabled: " & le.description.persistenceEnabled, .Tag = le.description.persistenceEnabled})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "description_bspMarket: " & le.description.bspMarket, .Tag = le.description.bspMarket})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "description_marketTime: " & le.description.marketTime, .Tag = le.description.marketTime})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "description_suspendTime: " & le.description.suspendTime, .Tag = le.description.suspendTime})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "description_bettingType: " & le.description.bettingType, .Tag = le.description.bettingType})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "description_turnInPlayEnabled: " & le.description.turnInPlayEnabled, .Tag = le.description.turnInPlayEnabled})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "description_marketType: " & le.description.marketType, .Tag = le.description.marketType})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "description_regulator: " & le.description.regulator, .Tag = le.description.regulator})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "description_marketBaseRate: " & le.description.marketBaseRate, .Tag = le.description.marketBaseRate})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "description_discountAllowed: " & le.description.discountAllowed, .Tag = le.description.discountAllowed})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "description_wallet: " & le.description.wallet, .Tag = le.description.wallet})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "description_rules: " & le.description.rules, .Tag = le.description.rules})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "description_rulesHasDate: " & le.description.rulesHasDate, .Tag = le.description.rulesHasDate})
-            TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "description_priceLadderDescription_type: " & le.description.priceLadderDescription.type, .Tag = le.description.priceLadderDescription.type})
-
-
-            For Each runner As ABEresponses.RunnerCatalog In le.runners
-                TreeView1.Nodes(j).Nodes.Add(New TreeNode With {.Text = "runner: " & runner.runnerName, .Tag = runner.runnerName})
-
-                TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "runnerName: " & runner.runnerName, .Tag = runner.runnerName})
-                TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "handicap: " & runner.handicap, .Tag = runner.handicap})
-                TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "selectionId: " & runner.selectionId, .Tag = runner.selectionId})
-                TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "sortPriority: " & runner.sortPriority, .Tag = runner.sortPriority})
-
-                If runner.metadata.runnerId <> "---" Then
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_runnerId: " & runner.metadata.runnerId, .Tag = runner.metadata.runnerId})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_WEIGHT_UNITS: " & runner.metadata.WEIGHT_UNITS, .Tag = runner.metadata.WEIGHT_UNITS})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_ADJUSTED_RATING: " & runner.metadata.ADJUSTED_RATING, .Tag = runner.metadata.ADJUSTED_RATING})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_DAM_YEAR_BORN: " & runner.metadata.DAM_YEAR_BORN, .Tag = runner.metadata.DAM_YEAR_BORN})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_DAYS_SINCE_LAST_RUN: " & runner.metadata.DAYS_SINCE_LAST_RUN, .Tag = runner.metadata.DAYS_SINCE_LAST_RUN})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_WEARING: " & runner.metadata.WEARING, .Tag = runner.metadata.WEARING})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_DAMSIRE_YEAR_BORN: " & runner.metadata.DAMSIRE_YEAR_BORN, .Tag = runner.metadata.DAMSIRE_YEAR_BORN})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_SIRE_BRED: " & runner.metadata.SIRE_BRED, .Tag = runner.metadata.SIRE_BRED})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_TRAINER_NAME: " & runner.metadata.TRAINER_NAME, .Tag = runner.metadata.TRAINER_NAME})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_STALL_DRAW: " & runner.metadata.STALL_DRAW, .Tag = runner.metadata.STALL_DRAW})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_SEX_TYPE: " & runner.metadata.SEX_TYPE, .Tag = runner.metadata.SEX_TYPE})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_OWNER_NAME: " & runner.metadata.OWNER_NAME, .Tag = runner.metadata.OWNER_NAME})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_SIRE_NAME: " & runner.metadata.SIRE_NAME, .Tag = runner.metadata.SIRE_NAME})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_FORECASTPRICE_NUMERATOR: " & runner.metadata.FORECASTPRICE_NUMERATOR, .Tag = runner.metadata.FORECASTPRICE_NUMERATOR})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_FORECASTPRICE_DENOMINATOR: " & runner.metadata.FORECASTPRICE_DENOMINATOR, .Tag = runner.metadata.FORECASTPRICE_DENOMINATOR})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_JOCKEY_CLAIM: " & runner.metadata.JOCKEY_CLAIM, .Tag = runner.metadata.JOCKEY_CLAIM})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_WEIGHT_VALUE: " & runner.metadata.WEIGHT_VALUE, .Tag = runner.metadata.WEIGHT_VALUE})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_DAM_NAME: " & runner.metadata.DAM_NAME, .Tag = runner.metadata.DAM_NAME})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_AGE: " & runner.metadata.AGE, .Tag = runner.metadata.AGE})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_COLOUR_TYPE: " & runner.metadata.COLOUR_TYPE, .Tag = runner.metadata.COLOUR_TYPE})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_DAMSIRE_BRED: " & runner.metadata.DAMSIRE_BRED, .Tag = runner.metadata.DAMSIRE_BRED})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_DAMSIRE_NAME: " & runner.metadata.DAMSIRE_NAME, .Tag = runner.metadata.DAMSIRE_NAME})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_SIRE_YEAR_BORN: " & runner.metadata.SIRE_YEAR_BORN, .Tag = runner.metadata.SIRE_YEAR_BORN})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_OFFICIAL_RATING: " & runner.metadata.OFFICIAL_RATING, .Tag = runner.metadata.OFFICIAL_RATING})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_FORM: " & runner.metadata.FORM, .Tag = runner.metadata.FORM})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_BRED: " & runner.metadata.BRED, .Tag = runner.metadata.BRED})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_JOCKEY_NAME: " & runner.metadata.JOCKEY_NAME, .Tag = runner.metadata.JOCKEY_NAME})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_DAM_BRED: " & runner.metadata.DAM_BRED, .Tag = runner.metadata.DAM_BRED})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_COLOURS_DESCRIPTION: " & runner.metadata.COLOURS_DESCRIPTION, .Tag = runner.metadata.COLOURS_DESCRIPTION})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_COLOURS_FILENAME: " & runner.metadata.COLOURS_FILENAME, .Tag = runner.metadata.COLOURS_FILENAME})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_CLOTH_NUMBER: " & runner.metadata.CLOTH_NUMBER, .Tag = runner.metadata.CLOTH_NUMBER})
-                    TreeView1.Nodes(j).Nodes(TreeView1.Nodes(j).Nodes.Count - 1).Nodes.Add(New TreeNode With {.Text = "metadata_CLOTH_NUMBER_ALPHA: " & runner.metadata.CLOTH_NUMBER_ALPHA, .Tag = runner.metadata.CLOTH_NUMBER_ALPHA})
-                End If
-
-
-            Next
-
-
-
-            j += 1
-
-        Next
+        'listOfClsAutoRequester.Add(m)
+        m.StartStopp = clsAutoRequester.enumstartstop.stopp
 
 
 

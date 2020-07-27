@@ -10,6 +10,7 @@ Public Class clsAutoRequester
     Private _tabellenname As String
     Private tabelle As DataTable
     Private str As String
+    Private _runonce As Boolean
 
     Event undlos()
 
@@ -28,6 +29,16 @@ Public Class clsAutoRequester
             _intervall = value
         End Set
     End Property
+
+    Public Property runonce As Boolean
+        Get
+            Return _runonce
+        End Get
+        Set(value As Boolean)
+            _runonce = value
+        End Set
+    End Property
+
 
     Public Enum enumstartstop
         start = True
@@ -67,11 +78,7 @@ Public Class clsAutoRequester
                     _writeToDatabase(tabelle, _tabellenname)
                     Application.DoEvents()
                     Threading.Thread.Sleep(New TimeSpan(0, 0, 1))
-                Loop
-
-
-
-
+                Loop While _runonce = False
 
 
             Next
@@ -142,9 +149,15 @@ Public Class clsAutoRequester
 
         End Select
 
+        Dim dt As New DataTable
 
+        If dtvalue.result.count > 0 Then
+            For Each ea In dtvalue.result
+                dt.Merge(ea.gettable)
+            Next
+        End If
 
-        tabelle = dtvalue.result(0).gettable
+        tabelle = dt
 
     End Sub
 
