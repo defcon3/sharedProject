@@ -35,6 +35,7 @@ Partial Class frmAutoBetEngine
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.pageMarketCatalogue = New System.Windows.Forms.TabPage()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -86,13 +87,11 @@ Partial Class frmAutoBetEngine
         Me.ListBox2 = New System.Windows.Forms.ListBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.pageMarketCatalogue.SuspendLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -100,7 +99,6 @@ Partial Class frmAutoBetEngine
         Me.grbVirtualize.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -201,6 +199,14 @@ Partial Class frmAutoBetEngine
         Me.pageMarketCatalogue.TabIndex = 0
         Me.pageMarketCatalogue.Text = "MarketCatalogue"
         Me.pageMarketCatalogue.UseVisualStyleBackColor = True
+        '
+        'DataGridView2
+        '
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Location = New System.Drawing.Point(1041, 284)
+        Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.Size = New System.Drawing.Size(240, 150)
+        Me.DataGridView2.TabIndex = 56
         '
         'Button4
         '
@@ -695,39 +701,11 @@ Partial Class frmAutoBetEngine
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
         '
-        'Button7
-        '
-        Me.Button7.Location = New System.Drawing.Point(348, 44)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(75, 23)
-        Me.Button7.TabIndex = 27
-        Me.Button7.Text = "Button7"
-        Me.Button7.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(518, 43)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 28
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'DataGridView2
-        '
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(1041, 284)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(240, 150)
-        Me.DataGridView2.TabIndex = 56
-        '
         'frmAutoBetEngine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1414, 862)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
@@ -740,6 +718,7 @@ Partial Class frmAutoBetEngine
         Me.TabControl1.ResumeLayout(False)
         Me.pageMarketCatalogue.ResumeLayout(False)
         Me.pageMarketCatalogue.PerformLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
@@ -751,7 +730,6 @@ Partial Class frmAutoBetEngine
         Me.grbVirtualize.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -781,10 +759,8 @@ Partial Class frmAutoBetEngine
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents ListView1 As ListView
     Friend WithEvents Button6 As Button
-    Friend WithEvents Button7 As Button
     Friend WithEvents TreeView1 As TreeView
     Friend WithEvents ListView2 As ListView
-    Friend WithEvents Button2 As Button
     Friend WithEvents ListView3 As ListView
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents RadioButton2 As RadioButton

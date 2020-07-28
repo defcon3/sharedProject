@@ -564,4 +564,5 @@ Public Class frmAutoBetEngine
 
 
     End Sub
+
 End Class
