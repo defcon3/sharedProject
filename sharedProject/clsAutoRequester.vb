@@ -1,5 +1,8 @@
 ﻿Imports System.Data.SqlClient
 Public Class clsAutoRequester
+    Implements ILogWriter
+    Public Event writeToLog(logtext As String) Implements ILogWriter.writeToLog
+    Public Event sendTable(tab As System.Data.DataTable)
 
     Private _anfragestring As List(Of clsAnfragestring)
     Private _col As New Collection
@@ -11,8 +14,11 @@ Public Class clsAutoRequester
     Private tabelle As DataTable
     Private str As String
     Private _runonce As Boolean
+    Public tab As New DataTable
 
     Event undlos()
+
+
 
     Public WriteOnly Property StartStopp As enumstartstop
         Set(value As enumstartstop)
@@ -73,12 +79,20 @@ Public Class clsAutoRequester
             For Each a As clsAnfragestring In _col
 
 
+                'Do
+                '    _datenAbfragen()
+                '    _writeToDatabase(tabelle, _tabellenname)
+                '    Application.DoEvents()
+                '    Threading.Thread.Sleep(New TimeSpan(0, 0, 10))
+                'Loop While _runonce = False
+
                 Do
                     _datenAbfragen()
-                    _writeToDatabase(tabelle, _tabellenname)
+                    '_writeToDatabase(tabelle, _tabellenname)
                     Application.DoEvents()
-                    Threading.Thread.Sleep(New TimeSpan(0, 0, 1))
+                    Threading.Thread.Sleep(New TimeSpan(0, 0, 10))
                 Loop While _runonce = False
+
 
 
             Next
@@ -111,8 +125,10 @@ Public Class clsAutoRequester
                     connection.Open()
                     Try
                         SqlBulkCopy.WriteToServer(dt)
+                        RaiseEvent writeToLog("in server geschrieben.")
                     Catch ex As Exception
                         Debug.Print(ex.Message)
+                        'MsgBox(ex.Message)
                     End Try
 
                     connection.Close()
@@ -134,6 +150,8 @@ Public Class clsAutoRequester
         'MsgBox(betreq.Answerstring)
 
         Dim dtvalue = New Object
+        Dim dt As New DataTable
+
 
         Select Case _tabellenname
             Case "tabMarketBook"
@@ -141,23 +159,46 @@ Public Class clsAutoRequester
 
                 dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketBookResponse)(betreq.Answerstring)
 
+
+                If dtvalue.result.count > 0 Then
+                    For Each ea As ABEresponses.MarketBook In dtvalue.result
+                        dt.Merge(ea.gettable)
+                        dt.TableName = ea.gettable.TableName
+                        'tab.Merge(ea.gettable)
+                        'tab.TableName = ea.gettable.TableName
+                    Next
+                End If
+
+
+
             Case "tabMarketCatalogue"
 
                 dtvalue = Newtonsoft.Json.JsonConvert.DeserializeObject(Of bfObjects.clsMarketCatalogueResponse)(betreq.Answerstring)
 
 
+                If dtvalue.result.count > 0 Then
+                    For Each ea As ABEresponses.MarketCatalogue In dtvalue.result
+                        dt.Merge(ea.gettable)
+                        dt.TableName = ea.gettable.TableName
+                        'tab.Merge(ea.gettable)
+                        'tab.TableName = ea.gettable.TableName
+                    Next
+                End If
+
+
+
 
         End Select
 
-        Dim dt As New DataTable
 
-        If dtvalue.result.count > 0 Then
-            For Each ea In dtvalue.result
-                dt.Merge(ea.gettable)
-            Next
-        End If
 
         tabelle = dt
+
+        _writeToDatabase(dt, _tabellenname)
+
+        tab.Merge(dt, True, MissingSchemaAction.Add)
+
+        RaiseEvent sendTable(tab)
 
     End Sub
 

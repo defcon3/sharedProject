@@ -84,7 +84,7 @@ Public Class clsBetConnection
 
 
         Dim myNewLogWriter As New clsLogWriter
-        myNewLogWriter.write_log(Requeststring)
+        'myNewLogWriter.write_log(Requeststring)
 
 
         Dim byteArray As Byte() = System.Text.Encoding.Default.GetBytes(Requeststring)
@@ -169,7 +169,7 @@ Public Class clsBetConnection
         Answerstring = _serveranswer
 
 
-        myNewLogWriter.write_log(_serveranswer)
+        'myNewLogWriter.write_log(_serveranswer)
 
 
 

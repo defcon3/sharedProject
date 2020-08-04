@@ -2,7 +2,7 @@
 ''' Klasse zur Abarbeitung des ListMarketCatalogue
 ''' </summary>
 Public Class clsListMarketCatalogue
-    Implements ILogWriter
+    'Implements ILogWriter
 
-    Public Event writeToLog(logtext As String) Implements ILogWriter.writeToLog
+    'Public Event writeToLog(logtext As String) Implements ILogWriter.writeToLog
 End Class

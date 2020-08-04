@@ -36,6 +36,9 @@ Public Class frmAutoBetEngine
     Public Event ILogWriter_writeToLog(logtext As String) Implements ILogWriter.writeToLog
 
 
+    Private tabMarketCatalogue As New System.Data.DataTable("MarketCatalogue")
+    Private tabMarketBook As New System.Data.DataTable("MarketBook")
+
 
     ''' <summary>
     ''' Log-Form
@@ -155,7 +158,6 @@ Public Class frmAutoBetEngine
         datastream.Close()
 
 
-        'Debug.Print(responseFromServer.ToString)
         response.Close()
 
         ergebnis = responseFromServer
@@ -241,40 +243,7 @@ Public Class frmAutoBetEngine
         myNewLogWriter.write_log("requeststring geschrieben")
 
 
-
         TextBox2.Text = requeststring
-
-
-
-
-
-
-        ' erstelle eine Connection zum Ziel
-
-        ' erstelle eine Abfrage als String
-
-        ' sende die Abfrage zum Ziel
-
-        ' nimm die Antwort
-        ' wandle das json in ein xml um
-        ' mache aus dem xml ein dataset
-        ' füge den Zeitstempel in jeder tabelle hinzu
-        ' wandele es wieder in ein json zurück , hihi - mit zeitstempel
-        ' speichere das json im mongo
-        ' füge den zeitstempel 
-        ' erstelle eine tabelle flat and wide
-
-
-        ' deserialisiere die Antwort
-        ' die Klasse muss das xsd und das xsl kennen
-        ' wandle gib dann eine tabelle zurück
-
-        ' setze die Antwort an ein steuerelement, welches noch gecustomiezed wird 
-
-
-
-
-
 
 
     End Sub
@@ -314,7 +283,6 @@ Public Class frmAutoBetEngine
         For Each tt As System.Windows.Forms.ListViewItem In ListView1.Items
             tt.Selected = True
             ListView1.Select()
-            'ListView1.SelectedItems.EnsureVisible()
             ListView1.Items(tt.Index).Font = New System.Drawing.Font("Arial", 8, FontStyle.Regular)
 
         Next
@@ -325,18 +293,6 @@ Public Class frmAutoBetEngine
             ListView1.Items(0).Selected = True
         End If
 
-
-
-
-    End Sub
-
-    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
-
-        For i As Integer = 0 To ListView1.Items.Count() - 1 Step 1
-            If ListView1.Items(i).Selected = True Then
-                '                MsgBox(ListView1.Items(i).ToString())
-            End If
-        Next
 
 
 
@@ -383,11 +339,13 @@ Public Class frmAutoBetEngine
         m = New clsAutoRequester
         m.runonce = True
         m.add(requeststring, "tabMarketCatalogue")
+        AddHandler m.sendTable, AddressOf aktualisiereTabelle
         m.StartStopp = clsAutoRequester.enumstartstop.start
         'listOfClsAutoRequester.Add(m)
         m.StartStopp = clsAutoRequester.enumstartstop.stopp
+        'tabMarketCatalogue = m.tab
 
-
+        DataGridView2.DataSource = tabMarketCatalogue
 
     End Sub
 
@@ -395,27 +353,6 @@ Public Class frmAutoBetEngine
     Private Sub TreeView1_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterSelect
         ListBox1.Items.Add(TreeView1.SelectedNode.Tag)
 
-    End Sub
-
-
-    Private Sub ListView2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView2.SelectedIndexChanged
-        For i As Integer = 0 To ListView2.Items.Count() - 1 Step 1
-            If ListView2.Items(i).Selected = True Then
-                '                MsgBox(ListView1.Items(i).ToString())
-            End If
-        Next
-
-        For Each itm As System.Windows.Forms.ListViewItem In ListView2.Items
-
-            If itm.Checked Then
-                MsgBox(itm.Tag)
-            End If
-        Next
-
-    End Sub
-
-    Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
-        MsgBox(DateTimePicker1.Value.ToString("yyyy-MM-ddTHH:mm:ssZ"))
     End Sub
 
     Private Sub ListBox1_Click(sender As Object, e As EventArgs) Handles ListBox1.Click
@@ -499,22 +436,6 @@ Public Class frmAutoBetEngine
 
         DataGridView1.DataSource = mm.gettable
 
-        'Using connection As New SqlConnection("Server=158.181.48.94; Database=dbdata; User=326773; Password=" & getSqlServerPasswort())
-
-        '    Using SqlBulkCopy As New SqlBulkCopy(connection)
-
-        '        SqlBulkCopy.DestinationTableName = "tabMarketBook"
-
-        '        connection.Open()
-        '        SqlBulkCopy.WriteToServer(mm.gettable)
-        '        connection.Close()
-        '    End Using
-
-        'End Using
-
-
-
-
     End Sub
 
     Property col As New Collection
@@ -551,6 +472,9 @@ Public Class frmAutoBetEngine
 
             m = New clsAutoRequester
             m.add(ListView4.Items(j).SubItems(1).Text, ListView4.Items(j).SubItems(2).Text)
+
+            AddHandler m.sendTable, AddressOf aktualisiereTabelle
+
             m.StartStopp = clsAutoRequester.enumstartstop.start
             listOfClsAutoRequester.Add(m)
 
@@ -558,11 +482,26 @@ Public Class frmAutoBetEngine
 
 
 
+    End Sub
 
-
-
-
+    Public Sub aktualisiereTabelle(ByVal tab As System.Data.DataTable)
+        If tab.TableName = "MarketCatalogue" Then
+            tabMarketCatalogue = tab
+            DataGridView3.DataSource = Nothing
+            DataGridView3.DataSource = tabMarketCatalogue
+        ElseIf tab.TableName = "MarketBook" Then
+            tabMarketBook = tab
+            DataGridView2.DataSource = Nothing
+            DataGridView2.DataSource = tabMarketBook
+        End If
 
     End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        MsgBox(tabMarketBook.Rows.Count & " = tabmarketbook - Zeilen" & vbCrLf & tabMarketCatalogue.Rows.Count & " = tabMarketCatalogue - Zeilen")
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        MsgBox(tabMarketBook.Rows.Count & " = tabmarketbook - Zeilen" & vbCrLf & tabMarketCatalogue.Rows.Count & " = tabMarketCatalogue - Zeilen")
+    End Sub
 End Class
