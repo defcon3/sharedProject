@@ -327,8 +327,24 @@ Public Class frmAutoBetEngine
 
         TreeView1.Nodes.Clear()
 
+        Dim tn As TreeNode
+        Dim g As TreeNode
+
+
+
         For Each w As ABEresponses.MarketCatalogue In dtvalue.result
-            TreeView1.Nodes.Add(w.getnode)
+            tn = New TreeNode()
+            tn = w.getnode
+            'tn = w.getnode.Nodes.Find("EVENT_NAME", True)
+            'tn.Text = w.getnode.Nodes.Find("EVENT_NAME", True).text
+
+            g = w.getnode.Nodes.Find("EVENT_NAME", True)(0)
+
+            tn.Text = w.getnode.Nodes.Find("EVENT_NAME", True)(0).Tag
+
+            'MsgBox(tn.Find("EVENT_NAME", True).Clone.text.ToString)
+            TreeView1.Nodes.Add(tn)
+
         Next
 
 
