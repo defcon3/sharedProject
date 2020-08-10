@@ -9,7 +9,6 @@ Public Class clsAutoRequester
     Private _startstopp As Boolean
     Private _intervall As Int16 = 1
     Private _i As Integer = 0
-    Private _dread As System.Threading.Thread
     Private _tabellenname As String
     Private tabelle As DataTable
     Private str As String
@@ -71,36 +70,20 @@ Public Class clsAutoRequester
         str = Anfragestring
     End Sub
 
-    Private Sub _funcRequest() Handles Me.undlos
-
+    Private Async Sub _funcRequest() Handles Me.undlos
+        Dim r As String
 
         If _startstopp = enumstartstop.start AndAlso _col.Count > 0 Then
 
             For Each a As clsAnfragestring In _col
 
-
-                'Do
-                '    _datenAbfragen()
-                '    _writeToDatabase(tabelle, _tabellenname)
-                '    Application.DoEvents()
-                '    Threading.Thread.Sleep(New TimeSpan(0, 0, 10))
-                'Loop While _runonce = False
-
                 Do
-                    _datenAbfragen()
-                    '_writeToDatabase(tabelle, _tabellenname)
-                    Application.DoEvents()
-                    Threading.Thread.Sleep(New TimeSpan(0, 0, 10))
+                    r = Await _datenAbfragen()
                 Loop While _runonce = False
-
-
 
             Next
 
         Else
-            ''' thread stoppen
-
-
 
         End If
     End Sub
@@ -127,8 +110,7 @@ Public Class clsAutoRequester
                         SqlBulkCopy.WriteToServer(dt)
                         RaiseEvent writeToLog("in server geschrieben.")
                     Catch ex As Exception
-                        Debug.Print(ex.Message)
-                        'MsgBox(ex.Message)
+
                     End Try
 
                     connection.Close()
@@ -141,10 +123,16 @@ Public Class clsAutoRequester
     End Sub
 
 
-    Private Sub _datenAbfragen()
+    Private Async Function _datenAbfragen() As Task(Of String)
         Dim betreq As New clsBetConnection(str)
 
+
+        'Threading.Thread.Sleep(New TimeSpan(0, 0, 10)) -> das funktioniert nur bei alter Task-Zugriffsweise
+
+        Await Task.Delay(New TimeSpan(0, 0, 10))
         ''' sendet die Anfrage an den Server
+
+
         betreq.sendeAnfrage()
 
         'MsgBox(betreq.Answerstring)
@@ -200,6 +188,9 @@ Public Class clsAutoRequester
 
         RaiseEvent sendTable(tab)
 
-    End Sub
+        Return "fertig"
+
+
+    End Function
 
 End Class

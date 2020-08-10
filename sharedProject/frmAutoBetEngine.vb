@@ -327,8 +327,8 @@ Public Class frmAutoBetEngine
 
         TreeView1.Nodes.Clear()
 
-        Dim tn As TreeNode
-        Dim g As TreeNode
+        Dim tn, g As TreeNode
+
 
 
 
@@ -340,7 +340,22 @@ Public Class frmAutoBetEngine
 
             g = w.getnode.Nodes.Find("EVENT_NAME", True)(0)
 
-            tn.Text = w.getnode.Nodes.Find("EVENT_NAME", True)(0).Tag
+
+            tn.Text = w.getnode.Nodes.Find("EVENT_COUNTRYCODE", True)(0).Text _
+                & " - " _
+                & w.getnode.Nodes.Find("EVENTTYPE_NAME", True)(0).Text _
+                & " - " _
+                & w.getnode.Nodes.Find("EVENTTYPE_NAME", True)(0).Text _
+                & " - " _
+                & w.getnode.Nodes.Find("COMPETITION_NAME", True)(0).Text _
+                & " - " _
+                & w.getnode.Nodes.Find("EVENT_NAME", True)(0).Text _
+                & " - " _
+                & w.getnode.Nodes.Find("MARKETCATALOGUE_MARKETSTARTTIME", True)(0).Text _
+                & " - " _
+                & w.getnode.Nodes.Find("MARKETCATALOGUE_MARKETNAME", True)(0).Text _
+                & " - " _
+                & w.getnode.Nodes.Find("RUNNERCATALOG_RUNNERNAME", True)(0).Text
 
             'MsgBox(tn.Find("EVENT_NAME", True).Clone.text.ToString)
             TreeView1.Nodes.Add(tn)

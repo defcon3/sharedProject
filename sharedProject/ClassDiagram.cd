@@ -39,7 +39,7 @@
   <Class Name="sharedProject.frmAutoBetEngine" Collapsed="true">
     <Position X="11.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAQAiFGGAgEAEQKCD3ytCBCBEbAZ6gMAihwNCiAA=</HashCode>
+      <HashCode>AQAAAQAiFGCAgEAEQKCD3ztCBCBEbAd6gMAChwNDyAA=</HashCode>
       <FileName>frmAutoBetEngine.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -75,10 +75,9 @@
   <Class Name="sharedProject.clsListMarketCatalogue">
     <Position X="4.5" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>clsListMarketCatalogue.vb</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="sharedProject.clsBetConnection" Collapsed="true">
     <Position X="2.5" Y="0.5" Width="1.5" />
@@ -112,7 +111,7 @@
       </Class>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAQBIAAAIAAAgAIIFBAABQAAAAACgBAgACEAACAAA=</HashCode>
+      <HashCode>AAAAQDAAAAIAAAgBIIFBAABQAAAAACgBAgACEAACAAA=</HashCode>
       <FileName>clsAutoRequester.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
