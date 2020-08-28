@@ -226,6 +226,9 @@ Public Class frmAutoBetEngine
 
 
 
+        If chkMarketTypeCodes.Checked = True Then myNewListMarketCatalogue.params.filter.marketTypeCodes.Add(cmbMarketTypeCode.Text)
+
+
 
         Dim myNewListOfString As New List(Of System.String)
 
@@ -343,7 +346,7 @@ Public Class frmAutoBetEngine
 
             tn.Text = w.getnode.Nodes.Find("EVENT_COUNTRYCODE", True)(0).Text _
                 & " - " _
-                & w.getnode.Nodes.Find("EVENTTYPE_NAME", True)(0).Text _
+                & w.getnode.Nodes.Find("EVENTTYPE_ID", True)(0).Text _
                 & " - " _
                 & w.getnode.Nodes.Find("EVENTTYPE_NAME", True)(0).Text _
                 & " - " _
@@ -534,5 +537,15 @@ Public Class frmAutoBetEngine
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         MsgBox(tabMarketBook.Rows.Count & " = tabmarketbook - Zeilen" & vbCrLf & tabMarketCatalogue.Rows.Count & " = tabMarketCatalogue - Zeilen")
+    End Sub
+
+    Private Sub pageMarketCatalogue_Click(sender As Object, e As EventArgs) Handles pageMarketCatalogue.Click
+
+    End Sub
+
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+        For Each ae As clsAutoRequester In listOfClsAutoRequester
+            MsgBox(ae.tab.TableName & ": Anzahl = " & ae.tab.Rows.Count)
+        Next
     End Sub
 End Class

@@ -22,9 +22,9 @@ Partial Class frmAutoBetEngine
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolStripComboBox1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -35,6 +35,9 @@ Partial Class frmAutoBetEngine
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.pageMarketCatalogue = New System.Windows.Forms.TabPage()
+        Me.cmbMarketTypeCode = New System.Windows.Forms.ComboBox()
+        Me.chkMarketTypeCodes = New System.Windows.Forms.CheckBox()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
@@ -62,6 +65,8 @@ Partial Class frmAutoBetEngine
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cboSort = New System.Windows.Forms.ComboBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.DataGridView3 = New System.Windows.Forms.DataGridView()
         Me.ListView4 = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -87,9 +92,7 @@ Partial Class frmAutoBetEngine
         Me.ListBox2 = New System.Windows.Forms.ListBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.DataGridView3 = New System.Windows.Forms.DataGridView()
-        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button10 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -97,12 +100,12 @@ Partial Class frmAutoBetEngine
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
+        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grbRollover.SuspendLayout()
         Me.grbVirtualize.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -172,6 +175,8 @@ Partial Class frmAutoBetEngine
         '
         'pageMarketCatalogue
         '
+        Me.pageMarketCatalogue.Controls.Add(Me.cmbMarketTypeCode)
+        Me.pageMarketCatalogue.Controls.Add(Me.chkMarketTypeCodes)
         Me.pageMarketCatalogue.Controls.Add(Me.Button2)
         Me.pageMarketCatalogue.Controls.Add(Me.DataGridView2)
         Me.pageMarketCatalogue.Controls.Add(Me.Button4)
@@ -204,6 +209,33 @@ Partial Class frmAutoBetEngine
         Me.pageMarketCatalogue.TabIndex = 0
         Me.pageMarketCatalogue.Text = "MarketCatalogue"
         Me.pageMarketCatalogue.UseVisualStyleBackColor = True
+        '
+        'cmbMarketTypeCode
+        '
+        Me.cmbMarketTypeCode.FormattingEnabled = True
+        Me.cmbMarketTypeCode.Items.AddRange(New Object() {"ALT_TOTAL_GOALS", "BOTH_TEAMS_TO_SCORE", "CORRECT_SCORE", "DRAW_NO_BET", "FIRST_HALF_GOALS_05", "FIRST_HALF_GOALS_15", "HALF_TIME", "HALF_TIME_SCORE", "MATCH_ODDS", "NEXT_GOAL", "OVER_UNDER_05", "OVER_UNDER_15", "OVER_UNDER_25", "OVER_UNDER_35", "OVER_UNDER_45", "OVER_UNDER_55", "OVER_UNDER_65", "OVER_UNDER_85", "TEAM_A_1", "TEAM_A_WIN_TO_NIL", "TEAM_B_1"})
+        Me.cmbMarketTypeCode.Location = New System.Drawing.Point(34, 371)
+        Me.cmbMarketTypeCode.Name = "cmbMarketTypeCode"
+        Me.cmbMarketTypeCode.Size = New System.Drawing.Size(206, 21)
+        Me.cmbMarketTypeCode.TabIndex = 59
+        '
+        'chkMarketTypeCodes
+        '
+        Me.chkMarketTypeCodes.AutoSize = True
+        Me.chkMarketTypeCodes.Location = New System.Drawing.Point(12, 371)
+        Me.chkMarketTypeCodes.Name = "chkMarketTypeCodes"
+        Me.chkMarketTypeCodes.Size = New System.Drawing.Size(15, 14)
+        Me.chkMarketTypeCodes.TabIndex = 58
+        Me.chkMarketTypeCodes.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(1124, 196)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 57
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'DataGridView2
         '
@@ -242,7 +274,7 @@ Partial Class frmAutoBetEngine
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(9, 420)
+        Me.Label5.Location = New System.Drawing.Point(9, 446)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(20, 13)
         Me.Label5.TabIndex = 52
@@ -251,7 +283,7 @@ Partial Class frmAutoBetEngine
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(9, 394)
+        Me.Label4.Location = New System.Drawing.Point(9, 420)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(25, 13)
         Me.Label4.TabIndex = 51
@@ -259,14 +291,14 @@ Partial Class frmAutoBetEngine
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(40, 414)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(40, 440)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePicker2.TabIndex = 50
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(40, 388)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(40, 414)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePicker1.TabIndex = 49
@@ -455,6 +487,7 @@ Partial Class frmAutoBetEngine
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.Button10)
         Me.TabPage2.Controls.Add(Me.Button7)
         Me.TabPage2.Controls.Add(Me.DataGridView3)
         Me.TabPage2.Controls.Add(Me.ListView4)
@@ -480,6 +513,23 @@ Partial Class frmAutoBetEngine
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Markets"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(1198, 248)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(75, 23)
+        Me.Button7.TabIndex = 36
+        Me.Button7.Text = "Button7"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'DataGridView3
+        '
+        Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView3.Location = New System.Drawing.Point(1119, 283)
+        Me.DataGridView3.Name = "DataGridView3"
+        Me.DataGridView3.Size = New System.Drawing.Size(240, 150)
+        Me.DataGridView3.TabIndex = 35
         '
         'ListView4
         '
@@ -694,45 +744,28 @@ Partial Class frmAutoBetEngine
         '
         'Chart1
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(107, 65)
         Me.Chart1.Name = "Chart1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.Chart1.Series.Add(Series2)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
         Me.Chart1.Size = New System.Drawing.Size(542, 300)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
         '
-        'Button2
+        'Button10
         '
-        Me.Button2.Location = New System.Drawing.Point(1124, 196)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 57
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'DataGridView3
-        '
-        Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView3.Location = New System.Drawing.Point(1119, 283)
-        Me.DataGridView3.Name = "DataGridView3"
-        Me.DataGridView3.Size = New System.Drawing.Size(240, 150)
-        Me.DataGridView3.TabIndex = 35
-        '
-        'Button7
-        '
-        Me.Button7.Location = New System.Drawing.Point(1198, 248)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(75, 23)
-        Me.Button7.TabIndex = 36
-        Me.Button7.Text = "Button7"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.Button10.Location = New System.Drawing.Point(1119, 34)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(75, 23)
+        Me.Button10.TabIndex = 37
+        Me.Button10.Text = "Button10"
+        Me.Button10.UseVisualStyleBackColor = True
         '
         'frmAutoBetEngine
         '
@@ -756,6 +789,7 @@ Partial Class frmAutoBetEngine
         Me.GroupBox1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
+        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grbRollover.ResumeLayout(False)
         Me.grbRollover.PerformLayout()
@@ -763,7 +797,6 @@ Partial Class frmAutoBetEngine
         Me.grbVirtualize.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -834,4 +867,7 @@ Partial Class frmAutoBetEngine
     Friend WithEvents Button2 As Button
     Friend WithEvents Button7 As Button
     Friend WithEvents DataGridView3 As DataGridView
+    Friend WithEvents cmbMarketTypeCode As ComboBox
+    Friend WithEvents chkMarketTypeCodes As CheckBox
+    Friend WithEvents Button10 As Button
 End Class
