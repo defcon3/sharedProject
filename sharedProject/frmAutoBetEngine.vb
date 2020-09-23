@@ -440,6 +440,8 @@ Public Class frmAutoBetEngine
 
         requeststring = Newtonsoft.Json.JsonConvert.SerializeObject(myNewListMarketBook)
 
+        'requeststring = TextBox1.Text
+
         txtMarkets.Text = requeststring.ToString
 
         Dim betreq As New clsBetConnection(requeststring)
@@ -539,13 +541,10 @@ Public Class frmAutoBetEngine
         MsgBox(tabMarketBook.Rows.Count & " = tabmarketbook - Zeilen" & vbCrLf & tabMarketCatalogue.Rows.Count & " = tabMarketCatalogue - Zeilen")
     End Sub
 
-    Private Sub pageMarketCatalogue_Click(sender As Object, e As EventArgs) Handles pageMarketCatalogue.Click
-
-    End Sub
-
     Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
         For Each ae As clsAutoRequester In listOfClsAutoRequester
             MsgBox(ae.tab.TableName & ": Anzahl = " & ae.tab.Rows.Count)
         Next
     End Sub
+
 End Class
