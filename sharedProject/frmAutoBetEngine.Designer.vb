@@ -25,7 +25,6 @@ Partial Class frmAutoBetEngine
         Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAutoBetEngine))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolStripComboBox1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -94,7 +93,6 @@ Partial Class frmAutoBetEngine
         Me.ListBox2 = New System.Windows.Forms.ListBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -520,9 +518,9 @@ Partial Class frmAutoBetEngine
         '
         Me.Button10.Location = New System.Drawing.Point(1119, 34)
         Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(75, 23)
+        Me.Button10.Size = New System.Drawing.Size(215, 23)
         Me.Button10.TabIndex = 37
-        Me.Button10.Text = "Button10"
+        Me.Button10.Text = "rowcount der speichertabelle"
         Me.Button10.UseVisualStyleBackColor = True
         '
         'Button7
@@ -769,20 +767,11 @@ Partial Class frmAutoBetEngine
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
         '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(587, 62)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 27
-        Me.TextBox1.Text = resources.GetString("TextBox1.Text")
-        '
         'frmAutoBetEngine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1414, 862)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
@@ -881,5 +870,4 @@ Partial Class frmAutoBetEngine
     Friend WithEvents cmbMarketTypeCode As ComboBox
     Friend WithEvents chkMarketTypeCodes As CheckBox
     Friend WithEvents Button10 As Button
-    Friend WithEvents TextBox1 As TextBox
 End Class
