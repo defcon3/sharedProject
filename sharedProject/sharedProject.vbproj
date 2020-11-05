@@ -240,9 +240,13 @@
     <Compile Include="clsBetConnection.vb" />
     <Compile Include="clsConnectionKeepAlive.vb" />
     <Compile Include="clsConnectionRoot.vb" />
-    <Compile Include="clsJsonToDatatable.vb" />
     <Compile Include="clsListMarketCatalogue.vb" />
     <Compile Include="clsLogWriter.vb" />
+    <Compile Include="dbdataDataSetHashtag.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbdataDataSetHashtag.xsd</DependentUpon>
+    </Compile>
     <Compile Include="enumRequest.vb" />
     <Compile Include="frmAutoBetEngine.Designer.vb">
       <DependentUpon>frmAutoBetEngine.vb</DependentUpon>
@@ -319,6 +323,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="dbdataDataSetHashtag.xsc">
+      <DependentUpon>dbdataDataSetHashtag.xsd</DependentUpon>
+    </None>
+    <None Include="dbdataDataSetHashtag.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbdataDataSetHashtag.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dbdataDataSetHashtag.xss">
+      <DependentUpon>dbdataDataSetHashtag.xsd</DependentUpon>
+    </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -337,12 +352,12 @@
   <ItemGroup>
     <PublishFile Include="Newtonsoft.Json.xml">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>

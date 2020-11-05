@@ -24,6 +24,7 @@ Imports System.Web.UI
 Imports System.Xml
 Imports System.Linq.Expressions
 Imports System.Data.SqlClient
+Imports sharedProject.dbdataDataSetHashtagTableAdapters
 
 Public Class frmAutoBetEngine
     Implements ILogWriter
@@ -166,6 +167,8 @@ Public Class frmAutoBetEngine
     End Function
 
     Private Sub frmAutoBetEngine_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: Diese Codezeile lädt Daten in die Tabelle "DbdataDataSetHashtag.tabHashtag". Sie können sie bei Bedarf verschieben oder entfernen.
+        Me.TabHashtagTableAdapter.Fill(Me.DbdataDataSetHashtag.tabHashtag)
         Me.WindowState = FormWindowState.Maximized
         Me.TabControl1.Width = Me.Width - 88
         Me.DateTimePicker1.Value = Date.Now
@@ -534,7 +537,8 @@ Public Class frmAutoBetEngine
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        MsgBox(tabMarketBook.Rows.Count & " = tabmarketbook - Zeilen" & vbCrLf & tabMarketCatalogue.Rows.Count & " = tabMarketCatalogue - Zeilen")
+        'MsgBox(tabMarketBook.Rows.Count & " = tabmarketbook - Zeilen" & vbCrLf & tabMarketCatalogue.Rows.Count & " = tabMarketCatalogue - Zeilen")
+        Dim rw() As DataRow = Me.DbdataDataSetHashtag.tabHashtag.Select()
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
@@ -547,4 +551,13 @@ Public Class frmAutoBetEngine
         Next
     End Sub
 
+    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
+        Dim t As New dbdataDataSetHashtag.tabHashtagDataTable
+
+
+
+        TabHashtagTableAdapter.Fill(t)
+
+
+    End Sub
 End Class

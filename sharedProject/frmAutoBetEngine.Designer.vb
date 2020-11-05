@@ -22,6 +22,7 @@ Partial Class frmAutoBetEngine
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
@@ -93,6 +94,13 @@ Partial Class frmAutoBetEngine
         Me.ListBox2 = New System.Windows.Forms.ListBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.DataGridView4 = New System.Windows.Forms.DataGridView()
+        Me.TagDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TeilnehmerDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TabHashtagBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DbdataDataSetHashtag = New sharedProject.dbdataDataSetHashtag()
+        Me.TabHashtagTableAdapter = New sharedProject.dbdataDataSetHashtagTableAdapters.tabHashtagTableAdapter()
+        Me.Button11 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -106,6 +114,9 @@ Partial Class frmAutoBetEngine
         Me.grbVirtualize.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TabHashtagBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DbdataDataSetHashtag, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -767,11 +778,59 @@ Partial Class frmAutoBetEngine
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
         '
+        'DataGridView4
+        '
+        Me.DataGridView4.AutoGenerateColumns = False
+        Me.DataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView4.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.TagDataGridViewTextBoxColumn, Me.TeilnehmerDataGridViewTextBoxColumn})
+        Me.DataGridView4.DataSource = Me.TabHashtagBindingSource
+        Me.DataGridView4.Location = New System.Drawing.Point(402, 54)
+        Me.DataGridView4.Name = "DataGridView4"
+        Me.DataGridView4.Size = New System.Drawing.Size(240, 150)
+        Me.DataGridView4.TabIndex = 27
+        '
+        'TagDataGridViewTextBoxColumn
+        '
+        Me.TagDataGridViewTextBoxColumn.DataPropertyName = "tag"
+        Me.TagDataGridViewTextBoxColumn.HeaderText = "tag"
+        Me.TagDataGridViewTextBoxColumn.Name = "TagDataGridViewTextBoxColumn"
+        '
+        'TeilnehmerDataGridViewTextBoxColumn
+        '
+        Me.TeilnehmerDataGridViewTextBoxColumn.DataPropertyName = "teilnehmer"
+        Me.TeilnehmerDataGridViewTextBoxColumn.HeaderText = "teilnehmer"
+        Me.TeilnehmerDataGridViewTextBoxColumn.Name = "TeilnehmerDataGridViewTextBoxColumn"
+        '
+        'TabHashtagBindingSource
+        '
+        Me.TabHashtagBindingSource.DataMember = "tabHashtag"
+        Me.TabHashtagBindingSource.DataSource = Me.DbdataDataSetHashtag
+        '
+        'DbdataDataSetHashtag
+        '
+        Me.DbdataDataSetHashtag.DataSetName = "dbdataDataSetHashtag"
+        Me.DbdataDataSetHashtag.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'TabHashtagTableAdapter
+        '
+        Me.TabHashtagTableAdapter.ClearBeforeFill = True
+        '
+        'Button11
+        '
+        Me.Button11.Location = New System.Drawing.Point(717, 54)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(75, 23)
+        Me.Button11.TabIndex = 28
+        Me.Button11.Text = "Button11"
+        Me.Button11.UseVisualStyleBackColor = True
+        '
         'frmAutoBetEngine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1414, 862)
+        Me.Controls.Add(Me.Button11)
+        Me.Controls.Add(Me.DataGridView4)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
@@ -797,6 +856,9 @@ Partial Class frmAutoBetEngine
         Me.grbVirtualize.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TabHashtagBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DbdataDataSetHashtag, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -870,4 +932,11 @@ Partial Class frmAutoBetEngine
     Friend WithEvents cmbMarketTypeCode As ComboBox
     Friend WithEvents chkMarketTypeCodes As CheckBox
     Friend WithEvents Button10 As Button
+    Friend WithEvents DataGridView4 As DataGridView
+    Friend WithEvents DbdataDataSetHashtag As dbdataDataSetHashtag
+    Friend WithEvents TabHashtagBindingSource As BindingSource
+    Friend WithEvents TabHashtagTableAdapter As dbdataDataSetHashtagTableAdapters.tabHashtagTableAdapter
+    Friend WithEvents TagDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TeilnehmerDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Button11 As Button
 End Class
