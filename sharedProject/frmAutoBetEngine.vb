@@ -551,13 +551,4 @@ Public Class frmAutoBetEngine
         Next
     End Sub
 
-    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
-        Dim t As New dbdataDataSetHashtag.tabHashtagDataTable
-
-
-
-        TabHashtagTableAdapter.Fill(t)
-
-
-    End Sub
 End Class
