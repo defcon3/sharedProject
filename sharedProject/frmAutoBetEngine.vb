@@ -536,11 +536,6 @@ Public Class frmAutoBetEngine
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        'MsgBox(tabMarketBook.Rows.Count & " = tabmarketbook - Zeilen" & vbCrLf & tabMarketCatalogue.Rows.Count & " = tabMarketCatalogue - Zeilen")
-        Dim rw() As DataRow = Me.DbdataDataSetHashtag.tabHashtag.Select()
-    End Sub
-
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         MsgBox(tabMarketBook.Rows.Count & " = tabmarketbook - Zeilen" & vbCrLf & tabMarketCatalogue.Rows.Count & " = tabMarketCatalogue - Zeilen")
     End Sub

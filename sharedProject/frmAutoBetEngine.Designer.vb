@@ -23,9 +23,9 @@ Partial Class frmAutoBetEngine
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolStripComboBox1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -38,7 +38,6 @@ Partial Class frmAutoBetEngine
         Me.pageMarketCatalogue = New System.Windows.Forms.TabPage()
         Me.cmbMarketTypeCode = New System.Windows.Forms.ComboBox()
         Me.chkMarketTypeCodes = New System.Windows.Forms.CheckBox()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
@@ -182,7 +181,6 @@ Partial Class frmAutoBetEngine
         '
         Me.pageMarketCatalogue.Controls.Add(Me.cmbMarketTypeCode)
         Me.pageMarketCatalogue.Controls.Add(Me.chkMarketTypeCodes)
-        Me.pageMarketCatalogue.Controls.Add(Me.Button2)
         Me.pageMarketCatalogue.Controls.Add(Me.DataGridView2)
         Me.pageMarketCatalogue.Controls.Add(Me.Button4)
         Me.pageMarketCatalogue.Controls.Add(Me.ListBox1)
@@ -231,15 +229,6 @@ Partial Class frmAutoBetEngine
         Me.chkMarketTypeCodes.Size = New System.Drawing.Size(15, 14)
         Me.chkMarketTypeCodes.TabIndex = 58
         Me.chkMarketTypeCodes.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(1124, 196)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 57
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
         '
         'DataGridView2
         '
@@ -748,16 +737,16 @@ Partial Class frmAutoBetEngine
         '
         'Chart1
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(107, 65)
         Me.Chart1.Name = "Chart1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.Chart1.Series.Add(Series2)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
         Me.Chart1.Size = New System.Drawing.Size(542, 300)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
@@ -874,7 +863,6 @@ Partial Class frmAutoBetEngine
     Friend WithEvents ColumnHeader2 As ColumnHeader
     Friend WithEvents ColumnHeader3 As ColumnHeader
     Friend WithEvents DataGridView2 As DataGridView
-    Friend WithEvents Button2 As Button
     Friend WithEvents Button7 As Button
     Friend WithEvents DataGridView3 As DataGridView
     Friend WithEvents cmbMarketTypeCode As ComboBox
